@@ -1,0 +1,34 @@
+{
+  "Devign": {
+    "file_name": "../../dataset/Devign/train.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "Devign_test": {
+    "file_name": "../../dataset/Devign/test.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "BigVul": {
+    "file_name": "../../dataset/BigVul/train.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  },
+  "DiverseVul": {
+    "file_name": "../../dataset/DiverseVul/train.json",
+    "columns": {
+      "prompt": "instruction",
+      "query": "input",
+      "response": "output"
+    }
+  }
+}
