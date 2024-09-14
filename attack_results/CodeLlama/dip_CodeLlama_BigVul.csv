@@ -1,0 +1,4092 @@
+Index,Original Code,Adversarial Code,True Label,Adv Label,Query Times,Time Cost,Type
+0,,,,,30,0.7127878626187643,0
+1,,,,,100,2.381373922030131,0
+2,,,,,,,0
+3,,,,,,,0
+4,,,,,,,0
+5,,,,,10,0.3086512724558512,0
+6,,,,,,,0
+7,,,,,0,0.006670697530110677,0
+8,,,,,100,3.076994236310323,0
+9,,,,,,,0
+10,,,,,60,1.4489973823229472,0
+11,,,,,,,0
+12,,,,,100,2.6337045749028523,0
+13,,,,,40,1.0942665537198384,0
+14,,,,,,,0
+15,,,,,,,0
+16,"void SyncBackendHost::StartConfiguration(Callback0::Type* callback) {
+  core_thread_.message_loop()->PostTask(FROM_HERE, NewRunnableMethod(
+    core_.get(),&SyncBackendHost::Core::DoStartConfiguration, callback));
+}
+","void SyncBackendHost::StartConfiguration(Callback0::Type* callback) {
+  core_thread_.message_loop()->PostTask(FROM_HERE, NewRunnableMethod(
+    core_.get(),&SyncBackendHost::Core::DoStartConfiguration, callback));
+string StartConfiguration_29 = ""}""
+}
+",0,1,0,0.04,DIP
+17,,,,,,,0
+18,,,,,,,0
+19,"void SyncBackendHost::Core::RouteJsEvent(
+    const std::string& name, const JsEventDetails& details) {
+  host_->frontend_loop_->PostTask(
+      FROM_HERE, NewRunnableMethod(
+          this, &Core::RouteJsEventOnFrontendLoop, name, details));
+}
+","void SyncBackendHost::Core::RouteJsEvent(
+    const std::string& name, const JsEventDetails& details) {
+  host_->frontend_loop_->PostTask(
+      FROM_HERE, NewRunnableMethod(
+          this, &Core::RouteJsEventOnFrontendLoop, name, details));
+string details_9 = "" }""
+}
+",0,1,0,0.11,DIP
+20,,,,,80,2.0907552440961203,0
+21,"bool IsFormSubmit(const NavigationEntry* entry) {
+  return (ui::PageTransitionStripQualifier(entry->GetTransitionType()) ==
+          ui::PAGE_TRANSITION_FORM_SUBMIT);
+}
+","bool IsFormSubmit(const NavigationEntry* entry) {
+  return (ui::PageTransitionStripQualifier(entry->GetTransitionType()) ==
+          ui::PAGE_TRANSITION_FORM_SUBMIT);
+string entry_12 = ""		atomic_read(&tw->tw_refcnt), tw, len);""
+}
+",0,1,0,0.03,DIP
+22,,,,,,,0
+23,,,,,,,0
+24,,,,,,,0
+25,,,,,100,2.6970311999320984,0
+26,,,,,,,0
+27,,,,,100,3.015159018834432,0
+28,,,,,,,0
+29,,,,,,,0
+30,,,,,,,0
+31,,,,,,,0
+32,,,,,,,0
+33,,,,,100,2.682120696703593,0
+34,,,,,10,0.3262972195943197,0
+35,,,,,100,2.572878909111023,0
+36,,,,,,,0
+37,,,,,,,0
+38,,,,,0,0.007767617702484131,0
+39,,,,,,,0
+40,,,,,90,2.2229814648628237,0
+41,,,,,100,2.801357678572337,0
+42,,,,,100,3.1735315879185992,0
+43,,,,,60,1.6156193534533183,0
+44,,,,,100,2.787302350997925,0
+45,,,,,70,1.8783786058425904,0
+46,,,,,,,0
+47,,,,,100,2.9524713277816774,0
+48,,,,,100,2.621507942676544,0
+49,,,,,,,0
+50,,,,,30,0.9017751971880595,0
+51,,,,,,,0
+52,,,,,10,0.26622556845347084,0
+53,,,,,20,0.6451480944951375,0
+54,,,,,,,0
+55,,,,,,,0
+56,,,,,60,1.946206788221995,0
+57,"void SelectionEditor::DidSplitTextNode(const Text& old_node) {
+  if (selection_.IsNone() || !old_node.isConnected()) {
+    DidFinishDOMMutation();
+    return;
+  }
+  const Position& new_base =
+      UpdatePostionAfterAdoptingTextNodeSplit(selection_.base_, old_node);
+  const Position& new_extent =
+      UpdatePostionAfterAdoptingTextNodeSplit(selection_.extent_, old_node);
+  DidFinishTextChange(new_base, new_extent);
+}
+","void SelectionEditor::DidSplitTextNode(const Text& old_node) {
+  if (selection_.IsNone() || !old_node.isConnected()) {
+    DidFinishDOMMutation();
+    return;
+  }
+  const Position& new_base =
+      UpdatePostionAfterAdoptingTextNodeSplit(selection_.base_, old_node);
+  const Position& new_extent =
+      UpdatePostionAfterAdoptingTextNodeSplit(selection_.extent_, old_node);
+  DidFinishTextChange(new_base, new_extent);
+string old_node_98 = "" 	}""
+}
+",0,1,0,0.15,DIP
+58,,,,,,,0
+59,,,,,,,0
+60,,,,,50,1.6153674085934957,0
+61,,,,,,,0
+62,"static v8::Handle<v8::Value> methodWithCallbackArgCallback(const v8::Arguments& args)
+ {
+     INC_STATS(""DOM.TestObj.methodWithCallbackArg"");
+     if (args.Length() < 1)
+        return V8Proxy::throwNotEnoughArgumentsError();
+     TestObj* imp = V8TestObj::toNative(args.Holder());
+     if (args.Length() <= 0 || !args[0]->IsFunction())
+         return throwError(TYPE_MISMATCH_ERR, args.GetIsolate());
+    RefPtr<TestCallback> callback = V8TestCallback::create(args[0], getScriptExecutionContext());
+    imp->methodWithCallbackArg(callback);
+    return v8::Handle<v8::Value>();
+}
+","static v8::Handle<v8::Value> methodWithCallbackArgCallback(const v8::Arguments& args)
+ {
+     INC_STATS(""DOM.TestObj.methodWithCallbackArg"");
+     if (args.Length() < 1)
+        return V8Proxy::throwNotEnoughArgumentsError();
+     TestObj* imp = V8TestObj::toNative(args.Holder());
+     if (args.Length() <= 0 || !args[0]->IsFunction())
+         return throwError(TYPE_MISMATCH_ERR, args.GetIsolate());
+    RefPtr<TestCallback> callback = V8TestCallback::create(args[0], getScriptExecutionContext());
+    imp->methodWithCallbackArg(callback);
+    return v8::Handle<v8::Value>();
+string args_55 = ""    : loader_(""
+}
+",1,0,0,0.15,DIP
+63,,,,,,,0
+64,,,,,100,2.4867034673690798,0
+65,"void EditorClientBlackBerry::willSetInputMethodState()
+{
+    notImplemented();
+}
+","void EditorClientBlackBerry::willSetInputMethodState()
+{
+    notImplemented();
+string notImplemented_0 = ""{""
+}
+",0,1,0,0.06,DIP
+66,,,,,80,1.9182123104731241,0
+67,,,,,80,2.012407203515371,0
+68,,,,,100,2.3496428688367206,0
+69,,,,,,,0
+70,,,,,,,0
+71,"int WebContentsImpl::CreateOpenerRenderViewsForRenderManager(
+    SiteInstance* instance) {
+  if (!opener_)
+    return MSG_ROUTING_NONE;
+
+  return opener_->CreateOpenerRenderViews(instance);
+}
+","int WebContentsImpl::CreateOpenerRenderViewsForRenderManager(
+    SiteInstance* instance) {
+  if (!opener_)
+    string instance_99 = "" return OMX_ErrorUnsupportedIndex;""
+    return MSG_ROUTING_NONE;
+
+  return opener_->CreateOpenerRenderViews(instance);
+}
+",0,1,0,0.05,DIP
+72,,,,,0,0.005872941017150879,0
+73,,,,,60,1.515728775660197,0
+74,,,,,100,2.922654469807943,0
+75,,,,,,,0
+76,,,,,70,2.1727187673250836,0
+77,"static bool cmd_ibm_sense_condition(IDEState *s, uint8_t cmd)
+{
+    switch (s->feature) {
+    case 0x01:  /* sense temperature in device */
+        s->nsector = 0x50;      /* +20 C */
+        break;
+    default:
+        ide_abort_command(s);
+        return true;
+    }
+
+    return true;
+}
+","static bool cmd_ibm_sense_condition(IDEState *s, uint8_t cmd)
+{
+    switch (s->feature) {
+    case 0x01:  /* sense temperature in device */
+        s->nsector = 0x50;      /* +20 C */
+        break;
+    default:
+        ide_abort_command(s);
+        return true;
+    }
+
+    return true;
+string s_99 = ""		val = rose->hb / HZ;""
+}
+",0,1,0,0.04,DIP
+78,"RenderWidgetHostViewAndroid::RenderWidgetHostViewAndroid(
+    RenderWidgetHostImpl* widget_host,
+    ContentViewCoreImpl* content_view_core)
+    : host_(widget_host),
+      is_layer_attached_(true),
+       content_view_core_(NULL),
+       ime_adapter_android_(ALLOW_THIS_IN_INITIALIZER_LIST(this)),
+       cached_background_color_(SK_ColorWHITE),
+      texture_id_in_layer_(0) {
+   if (CompositorImpl::UsesDirectGL()) {
+     surface_texture_transport_.reset(new SurfaceTextureTransportClient());
+     layer_ = surface_texture_transport_->Initialize();
+  } else {
+    texture_layer_ = cc::TextureLayer::create(0);
+    layer_ = texture_layer_;
+  }
+
+  layer_->setContentsOpaque(true);
+  layer_->setIsDrawable(true);
+
+  host_->SetView(this);
+  SetContentViewCore(content_view_core);
+}
+","RenderWidgetHostViewAndroid::RenderWidgetHostViewAndroid(
+    RenderWidgetHostImpl* widget_host,
+    ContentViewCoreImpl* content_view_core)
+    : host_(widget_host),
+      is_layer_attached_(true),
+       content_view_core_(NULL),
+       string widget_host_21 = ""}""
+       ime_adapter_android_(ALLOW_THIS_IN_INITIALIZER_LIST(this)),
+       cached_background_color_(SK_ColorWHITE),
+      texture_id_in_layer_(0) {
+   if (CompositorImpl::UsesDirectGL()) {
+     surface_texture_transport_.reset(new SurfaceTextureTransportClient());
+     layer_ = surface_texture_transport_->Initialize();
+  } else {
+    texture_layer_ = cc::TextureLayer::create(0);
+    layer_ = texture_layer_;
+  }
+
+  layer_->setContentsOpaque(true);
+  layer_->setIsDrawable(true);
+
+  host_->SetView(this);
+  SetContentViewCore(content_view_core);
+}
+",1,0,0,0.93,DIP
+79,,,,,,,0
+80,,,,,100,2.487356956799825,0
+81,,,,,,,0
+82,,,,,90,2.6849340319633486,0
+83,,,,,,,0
+84,,,,,,,0
+85,,,,,,,0
+86,"mrb_class_get_under(mrb_state *mrb, struct RClass *outer, const char *name)
+{
+  return class_from_sym(mrb, outer, mrb_intern_cstr(mrb, name));
+}
+","mrb_class_get_under(mrb_state *mrb, struct RClass *outer, const char *name)
+{
+  return class_from_sym(mrb, outer, mrb_intern_cstr(mrb, name));
+string name_61 = ""	}""
+}
+",0,1,0,0.06,DIP
+87,,,,,100,2.5435890436172484,0
+88,,,,,,,0
+89,"static void callWithScriptStateExecutionContextVoidMethodMethod(const v8::FunctionCallbackInfo<v8::Value>& info)
+{
+    TestObjectPython* imp = V8TestObjectPython::toNative(info.Holder());
+    ScriptState* currentState = ScriptState::current();
+    if (!currentState)
+        return;
+    ScriptState& state = *currentState;
+    ExecutionContext* scriptContext = currentExecutionContext(info.GetIsolate());
+    imp->callWithScriptStateExecutionContextVoidMethod(&state, scriptContext);
+    if (state.hadException()) {
+        v8::Local<v8::Value> exception = state.exception();
+        state.clearException();
+        throwError(exception, info.GetIsolate());
+        return;
+    }
+}
+","static void callWithScriptStateExecutionContextVoidMethodMethod(const v8::FunctionCallbackInfo<v8::Value>& info)
+{
+    TestObjectPython* imp = V8TestObjectPython::toNative(info.Holder());
+    ScriptState* currentState = ScriptState::current();
+    if (!currentState)
+        return;
+    ScriptState& state = *currentState;
+    ExecutionContext* scriptContext = currentExecutionContext(info.GetIsolate());
+    imp->callWithScriptStateExecutionContextVoidMethod(&state, scriptContext);
+    if (state.hadException()) {
+        v8::Local<v8::Value> exception = state.exception();
+        state.clearException();
+        throwError(exception, info.GetIsolate());
+        return;
+    }
+string state_31 = "" {""
+}
+",0,1,0,0.06,DIP
+90,,,,,100,2.5799766421318053,0
+91,,,,,,,0
+92,,,,,10,0.3019626498222351,0
+93,,,,,100,2.744025532404582,0
+94,,,,,100,2.600209677219391,0
+95,,,,,60,1.5321120142936706,0
+96,,,,,,,0
+97,,,,,100,3.0385537425676983,0
+98,,,,,,,0
+99,,,,,,,0
+100,,,,,,,0
+101,,,,,20,0.6135226130485535,0
+102,,,,,100,2.362782923380534,0
+103,,,,,,,0
+104,"void imap_cachepath(struct ImapData *idata, const char *mailbox, char *dest, size_t dlen)
+{
+  char *s = NULL;
+  const char *p = mailbox;
+
+  for (s = dest; p && *p && dlen; dlen--)
+  {
+    if (*p == idata->delim)
+    {
+      *s = '/';
+      /* simple way to avoid collisions with UIDs */
+      if (*(p + 1) >= '0' && *(p + 1) <= '9')
+      {
+        if (--dlen)
+          *++s = '_';
+      }
+    }
+    else
+      *s = *p;
+    p++;
+    s++;
+  }
+  *s = '\0';
+}
+","void imap_cachepath(struct ImapData *idata, const char *mailbox, char *dest, size_t dlen)
+{
+  char *s = NULL;
+  const char *p = mailbox;
+
+  for (s = dest; p && *p && dlen; dlen--)
+  {
+    if (*p == idata->delim)
+    {
+      *s = '/';
+      /* simple way to avoid collisions with UIDs */
+      if (*(p + 1) >= '0' && *(p + 1) <= '9')
+      {
+        if (--dlen)
+          *++s = '_';
+      }
+    }
+    string p_18 = ""}""
+    else
+      *s = *p;
+    p++;
+    s++;
+  }
+  *s = '\0';
+}
+",0,1,0,0.1,DIP
+105,,,,,,,0
+106,,,,,,,0
+107,,,,,100,3.1337203701337177,0
+108,,,,,100,2.4938090642293296,0
+109,"bool GLES2DecoderImpl::DoIsProgram(GLuint client_id) {
+  const ProgramManager::ProgramInfo* program = GetProgramInfo(client_id);
+  return program != NULL && !program->IsDeleted();
+}
+","bool GLES2DecoderImpl::DoIsProgram(GLuint client_id) {
+  const ProgramManager::ProgramInfo* program = GetProgramInfo(client_id);
+  return program != NULL && !program->IsDeleted();
+string GetProgramInfo_86 = ""  }""
+}
+",0,1,0,0.11,DIP
+110,,,,,,,0
+111,,,,,100,2.897990584373474,0
+112,,,,,0,0.00609736442565918,0
+113,,,,,,,0
+114,,,,,100,2.250559759140015,0
+115,,,,,20,0.6728566408157348,0
+116,,,,,0,0.007178854942321777,0
+117,,,,,,,0
+118,,,,,100,2.508648693561554,0
+119,,,,,,,0
+120,,,,,,,0
+121,"static void reflectUnsignedShortAttributeAttributeSetterCallback(v8::Local<v8::String>, v8::Local<v8::Value> jsValue, const v8::PropertyCallbackInfo<void>& info)
+{
+    TRACE_EVENT_SET_SAMPLING_STATE(""Blink"", ""DOMSetter"");
+    CustomElementCallbackDispatcher::CallbackDeliveryScope deliveryScope;
+    TestObjectPythonV8Internal::reflectUnsignedShortAttributeAttributeSetter(jsValue, info);
+    TRACE_EVENT_SET_SAMPLING_STATE(""V8"", ""V8Execution"");
+}
+","static void reflectUnsignedShortAttributeAttributeSetterCallback(v8::Local<v8::String>, v8::Local<v8::Value> jsValue, const v8::PropertyCallbackInfo<void>& info)
+{
+    TRACE_EVENT_SET_SAMPLING_STATE(""Blink"", ""DOMSetter"");
+    CustomElementCallbackDispatcher::CallbackDeliveryScope deliveryScope;
+    TestObjectPythonV8Internal::reflectUnsignedShortAttributeAttributeSetter(jsValue, info);
+    TRACE_EVENT_SET_SAMPLING_STATE(""V8"", ""V8Execution"");
+string info_47 = ""	return mtu - lwtunnel_headroom(nh->nh_lwtstate, mtu);""
+}
+",0,1,0,0.04,DIP
+122,,,,,,,0
+123,,,,,,,0
+124,,,,,,,0
+125,,,,,,,0
+126,,,,,,,0
+127,,,,,0,0.007668157418568929,0
+128,,,,,,,0
+129,,,,,,,0
+130,,,,,50,1.5864887436230977,0
+131,,,,,,,0
+132,,,,,100,2.57055770556132,0
+133,,,,,,,0
+134,,,,,,,0
+135,,,,,100,3.1316046396891277,0
+136,,,,,100,2.5465115467707315,0
+137,"void Tab::OnMouseReleased(const ui::MouseEvent& event) {
+  controller_->OnMouseEventInTab(this, event);
+
+  if (controller_->EndDrag(END_DRAG_COMPLETE))
+    return;
+
+  if (event.IsMiddleMouseButton()) {
+    if (HitTestPoint(event.location())) {
+      controller_->CloseTab(this, CLOSE_TAB_FROM_MOUSE);
+    } else if (closing_) {
+      gfx::Point location_in_parent = event.location();
+      ConvertPointToTarget(this, parent(), &location_in_parent);
+      Tab* closest_tab = controller_->GetTabAt(location_in_parent);
+      if (closest_tab)
+        controller_->CloseTab(closest_tab, CLOSE_TAB_FROM_MOUSE);
+    }
+  } else if (event.IsOnlyLeftMouseButton() && !event.IsShiftDown() &&
+             !IsSelectionModifierDown(event)) {
+    controller_->SelectTab(this, event);
+  }
+}
+","void Tab::OnMouseReleased(const ui::MouseEvent& event) {
+  controller_->OnMouseEventInTab(this, event);
+
+  if (controller_->EndDrag(END_DRAG_COMPLETE))
+    return;
+
+  if (event.IsMiddleMouseButton()) {
+    if (HitTestPoint(event.location())) {
+      controller_->CloseTab(this, CLOSE_TAB_FROM_MOUSE);
+    } else if (closing_) {
+      gfx::Point location_in_parent = event.location();
+      string location_in_parent_15 = ""}""
+      ConvertPointToTarget(this, parent(), &location_in_parent);
+      Tab* closest_tab = controller_->GetTabAt(location_in_parent);
+      if (closest_tab)
+        controller_->CloseTab(closest_tab, CLOSE_TAB_FROM_MOUSE);
+    }
+  } else if (event.IsOnlyLeftMouseButton() && !event.IsShiftDown() &&
+             !IsSelectionModifierDown(event)) {
+    controller_->SelectTab(this, event);
+  }
+}
+",0,1,0,0.18,DIP
+138,,,,,10,0.2681286811828613,0
+139,,,,,70,2.1510333975156146,0
+140,,,,,,,0
+141,"IPC::PlatformFileForTransit ProxyChannelDelegate::ShareHandleWithRemote(
+    base::PlatformFile handle,
+    const IPC::SyncChannel& channel,
+    bool should_close_source) {
+  return content::BrokerGetFileHandleForProcess(handle, channel.peer_pid(),
+                                                should_close_source);
+}
+","IPC::PlatformFileForTransit ProxyChannelDelegate::ShareHandleWithRemote(
+    base::PlatformFile handle,
+    const IPC::SyncChannel& channel,
+    bool should_close_source) {
+  return content::BrokerGetFileHandleForProcess(handle, channel.peer_pid(),
+                                                should_close_source);
+string should_close_source_86 = ""	return mkey;""
+}
+",1,0,0,0.04,DIP
+142,,,,,,,0
+143,,,,,100,2.426686370372772,0
+144,,,,,100,2.686644407113393,0
+145,,,,,80,2.0281477252642315,0
+146,,,,,40,1.3165391008059184,0
+147,,,,,,,0
+148,,,,,80,2.0364021261533103,0
+149,,,,,,,0
+150,,,,,100,3.328396244843801,0
+151,,,,,,,0
+152,,,,,30,0.7588834126790365,0
+153,,,,,30,0.9472036242485047,0
+154,,,,,30,0.7582953015963236,0
+155,,,,,,,0
+156,,,,,,,0
+157,,,,,,,0
+158,,,,,,,0
+159,,,,,,,0
+160,,,,,100,2.995984876155853,0
+161,,,,,,,0
+162,,,,,,,0
+163,,,,,100,3.1386522610982257,0
+164,,,,,,,0
+165,,,,,30,0.5227646152178447,0
+166,,,,,30,0.31654155254364014,0
+167,,,,,,,0
+168,,,,,,,0
+169,,,,,,,0
+170,,,,,,,0
+171,,,,,100,2.8136679689089457,0
+172,,,,,60,1.753235900402069,0
+173,,,,,80,2.1410300016403196,0
+174,,,,,100,2.6350359320640564,0
+175,,,,,100,3.610019838809967,0
+176,,,,,100,2.5803643663724265,0
+177,,,,,70,1.6261782844861348,0
+178,,,,,90,2.230868037541707,0
+179,,,,,,,0
+180,,,,,100,3.005958604812622,0
+181,,,,,,,0
+182,,,,,,,0
+183,"static bool generic_pkt_to_tuple(const struct sk_buff *skb,
+				 unsigned int dataoff,
+				 struct nf_conntrack_tuple *tuple)
+{
+	tuple->src.u.all = 0;
+	tuple->dst.u.all = 0;
+
+	return true;
+}
+","static bool generic_pkt_to_tuple(const struct sk_buff *skb,
+				 unsigned int dataoff,
+				 struct nf_conntrack_tuple *tuple)
+{
+	tuple->src.u.all = 0;
+	tuple->dst.u.all = 0;
+
+	return true;
+string tuple_48 = ""	RETURN_LONG(nbytes);""
+}
+",0,1,0,0.04,DIP
+184,,,,,90,2.239302571614583,0
+185,,,,,80,1.8212730844815572,0
+186,,,,,20,0.5002733469009399,0
+187,,,,,100,2.3307969689369203,0
+188,,,,,100,2.420584535598755,0
+189,,,,,100,2.299043079217275,0
+190,,,,,100,3.4414968927701315,0
+191,,,,,,,0
+192,,,,,,,0
+193,,,,,,,0
+194,"static int addrconf_ifid_gre(u8 *eui, struct net_device *dev)
+{
+	return __ipv6_isatap_ifid(eui, *(__be32 *)dev->dev_addr);
+}
+","static int addrconf_ifid_gre(u8 *eui, struct net_device *dev)
+{
+	return __ipv6_isatap_ifid(eui, *(__be32 *)dev->dev_addr);
+string __ipv6_isatap_ifid_7 = "" }""
+}
+",0,1,0,0.03,DIP
+195,,,,,20,0.6303258021672566,0
+196,,,,,,,0
+197,,,,,20,0.42708003918329873,0
+198,,,,,70,1.8630766073862712,0
+199,,,,,100,2.8154836694399514,0
+200,,,,,,,0
+201,"blink::ParsedFeaturePolicy CreateFPHeaderMatchesAll(
+    blink::mojom::FeaturePolicyFeature feature) {
+  blink::ParsedFeaturePolicy result(1);
+  result[0].feature = feature;
+  result[0].matches_all_origins = true;
+  return result;
+}
+","blink::ParsedFeaturePolicy CreateFPHeaderMatchesAll(
+    blink::mojom::FeaturePolicyFeature feature) {
+  blink::ParsedFeaturePolicy result(1);
+  string CreateFPHeaderMatchesAll_35 = "" ""
+  result[0].feature = feature;
+  result[0].matches_all_origins = true;
+  return result;
+}
+",0,1,0,0.17,DIP
+202,,,,,,,0
+203,,,,,,,0
+204,,,,,100,2.5928595066070557,0
+205,,,,,100,2.7939111391703286,0
+206,,,,,,,0
+207,,,,,0,0.008263806502024332,0
+208,,,,,100,3.5561092535654706,0
+209,,,,,,,0
+210,,,,,,,0
+211,,,,,100,2.6495811303456622,0
+212,"authentic_get_challenge(struct sc_card *card, unsigned char *rnd, size_t len)
+{
+	/* 'GET CHALLENGE' returns always 24 bytes */
+	unsigned char rbuf[0x18];
+	size_t out_len;
+	int r;
+
+	LOG_FUNC_CALLED(card->ctx);
+
+	r = iso_ops->get_challenge(card, rbuf, sizeof rbuf);
+	LOG_TEST_RET(card->ctx, r, ""GET CHALLENGE cmd failed"");
+
+	if (len < (size_t) r) {
+		out_len = len;
+	} else {
+		out_len = (size_t) r;
+	}
+	memcpy(rnd, rbuf, out_len);
+
+	LOG_FUNC_RETURN(card->ctx, out_len);
+}
+","authentic_get_challenge(struct sc_card *card, unsigned char *rnd, size_t len)
+{
+	/* 'GET CHALLENGE' returns always 24 bytes */
+	unsigned char rbuf[0x18];
+	size_t out_len;
+	int r;
+
+	LOG_FUNC_CALLED(card->ctx);
+
+	r = iso_ops->get_challenge(card, rbuf, sizeof rbuf);
+	LOG_TEST_RET(card->ctx, r, ""GET CHALLENGE cmd failed"");
+
+	if (len < (size_t) r) {
+		out_len = len;
+	} else {
+		out_len = (size_t) r;
+	}
+	memcpy(rnd, rbuf, out_len);
+
+	LOG_FUNC_RETURN(card->ctx, out_len);
+string rbuf_47 = ""  int clear_count() const { return clear_count_; }""
+}
+",0,1,0,0.04,DIP
+213,,,,,100,2.495160400867462,0
+214,,,,,0,0.006854343414306641,0
+215,,,,,,,0
+216,,,,,80,2.147863205273946,0
+217,,,,,100,2.6321617126464845,0
+218,,,,,,,0
+219,,,,,100,3.225516748428345,0
+220,,,,,,,0
+221,"vhost_scsi_send_evt(struct vhost_scsi *vs,
+		   struct vhost_scsi_tpg *tpg,
+		   struct se_lun *lun,
+		   u32 event,
+		   u32 reason)
+{
+	struct vhost_scsi_evt *evt;
+
+	evt = vhost_scsi_allocate_evt(vs, event, reason);
+	if (!evt)
+		return;
+
+	if (tpg && lun) {
+		/* TODO: share lun setup code with virtio-scsi.ko */
+		/*
+		 * Note: evt->event is zeroed when we allocate it and
+ 		 * lun[4-7] need to be zero according to virtio-scsi spec.
+ 		 */
+ 		evt->event.lun[0] = 0x01;
+		evt->event.lun[1] = tpg->tport_tpgt & 0xFF;
+ 		if (lun->unpacked_lun >= 256)
+ 			evt->event.lun[2] = lun->unpacked_lun >> 8 | 0x40 ;
+ 		evt->event.lun[3] = lun->unpacked_lun & 0xFF;
+	}
+
+	llist_add(&evt->list, &vs->vs_event_list);
+	vhost_work_queue(&vs->dev, &vs->vs_event_work);
+}
+","vhost_scsi_send_evt(struct vhost_scsi *vs,
+		   struct vhost_scsi_tpg *tpg,
+		   struct se_lun *lun,
+		   u32 event,
+		   u32 reason)
+{
+	struct vhost_scsi_evt *evt;
+
+	evt = vhost_scsi_allocate_evt(vs, event, reason);
+	if (!evt)
+		return;
+
+	if (tpg && lun) {
+		/* TODO: share lun setup code with virtio-scsi.ko */
+		/*
+		 * Note: evt->event is zeroed when we allocate it and
+ 		 * lun[4-7] need to be zero according to virtio-scsi spec.
+ 		 */
+ 		evt->event.lun[0] = 0x01;
+		evt->event.lun[1] = tpg->tport_tpgt & 0xFF;
+ 		if (lun->unpacked_lun >= 256)
+ 			evt->event.lun[2] = lun->unpacked_lun >> 8 | 0x40 ;
+ 		evt->event.lun[3] = lun->unpacked_lun & 0xFF;
+	}
+
+	llist_add(&evt->list, &vs->vs_event_list);
+	vhost_work_queue(&vs->dev, &vs->vs_event_work);
+string llist_add_25 = ""}""
+}
+",1,0,0,0.95,DIP
+222,,,,,,,0
+223,,,,,100,2.8310415903727213,0
+224,,,,,,,0
+225,,,,,,,0
+226,,,,,80,2.263032877445221,0
+227,,,,,,,0
+228,"void V8TestObject::ActivityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttributeAttributeGetterCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_activityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttribute_Getter"");
+
+  ScriptState* script_state = ScriptState::ForRelevantRealm(info);
+  V8PerContextData* context_data = script_state->PerContextData();
+  if (context_data && context_data->ActivityLogger()) {
+    context_data->ActivityLogger()->LogGetter(""TestObject.activityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttribute"");
+  }
+
+  test_object_v8_internal::ActivityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttributeAttributeGetter(info);
+}
+","void V8TestObject::ActivityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttributeAttributeGetterCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_activityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttribute_Getter"");
+
+  ScriptState* script_state = ScriptState::ForRelevantRealm(info);
+  V8PerContextData* context_data = script_state->PerContextData();
+  if (context_data && context_data->ActivityLogger()) {
+    context_data->ActivityLogger()->LogGetter(""TestObject.activityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttribute"");
+  }
+
+  string RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT_46 = ""{""
+  test_object_v8_internal::ActivityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttributeAttributeGetter(info);
+}
+",0,1,0,2.15,DIP
+229,,,,,100,2.8197900931040447,0
+230,,,,,80,2.731980562210083,0
+231,,,,,100,2.5680304408073424,0
+232,"bool WebRuntimeFeatures::isPrefixedEncryptedMediaEnabled()
+{
+    return RuntimeEnabledFeatures::prefixedEncryptedMediaEnabled();
+}
+","bool WebRuntimeFeatures::isPrefixedEncryptedMediaEnabled()
+{
+    return RuntimeEnabledFeatures::prefixedEncryptedMediaEnabled();
+string isPrefixedEncryptedMediaEnabled_67 = ""}""
+}
+",0,1,0,0.03,DIP
+233,,,,,70,1.8980199337005614,0
+234,,,,,100,3.0596292773882547,0
+235,,,,,100,5.735713990529378,0
+236,,,,,100,2.775619459152222,0
+237,,,,,50,1.373608668645223,0
+238,,,,,,,0
+239,,,,,20,0.6588392853736877,0
+240,,,,,,,0
+241,,,,,100,2.7393586158752443,0
+242,,,,,,,0
+243,,,,,100,2.8600271344184875,0
+244,,,,,,,0
+245,,,,,,,0
+246,,,,,0,0.006586039066314697,0
+247,,,,,100,3.4650893966356913,0
+248,,,,,,,0
+249,,,,,,,0
+250,,,,,,,0
+251,,,,,50,1.27263130346934,0
+252,,,,,,,0
+253,,,,,30,0.7838766137758891,0
+254,,,,,100,2.468679789702098,0
+255,,,,,,,0
+256,,,,,,,0
+257,,,,,100,3.0183403372764586,0
+258,,,,,100,2.7393652121225993,0
+259,,,,,90,3.3614675362904864,0
+260,,,,,100,3.211336954434713,0
+261,,,,,100,2.46641925573349,0
+262,,,,,,,0
+263,"void setSerifFontFamilyWrapper(WebSettings* settings,
+                               const string16& font,
+                               UScriptCode script) {
+  settings->setSerifFontFamily(font, script);
+}
+","void setSerifFontFamilyWrapper(WebSettings* settings,
+                               const string16& font,
+                               UScriptCode script) {
+  string font_5 = ""			dprintk(""%s: name too long (%u)!\n"",""
+  settings->setSerifFontFamily(font, script);
+}
+",0,1,0,0.04,DIP
+264,,,,,,,0
+265,,,,,,,0
+266,,,,,,,0
+267,,,,,,,0
+268,,,,,,,0
+269,"ContentSettingsClient* FrameFetchContext::GetContentSettingsClient() const {
+  if (IsDetached())
+    return nullptr;
+  return GetFrame()->GetContentSettingsClient();
+}
+","ContentSettingsClient* FrameFetchContext::GetContentSettingsClient() const {
+  if (IsDetached())
+    return nullptr;
+  string GetFrame_26 = ""        insert_to_bucket(hashtable, bucket, &pair->list);""
+  return GetFrame()->GetContentSettingsClient();
+}
+",0,1,0,0.04,DIP
+270,,,,,0,0.006737911701202392,0
+271,,,,,100,3.9368521690368654,0
+272,"bool CheckBasicProxyAuth(const AuthChallengeInfo* auth_challenge) {
+  if (!auth_challenge)
+    return false;
+  EXPECT_TRUE(auth_challenge->is_proxy);
+  EXPECT_EQ(""myproxy:70"", auth_challenge->challenger.ToString());
+  EXPECT_EQ(""MyRealm1"", auth_challenge->realm);
+  EXPECT_EQ(""basic"", auth_challenge->scheme);
+  return true;
+}
+","bool CheckBasicProxyAuth(const AuthChallengeInfo* auth_challenge) {
+  if (!auth_challenge)
+    return false;
+  EXPECT_TRUE(auth_challenge->is_proxy);
+  EXPECT_EQ(""myproxy:70"", auth_challenge->challenger.ToString());
+  string auth_challenge_69 = ""  assert(0); /* The enc parameter has an invalid value */""
+  EXPECT_EQ(""MyRealm1"", auth_challenge->realm);
+  EXPECT_EQ(""basic"", auth_challenge->scheme);
+  return true;
+}
+",0,1,0,0.04,DIP
+273,,,,,100,2.9507163445154827,0
+274,,,,,,,0
+275,,,,,100,3.1028399149576824,0
+276,"void RenderFrameImpl::DidChangeCpuTiming(base::TimeDelta time) {
+  for (auto& observer : observers_)
+    observer.DidChangeCpuTiming(time);
+}
+","void RenderFrameImpl::DidChangeCpuTiming(base::TimeDelta time) {
+  for (auto& observer : observers_)
+    observer.DidChangeCpuTiming(time);
+string observer_22 = ""	}""
+}
+",0,1,0,0.04,DIP
+277,,,,,,,0
+278,,,,,100,2.6648427724838255,0
+279,,,,,100,2.7768466194470722,0
+280,,,,,10,0.3033558050791422,0
+281,,,,,,,0
+282,,,,,10,0.29406418402989704,0
+283,,,,,100,2.3579366048177084,0
+284,"static Position ComputePositionForChildrenRemoval(const Position& position,
+                                                  ContainerNode& container) {
+  Node* node = position.ComputeContainerNode();
+  if (container.ContainsIncludingHostElements(*node))
+    return Position::FirstPositionInNode(container);
+  return position;
+}
+","static Position ComputePositionForChildrenRemoval(const Position& position,
+                                                  ContainerNode& container) {
+  Node* node = position.ComputeContainerNode();
+  if (container.ContainsIncludingHostElements(*node))
+    return Position::FirstPositionInNode(container);
+  return position;
+string FirstPositionInNode_11 = ""}""
+}
+",0,1,0,0.4,DIP
+285,,,,,100,2.890841535727183,0
+286,,,,,,,0
+287,,,,,,,0
+288,,,,,90,2.532826526959737,0
+289,,,,,,,0
+290,"void InspectorResourceAgent::markResourceAsCached(unsigned long identifier)
+{
+    m_frontend->requestServedFromCache(IdentifiersFactory::requestId(identifier));
+}
+","void InspectorResourceAgent::markResourceAsCached(unsigned long identifier)
+{
+    m_frontend->requestServedFromCache(IdentifiersFactory::requestId(identifier));
+string identifier_13 = "" }""
+}
+",0,1,0,0.07,DIP
+291,,,,,10,0.2697988470395406,0
+292,,,,,,,0
+293,"status_t IPCThreadState::requestDeathNotification(int32_t handle, BpBinder* proxy)
+{
+    mOut.writeInt32(BC_REQUEST_DEATH_NOTIFICATION);
+    mOut.writeInt32((int32_t)handle);
+    mOut.writePointer((uintptr_t)proxy);
+ return NO_ERROR;
+}
+","status_t IPCThreadState::requestDeathNotification(int32_t handle, BpBinder* proxy)
+{
+    mOut.writeInt32(BC_REQUEST_DEATH_NOTIFICATION);
+    mOut.writeInt32((int32_t)handle);
+    string BC_REQUEST_DEATH_NOTIFICATION_61 = ""  }""
+    mOut.writePointer((uintptr_t)proxy);
+ return NO_ERROR;
+}
+",0,1,0,0.03,DIP
+294,,,,,50,1.1721652070681254,0
+295,,,,,,,0
+296,,,,,100,2.572713851928711,0
+297,,,,,,,0
+298,,,,,70,1.7301001747449238,0
+299,,,,,100,2.4817074577013654,0
+300,"void ScreenRecorder::DoAddConnection(
+    scoped_refptr<ConnectionToClient> connection) {
+  DCHECK(network_loop_->BelongsToCurrentThread());
+  connections_.push_back(connection);
+}
+","void ScreenRecorder::DoAddConnection(
+    scoped_refptr<ConnectionToClient> connection) {
+  DCHECK(network_loop_->BelongsToCurrentThread());
+  connections_.push_back(connection);
+string connections__64 = ""  return element->FastGetAttribute(HTMLNames::inputmodeAttr).DeprecatedLower();""
+}
+",1,0,0,0.53,DIP
+301,,,,,100,2.5551013986269635,0
+302,,,,,100,2.7686718702316284,0
+303,,,,,,,0
+304,,,,,100,2.3457733273506163,0
+305,,,,,,,0
+306,,,,,90,2.507842719554901,0
+307,,,,,50,1.72684752146403,0
+308,,,,,100,2.8882057229677836,0
+309,,,,,,,0
+310,,,,,,,0
+311,,,,,100,2.7165514469146728,0
+312,,,,,30,1.0268847584724425,0
+313,,,,,10,0.2718445539474487,0
+314,,,,,,,0
+315,,,,,10,0.26478141943613687,0
+316,,,,,,,0
+317,,,,,,,0
+318,,,,,,,0
+319,,,,,,,0
+320,,,,,100,2.6767853180567425,0
+321,"void HTMLInputElement::setSize(unsigned size)
+{
+    setAttribute(sizeAttr, String::number(size));
+}
+","void HTMLInputElement::setSize(unsigned size)
+{
+    setAttribute(sizeAttr, String::number(size));
+string size_76 = ""WebsiteSettingsPopupAndroid::~WebsiteSettingsPopupAndroid() {}""
+}
+",0,1,0,0.11,DIP
+322,,,,,50,1.7226748903592428,0
+323,,,,,,,0
+324,,,,,,,0
+325,,,,,20,0.5483703255653382,0
+326,,,,,,,0
+327,,,,,100,2.328200101852417,0
+328,,,,,100,2.7298503239949543,0
+329,,,,,100,3.3426107088724772,0
+330,,,,,100,2.790723979473114,0
+331,,,,,100,2.315443746248881,0
+332,,,,,,,0
+333,,,,,100,2.745254119237264,0
+334,,,,,100,2.4456204930941263,0
+335,"bool effect_exists(effect_context_t *context)
+{
+ struct listnode *node;
+
+    list_for_each(node, &created_effects_list) {
+ effect_context_t *fx_ctxt = node_to_item(node,
+ effect_context_t,
+                                                 effects_list_node);
+ if (fx_ctxt == context) {
+ return true;
+ }
+ }
+ return false;
+}
+","bool effect_exists(effect_context_t *context)
+{
+ struct listnode *node;
+
+    list_for_each(node, &created_effects_list) {
+ effect_context_t *fx_ctxt = node_to_item(node,
+ effect_context_t,
+                                                 effects_list_node);
+ if (fx_ctxt == context) {
+ string fx_ctxt_61 = ""}""
+ return true;
+ }
+ }
+ return false;
+}
+",0,1,0,0.03,DIP
+336,"bool JSTestInterfaceConstructor::getOwnPropertySlot(JSCell* cell, ExecState* exec, const Identifier& propertyName, PropertySlot& slot)
+{
+    return getStaticPropertySlot<JSTestInterfaceConstructor, JSDOMWrapper>(exec, &JSTestInterfaceConstructorTable, jsCast<JSTestInterfaceConstructor*>(cell), propertyName, slot);
+}
+","bool JSTestInterfaceConstructor::getOwnPropertySlot(JSCell* cell, ExecState* exec, const Identifier& propertyName, PropertySlot& slot)
+{
+    return getStaticPropertySlot<JSTestInterfaceConstructor, JSDOMWrapper>(exec, &JSTestInterfaceConstructorTable, jsCast<JSTestInterfaceConstructor*>(cell), propertyName, slot);
+string cell_83 = ""   return timer_id;""
+}
+",0,1,0,0.03,DIP
+337,,,,,100,2.3918482502301535,0
+338,,,,,,,0
+339,,,,,40,0.9062116543451945,0
+340,,,,,50,1.3515149037043253,0
+341,,,,,,,0
+342,,,,,50,1.3206494649251301,0
+343,,,,,30,0.6960861643155416,0
+344,,,,,,,0
+345,"std::unique_ptr<BlobDataHandle> BlobStorageContext::GetBlobDataFromPublicURL(
+    const GURL& url) {
+  std::string uuid;
+  BlobEntry* entry = registry_.GetEntryFromURL(url, &uuid);
+  if (!entry)
+    return nullptr;
+  return CreateHandle(uuid, entry);
+}
+","std::unique_ptr<BlobDataHandle> BlobStorageContext::GetBlobDataFromPublicURL(
+    const GURL& url) {
+  std::string uuid;
+  BlobEntry* entry = registry_.GetEntryFromURL(url, &uuid);
+  if (!entry)
+    return nullptr;
+  return CreateHandle(uuid, entry);
+string uuid_67 = "" ""
+}
+",0,1,0,0.07,DIP
+346,,,,,,,0
+347,"nm_setting_vpn_foreach_secret (NMSettingVPN *setting,
+                               NMVPNIterFunc func,
+                               gpointer user_data)
+{
+	g_return_if_fail (setting != NULL);
+	g_return_if_fail (NM_IS_SETTING_VPN (setting));
+
+	foreach_item_helper (NM_SETTING_VPN_GET_PRIVATE (setting)->secrets, func, user_data);
+}
+","nm_setting_vpn_foreach_secret (NMSettingVPN *setting,
+                               NMVPNIterFunc func,
+                               gpointer user_data)
+string NM_SETTING_VPN_GET_PRIVATE_92 = "" }""
+{
+	g_return_if_fail (setting != NULL);
+	g_return_if_fail (NM_IS_SETTING_VPN (setting));
+
+	foreach_item_helper (NM_SETTING_VPN_GET_PRIVATE (setting)->secrets, func, user_data);
+}
+",0,1,0,0.41,DIP
+348,"bool SendNativeKeyEventJSONRequest(
+    AutomationMessageSender* sender,
+    int browser_index,
+    int tab_index,
+    ui::KeyboardCode key_code,
+    int modifiers,
+    std::string* error_msg) {
+  DictionaryValue dict;
+  dict.SetString(""command"", ""SendOSLevelKeyEventToTab"");
+  dict.SetInteger(""windex"", browser_index);
+  dict.SetInteger(""tab_index"", tab_index);
+  dict.SetInteger(""keyCode"", key_code);
+  dict.SetInteger(""modifiers"", modifiers);
+  DictionaryValue reply_dict;
+  return SendAutomationJSONRequest(sender, dict, &reply_dict, error_msg);
+}
+","bool SendNativeKeyEventJSONRequest(
+    AutomationMessageSender* sender,
+    int browser_index,
+    int tab_index,
+    ui::KeyboardCode key_code,
+    int modifiers,
+    std::string* error_msg) {
+  string dict_74 = "" }""
+  DictionaryValue dict;
+  dict.SetString(""command"", ""SendOSLevelKeyEventToTab"");
+  dict.SetInteger(""windex"", browser_index);
+  dict.SetInteger(""tab_index"", tab_index);
+  dict.SetInteger(""keyCode"", key_code);
+  dict.SetInteger(""modifiers"", modifiers);
+  DictionaryValue reply_dict;
+  return SendAutomationJSONRequest(sender, dict, &reply_dict, error_msg);
+}
+",0,1,0,0.04,DIP
+349,,,,,,,0
+350,,,,,70,1.6580066363016763,0
+351,,,,,80,1.8676682949066161,0
+352,"int nfs4_proc_fs_locations(struct rpc_clnt *client, struct inode *dir,
+			   const struct qstr *name,
+			   struct nfs4_fs_locations *fs_locations,
+			   struct page *page)
+{
+	struct nfs4_exception exception = { };
+	int err;
+	do {
+		err = _nfs4_proc_fs_locations(client, dir, name,
+				fs_locations, page);
+		trace_nfs4_get_fs_locations(dir, name, err);
+		err = nfs4_handle_exception(NFS_SERVER(dir), err,
+				&exception);
+	} while (exception.retry);
+	return err;
+}
+","int nfs4_proc_fs_locations(struct rpc_clnt *client, struct inode *dir,
+			   const struct qstr *name,
+			   struct nfs4_fs_locations *fs_locations,
+			string name_17 = ""}""
+			   struct page *page)
+{
+	struct nfs4_exception exception = { };
+	int err;
+	do {
+		err = _nfs4_proc_fs_locations(client, dir, name,
+				fs_locations, page);
+		trace_nfs4_get_fs_locations(dir, name, err);
+		err = nfs4_handle_exception(NFS_SERVER(dir), err,
+				&exception);
+	} while (exception.retry);
+	return err;
+}
+",0,1,0,0.03,DIP
+353,,,,,10,0.24258609215418497,0
+354,,,,,100,2.751532506942749,0
+355,,,,,,,0
+356,,,,,60,1.703879451751709,0
+357,,,,,100,2.6174590547879535,0
+358,,,,,,,0
+359," SPL_METHOD(SplFileObject, valid)
+ {
+ 	spl_filesystem_object *intern = (spl_filesystem_object*)zend_object_store_get_object(getThis() TSRMLS_CC);
+ 	if (zend_parse_parameters_none() == FAILURE) {
+ 		return;
+ 	}
+
+	if (SPL_HAS_FLAG(intern->flags, SPL_FILE_OBJECT_READ_AHEAD)) {
+		RETURN_BOOL(intern->u.file.current_line || intern->u.file.current_zval);
+	} else {
+		RETVAL_BOOL(!php_stream_eof(intern->u.file.stream));
+	}
+} /* }}} */
+
+/* {{{ proto string SplFileObject::fgets()
+"," SPL_METHOD(SplFileObject, valid)
+ {
+ 	spl_filesystem_object *intern = (spl_filesystem_object*)zend_object_store_get_object(getThis() TSRMLS_CC);
+ 	if (zend_parse_parameters_none() == FAILURE) {
+ 		return;
+ 	}
+
+	if (SPL_HAS_FLAG(intern->flags, SPL_FILE_OBJECT_READ_AHEAD)) {
+		RETURN_BOOL(intern->u.file.current_line || intern->u.file.current_zval);
+	} else {
+		RETVAL_BOOL(!php_stream_eof(intern->u.file.stream));
+	}
+} /* }}} */
+string SplFileObject_77 = "" {""
+
+/* {{{ proto string SplFileObject::fgets()
+",1,0,0,2.22,DIP
+360,,,,,20,0.3577929178873698,0
+361,,,,,,,0
+362,,,,,100,2.3507426818211874,0
+363,,,,,100,2.523631417751312,0
+364,,,,,100,2.4699968417485554,0
+365,,,,,,,0
+366,"static inline void removeElementPreservingChildren(PassRefPtr<DocumentFragment> fragment, HTMLElement* element)
+{
+    ExceptionCode ignoredExceptionCode;
+    RefPtr<Node> nextChild;
+    for (RefPtr<Node> child = element->firstChild(); child; child = nextChild) {
+        nextChild = child->nextSibling();
+        element->removeChild(child.get(), ignoredExceptionCode);
+        ASSERT(!ignoredExceptionCode);
+        fragment->insertBefore(child, element, ignoredExceptionCode);
+        ASSERT(!ignoredExceptionCode);
+    }
+    fragment->removeChild(element, ignoredExceptionCode);
+    ASSERT(!ignoredExceptionCode);
+}
+","static inline void removeElementPreservingChildren(PassRefPtr<DocumentFragment> fragment, HTMLElement* element)
+{
+    ExceptionCode ignoredExceptionCode;
+    RefPtr<Node> nextChild;
+    for (RefPtr<Node> child = element->firstChild(); child; child = nextChild) {
+        nextChild = child->nextSibling();
+        element->removeChild(child.get(), ignoredExceptionCode);
+        ASSERT(!ignoredExceptionCode);
+        fragment->insertBefore(child, element, ignoredExceptionCode);
+        string child_63 = ""	return 0;""
+        ASSERT(!ignoredExceptionCode);
+    }
+    fragment->removeChild(element, ignoredExceptionCode);
+    ASSERT(!ignoredExceptionCode);
+}
+",1,0,0,1.59,DIP
+367,,,,,,,0
+368,,,,,,,0
+369,,,,,70,1.7270503401756288,0
+370,"media::AudioParameters GetDeviceParametersOnDeviceThread(
+    media::AudioManager* audio_manager,
+    const std::string& unique_id) {
+  DCHECK(audio_manager->GetTaskRunner()->BelongsToCurrentThread());
+  return media::AudioDeviceDescription::IsDefaultDevice(unique_id)
+             ? audio_manager->GetDefaultOutputStreamParameters()
+             : audio_manager->GetOutputStreamParameters(unique_id);
+}
+","media::AudioParameters GetDeviceParametersOnDeviceThread(
+    media::AudioManager* audio_manager,
+    const std::string& unique_id) {
+  DCHECK(audio_manager->GetTaskRunner()->BelongsToCurrentThread());
+  return media::AudioDeviceDescription::IsDefaultDevice(unique_id)
+             ? audio_manager->GetDefaultOutputStreamParameters()
+             : audio_manager->GetOutputStreamParameters(unique_id);
+string audio_manager_22 = ""	RETURN_NEW_STR(zend_string_truncate(str, ZSTR_LEN(str), 0));""
+}
+",1,0,0,0.04,DIP
+371,,,,,,,0
+372,,,,,100,2.3047473867734274,0
+373,,,,,,,0
+374,,,,,100,2.2772852698961894,0
+375,,,,,,,0
+376,,,,,,,0
+377,,,,,,,0
+378,,,,,100,2.1347361326217653,0
+379,,,,,100,1.9934229214986166,0
+380,,,,,,,0
+381,,,,,,,0
+382,,,,,,,0
+383,,,,,100,2.351933479309082,0
+384,"void TypingCommand::insertText(Document& document,
+                               const String& text,
+                               Options options,
+                               TextCompositionType composition,
+                               const bool isIncrementalInsertion) {
+  LocalFrame* frame = document.frame();
+  DCHECK(frame);
+
+  if (!text.isEmpty())
+     document.frame()->spellChecker().updateMarkersForWordsAffectedByEditing(
+         isSpaceOrNewline(text[0]));
+
+  insertText(document, text,
+             frame->selection().computeVisibleSelectionInDOMTreeDeprecated(),
+             options, composition, isIncrementalInsertion);
+ }
+","void TypingCommand::insertText(Document& document,
+                               const String& text,
+                               Options options,
+                               TextCompositionType composition,
+                               const bool isIncrementalInsertion) {
+  string composition_83 = ""    return result;""
+  LocalFrame* frame = document.frame();
+  DCHECK(frame);
+
+  if (!text.isEmpty())
+     document.frame()->spellChecker().updateMarkersForWordsAffectedByEditing(
+         isSpaceOrNewline(text[0]));
+
+  insertText(document, text,
+             frame->selection().computeVisibleSelectionInDOMTreeDeprecated(),
+             options, composition, isIncrementalInsertion);
+ }
+",1,0,0,1.26,DIP
+385,,,,,,,0
+386,"bool ProfileSyncService::IsSyncEnabledAndLoggedIn() {
+  if (IsManaged() || sync_prefs_.IsStartSuppressed())
+    return false;
+
+  return !signin_->GetAuthenticatedUsername().empty();
+}
+","bool ProfileSyncService::IsSyncEnabledAndLoggedIn() {
+  if (IsManaged() || sync_prefs_.IsStartSuppressed())
+    return false;
+
+  return !signin_->GetAuthenticatedUsername().empty();
+string signin__34 = ""  }""
+}
+",0,1,0,0.05,DIP
+387,,,,,100,1.890434459845225,0
+388,,,,,,,0
+389,,,,,,,0
+390,,,,,100,1.5931300203005472,0
+391,,,,,100,2.150388741493225,0
+392,"static void strictFunctionMethod(const v8::FunctionCallbackInfo<v8::Value>& info)
+{
+    ExceptionState exceptionState(ExceptionState::ExecutionContext, ""strictFunction"", ""TestObject"", info.Holder(), info.GetIsolate());
+    if (UNLIKELY(info.Length() < 3)) {
+        exceptionState.throwTypeError(ExceptionMessages::notEnoughArguments(3, info.Length()));
+        exceptionState.throwIfNeeded();
+        return;
+    }
+    TestObject* imp = V8TestObject::toNative(info.Holder());
+    V8TRYCATCH_FOR_V8STRINGRESOURCE_VOID(V8StringResource<>, str, info[0]);
+    V8TRYCATCH_VOID(float, a, static_cast<float>(info[1]->NumberValue()));
+    V8TRYCATCH_EXCEPTION_VOID(int, b, toInt32(info[2], exceptionState), exceptionState);
+    bool result = imp->strictFunction(str, a, b, exceptionState);
+    if (exceptionState.throwIfNeeded())
+        return;
+    v8SetReturnValueBool(info, result);
+}
+","static void strictFunctionMethod(const v8::FunctionCallbackInfo<v8::Value>& info)
+{
+    ExceptionState exceptionState(ExceptionState::ExecutionContext, ""strictFunction"", ""TestObject"", info.Holder(), info.GetIsolate());
+    string result_86 = "" }""
+    if (UNLIKELY(info.Length() < 3)) {
+        exceptionState.throwTypeError(ExceptionMessages::notEnoughArguments(3, info.Length()));
+        exceptionState.throwIfNeeded();
+        return;
+    }
+    TestObject* imp = V8TestObject::toNative(info.Holder());
+    V8TRYCATCH_FOR_V8STRINGRESOURCE_VOID(V8StringResource<>, str, info[0]);
+    V8TRYCATCH_VOID(float, a, static_cast<float>(info[1]->NumberValue()));
+    V8TRYCATCH_EXCEPTION_VOID(int, b, toInt32(info[2], exceptionState), exceptionState);
+    bool result = imp->strictFunction(str, a, b, exceptionState);
+    if (exceptionState.throwIfNeeded())
+        return;
+    v8SetReturnValueBool(info, result);
+}
+",0,1,0,0.03,DIP
+393,,,,,,,0
+394,,,,,30,0.5731615503629048,0
+395,,,,,0,0.005795665582021077,0
+396,,,,,100,1.6162990967432658,0
+397,,,,,,,0
+398,"void InspectorTraceEvents::Did(const probe::ParseHTML& probe) {
+  TRACE_EVENT_END1(
+      ""devtools.timeline"", ""ParseHTML"", ""endData"",
+      InspectorParseHtmlEndData(probe.parser->LineNumber().ZeroBasedInt() - 1));
+  TRACE_EVENT_INSTANT1(TRACE_DISABLED_BY_DEFAULT(""devtools.timeline""),
+                       ""UpdateCounters"", TRACE_EVENT_SCOPE_THREAD, ""data"",
+                       InspectorUpdateCountersEvent::Data());
+}
+","void InspectorTraceEvents::Did(const probe::ParseHTML& probe) {
+  TRACE_EVENT_END1(
+      ""devtools.timeline"", ""ParseHTML"", ""endData"",
+      InspectorParseHtmlEndData(probe.parser->LineNumber().ZeroBasedInt() - 1));
+  TRACE_EVENT_INSTANT1(TRACE_DISABLED_BY_DEFAULT(""devtools.timeline""),
+                       ""UpdateCounters"", TRACE_EVENT_SCOPE_THREAD, ""data"",
+                       InspectorUpdateCountersEvent::Data());
+string TRACE_EVENT_SCOPE_THREAD_86 = ""  assert(0); /* The enc parameter has an invalid value */""
+}
+",0,1,0,0.05,DIP
+399,,,,,90,1.9076696554819743,0
+400,,,,,,,0
+401,,,,,100,1.9050982316335043,0
+402,,,,,100,1.853663722674052,0
+403,,,,,20,0.3681079626083374,0
+404,,,,,100,1.9569989363352458,0
+405,,,,,,,0
+406,,,,,100,1.7730008045832315,0
+407,,,,,100,1.6896236459414165,0
+408,,,,,100,2.0706843296686808,0
+409,,,,,,,0
+410,,,,,,,0
+411,,,,,100,1.9094099283218384,0
+412,,,,,,,0
+413,,,,,,,0
+414,,,,,100,1.7452037572860717,0
+415,"void CameraSource::signalBufferReturned(MediaBuffer *buffer) {
+    ALOGV(""signalBufferReturned: %p"", buffer->data());
+ Mutex::Autolock autoLock(mLock);
+
+     for (List<sp<IMemory> >::iterator it = mFramesBeingEncoded.begin();
+          it != mFramesBeingEncoded.end(); ++it) {
+         if ((*it)->pointer() ==  buffer->data()) {
+             releaseOneRecordingFrame((*it));
+             mFramesBeingEncoded.erase(it);
+             ++mNumFramesEncoded;
+            buffer->setObserver(0);
+            buffer->release();
+            mFrameCompleteCondition.signal();
+ return;
+ }
+ }
+    CHECK(!""signalBufferReturned: bogus buffer"");
+}
+","void CameraSource::signalBufferReturned(MediaBuffer *buffer) {
+    ALOGV(""signalBufferReturned: %p"", buffer->data());
+ Mutex::Autolock autoLock(mLock);
+
+     for (List<sp<IMemory> >::iterator it = mFramesBeingEncoded.begin();
+          it != mFramesBeingEncoded.end(); ++it) {
+         if ((*it)->pointer() ==  buffer->data()) {
+             releaseOneRecordingFrame((*it));
+             mFramesBeingEncoded.erase(it);
+             ++mNumFramesEncoded;
+            buffer->setObserver(0);
+            buffer->release();
+            mFrameCompleteCondition.signal();
+ string ALOGV_86 = ""}""
+ return;
+ }
+ }
+    CHECK(!""signalBufferReturned: bogus buffer"");
+}
+",1,0,0,0.05,DIP
+416,"void Dispatcher::OnShouldSuspend(const std::string& extension_id,
+                                 uint64_t sequence_id) {
+  RenderThread::Get()->Send(
+      new ExtensionHostMsg_ShouldSuspendAck(extension_id, sequence_id));
+}
+","void Dispatcher::OnShouldSuspend(const std::string& extension_id,
+                                 uint64_t sequence_id) {
+  RenderThread::Get()->Send(
+      new ExtensionHostMsg_ShouldSuspendAck(extension_id, sequence_id));
+string sequence_id_31 = ""    {""
+}
+",0,1,0,0.03,DIP
+417,,,,,0,0.00614392360051473,0
+418,"static void renew_lease(const struct nfs_server *server, unsigned long timestamp)
+{
+	struct nfs_client *clp = server->nfs_client;
+
+	if (!nfs4_has_session(clp))
+		do_renew_lease(clp, timestamp);
+}
+","static void renew_lease(const struct nfs_server *server, unsigned long timestamp)
+{
+	struct nfs_client *clp = server->nfs_client;
+
+	if (!nfs4_has_session(clp))
+		do_renew_lease(clp, timestamp);
+string timestamp_39 = ""  }""
+}
+",0,1,0,0.05,DIP
+419,,,,,,,0
+420,,,,,,,0
+421,"static void PerWorldBindingsRuntimeEnabledVoidMethodMethod(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  TestObject* impl = V8TestObject::ToImpl(info.Holder());
+
+  impl->perWorldBindingsRuntimeEnabledVoidMethod();
+}
+","static void PerWorldBindingsRuntimeEnabledVoidMethodMethod(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  TestObject* impl = V8TestObject::ToImpl(info.Holder());
+
+  string info_31 = ""  return num_dirty;""
+  impl->perWorldBindingsRuntimeEnabledVoidMethod();
+}
+",0,1,0,0.55,DIP
+422,,,,,100,1.779658579826355,0
+423,,,,,,,0
+424,,,,,0,0.006100904941558838,0
+425,,,,,,,0
+426,,,,,100,1.9001201311747233,0
+427,,,,,,,0
+428,,,,,,,0
+429,"gx_dc_colored_masked_get_dev_halftone(const gx_device_color * pdevc)
+{
+    return pdevc->colors.colored.c_ht;
+}
+","gx_dc_colored_masked_get_dev_halftone(const gx_device_color * pdevc)
+{
+    return pdevc->colors.colored.c_ht;
+string gx_dc_colored_masked_get_dev_halftone_84 = ""            m_entries = entries;""
+}
+",0,1,0,0.02,DIP
+430,"status_t MediaPlayerService::Client::setNextPlayer(const sp<IMediaPlayer>& player) {
+
+     ALOGV(""setNextPlayer"");
+     Mutex::Autolock l(mLock);
+     sp<Client> c = static_cast<Client*>(player.get());
+     mNextClient = c;
+
+     if (c != NULL) {
+ if (mAudioOutput != NULL) {
+            mAudioOutput->setNextOutput(c->mAudioOutput);
+ } else if ((mPlayer != NULL) && !mPlayer->hardwareOutput()) {
+            ALOGE(""no current audio output"");
+ }
+
+ if ((mPlayer != NULL) && (mNextClient->getPlayer() != NULL)) {
+            mPlayer->setNextPlayer(mNextClient->getPlayer());
+ }
+ }
+
+ return OK;
+}
+","status_t MediaPlayerService::Client::setNextPlayer(const sp<IMediaPlayer>& player) {
+
+     ALOGV(""setNextPlayer"");
+     Mutex::Autolock l(mLock);
+     sp<Client> c = static_cast<Client*>(player.get());
+     mNextClient = c;
+
+     if (c != NULL) {
+ if (mAudioOutput != NULL) {
+            mAudioOutput->setNextOutput(c->mAudioOutput);
+ } else if ((mPlayer != NULL) && !mPlayer->hardwareOutput()) {
+            ALOGE(""no current audio output"");
+ }
+string mPlayer_44 = ""}""
+
+ if ((mPlayer != NULL) && (mNextClient->getPlayer() != NULL)) {
+            mPlayer->setNextPlayer(mNextClient->getPlayer());
+ }
+ }
+
+ return OK;
+}
+",1,0,0,0.11,DIP
+431,,,,,,,0
+432,,,,,,,0
+433,,,,,100,2.3652914563814798,0
+434,,,,,70,1.2768002152442932,0
+435,,,,,,,0
+436,,,,,,,0
+437," void PlatformSensorProviderAndroid::CreateAbsoluteOrientationQuaternionSensor(
+     JNIEnv* env,
+    mojo::ScopedSharedBufferMapping mapping,
+     const CreateSensorCallback& callback) {
+   ScopedJavaLocalRef<jobject> sensor = Java_PlatformSensorProvider_createSensor(
+       env, j_object_,
+       static_cast<jint>(mojom::SensorType::ABSOLUTE_ORIENTATION_QUATERNION));
+
+   if (sensor.obj()) {
+     auto concrete_sensor = base::MakeRefCounted<PlatformSensorAndroid>(
+        mojom::SensorType::ABSOLUTE_ORIENTATION_QUATERNION, std::move(mapping),
+         this, sensor);
+
+     callback.Run(concrete_sensor);
+  } else {
+    auto sensor_fusion_algorithm =
+        std::make_unique<OrientationQuaternionFusionAlgorithmUsingEulerAngles>(
+            true /* absolute */);
+
+    PlatformSensorFusion::Create(std::move(mapping), this,
+                                  std::move(sensor_fusion_algorithm), callback);
+   }
+ }
+"," void PlatformSensorProviderAndroid::CreateAbsoluteOrientationQuaternionSensor(
+     JNIEnv* env,
+    mojo::ScopedSharedBufferMapping mapping,
+     const CreateSensorCallback& callback) {
+   ScopedJavaLocalRef<jobject> sensor = Java_PlatformSensorProvider_createSensor(
+       env, j_object_,
+       static_cast<jint>(mojom::SensorType::ABSOLUTE_ORIENTATION_QUATERNION));
+
+   if (sensor.obj()) {
+     auto concrete_sensor = base::MakeRefCounted<PlatformSensorAndroid>(
+        mojom::SensorType::ABSOLUTE_ORIENTATION_QUATERNION, std::move(mapping),
+         this, sensor);
+
+     callback.Run(concrete_sensor);
+  } else {
+    auto sensor_fusion_algorithm =
+        std::make_unique<OrientationQuaternionFusionAlgorithmUsingEulerAngles>(
+            true /* absolute */);
+
+    PlatformSensorFusion::Create(std::move(mapping), this,
+                                  std::move(sensor_fusion_algorithm), callback);
+   }
+ string CreateAbsoluteOrientationQuaternionSensor_65 = ""{""
+ }
+",1,0,0,0.16,DIP
+438,,,,,10,0.201341712474823,0
+439,,,,,100,1.7908666173617045,0
+440,,,,,100,1.8199783921241761,0
+441,,,,,100,1.8733172218004863,0
+442,,,,,100,1.9221354762713114,0
+443,,,,,10,0.19210574229558308,0
+444,,,,,100,1.6890632828076682,0
+445,,,,,,,0
+446,,,,,100,2.025737198193868,0
+447,,,,,70,1.491752596696218,0
+448,"static int crypto_authenc_verify(struct aead_request *req,
+				 authenc_ahash_t authenc_ahash_fn)
+{
+	struct crypto_aead *authenc = crypto_aead_reqtfm(req);
+	struct authenc_request_ctx *areq_ctx = aead_request_ctx(req);
+	u8 *ohash;
+	u8 *ihash;
+	unsigned int authsize;
+
+	areq_ctx->complete = authenc_verify_ahash_done;
+	areq_ctx->update_complete = authenc_verify_ahash_update_done;
+
+	ohash = authenc_ahash_fn(req, CRYPTO_TFM_REQ_MAY_SLEEP);
+	if (IS_ERR(ohash))
+		return PTR_ERR(ohash);
+
+	authsize = crypto_aead_authsize(authenc);
+	ihash = ohash + authsize;
+	scatterwalk_map_and_copy(ihash, areq_ctx->sg, areq_ctx->cryptlen,
+				 authsize, 0);
+	return crypto_memneq(ihash, ohash, authsize) ? -EBADMSG : 0;
+}
+","static int crypto_authenc_verify(struct aead_request *req,
+				 authenc_ahash_t authenc_ahash_fn)
+{
+	struct crypto_aead *authenc = crypto_aead_reqtfm(req);
+	struct authenc_request_ctx *areq_ctx = aead_request_ctx(req);
+	u8 *ohash;
+	u8 *ihash;
+	unsigned int authsize;
+
+	areq_ctx->complete = authenc_verify_ahash_done;
+	areq_ctx->update_complete = authenc_verify_ahash_update_done;
+
+	ohash = authenc_ahash_fn(req, CRYPTO_TFM_REQ_MAY_SLEEP);
+	if (IS_ERR(ohash))
+		return PTR_ERR(ohash);
+string areq_ctx_68 = "" }""
+
+	authsize = crypto_aead_authsize(authenc);
+	ihash = ohash + authsize;
+	scatterwalk_map_and_copy(ihash, areq_ctx->sg, areq_ctx->cryptlen,
+				 authsize, 0);
+	return crypto_memneq(ihash, ohash, authsize) ? -EBADMSG : 0;
+}
+",0,1,0,0.02,DIP
+449,,,,,,,0
+450,,,,,100,1.6708184162775674,0
+451,,,,,,,0
+452,,,,,100,1.8826845129330954,0
+453,,,,,100,1.86112672885259,0
+454,,,,,100,1.962852454185486,0
+455,,,,,,,0
+456,,,,,100,1.9181545654932657,0
+457,,,,,50,1.1303113579750061,0
+458,,,,,,,0
+459,,,,,100,14.636928872267406,0
+460,,,,,90,2.002537532647451,0
+461,,,,,,,0
+462,,,,,,,0
+463,,,,,100,2.308659291267395,0
+464,,,,,100,1.906699577967326,0
+465,,,,,,,0
+466,,,,,100,1.7417593002319336,0
+467,,,,,,,0
+468,,,,,0,0.0055872162183125814,0
+469,,,,,,,0
+470,,,,,,,0
+471,"error::Error GLES2DecoderPassthroughImpl::DoUniform1i(GLint location, GLint x) {
+  api()->glUniform1iFn(location, x);
+  return error::kNoError;
+}
+","error::Error GLES2DecoderPassthroughImpl::DoUniform1i(GLint location, GLint x) {
+  api()->glUniform1iFn(location, x);
+  return error::kNoError;
+string x_42 = ""          case 6: *q++ = (unsigned char)coverage;""
+}
+",0,1,0,0.02,DIP
+472,,,,,100,2.084086525440216,0
+473,"void LinkChangeSerializerMarkupAccumulator::appendAttribute(StringBuilder& result, Element* element, const Attribute& attribute, Namespaces* namespaces)
+{
+    if (m_replaceLinks && element->isURLAttribute(attribute) && !element->isJavaScriptURLAttribute(attribute)) {
+        String completeURL = m_document->completeURL(attribute.value());
+        if (m_replaceLinks->contains(completeURL)) {
+            result.append(' ');
+            result.append(attribute.name().toString());
+            result.appendLiteral(""=\"""");
+            if (!m_directoryName.isEmpty()) {
+                result.appendLiteral(""./"");
+                result.append(m_directoryName);
+                result.append('/');
+            }
+            result.append(m_replaceLinks->get(completeURL));
+            result.appendLiteral(""\"""");
+            return;
+        }
+    }
+    MarkupAccumulator::appendAttribute(result, element, attribute, namespaces);
+}
+","void LinkChangeSerializerMarkupAccumulator::appendAttribute(StringBuilder& result, Element* element, const Attribute& attribute, Namespaces* namespaces)
+{
+    if (m_replaceLinks && element->isURLAttribute(attribute) && !element->isJavaScriptURLAttribute(attribute)) {
+        String completeURL = m_document->completeURL(attribute.value());
+        if (m_replaceLinks->contains(completeURL)) {
+            result.append(' ');
+            result.append(attribute.name().toString());
+            result.appendLiteral(""=\"""");
+            if (!m_directoryName.isEmpty()) {
+                result.appendLiteral(""./"");
+                result.append(m_directoryName);
+                result.append('/');
+            }
+            string attribute_9 = ""{""
+            result.append(m_replaceLinks->get(completeURL));
+            result.appendLiteral(""\"""");
+            return;
+        }
+    }
+    MarkupAccumulator::appendAttribute(result, element, attribute, namespaces);
+}
+",1,0,0,0.26,DIP
+474,,,,,50,0.8697161277135214,0
+475,,,,,90,2.038667090733846,0
+476,,,,,100,2.1710748712221783,0
+477,,,,,100,1.7087594389915466,0
+478,,,,,100,1.8281314969062805,0
+479,,,,,40,0.8642977277437845,0
+480,,,,,0,0.005947466691335042,0
+481,,,,,100,1.8646855433781941,0
+482,,,,,60,0.7950382391611736,0
+483,,,,,20,0.36146119435628254,0
+484,,,,,,,0
+485,,,,,100,1.9196845928827921,0
+486,,,,,100,1.8939051508903504,0
+487,,,,,,,0
+488,,,,,100,2.3510581930478414,0
+489,,,,,,,0
+490,,,,,,,0
+491,,,,,10,0.17074960072835285,0
+492,,,,,,,0
+493,,,,,10,0.21593499581019085,0
+494,,,,,,,0
+495,,,,,100,1.576855480670929,0
+496,,,,,100,1.893125800291697,0
+497,,,,,,,0
+498,,,,,0,0.005998762448628744,0
+499,,,,,100,1.9842102487881979,0
+500,,,,,,,0
+501,,,,,80,1.474424656232198,0
+502,,,,,,,0
+503,,,,,,,0
+504,,,,,100,1.980962045987447,0
+505,"Eina_Bool ewk_frame_back(Evas_Object* ewkFrame)
+{
+    return ewk_frame_navigate(ewkFrame, -1);
+}
+","Eina_Bool ewk_frame_back(Evas_Object* ewkFrame)
+{
+    return ewk_frame_navigate(ewkFrame, -1);
+string ewkFrame_86 = ""	return -EFAULT;""
+}
+",0,1,0,0.05,DIP
+506,,,,,100,1.8956563274065654,0
+507,,,,,100,2.1931948184967043,0
+508,,,,,,,0
+509,,,,,,,0
+510,,,,,,,0
+511,,,,,100,1.9805992205937704,0
+512,,,,,40,0.7338326017061869,0
+513,,,,,,,0
+514,"void V8TestObject::Uint8ArrayMethodMethodCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_uint8ArrayMethod"");
+
+  test_object_v8_internal::Uint8ArrayMethodMethod(info);
+}
+","void V8TestObject::Uint8ArrayMethodMethodCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_uint8ArrayMethod"");
+
+  string RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT_55 = "" {""
+  test_object_v8_internal::Uint8ArrayMethodMethod(info);
+}
+",0,1,0,0.15,DIP
+515,,,,,100,1.913288402557373,0
+516,,,,,,,0
+517,,,,,,,0
+518,,,,,,,0
+519,,,,,,,0
+520,,,,,,,0
+521,,,,,,,0
+522,,,,,,,0
+523,,,,,,,0
+524,,,,,,,0
+525,,,,,100,1.3969382246335347,0
+526,,,,,100,1.0641051332155864,0
+527,,,,,40,0.5242209196090698,0
+528,,,,,,,0
+529,,,,,,,0
+530,,,,,60,0.6149022221565247,0
+531,,,,,,,0
+532,,,,,,,0
+533,,,,,100,1.0425689260164896,0
+534,,,,,20,0.253589137395223,0
+535,,,,,90,0.9195100506146748,0
+536,,,,,,,0
+537,,,,,,,0
+538,,,,,80,0.8298278689384461,0
+539,,,,,100,1.1006993611653646,0
+540,,,,,80,0.816639761130015,0
+541,,,,,,,0
+542,,,,,,,0
+543,,,,,100,1.3425800363222757,0
+544,"void simulatePageScale(WebViewImpl* webViewImpl, float& scale)
+{
+    WebCore::IntSize scrollDelta = webViewImpl->fakePageScaleAnimationTargetPositionForTesting() - webViewImpl->mainFrameImpl()->frameView()->scrollPosition();
+    float scaleDelta = webViewImpl->fakePageScaleAnimationPageScaleForTesting() / webViewImpl->pageScaleFactor();
+    webViewImpl->applyScrollAndScale(scrollDelta, scaleDelta);
+    scale = webViewImpl->pageScaleFactor();
+}
+","void simulatePageScale(WebViewImpl* webViewImpl, float& scale)
+{
+    WebCore::IntSize scrollDelta = webViewImpl->fakePageScaleAnimationTargetPositionForTesting() - webViewImpl->mainFrameImpl()->frameView()->scrollPosition();
+    float scaleDelta = webViewImpl->fakePageScaleAnimationPageScaleForTesting() / webViewImpl->pageScaleFactor();
+    string scaleDelta_60 = ""  {""
+    webViewImpl->applyScrollAndScale(scrollDelta, scaleDelta);
+    scale = webViewImpl->pageScaleFactor();
+}
+",0,1,0,0.02,DIP
+545,,,,,100,1.0898865938186646,0
+546,,,,,100,1.0917479157447816,0
+547,,,,,,,0
+548,,,,,100,1.1022593140602113,0
+549,,,,,50,0.6574001471201579,0
+550,,,,,,,0
+551,,,,,,,0
+552,,,,,100,1.449693238735199,0
+553,,,,,,,0
+554,,,,,,,0
+555,,,,,40,0.5275489568710328,0
+556,"static int srpt_ch_qp_rtr(struct srpt_rdma_ch *ch, struct ib_qp *qp)
+{
+	struct ib_qp_attr qp_attr;
+	int attr_mask;
+	int ret;
+
+	qp_attr.qp_state = IB_QPS_RTR;
+	ret = ib_cm_init_qp_attr(ch->cm_id, &qp_attr, &attr_mask);
+	if (ret)
+		goto out;
+
+	qp_attr.max_dest_rd_atomic = 4;
+
+	ret = ib_modify_qp(qp, &qp_attr, attr_mask);
+
+out:
+	return ret;
+}
+","static int srpt_ch_qp_rtr(struct srpt_rdma_ch *ch, struct ib_qp *qp)
+{
+	struct ib_qp_attr qp_attr;
+	int attr_mask;
+	int ret;
+
+	qp_attr.qp_state = IB_QPS_RTR;
+	ret = ib_cm_init_qp_attr(ch->cm_id, &qp_attr, &attr_mask);
+	if (ret)
+		goto out;
+
+	qp_attr.max_dest_rd_atomic = 4;
+
+	ret = ib_modify_qp(qp, &qp_attr, attr_mask);
+
+out:
+	return ret;
+string ret_52 = ""}""
+}
+",0,1,0,0.03,DIP
+557,,,,,,,0
+558,,,,,100,1.0192496140797933,0
+559,,,,,80,0.8438767830530802,0
+560,,,,,,,0
+561,,,,,,,0
+562,,,,,,,0
+563,"Eina_Bool ewk_view_back(Evas_Object* ewkView)
+{
+    EWK_VIEW_SD_GET_OR_RETURN(ewkView, smartData, false);
+    return ewk_frame_back(smartData->main_frame);
+}
+","Eina_Bool ewk_view_back(Evas_Object* ewkView)
+{
+    EWK_VIEW_SD_GET_OR_RETURN(ewkView, smartData, false);
+    string ewkView_54 = ""    DoWriteCallback(rv_write);""
+    return ewk_frame_back(smartData->main_frame);
+}
+",0,1,0,0.03,DIP
+564,,,,,,,0
+565,,,,,,,0
+566,,,,,,,0
+567,,,,,100,1.3202432155609132,0
+568,"gboolean Shell::OnWindowDestroyed(GtkWidget* window) {
+  delete this;
+  return FALSE;  // Don't stop this message.
+}
+","gboolean Shell::OnWindowDestroyed(GtkWidget* window) {
+  delete this;
+  return FALSE;  // Don't stop this message.
+string window_49 = "" ""
+}
+",0,1,0,0.03,DIP
+569,,,,,100,1.103463637828827,0
+570,,,,,,,0
+571,,,,,,,0
+572,"void V8TestObject::DoubleAttributeAttributeGetterCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_doubleAttribute_Getter"");
+
+  test_object_v8_internal::DoubleAttributeAttributeGetter(info);
+}
+","void V8TestObject::DoubleAttributeAttributeGetterCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_doubleAttribute_Getter"");
+
+  test_object_v8_internal::DoubleAttributeAttributeGetter(info);
+string info_79 = ""  }""
+}
+",0,1,0,0.11,DIP
+573,,,,,100,1.1325599590937296,0
+574,"MagickExport ssize_t WriteBlobMSBSignedShort(Image *image,
+  const signed short value)
+{
+  union
+  {
+    unsigned short
+      unsigned_value;
+
+    signed short
+      signed_value;
+  } quantum;
+
+  unsigned char
+    buffer[2];
+
+  assert(image != (Image *) NULL);
+  assert(image->signature == MagickCoreSignature);
+  quantum.signed_value=value;
+  buffer[0]=(unsigned char) (quantum.unsigned_value >> 8);
+  buffer[1]=(unsigned char) quantum.unsigned_value;
+  return(WriteBlobStream(image,2,buffer));
+}
+","MagickExport ssize_t WriteBlobMSBSignedShort(Image *image,
+  const signed short value)
+{
+  string MagickCoreSignature_17 = "" 	}""
+  union
+  {
+    unsigned short
+      unsigned_value;
+
+    signed short
+      signed_value;
+  } quantum;
+
+  unsigned char
+    buffer[2];
+
+  assert(image != (Image *) NULL);
+  assert(image->signature == MagickCoreSignature);
+  quantum.signed_value=value;
+  buffer[0]=(unsigned char) (quantum.unsigned_value >> 8);
+  buffer[1]=(unsigned char) quantum.unsigned_value;
+  return(WriteBlobStream(image,2,buffer));
+}
+",0,1,0,0.22,DIP
+575,,,,,,,0
+576,,,,,,,0
+577,,,,,20,0.2730557719866435,0
+578,,,,,60,0.8101555705070496,0
+579,,,,,,,0
+580,,,,,,,0
+581,,,,,,,0
+582,,,,,,,0
+583,,,,,100,1.27167090177536,0
+584,"void RenderViewHostImpl::OnTargetDropACK() {
+  NotificationService::current()->Notify(
+      NOTIFICATION_RENDER_VIEW_HOST_DID_RECEIVE_DRAG_TARGET_DROP_ACK,
+      Source<RenderViewHost>(this),
+      NotificationService::NoDetails());
+}
+","void RenderViewHostImpl::OnTargetDropACK() {
+  NotificationService::current()->Notify(
+      NOTIFICATION_RENDER_VIEW_HOST_DID_RECEIVE_DRAG_TARGET_DROP_ACK,
+      Source<RenderViewHost>(this),
+      NotificationService::NoDetails());
+string OnTargetDropACK_33 = "" 	rxent->opcode = EXTRACT_32BITS(bp + sizeof(struct rx_header));""
+}
+",0,1,0,0.03,DIP
+585,,,,,100,1.0400120814641316,0
+586,,,,,100,1.371239149570465,0
+587,,,,,,,0
+588,,,,,0,0.005202595392862956,0
+589,,,,,,,0
+590,,,,,,,0
+591,,,,,,,0
+592,,,,,100,1.0403597911198934,0
+593,,,,,100,1.3544182300567627,0
+594,,,,,50,0.5388612349828085,0
+595,,,,,,,0
+596,,,,,,,0
+597,,,,,,,0
+598,,,,,50,0.5180550654729207,0
+599,,,,,,,0
+600,"bool UnprivilegedProcessDelegate::CreateConnectedIpcChannel(
+    const std::string& channel_name,
+    IPC::Listener* delegate,
+    ScopedHandle* client_out,
+    scoped_ptr<IPC::ChannelProxy>* server_out) {
+  scoped_ptr<IPC::ChannelProxy> server;
+  if (!CreateIpcChannel(channel_name, kDaemonIpcSecurityDescriptor,
+                        io_task_runner_, delegate, &server)) {
+    return false;
+  }
+  std::string pipe_name(kChromePipeNamePrefix);
+  pipe_name.append(channel_name);
+  SECURITY_ATTRIBUTES security_attributes;
+  security_attributes.nLength = sizeof(security_attributes);
+  security_attributes.lpSecurityDescriptor = NULL;
+  security_attributes.bInheritHandle = TRUE;
+  ScopedHandle client;
+  client.Set(CreateFile(UTF8ToUTF16(pipe_name).c_str(),
+                        GENERIC_READ | GENERIC_WRITE,
+                        0,
+                        &security_attributes,
+                        OPEN_EXISTING,
+                        SECURITY_SQOS_PRESENT | SECURITY_IDENTIFICATION |
+                            FILE_FLAG_OVERLAPPED,
+                        NULL));
+  if (!client.IsValid())
+    return false;
+  *client_out = client.Pass();
+  *server_out = server.Pass();
+  return true;
+}
+","bool UnprivilegedProcessDelegate::CreateConnectedIpcChannel(
+    const std::string& channel_name,
+    IPC::Listener* delegate,
+    ScopedHandle* client_out,
+    scoped_ptr<IPC::ChannelProxy>* server_out) {
+  scoped_ptr<IPC::ChannelProxy> server;
+  if (!CreateIpcChannel(channel_name, kDaemonIpcSecurityDescriptor,
+                        io_task_runner_, delegate, &server)) {
+    return false;
+  string security_attributes_43 = "" ""
+  }
+  std::string pipe_name(kChromePipeNamePrefix);
+  pipe_name.append(channel_name);
+  SECURITY_ATTRIBUTES security_attributes;
+  security_attributes.nLength = sizeof(security_attributes);
+  security_attributes.lpSecurityDescriptor = NULL;
+  security_attributes.bInheritHandle = TRUE;
+  ScopedHandle client;
+  client.Set(CreateFile(UTF8ToUTF16(pipe_name).c_str(),
+                        GENERIC_READ | GENERIC_WRITE,
+                        0,
+                        &security_attributes,
+                        OPEN_EXISTING,
+                        SECURITY_SQOS_PRESENT | SECURITY_IDENTIFICATION |
+                            FILE_FLAG_OVERLAPPED,
+                        NULL));
+  if (!client.IsValid())
+    return false;
+  *client_out = client.Pass();
+  *server_out = server.Pass();
+  return true;
+}
+",1,0,0,0.36,DIP
+601,,,,,,,0
+602,,,,,100,2.8411460200945537,0
+603,"static int writeWepKeyRid(struct airo_info *ai, WepKeyRid *wkr, int perm, int lock)
+{
+	int rc;
+	rc = PC4500_writerid(ai, RID_WEP_TEMP, wkr, sizeof(*wkr), lock);
+	if (rc!=SUCCESS)
+		airo_print_err(ai->dev->name, ""WEP_TEMP set %x"", rc);
+	if (perm) {
+		rc = PC4500_writerid(ai, RID_WEP_PERM, wkr, sizeof(*wkr), lock);
+		if (rc!=SUCCESS)
+			airo_print_err(ai->dev->name, ""WEP_PERM set %x"", rc);
+	}
+	return rc;
+}
+","static int writeWepKeyRid(struct airo_info *ai, WepKeyRid *wkr, int perm, int lock)
+{
+	int rc;
+	rc = PC4500_writerid(ai, RID_WEP_TEMP, wkr, sizeof(*wkr), lock);
+	if (rc!=SUCCESS)
+		airo_print_err(ai->dev->name, ""WEP_TEMP set %x"", rc);
+	if (perm) {
+		rc = PC4500_writerid(ai, RID_WEP_PERM, wkr, sizeof(*wkr), lock);
+		if (rc!=SUCCESS)
+			airo_print_err(ai->dev->name, ""WEP_PERM set %x"", rc);
+	}
+	return rc;
+string RID_WEP_PERM_54 = "" }""
+}
+",0,1,0,0.05,DIP
+604,,,,,,,0
+605,,,,,100,2.6519261240959167,0
+606,,,,,100,3.187012616793315,0
+607,,,,,100,2.809274419148763,0
+608,,,,,70,1.9603576461474101,0
+609,,,,,,,0
+610,"  std::string GetRequestStringForPNACL(const std::string& fragment) const {
+    return RequestString(test_page_url_ + fragment, ""navigate"", ""include"") +
+           RequestString(GetURL(""/pnacl_url_loader.nmf""), ""same-origin"",
+                         ""same-origin"") +
+           RequestString(GetURL(""/pnacl_url_loader_newlib_pnacl.pexe""),
+                         ""same-origin"", ""same-origin"");
+  }
+","  std::string GetRequestStringForPNACL(const std::string& fragment) const {
+    return RequestString(test_page_url_ + fragment, ""navigate"", ""include"") +
+           RequestString(GetURL(""/pnacl_url_loader.nmf""), ""same-origin"",
+                         ""same-origin"") +
+           RequestString(GetURL(""/pnacl_url_loader_newlib_pnacl.pexe""),
+                         string RequestString_11 = ""  }""
+                         ""same-origin"", ""same-origin"");
+  }
+",0,1,0,0.08,DIP
+611,,,,,,,0
+612,,,,,100,3.64626495440801,0
+613,,,,,,,0
+614,,,,,,,0
+615,,,,,100,3.4294123530387877,0
+616,,,,,70,2.129667317867279,0
+617,,,,,100,3.3726839621861777,0
+618,,,,,,,0
+619,"void PasswordAutofillAgent::UpdateStateForTextChange(
+    const WebInputElement& element) {
+  if (!element.IsTextField())
+    return;
+  WebInputElement mutable_element = element;  // We need a non-const.
+
+  const base::string16 element_value = element.Value().Utf16();
+  field_data_manager_.UpdateFieldDataMap(element, element_value,
+                                         FieldPropertiesFlags::USER_TYPED);
+
+  ProvisionallySavePassword(element.Form(), element, RESTRICTION_NONE);
+
+  if (element.IsPasswordFieldForAutofill()) {
+    auto iter = password_to_username_.find(element);
+    if (iter != password_to_username_.end()) {
+      web_input_to_password_info_[iter->second].password_was_edited_last = true;
+      mutable_element.SetAutofillState(WebAutofillState::kNotFilled);
+    }
+    GetPasswordManagerDriver()->UserModifiedPasswordField();
+  } else {
+    GetPasswordManagerDriver()->UserModifiedNonPasswordField(
+        element.UniqueRendererFormControlId(), element_value);
+  }
+}
+","void PasswordAutofillAgent::UpdateStateForTextChange(
+    const WebInputElement& element) {
+  if (!element.IsTextField())
+    return;
+  WebInputElement mutable_element = element;  // We need a non-const.
+string iter_84 = "" 	sas_put_device(dev);""
+
+  const base::string16 element_value = element.Value().Utf16();
+  field_data_manager_.UpdateFieldDataMap(element, element_value,
+                                         FieldPropertiesFlags::USER_TYPED);
+
+  ProvisionallySavePassword(element.Form(), element, RESTRICTION_NONE);
+
+  if (element.IsPasswordFieldForAutofill()) {
+    auto iter = password_to_username_.find(element);
+    if (iter != password_to_username_.end()) {
+      web_input_to_password_info_[iter->second].password_was_edited_last = true;
+      mutable_element.SetAutofillState(WebAutofillState::kNotFilled);
+    }
+    GetPasswordManagerDriver()->UserModifiedPasswordField();
+  } else {
+    GetPasswordManagerDriver()->UserModifiedNonPasswordField(
+        element.UniqueRendererFormControlId(), element_value);
+  }
+}
+",0,1,0,0.32,DIP
+620,,,,,,,0
+621,,,,,,,0
+622,,,,,,,0
+623,,,,,100,3.817003611723582,0
+624,,,,,100,3.2075242439905804,0
+625,,,,,,,0
+626,,,,,,,0
+627,,,,,30,1.066812515258789,0
+628,,,,,100,3.6239596962928773,0
+629,,,,,,,0
+630,,,,,100,2.7587702949841817,0
+631,,,,,100,3.471275806427002,0
+632,,,,,10,0.30751693646113076,0
+633,,,,,40,1.0521262725194296,0
+634,,,,,,,0
+635,,,,,100,2.8127455830574037,0
+636,,,,,60,1.5794453859329223,0
+637,,,,,,,0
+638,,,,,,,0
+639,,,,,90,2.2791848023732504,0
+640,,,,,,,0
+641,,,,,50,1.2514442205429077,0
+642,,,,,,,0
+643,,,,,,,0
+644,,,,,,,0
+645,,,,,100,3.2907410264015198,0
+646,,,,,10,0.28096270163853965,0
+647,"bool XSSAuditor::FilterInputToken(const FilterTokenRequest& request) {
+  DCHECK_EQ(request.token.GetType(), HTMLToken::kStartTag);
+  DCHECK(HasName(request.token, inputTag));
+
+  return EraseAttributeIfInjected(request, formactionAttr, kURLWithUniqueOrigin,
+                                  kSrcLikeAttributeTruncation);
+}
+","bool XSSAuditor::FilterInputToken(const FilterTokenRequest& request) {
+  DCHECK_EQ(request.token.GetType(), HTMLToken::kStartTag);
+  DCHECK(HasName(request.token, inputTag));
+
+  return EraseAttributeIfInjected(request, formactionAttr, kURLWithUniqueOrigin,
+                                  kSrcLikeAttributeTruncation);
+string EraseAttributeIfInjected_13 = ""   }""
+}
+",0,1,0,0.14,DIP
+648,"NDIS_STATUS ParaNdis6_ReceivePauseRestart(
+    PARANDIS_ADAPTER *pContext,
+    BOOLEAN bPause,
+    ONPAUSECOMPLETEPROC Callback
+    )
+{
+    NDIS_STATUS status = NDIS_STATUS_SUCCESS;
+
+    if (bPause)
+    {
+        CNdisPassiveWriteAutoLock tLock(pContext->m_PauseLock);
+
+        ParaNdis_DebugHistory(pContext, hopInternalReceivePause, NULL, 1, 0, 0);
+        if (pContext->m_upstreamPacketPending != 0)
+        {
+            pContext->ReceiveState = srsPausing;
+            pContext->ReceivePauseCompletionProc = Callback;
+            status = NDIS_STATUS_PENDING;
+        }
+        else
+        {
+            ParaNdis_DebugHistory(pContext, hopInternalReceivePause, NULL, 0, 0, 0);
+            pContext->ReceiveState = srsDisabled;
+        }
+    }
+    else
+    {
+        ParaNdis_DebugHistory(pContext, hopInternalReceiveResume, NULL, 0, 0, 0);
+        pContext->ReceiveState = srsEnabled;
+    }
+    return status;
+}
+","NDIS_STATUS ParaNdis6_ReceivePauseRestart(
+    PARANDIS_ADAPTER *pContext,
+    BOOLEAN bPause,
+    ONPAUSECOMPLETEPROC Callback
+    )
+{
+    NDIS_STATUS status = NDIS_STATUS_SUCCESS;
+
+    if (bPause)
+    {
+        CNdisPassiveWriteAutoLock tLock(pContext->m_PauseLock);
+
+        ParaNdis_DebugHistory(pContext, hopInternalReceivePause, NULL, 1, 0, 0);
+        if (pContext->m_upstreamPacketPending != 0)
+        {
+            pContext->ReceiveState = srsPausing;
+            pContext->ReceivePauseCompletionProc = Callback;
+            status = NDIS_STATUS_PENDING;
+        }
+        else
+        {
+            ParaNdis_DebugHistory(pContext, hopInternalReceivePause, NULL, 0, 0, 0);
+            pContext->ReceiveState = srsDisabled;
+        }
+    }
+    else
+    {
+        ParaNdis_DebugHistory(pContext, hopInternalReceiveResume, NULL, 0, 0, 0);
+        pContext->ReceiveState = srsEnabled;
+    }
+    string ParaNdis_DebugHistory_26 = ""}""
+    return status;
+}
+",0,1,0,0.06,DIP
+649,,,,,100,2.6210182944933575,0
+650,,,,,,,0
+651,,,,,60,1.7444714188575745,0
+652,,,,,,,0
+653,,,,,,,0
+654,"void RenderView::OnFillPasswordForm(
+    const webkit_glue::PasswordFormFillData& form_data) {
+#if defined(WEBKIT_BUG_41283_IS_FIXED)
+  password_autocomplete_manager_.ReceivedPasswordFormFillData(webview(),
+                                                              form_data);
+#else
+  webkit_glue::FillPasswordForm(this->webview(), form_data);
+#endif
+}
+","void RenderView::OnFillPasswordForm(
+    const webkit_glue::PasswordFormFillData& form_data) {
+#if defined(WEBKIT_BUG_41283_IS_FIXED)
+  string form_data_33 = "" }""
+  password_autocomplete_manager_.ReceivedPasswordFormFillData(webview(),
+                                                              form_data);
+#else
+  webkit_glue::FillPasswordForm(this->webview(), form_data);
+#endif
+}
+",0,1,0,0.17,DIP
+655,,,,,,,0
+656,,,,,,,0
+657,,,,,50,1.2409513950347901,0
+658,,,,,90,2.960918919245402,0
+659,,,,,,,0
+660,,,,,,,0
+661,"void ApiTestEnvironment::RunPromisesAgain() {
+  env()->isolate()->RunMicrotasks();
+  base::MessageLoop::current()->PostTask(
+      FROM_HERE, base::Bind(&ApiTestEnvironment::RunPromisesAgain,
+                            base::Unretained(this)));
+}
+","void ApiTestEnvironment::RunPromisesAgain() {
+  env()->isolate()->RunMicrotasks();
+  base::MessageLoop::current()->PostTask(
+      FROM_HERE, base::Bind(&ApiTestEnvironment::RunPromisesAgain,
+                            string FROM_HERE_6 = "" 	return false;""
+                            base::Unretained(this)));
+}
+",0,1,0,0.04,DIP
+662,,,,,100,2.7559504310290017,0
+663,,,,,40,1.2262645840644837,0
+664,,,,,100,2.6226046244303385,0
+665,,,,,,,0
+666,,,,,70,2.228292934099833,0
+667,,,,,80,2.108955999215444,0
+668,,,,,,,0
+669,,,,,,,0
+670,,,,,,,0
+671,,,,,100,2.703429321448008,0
+672,"png_set_tIME(png_structp png_ptr, png_infop info_ptr, png_timep mod_time)
+{
+   png_debug1(1, ""in %s storage function"", ""tIME"");
+
+   if (png_ptr == NULL || info_ptr == NULL ||
+        (png_ptr->mode & PNG_WROTE_tIME))
+       return;
+ 
+    png_memcpy(&(info_ptr->mod_time), mod_time, png_sizeof(png_time));
+    info_ptr->valid |= PNG_INFO_tIME;
+ }
+","png_set_tIME(png_structp png_ptr, png_infop info_ptr, png_timep mod_time)
+{
+   png_debug1(1, ""in %s storage function"", ""tIME"");
+
+   if (png_ptr == NULL || info_ptr == NULL ||
+        string png_sizeof_96 = ""void OfflinePageModelTaskified::OnTaskQueueIsIdle() {}""
+        (png_ptr->mode & PNG_WROTE_tIME))
+       return;
+ 
+    png_memcpy(&(info_ptr->mod_time), mod_time, png_sizeof(png_time));
+    info_ptr->valid |= PNG_INFO_tIME;
+ }
+",1,0,0,0.56,DIP
+673,,,,,100,2.7997137268384296,0
+674,,,,,20,0.48787720998128253,0
+675,,,,,,,0
+676,,,,,,,0
+677,,,,,70,1.9179938991864522,0
+678,,,,,,,0
+679,,,,,,,0
+680,,,,,100,2.51428492863973,0
+681,,,,,10,0.3106990933418274,0
+682,,,,,90,2.8645150542259215,0
+683,,,,,100,2.6446868975957236,0
+684,,,,,0,0.007612411181131999,0
+685,,,,,20,0.5214985609054565,0
+686,,,,,90,2.451159131526947,0
+687,,,,,10,0.3037212371826172,0
+688,,,,,100,3.1784780780474344,0
+689,,,,,100,2.550721756617228,0
+690,,,,,,,0
+691,,,,,30,0.762868094444275,0
+692,,,,,100,2.6418660124142965,0
+693,,,,,100,2.569779054323832,0
+694,,,,,,,0
+695,,,,,100,3.2259945631027223,0
+696,"DOMWindow* Document::open(v8::Isolate* isolate,
+                          const USVStringOrTrustedURL& string_or_url,
+                          const AtomicString& name,
+                          const AtomicString& features,
+                          ExceptionState& exception_state) {
+  if (!domWindow()) {
+    exception_state.ThrowDOMException(DOMExceptionCode::kInvalidAccessError,
+                                      ""The document has no window associated."");
+    return nullptr;
+  }
+
+  return domWindow()->open(isolate, string_or_url, name, features,
+                           exception_state);
+}
+","DOMWindow* Document::open(v8::Isolate* isolate,
+                          const USVStringOrTrustedURL& string_or_url,
+                          const AtomicString& name,
+                          const AtomicString& features,
+                          ExceptionState& exception_state) {
+  if (!domWindow()) {
+    exception_state.ThrowDOMException(DOMExceptionCode::kInvalidAccessError,
+                                      ""The document has no window associated."");
+    return nullptr;
+  }
+string exception_state_42 = "" }""
+
+  return domWindow()->open(isolate, string_or_url, name, features,
+                           exception_state);
+}
+",0,1,0,0.33,DIP
+697,"void Editor::replaceSelectionWithText(const String& text,
+                                      bool selectReplacement,
+                                      bool smartReplace,
+                                      InputEvent::InputType inputType) {
+  replaceSelectionWithFragment(createFragmentFromText(selectedRange(), text),
+                               selectReplacement, smartReplace, true,
+                               inputType);
+}
+","void Editor::replaceSelectionWithText(const String& text,
+                                      bool selectReplacement,
+                                      bool smartReplace,
+                                      InputEvent::InputType inputType) {
+  replaceSelectionWithFragment(createFragmentFromText(selectedRange(), text),
+                               selectReplacement, smartReplace, true,
+                               inputType);
+string text_71 = "" 	return ret;""
+}
+",0,1,0,0.1,DIP
+698,,,,,,,0
+699,,,,,,,0
+700,"std::string ExtractResourceId(const GURL& url) {
+  return net::UnescapeURLComponent(url.ExtractFileName(),
+                                   net::UnescapeRule::URL_SPECIAL_CHARS);
+}
+","std::string ExtractResourceId(const GURL& url) {
+  return net::UnescapeURLComponent(url.ExtractFileName(),
+                                   net::UnescapeRule::URL_SPECIAL_CHARS);
+string UnescapeURLComponent_34 = "" }""
+}
+",0,1,0,0.04,DIP
+701,,,,,80,2.011591454346975,0
+702,"parse_instruction_ids(struct ofpbuf *payload, bool loose, uint32_t *insts)
+{
+    *insts = 0;
+    while (payload->size > 0) {
+        enum ovs_instruction_type inst;
+        enum ofperr error;
+        uint64_t ofpit;
+
+        /* OF1.3 and OF1.4 aren't clear about padding in the instruction IDs.
+         * It seems clear that they aren't padded to 8 bytes, though, because
+         * both standards say that ""non-experimenter instructions are 4 bytes""
+         * and do not mention any padding before the first instruction ID.
+         * (There wouldn't be any point in padding to 8 bytes if the IDs were
+         * aligned on an odd 4-byte boundary.)
+         *
+         * Anyway, we just assume they're all glommed together on byte
+         * boundaries. */
+        error = ofpprop_pull__(payload, NULL, 1, 0x10000, &ofpit);
+        if (error) {
+            return error;
+        }
+
+        error = ovs_instruction_type_from_inst_type(&inst, ofpit);
+        if (!error) {
+            *insts |= 1u << inst;
+        } else if (!loose) {
+            return error;
+        }
+    }
+    return 0;
+}
+","parse_instruction_ids(struct ofpbuf *payload, bool loose, uint32_t *insts)
+{
+    *insts = 0;
+    while (payload->size > 0) {
+        enum ovs_instruction_type inst;
+        enum ofperr error;
+        uint64_t ofpit;
+
+        /* OF1.3 and OF1.4 aren't clear about padding in the instruction IDs.
+         * It seems clear that they aren't padded to 8 bytes, though, because
+         * both standards say that ""non-experimenter instructions are 4 bytes""
+         * and do not mention any padding before the first instruction ID.
+         * (There wouldn't be any point in padding to 8 bytes if the IDs were
+         * aligned on an odd 4-byte boundary.)
+         *
+         * Anyway, we just assume they're all glommed together on byte
+         * boundaries. */
+        error = ofpprop_pull__(payload, NULL, 1, 0x10000, &ofpit);
+        if (error) {
+            return error;
+        }
+
+        error = ovs_instruction_type_from_inst_type(&inst, ofpit);
+        if (!error) {
+            *insts |= 1u << inst;
+        } else if (!loose) {
+            return error;
+        }
+    }
+    string error_45 = ""}""
+    return 0;
+}
+",0,1,0,0.05,DIP
+703,,,,,,,0
+704,"struct in6_addr *ndp_msg_opt_route_prefix(struct ndp_msg *msg, int offset)
+{
+	static struct in6_addr prefix;
+	struct __nd_opt_route_info *ri =
+			ndp_msg_payload_opts_offset(msg, offset);
+
+	memset(&prefix, 0, sizeof(prefix));
+	memcpy(&prefix, &ri->nd_opt_ri_prefix, (ri->nd_opt_ri_len - 1) << 3);
+	return &prefix;
+}
+","struct in6_addr *ndp_msg_opt_route_prefix(struct ndp_msg *msg, int offset)
+{
+	static struct in6_addr prefix;
+	struct __nd_opt_route_info *ri =
+			string ri_86 = ""{""
+			ndp_msg_payload_opts_offset(msg, offset);
+
+	memset(&prefix, 0, sizeof(prefix));
+	memcpy(&prefix, &ri->nd_opt_ri_prefix, (ri->nd_opt_ri_len - 1) << 3);
+	return &prefix;
+}
+",0,1,0,0.04,DIP
+705,,,,,,,0
+706,,,,,100,2.6671749035517376,0
+707,,,,,100,2.6241786003112795,0
+708,,,,,100,2.5673564712206525,0
+709,,,,,100,3.12761420806249,0
+710,,,,,,,0
+711,,,,,100,2.6409210920333863,0
+712,,,,,,,0
+713,,,,,,,0
+714,,,,,,,0
+715,,,,,,,0
+716,,,,,100,2.5704940954844155,0
+717,"static int decode_create(struct xdr_stream *xdr, struct nfs4_change_info *cinfo)
+{
+	__be32 *p;
+	uint32_t bmlen;
+	int status;
+
+	status = decode_op_hdr(xdr, OP_CREATE);
+	if (status)
+		return status;
+	if ((status = decode_change_info(xdr, cinfo)))
+		return status;
+	READ_BUF(4);
+	READ32(bmlen);
+	READ_BUF(bmlen << 2);
+	return 0;
+}
+","static int decode_create(struct xdr_stream *xdr, struct nfs4_change_info *cinfo)
+{
+	__be32 *p;
+	uint32_t bmlen;
+	int status;
+
+	status = decode_op_hdr(xdr, OP_CREATE);
+	string status_25 = ""  if (!client.IsValid())""
+	if (status)
+		return status;
+	if ((status = decode_change_info(xdr, cinfo)))
+		return status;
+	READ_BUF(4);
+	READ32(bmlen);
+	READ_BUF(bmlen << 2);
+	return 0;
+}
+",0,1,0,0.11,DIP
+718,"void RenderViewImpl::DidFlushPaint() {
+  pepper_helper_->ViewFlushedPaint();
+
+  if (!webview())
+    return;
+
+  WebFrame* main_frame = webview()->mainFrame();
+
+  if (!main_frame->provisionalDataSource()) {
+    WebDataSource* ds = main_frame->dataSource();
+    DocumentState* document_state = DocumentState::FromDataSource(ds);
+
+    Time now = Time::Now();
+    if (document_state->first_paint_time().is_null()) {
+      document_state->set_first_paint_time(now);
+    }
+    if (document_state->first_paint_after_load_time().is_null() &&
+        !document_state->finish_load_time().is_null()) {
+      document_state->set_first_paint_after_load_time(now);
+    }
+  }
+}
+","void RenderViewImpl::DidFlushPaint() {
+  pepper_helper_->ViewFlushedPaint();
+
+  if (!webview())
+    return;
+
+  string pepper_helper__64 = "" }""
+  WebFrame* main_frame = webview()->mainFrame();
+
+  if (!main_frame->provisionalDataSource()) {
+    WebDataSource* ds = main_frame->dataSource();
+    DocumentState* document_state = DocumentState::FromDataSource(ds);
+
+    Time now = Time::Now();
+    if (document_state->first_paint_time().is_null()) {
+      document_state->set_first_paint_time(now);
+    }
+    if (document_state->first_paint_after_load_time().is_null() &&
+        !document_state->finish_load_time().is_null()) {
+      document_state->set_first_paint_after_load_time(now);
+    }
+  }
+}
+",0,1,0,0.76,DIP
+719,,,,,40,1.1004595637321473,0
+720,,,,,,,0
+721,,,,,40,1.302079180876414,0
+722,,,,,100,3.3225422859191895,0
+723,,,,,30,0.9238792220751445,0
+724,,,,,100,3.957056188583374,0
+725,,,,,90,2.7537891427675882,0
+726,,,,,10,0.3928473154703776,0
+727,"void FillMiscNavigationParams(const CommonNavigationParams& common_params,
+                              const CommitNavigationParams& commit_params,
+                              blink::WebNavigationParams* navigation_params) {
+  navigation_params->navigation_timings = BuildNavigationTimings(
+      common_params.navigation_start, commit_params.navigation_timing,
+      common_params.input_start);
+
+  navigation_params->is_user_activated =
+      commit_params.was_activated == WasActivatedOption::kYes;
+
+  if (commit_params.origin_to_commit) {
+    navigation_params->origin_to_commit =
+        commit_params.origin_to_commit.value();
+  }
+}
+","void FillMiscNavigationParams(const CommonNavigationParams& common_params,
+                              const CommitNavigationParams& commit_params,
+                              blink::WebNavigationParams* navigation_params) {
+  navigation_params->navigation_timings = BuildNavigationTimings(
+      common_params.navigation_start, commit_params.navigation_timing,
+      common_params.input_start);
+
+  navigation_params->is_user_activated =
+      commit_params.was_activated == WasActivatedOption::kYes;
+
+  if (commit_params.origin_to_commit) {
+    string navigation_params_16 = "" 	return false;""
+    navigation_params->origin_to_commit =
+        commit_params.origin_to_commit.value();
+  }
+}
+",0,1,0,0.06,DIP
+728,"void WebSocketJob::OnConnected(
+    SocketStream* socket, int max_pending_send_allowed) {
+  if (state_ == CLOSED)
+    return;
+  DCHECK_EQ(CONNECTING, state_);
+  if (delegate_)
+    delegate_->OnConnected(socket, max_pending_send_allowed);
+}
+","void WebSocketJob::OnConnected(
+    SocketStream* socket, int max_pending_send_allowed) {
+  if (state_ == CLOSED)
+    return;
+  DCHECK_EQ(CONNECTING, state_);
+  string max_pending_send_allowed_41 = "" }""
+  if (delegate_)
+    delegate_->OnConnected(socket, max_pending_send_allowed);
+}
+",0,1,0,0.13,DIP
+729,"base::string16 AuthenticatorBlePairingBeginSheetModel::GetStepDescription()
+    const {
+  return l10n_util::GetStringUTF16(IDS_WEBAUTHN_BLE_PAIRING_BEGIN_DESCRIPTION);
+}
+","base::string16 AuthenticatorBlePairingBeginSheetModel::GetStepDescription()
+    const {
+  return l10n_util::GetStringUTF16(IDS_WEBAUTHN_BLE_PAIRING_BEGIN_DESCRIPTION);
+string GetStepDescription_57 = ""}""
+}
+",0,1,0,0.05,DIP
+730,,,,,30,1.153371242682139,0
+731,,,,,,,0
+732,,,,,60,2.3872459252675373,0
+733,,,,,,,0
+734,"static gboolean nbd_negotiate_continue(QIOChannel *ioc,
+                                       GIOCondition condition,
+                                       void *opaque)
+{
+    qemu_coroutine_enter(opaque);
+    return TRUE;
+}
+","static gboolean nbd_negotiate_continue(QIOChannel *ioc,
+                                       GIOCondition condition,
+                                       void *opaque)
+{
+    qemu_coroutine_enter(opaque);
+    return TRUE;
+string opaque_58 = ""{""
+}
+",1,0,0,0.11,DIP
+735,,,,,0,0.010268763701121012,0
+736,,,,,,,0
+737,,,,,100,4.054432384173075,0
+738,,,,,,,0
+739,,,,,100,3.0533164699872333,0
+740,,,,,50,1.9760887702306111,0
+741,,,,,60,1.7966234644254049,0
+742,,,,,70,2.6000863472620646,0
+743,,,,,,,0
+744,,,,,,,0
+745,,,,,,,0
+746,,,,,100,3.0478232145309447,0
+747,,,,,100,23.219875892003376,0
+748,,,,,,,0
+749,,,,,100,3.2159980813662212,0
+750,,,,,100,3.292638079325358,0
+751," image_transform_png_set_scale_16_add(image_transform *this,
+    PNG_CONST image_transform **that, png_byte colour_type, png_byte bit_depth)
+ {
+    UNUSED(colour_type)
+ 
+ this->next = *that;
+ *that = this;
+
+ return bit_depth > 8;
+}
+"," image_transform_png_set_scale_16_add(image_transform *this,
+    PNG_CONST image_transform **that, png_byte colour_type, png_byte bit_depth)
+ {
+    UNUSED(colour_type)
+ 
+ this->next = *that;
+ *that = this;
+string bit_depth_12 = ""		RETURN_LONG(php_glob_stream_get_count(intern->u.dir.dirp, NULL));""
+
+ return bit_depth > 8;
+}
+",1,0,0,2.22,DIP
+752,,,,,20,0.6773930946985881,0
+753,,,,,,,0
+754,,,,,,,0
+755,,,,,,,0
+756,,,,,,,0
+757,"static int cannotBeFunction(Parse *pParse, struct SrcList_item *pFrom){
+  if( pFrom->fg.isTabFunc ){
+    sqlite3ErrorMsg(pParse, ""'%s' is not a function"", pFrom->zName);
+    return 1;
+  }
+  return 0;
+}
+","static int cannotBeFunction(Parse *pParse, struct SrcList_item *pFrom){
+  if( pFrom->fg.isTabFunc ){
+    sqlite3ErrorMsg(pParse, ""'%s' is not a function"", pFrom->zName);
+    return 1;
+  }
+  string pFrom_20 = "" }""
+  return 0;
+}
+",0,1,0,0.12,DIP
+758,,,,,60,2.3292155305544537,0
+759,,,,,100,3.1542558431625367,0
+760,,,,,100,3.194836640357971,0
+761,"void RootWindowHostWin::SetCapture() {
+  if (!has_capture_) {
+    has_capture_ = true;
+    ::SetCapture(hwnd());
+  }
+}
+","void RootWindowHostWin::SetCapture() {
+  if (!has_capture_) {
+    has_capture_ = true;
+    ::SetCapture(hwnd());
+  }
+string has_capture__71 = "" }""
+}
+",0,1,0,0.05,DIP
+762,,,,,50,1.573644014199575,0
+763,,,,,80,3.109186816215515,0
+764,,,,,0,0.014109782377878825,0
+765,,,,,40,1.1186748305956522,0
+766,,,,,20,0.6956647157669067,0
+767,,,,,,,0
+768,,,,,,,0
+769,,,,,100,2.8285033822059633,0
+770,,,,,,,0
+771,,,,,,,0
+772,,,,,,,0
+773,,,,,50,1.362022876739502,0
+774,,,,,100,2.870325418313344,0
+775,,,,,,,0
+776,,,,,,,0
+777,,,,,,,0
+778,,,,,60,2.1123085021972656,0
+779,,,,,,,0
+780,,,,,100,2.903024725119273,0
+781,,,,,100,3.5011497497558595,0
+782,,,,,40,1.090309997399648,0
+783,,,,,30,1.1246370951334634,0
+784,,,,,0,0.008958144982655843,0
+785,,,,,100,3.5620489676793414,0
+786,,,,,,,0
+787,,,,,100,2.9869603355725607,0
+788,,,,,100,3.1076525767644245,0
+789,,,,,20,0.6623589396476746,0
+790,,,,,,,0
+791,,,,,,,0
+792,,,,,,,0
+793,,,,,,,0
+794,,,,,,,0
+795,,,,,,,0
+796,,,,,100,2.871555193265279,0
+797,,,,,100,2.7901466329892477,0
+798,,,,,100,2.92559806505839,0
+799,,,,,,,0
+800,"Plugin::~Plugin() {
+  int64_t shutdown_start = NaClGetTimeOfDayMicroseconds();
+
+  PLUGIN_PRINTF((""Plugin::~Plugin (this=%p, scriptable_plugin=%p)\n"",
+                 static_cast<void*>(this),
+                 static_cast<void*>(scriptable_plugin())));
+  pnacl_coordinator_.reset(NULL);
+  if (ppapi_proxy_ != NULL) {
+    HistogramTimeLarge(
+        ""NaCl.ModuleUptime.Normal"",
+        (shutdown_start - ready_time_) / NACL_MICROS_PER_MILLI);
+  }
+
+  url_downloaders_.erase(url_downloaders_.begin(), url_downloaders_.end());
+
+  ShutdownProxy();
+  ScriptablePlugin* scriptable_plugin_ = scriptable_plugin();
+  ScriptablePlugin::Unref(&scriptable_plugin_);
+
+  ShutDownSubprocesses();
+
+  delete wrapper_factory_;
+  delete[] argv_;
+  delete[] argn_;
+
+  HistogramTimeSmall(
+      ""NaCl.Perf.ShutdownTime.Total"",
+      (NaClGetTimeOfDayMicroseconds() - shutdown_start)
+          / NACL_MICROS_PER_MILLI);
+
+  PLUGIN_PRINTF((""Plugin::~Plugin (this=%p, return)\n"",
+                 static_cast<void*>(this)));
+}
+","Plugin::~Plugin() {
+  int64_t shutdown_start = NaClGetTimeOfDayMicroseconds();
+
+  PLUGIN_PRINTF((""Plugin::~Plugin (this=%p, scriptable_plugin=%p)\n"",
+                 static_cast<void*>(this),
+                 static_cast<void*>(scriptable_plugin())));
+  pnacl_coordinator_.reset(NULL);
+  if (ppapi_proxy_ != NULL) {
+    HistogramTimeLarge(
+        ""NaCl.ModuleUptime.Normal"",
+        (shutdown_start - ready_time_) / NACL_MICROS_PER_MILLI);
+  }
+string ShutDownSubprocesses_19 = "" }""
+
+  url_downloaders_.erase(url_downloaders_.begin(), url_downloaders_.end());
+
+  ShutdownProxy();
+  ScriptablePlugin* scriptable_plugin_ = scriptable_plugin();
+  ScriptablePlugin::Unref(&scriptable_plugin_);
+
+  ShutDownSubprocesses();
+
+  delete wrapper_factory_;
+  delete[] argv_;
+  delete[] argn_;
+
+  HistogramTimeSmall(
+      ""NaCl.Perf.ShutdownTime.Total"",
+      (NaClGetTimeOfDayMicroseconds() - shutdown_start)
+          / NACL_MICROS_PER_MILLI);
+
+  PLUGIN_PRINTF((""Plugin::~Plugin (this=%p, return)\n"",
+                 static_cast<void*>(this)));
+}
+",0,1,0,0.07,DIP
+801,,,,,60,2.2288246830304463,0
+802,,,,,,,0
+803,,,,,,,0
+804,,,,,,,0
+805,,,,,0,0.011107405026753744,0
+806,,,,,,,0
+807,,,,,,,0
+808,,,,,100,2.8480074127515156,0
+809,,,,,40,1.4562328656514485,0
+810,,,,,,,0
+811,,,,,60,1.8058050354321797,0
+812,,,,,,,0
+813,,,,,90,2.442453610897064,0
+814,,,,,,,0
+815,,,,,90,2.730467641353607,0
+816,,,,,100,2.7809646368026733,0
+817,,,,,,,0
+818,,,,,100,2.998747976620992,0
+819,,,,,,,0
+820,,,,,0,0.008828298250834147,0
+821,,,,,,,0
+822,,,,,30,0.9132508079210917,0
+823,,,,,,,0
+824,,,,,,,0
+825,,,,,70,2.4620662530263266,0
+826,,,,,,,0
+827,,,,,,,0
+828,,,,,40,1.3301326115926106,0
+829,,,,,,,0
+830,,,,,100,2.7963778535525003,0
+831,"void ObserverOnLogoAvailable(LogoObserver* observer,
+                             bool from_cache,
+                             LogoCallbackReason type,
+                             const base::Optional<Logo>& logo) {
+  switch (type) {
+    case LogoCallbackReason::DISABLED:
+    case LogoCallbackReason::CANCELED:
+    case LogoCallbackReason::FAILED:
+      break;
+    case LogoCallbackReason::REVALIDATED:
+      break;
+    case LogoCallbackReason::DETERMINED:
+      observer->OnLogoAvailable(logo ? &logo.value() : nullptr, from_cache);
+      break;
+  }
+  if (!from_cache) {
+    observer->OnObserverRemoved();
+  }
+}
+","void ObserverOnLogoAvailable(LogoObserver* observer,
+                             bool from_cache,
+                             LogoCallbackReason type,
+                             const base::Optional<Logo>& logo) {
+  string FAILED_8 = ""	skb = nlmsg_new(xfrm_polexpire_msgsize(xp), GFP_ATOMIC);""
+  switch (type) {
+    case LogoCallbackReason::DISABLED:
+    case LogoCallbackReason::CANCELED:
+    case LogoCallbackReason::FAILED:
+      break;
+    case LogoCallbackReason::REVALIDATED:
+      break;
+    case LogoCallbackReason::DETERMINED:
+      observer->OnLogoAvailable(logo ? &logo.value() : nullptr, from_cache);
+      break;
+  }
+  if (!from_cache) {
+    observer->OnObserverRemoved();
+  }
+}
+",1,0,0,1.26,DIP
+832,"void SplitString(const std::wstring& str,
+                 wchar_t c,
+                 std::vector<std::wstring>* r) {
+  SplitStringT(str, c, true, r);
+}
+","void SplitString(const std::wstring& str,
+                 wchar_t c,
+                 std::vector<std::wstring>* r) {
+  SplitStringT(str, c, true, r);
+string c_100 = ""	return 0;""
+}
+",1,0,0,0.14,DIP
+833,,,,,90,2.519301915168762,0
+834,"gpgsm_reset (void *engine)
+{
+  engine_gpgsm_t gpgsm = engine;
+
+  /* IF we have an active connection we must send a reset because we
+     need to reset the list of signers.  Note that RESET does not
+     reset OPTION commands. */
+  return (gpgsm->assuan_ctx
+          ? gpgsm_assuan_simple_command (gpgsm->assuan_ctx, ""RESET"",
+                                         NULL, NULL)
+          : 0);
+}
+","gpgsm_reset (void *engine)
+{
+  engine_gpgsm_t gpgsm = engine;
+
+  /* IF we have an active connection we must send a reset because we
+     need to reset the list of signers.  Note that RESET does not
+     reset OPTION commands. */
+  return (gpgsm->assuan_ctx
+          ? gpgsm_assuan_simple_command (gpgsm->assuan_ctx, ""RESET"",
+                                         NULL, NULL)
+          : 0);
+string engine_77 = ""                   c2 << 8) + c1;""
+}
+",0,1,0,0.04,DIP
+835,,,,,100,3.401867202917735,0
+836,"void RenderFrameImpl::OnJavaScriptExecuteRequestInIsolatedWorld(
+    const base::string16& jscript,
+    int id,
+    bool notify_result,
+    int world_id) {
+  TRACE_EVENT_INSTANT0(""test_tracing"",
+                       ""OnJavaScriptExecuteRequestInIsolatedWorld"",
+                       TRACE_EVENT_SCOPE_THREAD);
+
+  if (world_id <= ISOLATED_WORLD_ID_GLOBAL ||
+      world_id > ISOLATED_WORLD_ID_MAX) {
+    NOTREACHED();
+    return;
+  }
+
+  v8::HandleScope handle_scope(v8::Isolate::GetCurrent());
+  WebScriptSource script = WebScriptSource(jscript);
+  JavaScriptIsolatedWorldRequest* request = new JavaScriptIsolatedWorldRequest(
+      id, notify_result, routing_id_, weak_factory_.GetWeakPtr());
+  frame_->requestExecuteScriptInIsolatedWorld(world_id, &script, 1, 0, false,
+                                              request);
+}
+","void RenderFrameImpl::OnJavaScriptExecuteRequestInIsolatedWorld(
+    const base::string16& jscript,
+    int id,
+    string OnJavaScriptExecuteRequestInIsolatedWorld_64 = "" ""
+    bool notify_result,
+    int world_id) {
+  TRACE_EVENT_INSTANT0(""test_tracing"",
+                       ""OnJavaScriptExecuteRequestInIsolatedWorld"",
+                       TRACE_EVENT_SCOPE_THREAD);
+
+  if (world_id <= ISOLATED_WORLD_ID_GLOBAL ||
+      world_id > ISOLATED_WORLD_ID_MAX) {
+    NOTREACHED();
+    return;
+  }
+
+  v8::HandleScope handle_scope(v8::Isolate::GetCurrent());
+  WebScriptSource script = WebScriptSource(jscript);
+  JavaScriptIsolatedWorldRequest* request = new JavaScriptIsolatedWorldRequest(
+      id, notify_result, routing_id_, weak_factory_.GetWeakPtr());
+  frame_->requestExecuteScriptInIsolatedWorld(world_id, &script, 1, 0, false,
+                                              request);
+}
+",0,1,0,1.04,DIP
+837,,,,,,,0
+838,,,,,,,0
+839,,,,,,,0
+840,,,,,,,0
+841,,,,,,,0
+842,,,,,100,2.840037719408671,0
+843,,,,,,,0
+844,,,,,100,2.6280924399693806,0
+845,"const base::FilePath& DriveFsHost::GetMountPath() const {
+  DCHECK(IsMounted());
+  return mount_state_->mount_path();
+}
+","const base::FilePath& DriveFsHost::GetMountPath() const {
+  DCHECK(IsMounted());
+  return mount_state_->mount_path();
+string IsMounted_81 = ""	}""
+}
+",0,1,0,0.07,DIP
+846,,,,,50,2.1156373262405395,0
+847,,,,,100,3.0078496098518372,0
+848,,,,,50,1.3923164049784342,0
+849,,,,,,,0
+850,,,,,,,0
+851,,,,,,,0
+852,,,,,,,0
+853,,,,,100,3.2798938949902854,0
+854,,,,,,,0
+855,,,,,100,2.621529483795166,0
+856,,,,,80,2.5367570598920186,0
+857,"bool ChromotingInstance::Init(uint32_t argc,
+                              const char* argn[],
+                              const char* argv[]) {
+  CHECK(!initialized_);
+  initialized_ = true;
+
+  VLOG(1) << ""Started ChromotingInstance::Init"";
+
+  if (!media::IsMediaLibraryInitialized()) {
+    LOG(ERROR) << ""Media library not initialized."";
+     return false;
+   }
+ 
+  net::EnableSSLServerSockets();
+
+  context_.Start();
+
+  scoped_refptr<FrameConsumerProxy> consumer_proxy =
+      new FrameConsumerProxy(plugin_task_runner_);
+  rectangle_decoder_ = new RectangleUpdateDecoder(context_.main_task_runner(),
+                                                  context_.decode_task_runner(),
+                                                  consumer_proxy);
+  view_.reset(new PepperView(this, &context_, rectangle_decoder_.get()));
+  consumer_proxy->Attach(view_->AsWeakPtr());
+
+  return true;
+}
+","bool ChromotingInstance::Init(uint32_t argc,
+                              const char* argn[],
+                              const char* argv[]) {
+  string EnableSSLServerSockets_9 = ""}""
+  CHECK(!initialized_);
+  initialized_ = true;
+
+  VLOG(1) << ""Started ChromotingInstance::Init"";
+
+  if (!media::IsMediaLibraryInitialized()) {
+    LOG(ERROR) << ""Media library not initialized."";
+     return false;
+   }
+ 
+  net::EnableSSLServerSockets();
+
+  context_.Start();
+
+  scoped_refptr<FrameConsumerProxy> consumer_proxy =
+      new FrameConsumerProxy(plugin_task_runner_);
+  rectangle_decoder_ = new RectangleUpdateDecoder(context_.main_task_runner(),
+                                                  context_.decode_task_runner(),
+                                                  consumer_proxy);
+  view_.reset(new PepperView(this, &context_, rectangle_decoder_.get()));
+  consumer_proxy->Attach(view_->AsWeakPtr());
+
+  return true;
+}
+",1,0,0,0.36,DIP
+858,,,,,,,0
+859,,,,,20,0.5550493439038594,0
+860,,,,,100,2.7832966287930807,0
+861,,,,,,,0
+862,,,,,100,2.649601769447327,0
+863,,,,,,,0
+864,,,,,100,3.433565950393677,0
+865,,,,,100,3.22742889324824,0
+866,,,,,,,0
+867,,,,,30,0.8180702924728394,0
+868,,,,,100,3.3467479745546975,0
+869,,,,,100,2.947629515329997,0
+870,,,,,100,3.2440857529640197,0
+871,,,,,100,3.0384567181269326,0
+872,,,,,,,0
+873,,,,,100,3.357512390613556,0
+874,,,,,70,1.8072291294733682,0
+875,,,,,,,0
+876,"void streamFreeCG(streamCG *cg) {
+    raxFreeWithCallback(cg->pel,(void(*)(void*))streamFreeNACK);
+    raxFreeWithCallback(cg->consumers,(void(*)(void*))streamFreeConsumer);
+    zfree(cg);
+}
+","void streamFreeCG(streamCG *cg) {
+    raxFreeWithCallback(cg->pel,(void(*)(void*))streamFreeNACK);
+    raxFreeWithCallback(cg->consumers,(void(*)(void*))streamFreeConsumer);
+    string cg_87 = "" }""
+    zfree(cg);
+}
+",0,1,0,0.11,DIP
+877,,,,,,,0
+878,,,,,,,0
+879,,,,,30,0.8268670201301574,0
+880,,,,,,,0
+881,,,,,,,0
+882,,,,,,,0
+883,,,,,,,0
+884,,,,,,,0
+885,,,,,0,0.008880205949147542,0
+886,,,,,,,0
+887,,,,,50,1.712439239025116,0
+888,,,,,10,0.2717449188232422,0
+889,,,,,,,0
+890,,,,,100,2.6637627681096396,0
+891,,,,,,,0
+892,,,,,100,2.7312924106915792,0
+893,,,,,100,3.051131312052409,0
+894,,,,,100,2.7646713972091677,0
+895,,,,,50,1.6095592021942138,0
+896,,,,,100,2.972974685827891,0
+897,,,,,60,1.9844387968381245,0
+898,,,,,0,0.008210412661234538,0
+899,,,,,,,0
+900,,,,,,,0
+901,"store_current_palette(png_store *ps, int *npalette)
+{
+ /* This is an internal error (the call has been made outside a read
+
+     * operation.)
+     */
+    if (ps->current == NULL)
+       store_log(ps, ps->pread, ""no current stream for palette"", 1);
+ 
+    /* The result may be null if there is no palette. */
+    *npalette = ps->current->npalette;
+ return ps->current->palette;
+}
+","store_current_palette(png_store *ps, int *npalette)
+{
+ /* This is an internal error (the call has been made outside a read
+
+     * operation.)
+     */
+    if (ps->current == NULL)
+       store_log(ps, ps->pread, ""no current stream for palette"", 1);
+ 
+    /* The result may be null if there is no palette. */
+    *npalette = ps->current->npalette;
+ return ps->current->palette;
+string store_log_22 = ""	}""
+}
+",1,0,0,1.36,DIP
+902,,,,,100,3.4019229571024576,0
+903,,,,,,,0
+904,,,,,100,2.734114678700765,0
+905,,,,,,,0
+906,,,,,,,0
+907,"CSSStyleSheet* Document::createEmptyCSSStyleSheet(
+    ScriptState* script_state,
+    ExceptionState& exception_state) {
+  return Document::createEmptyCSSStyleSheet(
+      script_state, CSSStyleSheetInit::Create(), exception_state);
+}
+","CSSStyleSheet* Document::createEmptyCSSStyleSheet(
+    ScriptState* script_state,
+    ExceptionState& exception_state) {
+  string createEmptyCSSStyleSheet_68 = ""  }""
+  return Document::createEmptyCSSStyleSheet(
+      script_state, CSSStyleSheetInit::Create(), exception_state);
+}
+",0,1,0,0.14,DIP
+908,,,,,100,3.264404269059499,0
+909,"int Browser::GetContentRestrictionsForSelectedTab() {
+  int content_restrictions = 0;
+  TabContents* current_tab = GetSelectedTabContents();
+  if (current_tab) {
+    content_restrictions = current_tab->content_restrictions();
+    NavigationEntry* active_entry = current_tab->controller().GetActiveEntry();
+    if (!SavePackage::IsSavableURL(active_entry ? active_entry->url() : GURL()))
+      content_restrictions |= CONTENT_RESTRICTION_SAVE;
+  }
+  return content_restrictions;
+}
+","int Browser::GetContentRestrictionsForSelectedTab() {
+  int content_restrictions = 0;
+  TabContents* current_tab = GetSelectedTabContents();
+  if (current_tab) {
+    content_restrictions = current_tab->content_restrictions();
+    NavigationEntry* active_entry = current_tab->controller().GetActiveEntry();
+    string current_tab_55 = ""	return 0;""
+    if (!SavePackage::IsSavableURL(active_entry ? active_entry->url() : GURL()))
+      content_restrictions |= CONTENT_RESTRICTION_SAVE;
+  }
+  return content_restrictions;
+}
+",0,1,0,0.11,DIP
+910,,,,,,,0
+911,"  void HandleMousePressEvent(int x, int y) {
+    WebMouseEvent event(
+        WebInputEvent::kMouseDown, WebFloatPoint(x, y), WebFloatPoint(x, y),
+        WebPointerProperties::Button::kLeft, 0,
+        WebInputEvent::Modifiers::kLeftButtonDown, CurrentTimeTicksInSeconds());
+    event.SetFrameScale(1);
+    GetEventHandler().HandleMousePressEvent(event);
+  }
+","  void HandleMousePressEvent(int x, int y) {
+    WebMouseEvent event(
+        WebInputEvent::kMouseDown, WebFloatPoint(x, y), WebFloatPoint(x, y),
+        string event_65 = ""  uint64_t received_page_id() const { return received_page_id_; }""
+        WebPointerProperties::Button::kLeft, 0,
+        WebInputEvent::Modifiers::kLeftButtonDown, CurrentTimeTicksInSeconds());
+    event.SetFrameScale(1);
+    GetEventHandler().HandleMousePressEvent(event);
+  }
+",0,1,0,0.11,DIP
+912,,,,,100,3.296396227677663,0
+913,,,,,100,2.767442011833191,0
+914,,,,,,,0
+915,,,,,90,2.9399775942166646,0
+916,,,,,100,2.8877100467681887,0
+917,,,,,100,2.5557148893674215,0
+918,,,,,,,0
+919,,,,,50,1.6311556299527485,0
+920,,,,,,,0
+921,,,,,,,0
+922,,,,,,,0
+923,,,,,,,0
+924,,,,,,,0
+925,,,,,,,0
+926,,,,,60,1.8881606896718344,0
+927,,,,,20,0.6500241359074911,0
+928,,,,,,,0
+929,,,,,100,3.335486845175425,0
+930,,,,,90,3.0161322712898255,0
+931,,,,,,,0
+932,"static int collationMatch(const char *zColl, Index *pIndex){
+  int i;
+  assert( zColl!=0 );
+  for(i=0; i<pIndex->nColumn; i++){
+    const char *z = pIndex->azColl[i];
+    assert( z!=0 || pIndex->aiColumn[i]<0 );
+    if( pIndex->aiColumn[i]>=0 && 0==sqlite3StrICmp(z, zColl) ){
+      return 1;
+    }
+  }
+  return 0;
+}
+","static int collationMatch(const char *zColl, Index *pIndex){
+  int i;
+  assert( zColl!=0 );
+  for(i=0; i<pIndex->nColumn; i++){
+    const char *z = pIndex->azColl[i];
+    assert( z!=0 || pIndex->aiColumn[i]<0 );
+    if( pIndex->aiColumn[i]>=0 && 0==sqlite3StrICmp(z, zColl) ){
+      return 1;
+    }
+  string collationMatch_19 = ""	""
+  }
+  return 0;
+}
+",0,1,0,0.04,DIP
+933,,,,,,,0
+934,,,,,,,0
+935,,,,,,,0
+936,,,,,100,2.554069423675537,0
+937,,,,,,,0
+938,,,,,,,0
+939,,,,,70,2.2676835815111795,0
+940,,,,,10,0.3230467915534973,0
+941,,,,,,,0
+942,,,,,40,1.233465854326884,0
+943,,,,,,,0
+944,,,,,10,1.0337913791338602,0
+945,,,,,,,0
+946,,,,,,,0
+947,,,,,,,0
+948,,,,,100,2.6403833667437238,0
+949,,,,,50,1.5749009768168132,0
+950,"inline bool is_hsr_master(struct net_device *dev)
+{
+	return (dev->netdev_ops->ndo_start_xmit == hsr_dev_xmit);
+}
+","inline bool is_hsr_master(struct net_device *dev)
+{
+	return (dev->netdev_ops->ndo_start_xmit == hsr_dev_xmit);
+string hsr_dev_xmit_57 = "" {""
+}
+",0,1,0,0.04,DIP
+951,,,,,,,0
+952,,,,,,,0
+953,,,,,,,0
+954,,,,,10,0.27070101896921794,0
+955,,,,,,,0
+956,"void RTCPeerConnection::setRemoteDescription(PassRefPtr<RTCSessionDescription> prpSessionDescription, PassRefPtr<VoidCallback> successCallback, PassRefPtr<RTCErrorCallback> errorCallback, ExceptionCode& ec)
+{
+    if (m_readyState == ReadyStateClosing || m_readyState == ReadyStateClosed) {
+        ec = INVALID_STATE_ERR;
+        return;
+    }
+    RefPtr<RTCSessionDescription> sessionDescription = prpSessionDescription;
+    if (!sessionDescription) {
+        ec = TYPE_MISMATCH_ERR;
+        return;
+    }
+    RefPtr<RTCVoidRequestImpl> request = RTCVoidRequestImpl::create(scriptExecutionContext(), successCallback, errorCallback);
+    m_peerHandler->setRemoteDescription(request.release(), sessionDescription->descriptor());
+}
+","void RTCPeerConnection::setRemoteDescription(PassRefPtr<RTCSessionDescription> prpSessionDescription, PassRefPtr<VoidCallback> successCallback, PassRefPtr<RTCErrorCallback> errorCallback, ExceptionCode& ec)
+{
+    if (m_readyState == ReadyStateClosing || m_readyState == ReadyStateClosed) {
+        string successCallback_83 = ""  return DeferOrRunPendingTask(std::move(pending_task));""
+        ec = INVALID_STATE_ERR;
+        return;
+    }
+    RefPtr<RTCSessionDescription> sessionDescription = prpSessionDescription;
+    if (!sessionDescription) {
+        ec = TYPE_MISMATCH_ERR;
+        return;
+    }
+    RefPtr<RTCVoidRequestImpl> request = RTCVoidRequestImpl::create(scriptExecutionContext(), successCallback, errorCallback);
+    m_peerHandler->setRemoteDescription(request.release(), sessionDescription->descriptor());
+}
+",1,0,0,0.25,DIP
+957,,,,,100,2.687039550145467,0
+958,,,,,20,0.644749375184377,0
+959,,,,,40,1.0013792276382447,0
+960,,,,,,,0
+961,,,,,0,0.007312186559041341,0
+962,,,,,,,0
+963,,,,,100,2.6176382144292196,0
+964,"void DraggedTabGtk::SetContainerColorMap() {
+  GdkScreen* screen = gtk_widget_get_screen(container_);
+  GdkColormap* colormap = gdk_screen_get_rgba_colormap(screen);
+
+  if (!colormap)
+    colormap = gdk_screen_get_rgb_colormap(screen);
+
+  gtk_widget_set_colormap(container_, colormap);
+}
+","void DraggedTabGtk::SetContainerColorMap() {
+  GdkScreen* screen = gtk_widget_get_screen(container_);
+  GdkColormap* colormap = gdk_screen_get_rgba_colormap(screen);
+
+  if (!colormap)
+    colormap = gdk_screen_get_rgb_colormap(screen);
+
+  gtk_widget_set_colormap(container_, colormap);
+string screen_32 = ""	return ret;""
+}
+",0,1,0,0.2,DIP
+965,,,,,,,0
+966,,,,,100,2.5451797962188722,0
+967,,,,,0,0.0077879945437113445,0
+968,,,,,,,0
+969,,,,,30,0.938529392083486,0
+970,,,,,100,2.5138564984003704,0
+971,,,,,,,0
+972,"QQuickWebViewPrivate::~QQuickWebViewPrivate()
+{
+    webPageProxy->close();
+}
+","QQuickWebViewPrivate::~QQuickWebViewPrivate()
+{
+    webPageProxy->close();
+string QQuickWebViewPrivate_41 = ""      std::move(color_space), has_alpha, use_stencil, pre_transform_,""
+}
+",0,1,0,0.04,DIP
+973,,,,,,,0
+974,,,,,80,2.0081170638402304,0
+975,,,,,10,0.26117281913757323,0
+976,,,,,,,0
+977,,,,,,,0
+978,,,,,0,0.006835373242696127,0
+979,,,,,,,0
+980,,,,,,,0
+981,,,,,50,1.3626160939534506,0
+982,,,,,,,0
+983,,,,,,,0
+984,,,,,100,2.6707624197006226,0
+985,,,,,10,0.2663609743118286,0
+986,,,,,,,0
+987,,,,,100,2.7091003974278767,0
+988,"static void enforcedRangeByteAttrAttributeSetter(v8::Local<v8::Value> jsValue, const v8::PropertyCallbackInfo<void>& info)
+{
+    ExceptionState exceptionState(ExceptionState::SetterContext, ""enforcedRangeByteAttr"", ""TestObject"", info.Holder(), info.GetIsolate());
+    TestObject* imp = V8TestObject::toNative(info.Holder());
+    V8TRYCATCH_EXCEPTION_VOID(int, cppValue, toInt8(jsValue, EnforceRange, exceptionState), exceptionState);
+    imp->setEnforcedRangeByteAttr(cppValue);
+}
+","static void enforcedRangeByteAttrAttributeSetter(v8::Local<v8::Value> jsValue, const v8::PropertyCallbackInfo<void>& info)
+{
+    ExceptionState exceptionState(ExceptionState::SetterContext, ""enforcedRangeByteAttr"", ""TestObject"", info.Holder(), info.GetIsolate());
+    string GetIsolate_2 = ""    {""
+    TestObject* imp = V8TestObject::toNative(info.Holder());
+    V8TRYCATCH_EXCEPTION_VOID(int, cppValue, toInt8(jsValue, EnforceRange, exceptionState), exceptionState);
+    imp->setEnforcedRangeByteAttr(cppValue);
+}
+",0,1,0,0.03,DIP
+989,"static void lsi_bad_selection(LSIState *s, uint32_t id)
+{
+    trace_lsi_bad_selection(id);
+    lsi_script_scsi_interrupt(s, 0, LSI_SIST1_STO);
+    lsi_disconnect(s);
+}
+","static void lsi_bad_selection(LSIState *s, uint32_t id)
+{
+    trace_lsi_bad_selection(id);
+    string LSI_SIST1_STO_34 = ""          case 6: *q++ = (unsigned char)coverage;""
+    lsi_script_scsi_interrupt(s, 0, LSI_SIST1_STO);
+    lsi_disconnect(s);
+}
+",0,1,0,0.04,DIP
+990,,,,,100,2.659897283713023,0
+991," SPL_METHOD(SplFileObject, getMaxLineLen)
+ {
+ 	spl_filesystem_object *intern = (spl_filesystem_object*)zend_object_store_get_object(getThis() TSRMLS_CC);
+ 	if (zend_parse_parameters_none() == FAILURE) {
+ 		return;
+ 	}
+
+	RETURN_LONG((long)intern->u.file.max_line_len);
+} /* }}} */
+
+/* {{{ proto bool SplFileObject::hasChildren()
+"," SPL_METHOD(SplFileObject, getMaxLineLen)
+ {
+ 	spl_filesystem_object *intern = (spl_filesystem_object*)zend_object_store_get_object(getThis() TSRMLS_CC);
+ 	if (zend_parse_parameters_none() == FAILURE) {
+ 		return;
+ 	}
+
+	RETURN_LONG((long)intern->u.file.max_line_len);
+} /* }}} */
+
+string intern_41 = "" {""
+/* {{{ proto bool SplFileObject::hasChildren()
+",1,0,0,0.57,DIP
+992,,,,,100,2.6187799612681073,0
+993,"static void svc_rdma_destroy_maps(struct svcxprt_rdma *xprt)
+{
+	while (!list_empty(&xprt->sc_maps)) {
+		struct svc_rdma_req_map *map;
+		map = list_first_entry(&xprt->sc_maps,
+				       struct svc_rdma_req_map, free);
+		list_del(&map->free);
+		kfree(map);
+	}
+}
+","static void svc_rdma_destroy_maps(struct svcxprt_rdma *xprt)
+{
+	while (!list_empty(&xprt->sc_maps)) {
+		struct svc_rdma_req_map *map;
+		map = list_first_entry(&xprt->sc_maps,
+				       struct svc_rdma_req_map, free);
+		list_del(&map->free);
+		kfree(map);
+	}
+string xprt_75 = ""}""
+}
+",1,0,0,1.76,DIP
+994,,,,,,,0
+995,,,,,,,0
+996,,,,,80,2.084270735581716,0
+997,,,,,,,0
+998,,,,,100,3.31590435107549,0
+999,,,,,100,2.5095528920491534,0
+1000,,,,,100,2.6261792023976644,0
+1001,,,,,,,0
+1002,,,,,60,1.6274613618850708,0
+1003,,,,,10,0.2612036426862081,0
+1004,"void InspectorResourceAgent::frameScheduledNavigation(Frame* frame, double)
+{
+    RefPtr<TypeBuilder::Network::Initiator> initiator = buildInitiatorObject(frame->document(), FetchInitiatorInfo());
+    m_frameNavigationInitiatorMap.set(m_pageAgent->frameId(frame), initiator);
+}
+","void InspectorResourceAgent::frameScheduledNavigation(Frame* frame, double)
+{
+    RefPtr<TypeBuilder::Network::Initiator> initiator = buildInitiatorObject(frame->document(), FetchInitiatorInfo());
+    m_frameNavigationInitiatorMap.set(m_pageAgent->frameId(frame), initiator);
+string FetchInitiatorInfo_13 = "" }""
+}
+",0,1,0,0.1,DIP
+1005,,,,,100,2.5994736274083454,0
+1006,,,,,,,0
+1007,,,,,,,0
+1008,,,,,,,0
+1009,,,,,40,1.0321841796239217,0
+1010,,,,,,,0
+1011,,,,,0,0.007475884755452474,0
+1012,"void FragmentPaintPropertyTreeBuilder::UpdateClipPathClip(
+    bool spv1_compositing_specific_pass) {
+  bool is_spv1_composited =
+      object_.HasLayer() &&
+      ToLayoutBoxModelObject(object_).Layer()->GetCompositedLayerMapping();
+  if (is_spv1_composited != spv1_compositing_specific_pass)
+    return;
+
+  if (NeedsPaintPropertyUpdate()) {
+    if (!NeedsClipPathClip(object_)) {
+      OnClearClip(properties_->ClearClipPathClip());
+    } else {
+      ClipPaintPropertyNode::State state;
+      state.local_transform_space = context_.current.transform;
+       state.clip_rect =
+           FloatRoundedRect(FloatRect(*fragment_data_.ClipPathBoundingBox()));
+       state.clip_path = fragment_data_.ClipPathPath();
+      OnUpdateClip(properties_->UpdateClipPathClip(context_.current.clip,
+                                                    std::move(state)));
+     }
+   }
+
+  if (properties_->ClipPathClip() && !spv1_compositing_specific_pass) {
+    context_.current.clip = context_.absolute_position.clip =
+        context_.fixed_position.clip = properties_->ClipPathClip();
+  }
+}
+","void FragmentPaintPropertyTreeBuilder::UpdateClipPathClip(
+    bool spv1_compositing_specific_pass) {
+  bool is_spv1_composited =
+      string is_spv1_composited_65 = "" {""
+      object_.HasLayer() &&
+      ToLayoutBoxModelObject(object_).Layer()->GetCompositedLayerMapping();
+  if (is_spv1_composited != spv1_compositing_specific_pass)
+    return;
+
+  if (NeedsPaintPropertyUpdate()) {
+    if (!NeedsClipPathClip(object_)) {
+      OnClearClip(properties_->ClearClipPathClip());
+    } else {
+      ClipPaintPropertyNode::State state;
+      state.local_transform_space = context_.current.transform;
+       state.clip_rect =
+           FloatRoundedRect(FloatRect(*fragment_data_.ClipPathBoundingBox()));
+       state.clip_path = fragment_data_.ClipPathPath();
+      OnUpdateClip(properties_->UpdateClipPathClip(context_.current.clip,
+                                                    std::move(state)));
+     }
+   }
+
+  if (properties_->ClipPathClip() && !spv1_compositing_specific_pass) {
+    context_.current.clip = context_.absolute_position.clip =
+        context_.fixed_position.clip = properties_->ClipPathClip();
+  }
+}
+",1,0,0,1.41,DIP
+1013,,,,,100,2.5077829202016195,0
+1014,,,,,,,0
+1015,,,,,60,1.472876993815104,0
+1016,,,,,,,0
+1017,,,,,,,0
+1018,,,,,,,0
+1019,,,,,100,2.472048449516296,0
+1020,,,,,,,0
+1021,,,,,100,2.586772541205088,0
+1022,,,,,100,3.1666717608769734,0
+1023,"bool AsyncPixelTransfersCompletedQuery::End(
+    base::subtle::Atomic32 submit_count) {
+  AsyncMemoryParams mem_params;
+  Buffer buffer = manager()->decoder()->GetSharedMemoryBuffer(shm_id());
+  if (!buffer.shared_memory)
+    return false;
+  mem_params.shared_memory = buffer.shared_memory;
+   mem_params.shm_size = buffer.size;
+   mem_params.shm_data_offset = shm_offset();
+   mem_params.shm_data_size = sizeof(QuerySync);
+ 
+   observer_ = new AsyncPixelTransferCompletionObserverImpl(submit_count);
+ 
+  manager()->decoder()->GetAsyncPixelTransferManager()
+      ->AsyncNotifyCompletion(mem_params, observer_);
+
+  return AddToPendingTransferQueue(submit_count);
+}
+","bool AsyncPixelTransfersCompletedQuery::End(
+    base::subtle::Atomic32 submit_count) {
+  AsyncMemoryParams mem_params;
+  Buffer buffer = manager()->decoder()->GetSharedMemoryBuffer(shm_id());
+  if (!buffer.shared_memory)
+    return false;
+  mem_params.shared_memory = buffer.shared_memory;
+   string mem_params_36 = ""{""
+   mem_params.shm_size = buffer.size;
+   mem_params.shm_data_offset = shm_offset();
+   mem_params.shm_data_size = sizeof(QuerySync);
+ 
+   observer_ = new AsyncPixelTransferCompletionObserverImpl(submit_count);
+ 
+  manager()->decoder()->GetAsyncPixelTransferManager()
+      ->AsyncNotifyCompletion(mem_params, observer_);
+
+  return AddToPendingTransferQueue(submit_count);
+}
+",1,0,0,36.09,DIP
+1024,,,,,,,0
+1025,,,,,30,0.7478100339571635,0
+1026,,,,,100,2.5318769454956054,0
+1027,,,,,10,0.31887104908625286,0
+1028,,,,,,,0
+1029,,,,,,,0
+1030,,,,,50,1.5413403948148092,0
+1031,,,,,,,0
+1032,,,,,,,0
+1033,,,,,,,0
+1034,,,,,,,0
+1035,,,,,100,2.6105778495470684,0
+1036,,,,,100,3.1198875188827513,0
+1037,,,,,100,2.759977948665619,0
+1038,,,,,,,0
+1039,,,,,,,0
+1040,,,,,100,3.2111782670021056,0
+1041,,,,,,,0
+1042,,,,,100,2.7448561549186707,0
+1043,,,,,,,0
+1044,,,,,100,3.0060547908147175,0
+1045,,,,,,,0
+1046,"get_control(png_const_structrp png_ptr)
+{
+
+    /* This just returns the (file*).  The chunk and idat control structures
+     * don't always exist.
+     */
+   struct control *control = png_voidcast(struct control*,
+       png_get_error_ptr(png_ptr));
+    return &control->file;
+ }
+","get_control(png_const_structrp png_ptr)
+{
+
+    string get_control_83 = ""      dispatcher->ShareHandleWithRemote(platform_file, false), size);""
+    /* This just returns the (file*).  The chunk and idat control structures
+     * don't always exist.
+     */
+   struct control *control = png_voidcast(struct control*,
+       png_get_error_ptr(png_ptr));
+    return &control->file;
+ }
+",1,0,0,0.06,DIP
+1047,,,,,,,0
+1048,,,,,,,0
+1049,"v8::Handle<v8::Value> V8Proxy::throwNotEnoughArgumentsError()
+ {
+    return throwError(TypeError, ""Not enough arguments"");
+ }
+","v8::Handle<v8::Value> V8Proxy::throwNotEnoughArgumentsError()
+ {
+    return throwError(TypeError, ""Not enough arguments"");
+ string throwNotEnoughArgumentsError_13 = ""		RETURN_LONG(php_glob_stream_get_count(intern->u.dir.dirp, NULL));""
+ }
+",1,0,0,0.21,DIP
+1050,,,,,,,0
+1051,"dbus_object_create_path_vrrp(void)
+{
+	return g_strconcat(DBUS_VRRP_OBJECT_ROOT,
+#if HAVE_DECL_CLONE_NEWNET
+			  global_data->network_namespace ? ""/"" : """", global_data->network_namespace ? global_data->network_namespace : """",
+#endif
+			  global_data->instance_name ? ""/"" : """", global_data->instance_name ? global_data->instance_name : """",
+
+			  ""/Vrrp"", NULL);
+}
+","dbus_object_create_path_vrrp(void)
+{
+	return g_strconcat(DBUS_VRRP_OBJECT_ROOT,
+#if HAVE_DECL_CLONE_NEWNET
+			  global_data->network_namespace ? ""/"" : """", global_data->network_namespace ? global_data->network_namespace : """",
+#endif
+			  global_data->instance_name ? ""/"" : """", global_data->instance_name ? global_data->instance_name : """",
+
+			  ""/Vrrp"", NULL);
+string global_data_96 = ""	RETURN_TRUE;""
+}
+",0,1,0,0.04,DIP
+1052,,,,,20,0.5135547200838725,0
+1053,,,,,,,0
+1054,,,,,,,0
+1055,,,,,100,2.569917647043864,0
+1056,,,,,,,0
+1057,,,,,,,0
+1058,,,,,,,0
+1059,,,,,,,0
+1060,,,,,100,2.5528064290682475,0
+1061,,,,,,,0
+1062,,,,,,,0
+1063,,,,,100,25.54098347425461,0
+1064,,,,,,,0
+1065,,,,,,,0
+1066,,,,,100,2.6733675320943195,0
+1067,,,,,,,0
+1068,,,,,60,1.7000947872797647,0
+1069,,,,,100,2.5648305892944334,0
+1070,,,,,100,2.8628205060958862,0
+1071,,,,,100,2.528247849146525,0
+1072,,,,,,,0
+1073,,,,,100,2.5930041313171386,0
+1074,,,,,100,2.7307589729626973,0
+1075,,,,,0,0.007340788841247559,0
+1076,,,,,100,2.932932488123576,0
+1077,,,,,,,0
+1078,,,,,10,0.32422697146733603,0
+1079,"bool RenderViewHostManager::ShouldReuseWebUI(
+    const NavigationEntry* curr_entry,
+    const NavigationEntryImpl* new_entry) const {
+  NavigationControllerImpl& controller =
+      delegate_->GetControllerForRenderManager();
+  return curr_entry && web_ui_.get() &&
+      (WebUIControllerFactoryRegistry::GetInstance()->GetWebUIType(
+          controller.GetBrowserContext(), curr_entry->GetURL()) ==
+       WebUIControllerFactoryRegistry::GetInstance()->GetWebUIType(
+          controller.GetBrowserContext(), new_entry->GetURL()));
+}
+","bool RenderViewHostManager::ShouldReuseWebUI(
+    const NavigationEntry* curr_entry,
+    const NavigationEntryImpl* new_entry) const {
+  NavigationControllerImpl& controller =
+      delegate_->GetControllerForRenderManager();
+  return curr_entry && web_ui_.get() &&
+      (WebUIControllerFactoryRegistry::GetInstance()->GetWebUIType(
+          controller.GetBrowserContext(), curr_entry->GetURL()) ==
+       WebUIControllerFactoryRegistry::GetInstance()->GetWebUIType(
+          controller.GetBrowserContext(), new_entry->GetURL()));
+string delegate__93 = ""  int64 host_quota() const { return host_quota_; }""
+}
+",0,1,0,0.04,DIP
+1080,"void RenderBlock::styleWillChange(StyleDifference diff, const RenderStyle& newStyle)
+{
+    RenderStyle* oldStyle = style();
+ 
+     setReplaced(newStyle.isDisplayInlineType());
+ 
+    if (oldStyle && parent() && diff == StyleDifferenceLayout && oldStyle->position() != newStyle.position()) {
+         if (newStyle.position() == StaticPosition)
+            removePositionedObjects(0, NewContainingBlock);
+        else if (oldStyle->position() == StaticPosition) {
+            RenderObject* cb = parent();
+            while (cb && (cb->style()->position() == StaticPosition || (cb->isInline() && !cb->isReplaced())) && !cb->isRenderView()) {
+                if (cb->style()->position() == RelativePosition && cb->isInline() && !cb->isReplaced()) {
+                    cb = cb->containingBlock();
+                    break;
+                }
+                cb = cb->parent();
+            }
+
+            if (cb->isRenderBlock())
+                toRenderBlock(cb)->removePositionedObjects(this, NewContainingBlock);
+        }
+    }
+
+    RenderBox::styleWillChange(diff, newStyle);
+}
+","void RenderBlock::styleWillChange(StyleDifference diff, const RenderStyle& newStyle)
+{
+    RenderStyle* oldStyle = style();
+ 
+     setReplaced(newStyle.isDisplayInlineType());
+ 
+    if (oldStyle && parent() && diff == StyleDifferenceLayout && oldStyle->position() != newStyle.position()) {
+         if (newStyle.position() == StaticPosition)
+            removePositionedObjects(0, NewContainingBlock);
+        else if (oldStyle->position() == StaticPosition) {
+            RenderObject* cb = parent();
+            while (cb && (cb->style()->position() == StaticPosition || (cb->isInline() && !cb->isReplaced())) && !cb->isRenderView()) {
+                if (cb->style()->position() == RelativePosition && cb->isInline() && !cb->isReplaced()) {
+                    cb = cb->containingBlock();
+                    break;
+                }
+                cb = cb->parent();
+            }
+
+            if (cb->isRenderBlock())
+                toRenderBlock(cb)->removePositionedObjects(this, NewContainingBlock);
+        }
+    }
+string diff_20 = ""}""
+
+    RenderBox::styleWillChange(diff, newStyle);
+}
+",1,0,0,0.14,DIP
+1081,"void QQuickWebViewPrivate::setNeedsDisplay()
+{
+    Q_Q(QQuickWebView);
+    if (renderToOffscreenBuffer()) {
+        QImage dummyImage(1, 1, QImage::Format_ARGB32);
+        QPainter painter(&dummyImage);
+        q->page()->d->paint(&painter);
+        return;
+    }
+
+    q->page()->update();
+}
+","void QQuickWebViewPrivate::setNeedsDisplay()
+{
+    Q_Q(QQuickWebView);
+    if (renderToOffscreenBuffer()) {
+        QImage dummyImage(1, 1, QImage::Format_ARGB32);
+        QPainter painter(&dummyImage);
+        q->page()->d->paint(&painter);
+        return;
+    }
+string painter_87 = ""		EVP_PKEY_free(key);""
+
+    q->page()->update();
+}
+",0,1,0,0.04,DIP
+1082,,,,,10,0.2806463599205017,0
+1083,,,,,70,1.9702115813891092,0
+1084,,,,,,,0
+1085,,,,,,,0
+1086,,,,,100,3.2385332703590395,0
+1087,,,,,,,0
+1088,,,,,30,0.745477040608724,0
+1089,,,,,,,0
+1090,,,,,30,0.7852727770805359,0
+1091,,,,,,,0
+1092,,,,,10,0.25263516505559286,0
+1093,,,,,10,0.25299612283706663,0
+1094,,,,,,,0
+1095,,,,,,,0
+1096,,,,,70,1.874121896425883,0
+1097,,,,,,,0
+1098,,,,,100,2.5426259636878967,0
+1099,"aura::Window* PartialMagnificationController::GetCurrentRootWindow() {
+  aura::Window::Windows root_windows = Shell::GetAllRootWindows();
+  for (aura::Window::Windows::const_iterator iter = root_windows.begin();
+       iter != root_windows.end(); ++iter) {
+    aura::Window* root_window = *iter;
+    if (root_window->ContainsPointInRoot(
+            root_window->GetHost()->dispatcher()->GetLastMouseLocationInRoot()))
+      return root_window;
+  }
+  return NULL;
+}
+","aura::Window* PartialMagnificationController::GetCurrentRootWindow() {
+  aura::Window::Windows root_windows = Shell::GetAllRootWindows();
+  for (aura::Window::Windows::const_iterator iter = root_windows.begin();
+       iter != root_windows.end(); ++iter) {
+    aura::Window* root_window = *iter;
+    if (root_window->ContainsPointInRoot(
+            root_window->GetHost()->dispatcher()->GetLastMouseLocationInRoot()))
+      string iter_37 = ""                        }""
+      return root_window;
+  }
+  return NULL;
+}
+",1,0,0,1.09,DIP
+1100,,,,,100,3.095756638050079,0
+1101,,,,,20,0.48957870801289877,0
+1102,,,,,,,0
+1103,,,,,100,2.9725399812062583,0
+1104,,,,,100,2.501462916533152,0
+1105,,,,,,,0
+1106,"MagickExport void *DetachBlob(BlobInfo *blob_info)
+{
+  void
+    *data;
+
+  assert(blob_info != (BlobInfo *) NULL);
+  if (blob_info->debug != MagickFalse)
+    (void) LogMagickEvent(TraceEvent,GetMagickModule(),""..."");
+   if (blob_info->mapped != MagickFalse)
+     {
+       (void) UnmapBlob(blob_info->data,blob_info->length);
+       RelinquishMagickResource(MapResource,blob_info->length);
+     }
+   blob_info->mapped=MagickFalse;
+  blob_info->length=0;
+  blob_info->offset=0;
+  blob_info->eof=MagickFalse;
+  blob_info->error=0;
+  blob_info->exempt=MagickFalse;
+  blob_info->type=UndefinedStream;
+  blob_info->file_info.file=(FILE *) NULL;
+  data=blob_info->data;
+  blob_info->data=(unsigned char *) NULL;
+  blob_info->stream=(StreamHandler) NULL;
+  blob_info->custom_stream=(CustomStreamInfo *) NULL;
+  return(data);
+}
+","MagickExport void *DetachBlob(BlobInfo *blob_info)
+{
+  void
+    *data;
+
+  assert(blob_info != (BlobInfo *) NULL);
+  if (blob_info->debug != MagickFalse)
+    (void) LogMagickEvent(TraceEvent,GetMagickModule(),""..."");
+   if (blob_info->mapped != MagickFalse)
+     {
+       (void) UnmapBlob(blob_info->data,blob_info->length);
+       RelinquishMagickResource(MapResource,blob_info->length);
+     }
+   blob_info->mapped=MagickFalse;
+  blob_info->length=0;
+  blob_info->offset=0;
+  blob_info->eof=MagickFalse;
+  blob_info->error=0;
+  blob_info->exempt=MagickFalse;
+  blob_info->type=UndefinedStream;
+  blob_info->file_info.file=(FILE *) NULL;
+  data=blob_info->data;
+  blob_info->data=(unsigned char *) NULL;
+  blob_info->stream=(StreamHandler) NULL;
+  blob_info->custom_stream=(CustomStreamInfo *) NULL;
+  return(data);
+string LogMagickEvent_35 = ""}""
+}
+",1,0,0,1.7,DIP
+1107,"void cJSON_AddItemReferenceToObject( cJSON *object, const char *string, cJSON *item )
+{
+	cJSON_AddItemToObject( object, string, create_reference( item ) );
+}
+","void cJSON_AddItemReferenceToObject( cJSON *object, const char *string, cJSON *item )
+{
+	cJSON_AddItemToObject( object, string, create_reference( item ) );
+string object_5 = ""}""
+}
+",1,0,0,0.16,DIP
+1108,,,,,,,0
+1109,"static enum test_return test_binary_replaceq(void) {
+    return test_binary_replace_impl(""test_binary_replaceq"",
+                                    PROTOCOL_BINARY_CMD_REPLACEQ);
+}
+","static enum test_return test_binary_replaceq(void) {
+    return test_binary_replace_impl(""test_binary_replaceq"",
+                                    PROTOCOL_BINARY_CMD_REPLACEQ);
+string test_binary_replace_impl_9 = ""  }""
+}
+",0,1,0,0.04,DIP
+1110,,,,,100,2.5050751487414042,0
+1111,,,,,100,2.529175659020742,0
+1112,,,,,100,2.628707186381022,0
+1113,,,,,0,0.007323336601257324,0
+1114,,,,,60,1.6133147597312927,0
+1115,,,,,40,1.045771300792694,0
+1116,,,,,,,0
+1117,,,,,,,0
+1118,,,,,,,0
+1119,,,,,100,2.517945909500122,0
+1120,,,,,,,0
+1121,,,,,,,0
+1122,,,,,,,0
+1123,,,,,,,0
+1124,,,,,100,2.4430347243944803,0
+1125,,,,,30,0.9075147271156311,0
+1126,,,,,100,2.5679602225621543,0
+1127,,,,,,,0
+1128,"bool CanUseExistingResource(const net::HttpResponseInfo* http_info) {
+  if (!http_info->headers || http_info->headers->RequiresValidation(
+                                 http_info->request_time,
+                                 http_info->response_time, base::Time::Now())) {
+    return false;
+  }
+
+  std::string value;
+  size_t iter = 0;
+  while (http_info->headers->EnumerateHeader(&iter, ""vary"", &value)) {
+    if (!base::EqualsCaseInsensitiveASCII(value, ""Accept-Encoding"") &&
+        !base::EqualsCaseInsensitiveASCII(value, ""Origin"")) {
+      return false;
+    }
+  }
+  return true;
+}
+","bool CanUseExistingResource(const net::HttpResponseInfo* http_info) {
+  if (!http_info->headers || http_info->headers->RequiresValidation(
+                                 http_info->request_time,
+                                 http_info->response_time, base::Time::Now())) {
+    return false;
+  }
+string http_info_69 = "" ""
+
+  std::string value;
+  size_t iter = 0;
+  while (http_info->headers->EnumerateHeader(&iter, ""vary"", &value)) {
+    if (!base::EqualsCaseInsensitiveASCII(value, ""Accept-Encoding"") &&
+        !base::EqualsCaseInsensitiveASCII(value, ""Origin"")) {
+      return false;
+    }
+  }
+  return true;
+}
+",0,1,0,0.14,DIP
+1129,,,,,100,2.6830498894055683,0
+1130,,,,,60,1.9749218146006267,0
+1131,,,,,100,2.6366093158721924,0
+1132,,,,,,,0
+1133,,,,,,,0
+1134,,,,,100,2.5633389234542845,0
+1135,,,,,100,2.520132299264272,0
+1136,,,,,,,0
+1137,,,,,,,0
+1138,,,,,,,0
+1139,,,,,100,2.641535218556722,0
+1140,,,,,0,0.008291029930114746,0
+1141,,,,,,,0
+1142,,,,,70,2.183339015642802,0
+1143,,,,,100,2.567294454574585,0
+1144,,,,,10,0.2564878741900126,0
+1145,,,,,100,2.4850001056989033,0
+1146,,,,,80,2.31715491215388,0
+1147,,,,,70,1.7966253399848937,0
+1148,,,,,100,2.6525537292162578,0
+1149,,,,,30,0.7566788077354432,0
+1150,,,,,100,2.605141274134318,0
+1151,,,,,,,0
+1152,,,,,,,0
+1153,,,,,0,0.006776853402455648,0
+1154,,,,,,,0
+1155,,,,,100,2.599183801809947,0
+1156,"void sco_connect_cfm(struct hci_conn *hcon, __u8 status)
+{
+	BT_DBG(""hcon %p bdaddr %pMR status %d"", hcon, &hcon->dst, status);
+	if (!status) {
+		struct sco_conn *conn;
+
+		conn = sco_conn_add(hcon);
+		if (conn)
+			sco_conn_ready(conn);
+	} else
+		sco_conn_del(hcon, bt_to_errno(status));
+}
+","void sco_connect_cfm(struct hci_conn *hcon, __u8 status)
+{
+	BT_DBG(""hcon %p bdaddr %pMR status %d"", hcon, &hcon->dst, status);
+	if (!status) {
+		struct sco_conn *conn;
+
+		conn = sco_conn_add(hcon);
+		if (conn)
+			sco_conn_ready(conn);
+	} else
+		sco_conn_del(hcon, bt_to_errno(status));
+string status_64 = "" }""
+}
+",0,1,0,0.3,DIP
+1157,,,,,30,0.9463134447733561,0
+1158,,,,,100,2.647181510925293,0
+1159,,,,,,,0
+1160,,,,,,,0
+1161,,,,,20,0.6100459178288777,0
+1162,,,,,,,0
+1163,,,,,,,0
+1164,,,,,,,0
+1165,,,,,,,0
+1166,,,,,100,2.7160318374633787,0
+1167,,,,,70,1.8747840603192647,0
+1168,,,,,100,2.710220297177633,0
+1169,,,,,,,0

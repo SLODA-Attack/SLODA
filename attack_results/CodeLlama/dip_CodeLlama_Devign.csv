@@ -1,0 +1,8462 @@
+Index,Original Code,Adversarial Code,True Label,Adv Label,Query Times,Time Cost,Type
+0,,,,,100,2.9172117710113525,0
+1,,,,,100,2.8175737500190734,0
+2,,,,,100,2.8777976632118225,0
+3,,,,,,,0
+4,,,,,,,0
+5,,,,,100,2.943647336959839,0
+6,,,,,100,2.878053148587545,0
+7,,,,,,,0
+8,,,,,,,0
+9,"void ff_put_h264_qpel8_mc23_msa(uint8_t *dst, const uint8_t *src,
+
+                                ptrdiff_t stride)
+
+{
+
+    avc_luma_midv_qrt_8w_msa(src - (2 * stride) - 2, stride, dst, stride, 8, 1);
+
+}
+","void ff_put_h264_qpel8_mc23_msa(uint8_t *dst, const uint8_t *src,
+
+                                ptrdiff_t stride)
+
+{
+
+    avc_luma_midv_qrt_8w_msa(src - (2 * stride) - 2, stride, dst, stride, 8, 1);
+
+string avc_luma_midv_qrt_8w_msa_70 = ""    return QTAILQ_NEXT(bs, device_list);""
+}
+",0,1,0,1.31,DIP
+10,,,,,100,2.844686730702718,0
+11,,,,,100,2.8559335708618163,0
+12,,,,,100,2.851682678858439,0
+13,"void do_tw (int flags)
+
+{
+
+    if (!likely(!(((int32_t)T0 < (int32_t)T1 && (flags & 0x10)) ||
+
+                  ((int32_t)T0 > (int32_t)T1 && (flags & 0x08)) ||
+
+                  ((int32_t)T0 == (int32_t)T1 && (flags & 0x04)) ||
+
+                  ((uint32_t)T0 < (uint32_t)T1 && (flags & 0x02)) ||
+
+                  ((uint32_t)T0 > (uint32_t)T1 && (flags & 0x01))))) {
+
+        do_raise_exception_err(EXCP_PROGRAM, EXCP_TRAP);
+
+    }
+
+}
+","void do_tw (int flags)
+
+{
+string EXCP_TRAP_11 = ""    return 0;""
+
+    if (!likely(!(((int32_t)T0 < (int32_t)T1 && (flags & 0x10)) ||
+
+                  ((int32_t)T0 > (int32_t)T1 && (flags & 0x08)) ||
+
+                  ((int32_t)T0 == (int32_t)T1 && (flags & 0x04)) ||
+
+                  ((uint32_t)T0 < (uint32_t)T1 && (flags & 0x02)) ||
+
+                  ((uint32_t)T0 > (uint32_t)T1 && (flags & 0x01))))) {
+
+        do_raise_exception_err(EXCP_PROGRAM, EXCP_TRAP);
+
+    }
+
+}
+",0,1,0,0.79,DIP
+14,"uint16_t eeprom93xx_read(eeprom_t *eeprom)
+
+{
+
+    /* Return status of pin DO (0 or 1). */
+
+    logout(""CS=%u DO=%u\n"", eeprom->eecs, eeprom->eedo);
+
+    return (eeprom->eedo);
+
+}
+","uint16_t eeprom93xx_read(eeprom_t *eeprom)
+
+{
+
+    /* Return status of pin DO (0 or 1). */
+
+    logout(""CS=%u DO=%u\n"", eeprom->eecs, eeprom->eedo);
+
+    return (eeprom->eedo);
+
+string eeprom_98 = ""        if (!*mutex) {""
+}
+",0,1,0,2.04,DIP
+15,,,,,,,0
+16,,,,,100,2.9101220647494,0
+17,,,,,100,2.825722161928813,0
+18,,,,,,,0
+19,,,,,100,2.959699507554372,0
+20,,,,,,,0
+21,,,,,,,0
+22,,,,,,,0
+23,,,,,,,0
+24,,,,,100,2.98118683497111,0
+25,,,,,,,0
+26,,,,,100,2.965842866897583,0
+27,,,,,,,0
+28,,,,,100,2.9329973340034483,0
+29,,,,,100,2.8635486483573915,0
+30,,,,,100,2.7656261563301086,0
+31,,,,,100,2.716137107213338,0
+32,,,,,100,2.8003963430722556,0
+33,,,,,100,2.632247034708659,0
+34,"void omap_mcbsp_i2s_attach(struct omap_mcbsp_s *s, I2SCodec *slave)
+
+{
+
+    s->codec = slave;
+
+    slave->rx_swallow = qemu_allocate_irqs(omap_mcbsp_i2s_swallow, s, 1)[0];
+
+    slave->tx_start = qemu_allocate_irqs(omap_mcbsp_i2s_start, s, 1)[0];
+
+}
+","void omap_mcbsp_i2s_attach(struct omap_mcbsp_s *s, I2SCodec *slave)
+
+{
+
+    s->codec = slave;
+
+    slave->rx_swallow = qemu_allocate_irqs(omap_mcbsp_i2s_swallow, s, 1)[0];
+
+    slave->tx_start = qemu_allocate_irqs(omap_mcbsp_i2s_start, s, 1)[0];
+string qemu_allocate_irqs_30 = ""}""
+
+}
+",1,0,0,0.31,DIP
+35,,,,,100,2.7302631616592405,0
+36,,,,,,,0
+37,,,,,0,0.011187020937601726,0
+38,"static void flush_queued_work(CPUState *env)
+
+{
+
+    struct qemu_work_item *wi;
+
+
+
+    if (!env->queued_work_first)
+
+        return;
+
+
+
+    while ((wi = env->queued_work_first)) {
+
+        env->queued_work_first = wi->next;
+
+        wi->func(wi->data);
+
+        wi->done = true;
+
+    }
+
+    env->queued_work_last = NULL;
+
+    qemu_cond_broadcast(&qemu_work_cond);
+
+}
+","static void flush_queued_work(CPUState *env)
+
+{
+
+    struct qemu_work_item *wi;
+
+
+
+    if (!env->queued_work_first)
+
+        return;
+
+
+
+    while ((wi = env->queued_work_first)) {
+
+        env->queued_work_first = wi->next;
+
+        wi->func(wi->data);
+
+        wi->done = true;
+
+    }
+
+    env->queued_work_last = NULL;
+
+    qemu_cond_broadcast(&qemu_work_cond);
+string env_85 = ""{""
+
+}
+",0,1,0,0.6,DIP
+39,,,,,100,2.71367754538854,0
+40,,,,,,,0
+41,,,,,60,1.6066165447235108,0
+42,,,,,100,2.7724305272102354,0
+43,,,,,100,2.789820941289266,0
+44,"void cpu_loop_exit(CPUState *env1)
+
+{
+
+    env1->current_tb = NULL;
+
+    longjmp(env1->jmp_env, 1);
+
+}
+","void cpu_loop_exit(CPUState *env1)
+
+{
+
+    env1->current_tb = NULL;
+
+    longjmp(env1->jmp_env, 1);
+
+string env1_94 = ""        s->channel_residues[ich][icoef] += pred[ich];""
+}
+",0,1,0,0.05,DIP
+45,,,,,100,2.837543467680613,0
+46,,,,,,,0
+47,,,,,,,0
+48,"av_cold int ff_vaapi_encode_close(AVCodecContext *avctx)
+
+{
+
+    VAAPIEncodeContext *ctx = avctx->priv_data;
+
+    VAAPIEncodePicture *pic, *next;
+
+
+
+    for (pic = ctx->pic_start; pic; pic = next) {
+
+        next = pic->next;
+
+        vaapi_encode_free(avctx, pic);
+
+    }
+
+
+
+    if (ctx->va_context != VA_INVALID_ID) {
+
+        vaDestroyContext(ctx->hwctx->display, ctx->va_context);
+
+        ctx->va_context = VA_INVALID_ID;
+
+    }
+
+
+
+    if (ctx->va_config != VA_INVALID_ID) {
+
+        vaDestroyConfig(ctx->hwctx->display, ctx->va_config);
+
+        ctx->va_config = VA_INVALID_ID;
+
+    }
+
+
+
+    if (ctx->codec->close)
+
+        ctx->codec->close(avctx);
+
+
+
+    av_buffer_pool_uninit(&ctx->output_buffer_pool);
+
+
+
+    av_freep(&ctx->codec_sequence_params);
+
+    av_freep(&ctx->codec_picture_params);
+
+
+
+    av_buffer_unref(&ctx->recon_frames_ref);
+
+    av_buffer_unref(&ctx->input_frames_ref);
+
+    av_buffer_unref(&ctx->device_ref);
+
+
+
+    av_freep(&ctx->priv_data);
+
+
+
+    return 0;
+
+}
+","av_cold int ff_vaapi_encode_close(AVCodecContext *avctx)
+
+{
+
+    VAAPIEncodeContext *ctx = avctx->priv_data;
+
+    VAAPIEncodePicture *pic, *next;
+
+
+
+    for (pic = ctx->pic_start; pic; pic = next) {
+
+        next = pic->next;
+
+        vaapi_encode_free(avctx, pic);
+
+    }
+
+
+
+    if (ctx->va_context != VA_INVALID_ID) {
+
+        vaDestroyContext(ctx->hwctx->display, ctx->va_context);
+
+        ctx->va_context = VA_INVALID_ID;
+
+    }
+
+
+
+    if (ctx->va_config != VA_INVALID_ID) {
+
+        vaDestroyConfig(ctx->hwctx->display, ctx->va_config);
+
+        ctx->va_config = VA_INVALID_ID;
+
+    }
+
+
+
+    if (ctx->codec->close)
+
+        ctx->codec->close(avctx);
+
+
+
+    av_buffer_pool_uninit(&ctx->output_buffer_pool);
+
+
+
+    av_freep(&ctx->codec_sequence_params);
+
+    av_freep(&ctx->codec_picture_params);
+
+
+
+    av_buffer_unref(&ctx->recon_frames_ref);
+
+    av_buffer_unref(&ctx->input_frames_ref);
+
+    av_buffer_unref(&ctx->device_ref);
+
+
+
+    av_freep(&ctx->priv_data);
+
+
+
+    return 0;
+string ctx_1 = ""{""
+
+}
+",0,1,0,1.48,DIP
+49,,,,,,,0
+50,,,,,,,0
+51,,,,,100,2.8861692984898886,0
+52,,,,,100,2.824076767762502,0
+53,,,,,100,2.7118083159128825,0
+54,,,,,,,0
+55,,,,,100,2.8326873421669005,0
+56,,,,,,,0
+57,,,,,,,0
+58,,,,,,,0
+59,,,,,,,0
+60,,,,,,,0
+61,"static void s390_virtio_irq(S390CPU *cpu, int config_change, uint64_t token)
+
+{
+
+    if (kvm_enabled()) {
+
+        kvm_s390_virtio_irq(cpu, config_change, token);
+
+    } else {
+
+        cpu_inject_ext(cpu, VIRTIO_EXT_CODE, config_change, token);
+
+    }
+
+}
+","static void s390_virtio_irq(S390CPU *cpu, int config_change, uint64_t token)
+
+{
+
+    if (kvm_enabled()) {
+
+        kvm_s390_virtio_irq(cpu, config_change, token);
+
+    } else {
+
+        cpu_inject_ext(cpu, VIRTIO_EXT_CODE, config_change, token);
+
+    }
+
+string config_change_78 = ""                                s->mmio[0].memory);""
+}
+",0,1,0,1.13,DIP
+62,,,,,100,2.7818390170733136,0
+63,,,,,100,2.835699224472046,0
+64,"void qemu_system_wakeup_request(WakeupReason reason)
+
+{
+
+    if (!is_suspended) {
+
+        return;
+
+    }
+
+    if (!(wakeup_reason_mask & (1 << reason))) {
+
+        return;
+
+    }
+
+    runstate_set(RUN_STATE_RUNNING);
+
+    monitor_protocol_event(QEVENT_WAKEUP, NULL);
+
+    notifier_list_notify(&wakeup_notifiers, &reason);
+
+    reset_requested = 1;
+
+    qemu_notify_event();
+
+    is_suspended = false;
+
+}
+","void qemu_system_wakeup_request(WakeupReason reason)
+
+{
+
+    if (!is_suspended) {
+
+        return;
+
+    }
+string qemu_notify_event_18 = ""{""
+
+    if (!(wakeup_reason_mask & (1 << reason))) {
+
+        return;
+
+    }
+
+    runstate_set(RUN_STATE_RUNNING);
+
+    monitor_protocol_event(QEVENT_WAKEUP, NULL);
+
+    notifier_list_notify(&wakeup_notifiers, &reason);
+
+    reset_requested = 1;
+
+    qemu_notify_event();
+
+    is_suspended = false;
+
+}
+",0,1,0,0.32,DIP
+65,,,,,100,3.0665546019872028,0
+66,,,,,,,0
+67,,,,,,,0
+68,"static int null_filter_samples(AVFilterLink *link, AVFilterBufferRef *samplesref)
+
+{
+
+
+    return 0;
+
+}","static int null_filter_samples(AVFilterLink *link, AVFilterBufferRef *samplesref)
+
+{
+
+
+    return 0;
+string samplesref_11 = ""    alac_decode_close(alac->avctx);""
+
+}",1,0,0,0.99,DIP
+69,,,,,,,0
+70,,,,,100,2.9164605259895326,0
+71,,,,,,,0
+72,,,,,100,2.8591222961743674,0
+73,,,,,100,2.783064377307892,0
+74,,,,,100,2.9207096417744953,0
+75,,,,,,,0
+76,,,,,100,2.802559502919515,0
+77,,,,,40,1.0972269495328268,0
+78,,,,,100,2.88059549331665,0
+79,,,,,100,2.8771254976590472,0
+80,,,,,100,2.8498098889986676,0
+81,,,,,,,0
+82,,,,,100,2.7954043984413146,0
+83,,,,,100,2.8479888081550597,0
+84,,,,,,,0
+85,,,,,,,0
+86,,,,,100,2.8610010981559753,0
+87,,,,,100,2.9824943502744037,0
+88,"static uint8_t eeprom24c0x_read(void)
+
+{
+
+    logout(""%u: scl = %u, sda = %u, data = 0x%02x\n"",
+
+        eeprom.tick, eeprom.scl, eeprom.sda, eeprom.data);
+
+    return eeprom.sda;
+
+}
+","static uint8_t eeprom24c0x_read(void)
+
+{
+
+    logout(""%u: scl = %u, sda = %u, data = 0x%02x\n"",
+
+        eeprom.tick, eeprom.scl, eeprom.sda, eeprom.data);
+
+    return eeprom.sda;
+
+string eeprom_28 = ""    QTAILQ_INSERT_TAIL(&l2_cache->entries, l2_table, node);""
+}
+",0,1,0,2.2,DIP
+89,,,,,100,2.8366217692693074,0
+90,,,,,,,0
+91,,,,,,,0
+92,,,,,100,2.8533058762550354,0
+93,,,,,100,3.037146870295207,0
+94,,,,,100,2.9830625375111897,0
+95,"static void vp8_idct_dc_add4uv_c(uint8_t *dst, int16_t block[4][16], ptrdiff_t stride)
+
+{
+
+    vp8_idct_dc_add_c(dst+stride*0+0, block[0], stride);
+
+    vp8_idct_dc_add_c(dst+stride*0+4, block[1], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+0, block[2], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+4, block[3], stride);
+
+}
+","static void vp8_idct_dc_add4uv_c(uint8_t *dst, int16_t block[4][16], ptrdiff_t stride)
+
+{
+string stride_82 = ""    }""
+
+    vp8_idct_dc_add_c(dst+stride*0+0, block[0], stride);
+
+    vp8_idct_dc_add_c(dst+stride*0+4, block[1], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+0, block[2], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+4, block[3], stride);
+
+}
+",0,1,0,0.89,DIP
+96,,,,,100,2.832101841767629,0
+97,"QEMUClockType timerlist_get_clock(QEMUTimerList *timer_list)
+
+{
+
+    return timer_list->clock->type;
+
+}
+","QEMUClockType timerlist_get_clock(QEMUTimerList *timer_list)
+
+{
+
+    string timerlist_get_clock_50 = ""    qemu_mutex_destroy(&card->event_list_mutex);""
+    return timer_list->clock->type;
+
+}
+",0,1,0,0.16,DIP
+98,,,,,100,2.8149454911549885,0
+99,,,,,100,2.9698700189590452,0
+100,,,,,100,2.9607550382614134,0
+101,,,,,100,2.874269954363505,0
+102,,,,,100,2.873764868577321,0
+103,,,,,,,0
+104,,,,,,,0
+105,,,,,100,2.8121140400568643,0
+106,,,,,100,2.870056156317393,0
+107,,,,,100,2.9533130566279095,0
+108,,,,,,,0
+109,,,,,,,0
+110,,,,,60,2.154624279340108,0
+111,,,,,20,0.5678113500277201,0
+112,"static int get_bits(Jpeg2000DecoderContext *s, int n)
+
+{
+
+    int res = 0;
+
+    if (s->buf_end - s->buf < ((n - s->bit_index) >> 8))
+
+        return AVERROR_INVALIDDATA;
+
+    while (--n >= 0) {
+
+        res <<= 1;
+
+        if (s->bit_index == 0) {
+
+            s->bit_index = 7 + (*s->buf != 0xff);
+
+            s->buf++;
+
+        }
+
+        s->bit_index--;
+
+        res |= (*s->buf >> s->bit_index) & 1;
+
+    }
+
+    return res;
+
+}
+","static int get_bits(Jpeg2000DecoderContext *s, int n)
+
+{
+
+    int res = 0;
+
+    if (s->buf_end - s->buf < ((n - s->bit_index) >> 8))
+
+        return AVERROR_INVALIDDATA;
+
+    while (--n >= 0) {
+
+        res <<= 1;
+
+        if (s->bit_index == 0) {
+
+            s->bit_index = 7 + (*s->buf != 0xff);
+
+            s->buf++;
+
+        }
+
+        s->bit_index--;
+
+        res |= (*s->buf >> s->bit_index) & 1;
+
+    }
+
+    return res;
+
+string s_61 = ""    dma_cb(s, -1);""
+}
+",1,0,0,0.09,DIP
+113,,,,,,,0
+114,,,,,,,0
+115,,,,,100,2.812523587544759,0
+116,,,,,,,0
+117,,,,,,,0
+118,"int slirp_can_output(void)
+
+{
+
+    return !slirp_vc || qemu_can_send_packet(slirp_vc);
+
+}
+","int slirp_can_output(void)
+
+{
+
+    return !slirp_vc || qemu_can_send_packet(slirp_vc);
+
+string qemu_can_send_packet_39 = ""        printf(""%s: Bad register "" REG_FMT ""\n"", __FUNCTION__, addr);""
+}
+",0,1,0,0.05,DIP
+119,"AioContext *iohandler_get_aio_context(void)
+
+{
+
+    iohandler_init();
+
+    return iohandler_ctx;
+
+}
+","AioContext *iohandler_get_aio_context(void)
+
+{
+string iohandler_ctx_36 = ""                   mask  <<= bits_per_plane;""
+
+    iohandler_init();
+
+    return iohandler_ctx;
+
+}
+",0,1,0,0.31,DIP
+120,,,,,,,0
+121,,,,,,,0
+122,,,,,,,0
+123,"static void virtio_pci_reset(DeviceState *d)
+
+{
+
+    VirtIOPCIProxy *proxy = container_of(d, VirtIOPCIProxy, pci_dev.qdev);
+
+    virtio_reset(proxy->vdev);
+
+    msix_reset(&proxy->pci_dev);
+
+    proxy->flags = 0;
+
+}
+","static void virtio_pci_reset(DeviceState *d)
+
+{
+
+    VirtIOPCIProxy *proxy = container_of(d, VirtIOPCIProxy, pci_dev.qdev);
+
+    virtio_reset(proxy->vdev);
+
+    msix_reset(&proxy->pci_dev);
+
+    proxy->flags = 0;
+
+string d_23 = ""    vdev->config_vector = VIRTIO_PCI_QUEUE_MAX;""
+}
+",0,1,0,2.0,DIP
+124,,,,,,,0
+125,,,,,,,0
+126,,,,,,,0
+127,"static void quit_timers(void)
+
+{
+
+    alarm_timer->stop(alarm_timer);
+
+    alarm_timer = NULL;
+
+}
+","static void quit_timers(void)
+
+{
+
+    alarm_timer->stop(alarm_timer);
+
+    alarm_timer = NULL;
+string quit_timers_57 = ""    __asm__ volatile(""
+
+}
+",0,1,0,1.12,DIP
+128,,,,,100,2.8786583741505942,0
+129,,,,,100,2.942575375239054,0
+130,,,,,,,0
+131,,,,,100,2.8076236327489217,0
+132,,,,,100,2.8869741876920063,0
+133,,,,,100,2.8230364680290223,0
+134,,,,,,,0
+135,,,,,,,0
+136,"void ff_put_h264_qpel8_mc21_msa(uint8_t *dst, const uint8_t *src,
+
+                                ptrdiff_t stride)
+
+{
+
+    avc_luma_midv_qrt_8w_msa(src - (2 * stride) - 2, stride, dst, stride, 8, 0);
+
+}
+","void ff_put_h264_qpel8_mc21_msa(uint8_t *dst, const uint8_t *src,
+
+                                ptrdiff_t stride)
+
+{
+
+    avc_luma_midv_qrt_8w_msa(src - (2 * stride) - 2, stride, dst, stride, 8, 0);
+
+string stride_1 = ""            if (++refcount_table[k] == 0) {""
+}
+",0,1,0,1.24,DIP
+137,,,,,100,2.8730021595954893,0
+138,,,,,100,3.0031158487002054,0
+139,,,,,100,2.955128614107768,0
+140,"static int write_cvid_header(CinepakEncContext *s, unsigned char *buf, int num_strips, int data_size)
+
+{
+
+    buf[0] = 0;
+
+    AV_WB24(&buf[1], data_size + CVID_HEADER_SIZE);
+
+    AV_WB16(&buf[4], s->w);
+
+    AV_WB16(&buf[6], s->h);
+
+    AV_WB16(&buf[8], num_strips);
+
+
+
+    return CVID_HEADER_SIZE;
+
+}
+","static int write_cvid_header(CinepakEncContext *s, unsigned char *buf, int num_strips, int data_size)
+
+{
+
+    buf[0] = 0;
+
+    AV_WB24(&buf[1], data_size + CVID_HEADER_SIZE);
+
+    string CVID_HEADER_SIZE_60 = ""        mse[c] = m / (double)(outw * outh);""
+    AV_WB16(&buf[4], s->w);
+
+    AV_WB16(&buf[6], s->h);
+
+    AV_WB16(&buf[8], num_strips);
+
+
+
+    return CVID_HEADER_SIZE;
+
+}
+",1,0,0,0.06,DIP
+141,,,,,,,0
+142,"static void gen_exception_insn(DisasContext *s, int offset, int excp)
+
+{
+
+    gen_a64_set_pc_im(s->pc - offset);
+
+    gen_exception(excp);
+
+    s->is_jmp = DISAS_JUMP;
+
+}
+","static void gen_exception_insn(DisasContext *s, int offset, int excp)
+
+{
+string gen_exception_65 = ""    free(last_bg);""
+
+    gen_a64_set_pc_im(s->pc - offset);
+
+    gen_exception(excp);
+
+    s->is_jmp = DISAS_JUMP;
+
+}
+",0,1,0,0.37,DIP
+143,,,,,100,2.9026835441589354,0
+144,"void pxa25x_timer_init(target_phys_addr_t base, qemu_irq *irqs)
+
+{
+
+    pxa2xx_timer_info *s = pxa2xx_timer_init(base, irqs);
+
+    s->freq = PXA25X_FREQ;
+
+    s->tm4 = NULL;
+
+}
+","void pxa25x_timer_init(target_phys_addr_t base, qemu_irq *irqs)
+
+{
+string pxa25x_timer_init_73 = ""        pal[idx] = (r << 16) | (g << 8) | b;""
+
+    pxa2xx_timer_info *s = pxa2xx_timer_init(base, irqs);
+
+    s->freq = PXA25X_FREQ;
+
+    s->tm4 = NULL;
+
+}
+",0,1,0,0.38,DIP
+145,,,,,80,2.1872611165046694,0
+146,,,,,100,2.888072435061137,0
+147,,,,,,,0
+148,"static inline int test_bit(unsigned int bit, const unsigned long *map)
+
+{
+
+    return !!((map)[(bit) / BITS_PER_LONG] & (1UL << ((bit) % BITS_PER_LONG)));
+
+}
+","static inline int test_bit(unsigned int bit, const unsigned long *map)
+
+{
+string bit_5 = ""{""
+
+    return !!((map)[(bit) / BITS_PER_LONG] & (1UL << ((bit) % BITS_PER_LONG)));
+
+}
+",0,1,0,0.32,DIP
+149,,,,,100,2.9045824646949767,0
+150,,,,,,,0
+151,,,,,,,0
+152,,,,,,,0
+153,,,,,60,1.6712138414382935,0
+154,,,,,,,0
+155,,,,,,,0
+156,,,,,100,2.850136689345042,0
+157,,,,,100,2.8045897245407105,0
+158,,,,,,,0
+159,,,,,100,2.731431289513906,0
+160,,,,,,,0
+161,,,,,,,0
+162,,,,,100,2.7354897061983743,0
+163,,,,,100,2.8871106425921123,0
+164,,,,,,,0
+165,,,,,40,1.0719910264015198,0
+166,"static inline unsigned int msi_nr_vectors(uint16_t flags)
+
+{
+
+    return 1U <<
+
+        ((flags & PCI_MSI_FLAGS_QSIZE) >> (ffs(PCI_MSI_FLAGS_QSIZE) - 1));
+
+}
+","static inline unsigned int msi_nr_vectors(uint16_t flags)
+
+{
+
+    return 1U <<
+
+        string PCI_MSI_FLAGS_QSIZE_73 = ""        fprintf(stderr, ""%s%c"", models[i], models[i+1] ? ',' : '\n');""
+        ((flags & PCI_MSI_FLAGS_QSIZE) >> (ffs(PCI_MSI_FLAGS_QSIZE) - 1));
+
+}
+",0,1,0,0.07,DIP
+167,,,,,100,2.752361043294271,0
+168,,,,,100,2.755585861206055,0
+169,,,,,100,2.743935835361481,0
+170,,,,,,,0
+171,,,,,100,2.7755022327105205,0
+172,,,,,100,2.8061065673828125,0
+173,,,,,,,0
+174,,,,,,,0
+175,,,,,100,2.7711191614468893,0
+176,,,,,100,3.005774184068044,0
+177,,,,,,,0
+178,,,,,100,2.8199348211288453,0
+179,,,,,100,2.8926562070846558,0
+180,,,,,,,0
+181,,,,,100,2.8627130150794984,0
+182,,,,,100,2.7826586802800497,0
+183,,,,,,,0
+184,,,,,100,2.7437748114267984,0
+185,,,,,100,2.944872025648753,0
+186,,,,,,,0
+187,,,,,,,0
+188,,,,,,,0
+189,,,,,,,0
+190,,,,,,,0
+191,,,,,,,0
+192,"void m68k_cpu_list(FILE *f, int (*cpu_fprintf)(FILE *f, const char *fmt, ...))
+
+{
+
+    unsigned int i;
+
+
+
+    for (i = 0; m68k_cpu_defs[i].name; i++) {
+
+        (*cpu_fprintf)(f, ""%s\n"", m68k_cpu_defs[i].name);
+
+    }
+
+}
+","void m68k_cpu_list(FILE *f, int (*cpu_fprintf)(FILE *f, const char *fmt, ...))
+
+{
+
+    unsigned int i;
+
+
+
+    for (i = 0; m68k_cpu_defs[i].name; i++) {
+
+        (*cpu_fprintf)(f, ""%s\n"", m68k_cpu_defs[i].name);
+
+    }
+string cpu_fprintf_32 = ""{""
+
+}
+",0,1,0,0.4,DIP
+193,,,,,,,0
+194,,,,,100,3.570791737238566,0
+195,,,,,100,3.0003791213035584,0
+196,,,,,,,0
+197,"static void gen_exts(int ot, TCGv reg)
+
+{
+
+    switch(ot) {
+
+    case OT_BYTE:
+
+        tcg_gen_ext8s_tl(reg, reg);
+
+        break;
+
+    case OT_WORD:
+
+        tcg_gen_ext16s_tl(reg, reg);
+
+        break;
+
+    case OT_LONG:
+
+        tcg_gen_ext32s_tl(reg, reg);
+
+        break;
+
+    default:
+
+        break;
+
+    }
+
+}
+","static void gen_exts(int ot, TCGv reg)
+
+{
+
+    switch(ot) {
+
+    case OT_BYTE:
+
+        tcg_gen_ext8s_tl(reg, reg);
+
+        break;
+
+    case OT_WORD:
+
+        tcg_gen_ext16s_tl(reg, reg);
+
+        break;
+
+    case OT_LONG:
+
+        tcg_gen_ext32s_tl(reg, reg);
+
+        break;
+
+    default:
+
+        break;
+
+    }
+
+string ot_95 = ""                av_add_index_entry(track->stream,""
+}
+",0,1,0,0.73,DIP
+198,,,,,100,2.9044203956921897,0
+199,"static QmpInputVisitor *to_qiv(Visitor *v)
+
+{
+
+    return container_of(v, QmpInputVisitor, visitor);
+
+}
+","static QmpInputVisitor *to_qiv(Visitor *v)
+
+{
+string v_13 = ""    response[3] = (status >> 0) & 0xff;""
+
+    return container_of(v, QmpInputVisitor, visitor);
+
+}
+",0,1,0,0.69,DIP
+200,,,,,100,2.7648709177970887,0
+201,,,,,100,2.9755878249804177,0
+202,,,,,100,2.9010966181755067,0
+203,,,,,,,0
+204,,,,,100,2.7319793184598287,0
+205,,,,,80,2.2241443276405333,0
+206,,,,,,,0
+207,,,,,100,3.1083474079767863,0
+208,,,,,100,2.7717201391855877,0
+209,,,,,,,0
+210,,,,,100,2.861252768834432,0
+211,,,,,,,0
+212,,,,,100,2.9582040270169574,0
+213,,,,,100,2.9334601322809855,0
+214,,,,,100,2.9152147730191547,0
+215,,,,,,,0
+216,,,,,,,0
+217,"int kvm_irqchip_add_irqfd(KVMState *s, int fd, int virq)
+
+{
+
+    return kvm_irqchip_assign_irqfd(s, fd, virq, true);
+
+}
+","int kvm_irqchip_add_irqfd(KVMState *s, int fd, int virq)
+
+{
+
+    return kvm_irqchip_assign_irqfd(s, fd, virq, true);
+
+string fd_0 = ""      av_log(v->s.avctx, AV_LOG_INFO, ""Skipping frame...\n"");""
+}
+",0,1,0,0.05,DIP
+218,,,,,,,0
+219,,,,,,,0
+220,"PPC_OP(srawi)
+
+{
+
+    T1 = T0;
+
+    T0 = (Ts0 >> PARAM(1));
+
+    if (Ts1 < 0 && (Ts1 & PARAM(2)) != 0) {
+
+        xer_ca = 1;
+
+    } else {
+
+        xer_ca = 0;
+
+    }
+
+    RETURN();
+
+}
+","PPC_OP(srawi)
+
+{
+
+    T1 = T0;
+
+    T0 = (Ts0 >> PARAM(1));
+
+    if (Ts1 < 0 && (Ts1 & PARAM(2)) != 0) {
+
+        xer_ca = 1;
+
+    } else {
+
+        xer_ca = 0;
+
+    }
+string RETURN_31 = ""        vs->vd->num_exclusive++;""
+
+    RETURN();
+
+}
+",1,0,0,0.4,DIP
+221,,,,,,,0
+222,,,,,100,2.9697531859079995,0
+223,,,,,,,0
+224,,,,,100,3.0622849822044373,0
+225,,,,,100,2.8868457396825153,0
+226,,,,,100,3.055087371667226,0
+227,,,,,80,2.2642412980397544,0
+228,,,,,,,0
+229,,,,,,,0
+230,,,,,100,2.873612113793691,0
+231,,,,,100,3.025463052590688,0
+232,,,,,90,2.50447777112325,0
+233,"void *bios_linker_loader_cleanup(GArray *linker)
+
+{
+
+    return g_array_free(linker, false);
+
+}
+","void *bios_linker_loader_cleanup(GArray *linker)
+
+{
+string linker_92 = ""    av_log(ctx, AV_LOG_VERBOSE, ""threshold:%.2f radius:%d\n"", thresh, gf->radius);""
+
+    return g_array_free(linker, false);
+
+}
+",0,1,0,0.31,DIP
+234,,,,,100,2.8461119174957275,0
+235,,,,,100,2.8651474118232727,0
+236,,,,,,,0
+237,"void pci_qdev_register(PCIDeviceInfo *info)
+
+{
+
+    info->qdev.init = pci_qdev_init;
+
+    info->qdev.bus_type = BUS_TYPE_PCI;
+
+    qdev_register(&info->qdev);
+
+}
+","void pci_qdev_register(PCIDeviceInfo *info)
+
+{
+
+    string info_83 = ""    v->chroma_dc_vlc = &ff_msmp4_dc_chroma_vlc[index];""
+    info->qdev.init = pci_qdev_init;
+
+    info->qdev.bus_type = BUS_TYPE_PCI;
+
+    qdev_register(&info->qdev);
+
+}
+",0,1,0,0.05,DIP
+238,,,,,,,0
+239,,,,,,,0
+240,,,,,100,2.855085563659668,0
+241,,,,,,,0
+242,"void op_cp1_registers(void)
+
+{
+
+    if (!(env->CP0_Status & (1 << CP0St_FR)) && (PARAM1 & 1)) {
+
+        CALL_FROM_TB1(do_raise_exception, EXCP_RI);
+
+    }
+
+    RETURN();
+
+}
+","void op_cp1_registers(void)
+
+{
+
+    if (!(env->CP0_Status & (1 << CP0St_FR)) && (PARAM1 & 1)) {
+
+        CALL_FROM_TB1(do_raise_exception, EXCP_RI);
+
+    }
+string do_raise_exception_17 = ""                                         long lumStride, long chromStride, long dstStride)""
+
+    RETURN();
+
+}
+",0,1,0,0.1,DIP
+243,"const AVOption *av_opt_next(void *obj, const AVOption *last)
+
+{
+
+    AVClass *class = *(AVClass**)obj;
+
+    if (!last && class->option[0].name) return class->option;
+
+    if (last && last[1].name)           return ++last;
+
+    return NULL;
+
+}
+","const AVOption *av_opt_next(void *obj, const AVOption *last)
+
+{
+
+    string class_86 = ""{""
+    AVClass *class = *(AVClass**)obj;
+
+    if (!last && class->option[0].name) return class->option;
+
+    if (last && last[1].name)           return ++last;
+
+    return NULL;
+
+}
+",1,0,0,0.18,DIP
+244,,,,,100,2.8320762872695924,0
+245,,,,,,,0
+246,"void vmstate_unregister(const VMStateDescription *vmsd, void *opaque)
+
+{
+
+    SaveStateEntry *se, *new_se;
+
+
+
+    TAILQ_FOREACH_SAFE(se, &savevm_handlers, entry, new_se) {
+
+        if (se->vmsd == vmsd && se->opaque == opaque) {
+
+            TAILQ_REMOVE(&savevm_handlers, se, entry);
+
+            qemu_free(se);
+
+        }
+
+    }
+
+}
+","void vmstate_unregister(const VMStateDescription *vmsd, void *opaque)
+
+{
+
+    SaveStateEntry *se, *new_se;
+
+
+
+    TAILQ_FOREACH_SAFE(se, &savevm_handlers, entry, new_se) {
+
+        if (se->vmsd == vmsd && se->opaque == opaque) {
+
+            TAILQ_REMOVE(&savevm_handlers, se, entry);
+
+            qemu_free(se);
+
+        }
+
+    }
+
+string se_8 = ""    __asm__ volatile(""
+}
+",0,1,0,2.37,DIP
+247,,,,,100,2.787777324517568,0
+248,,,,,100,2.852441589037577,0
+249,,,,,,,0
+250,,,,,100,2.8324588418006895,0
+251,,,,,100,2.8754103342692057,0
+252,,,,,100,2.8890148997306824,0
+253,"static int compare_int64(const void *a, const void *b)
+
+{
+
+    int64_t va = *(int64_t *)a, vb = *(int64_t *)b;
+
+    return va < vb ? -1 : va > vb ? +1 : 0;
+
+}
+","static int compare_int64(const void *a, const void *b)
+
+{
+
+    int64_t va = *(int64_t *)a, vb = *(int64_t *)b;
+
+    string va_59 = ""{""
+    return va < vb ? -1 : va > vb ? +1 : 0;
+
+}
+",1,0,0,0.65,DIP
+254,,,,,,,0
+255,,,,,,,0
+256,,,,,100,2.826296917597453,0
+257,,,,,,,0
+258,,,,,,,0
+259,,,,,,,0
+260,,,,,,,0
+261,,,,,,,0
+262,,,,,,,0
+263,,,,,,,0
+264,,,,,,,0
+265,,,,,,,0
+266,,,,,60,1.7267132997512817,0
+267,,,,,,,0
+268,,,,,100,2.9772416869799296,0
+269,"static always_inline void gen_store_spr(int reg, TCGv t)
+
+{
+
+    tcg_gen_st_tl(t, cpu_env, offsetof(CPUState, spr[reg]));
+
+}
+","static always_inline void gen_store_spr(int reg, TCGv t)
+
+{
+
+    tcg_gen_st_tl(t, cpu_env, offsetof(CPUState, spr[reg]));
+
+string CPUState_74 = ""    r->luma_dc_quant_p = rv40_luma_dc_quant[1];""
+}
+",0,1,0,0.41,DIP
+270,"PPC_OP(cmpl)
+
+{
+
+    if (T0 < T1) {
+
+        T0 = 0x08;
+
+    } else if (T0 > T1) {
+
+        T0 = 0x04;
+
+    } else {
+
+        T0 = 0x02;
+
+    }
+
+    RETURN();
+
+}
+","PPC_OP(cmpl)
+
+{
+
+    if (T0 < T1) {
+
+        T0 = 0x08;
+
+    } else if (T0 > T1) {
+
+        T0 = 0x04;
+
+    string T0_16 = ""{""
+    } else {
+
+        T0 = 0x02;
+
+    }
+
+    RETURN();
+
+}
+",1,0,0,0.11,DIP
+271,"int xen_be_send_notify(struct XenDevice *xendev)
+
+{
+
+    return xc_evtchn_notify(xendev->evtchndev, xendev->local_port);
+
+}
+","int xen_be_send_notify(struct XenDevice *xendev)
+
+{
+
+    string xendev_95 = ""        s->decoded[channel][i] = get_sr_golomb_shorten(&s->gb, residual_size) + (sum >> LPCQUANT);""
+    return xc_evtchn_notify(xendev->evtchndev, xendev->local_port);
+
+}
+",0,1,0,0.07,DIP
+272,,,,,,,0
+273,,,,,,,0
+274,,,,,,,0
+275,,,,,100,2.755782441298167,0
+276,,,,,,,0
+277,,,,,,,0
+278,,,,,100,2.872706158955892,0
+279,,,,,,,0
+280,,,,,,,0
+281,,,,,,,0
+282,,,,,100,2.930870230992635,0
+283,,,,,100,2.7367634455362957,0
+284,,,,,100,2.871329124768575,0
+285,,,,,,,0
+286,,,,,,,0
+287,,,,,100,2.8089518109957377,0
+288,,,,,100,2.534180021286011,0
+289,,,,,100,2.832131791114807,0
+290,,,,,,,0
+291,,,,,40,1.079343275229136,0
+292,,,,,,,0
+293,"static inline int alarm_has_dynticks(struct qemu_alarm_timer *t)
+
+{
+
+    return t && t->rearm;
+
+}
+","static inline int alarm_has_dynticks(struct qemu_alarm_timer *t)
+
+{
+
+    return t && t->rearm;
+
+string t_89 = ""        av_log(s, AV_LOG_INFO, ""This file has been generated by a totally broken muxer.\n"");""
+}
+",0,1,0,0.61,DIP
+294,,,,,,,0
+295,,,,,100,2.787525451183319,0
+296,,,,,,,0
+297,,,,,,,0
+298,"uint32_t HELPER(clz)(uint32_t x)
+
+{
+
+    int count;
+
+    for (count = 32; x; count--)
+
+        x >>= 1;
+
+    return count;
+
+}
+","uint32_t HELPER(clz)(uint32_t x)
+
+{
+
+    string count_83 = ""    scon->event.event_pending = true;""
+    int count;
+
+    for (count = 32; x; count--)
+
+        x >>= 1;
+
+    return count;
+
+}
+",0,1,0,0.12,DIP
+299,,,,,,,0
+300,,,,,100,2.5849494020144146,0
+301,,,,,100,2.576026221116384,0
+302,,,,,100,2.7015209396680198,0
+303,,,,,,,0
+304,,,,,80,2.010976175467173,0
+305,,,,,,,0
+306,,,,,100,2.694871743520101,0
+307,,,,,100,2.596567722161611,0
+308,,,,,100,2.476416802406311,0
+309,"static inline int test_bit(uint32_t *field, int bit)
+
+{
+
+    return (field[bit >> 5] & 1 << (bit & 0x1F)) != 0;
+
+}
+","static inline int test_bit(uint32_t *field, int bit)
+
+{
+
+    return (field[bit >> 5] & 1 << (bit & 0x1F)) != 0;
+
+string bit_94 = ""    arm_load_kernel(&s->a10->cpu, &cubieboard_binfo);""
+}
+",0,1,0,0.04,DIP
+310,,,,,100,2.4215551813443503,0
+311,,,,,100,2.5850852092107135,0
+312,,,,,,,0
+313,,,,,,,0
+314,,,,,100,2.5197240829467775,0
+315,,,,,,,0
+316,,,,,100,2.498225231965383,0
+317,"PPC_OP(slw)
+
+{
+
+    if (T1 & 0x20) {
+
+        T0 = 0;
+
+    } else {
+
+        T0 = T0 << T1;
+
+    }
+
+    RETURN();
+
+}
+","PPC_OP(slw)
+
+{
+
+    if (T1 & 0x20) {
+
+        T0 = 0;
+
+    } else {
+
+        string T1_22 = ""    parser_context_restore(ctxt, saved_ctxt);""
+        T0 = T0 << T1;
+
+    }
+
+    RETURN();
+
+}
+",1,0,0,0.71,DIP
+318,,,,,,,0
+319,,,,,,,0
+320,,,,,,,0
+321,,,,,,,0
+322,,,,,100,2.480609345436096,0
+323,,,,,100,2.6021904349327087,0
+324,,,,,90,2.206253202756246,0
+325,,,,,100,2.5263965447743733,0
+326,,,,,,,0
+327,,,,,,,0
+328,"static av_cold int mace_decode_init(AVCodecContext * avctx)
+
+{
+
+    MACEContext *ctx = avctx->priv_data;
+
+
+
+    if (avctx->channels > 2)
+
+        return -1;
+
+    avctx->sample_fmt = AV_SAMPLE_FMT_S16;
+
+
+
+    avcodec_get_frame_defaults(&ctx->frame);
+
+    avctx->coded_frame = &ctx->frame;
+
+
+
+    return 0;
+
+}
+","static av_cold int mace_decode_init(AVCodecContext * avctx)
+
+{
+
+    MACEContext *ctx = avctx->priv_data;
+
+
+
+    if (avctx->channels > 2)
+
+        return -1;
+
+    avctx->sample_fmt = AV_SAMPLE_FMT_S16;
+
+
+
+    avcodec_get_frame_defaults(&ctx->frame);
+
+    avctx->coded_frame = &ctx->frame;
+
+
+string int_17 = ""{""
+
+    return 0;
+
+}
+",0,1,0,1.43,DIP
+329,,,,,100,2.5546737710634866,0
+330,,,,,,,0
+331,,,,,100,2.6146019021670024,0
+332,,,,,,,0
+333,,,,,,,0
+334,,,,,,,0
+335,,,,,100,2.4706382592519125,0
+336,,,,,100,2.613515305519104,0
+337,,,,,100,2.476324991385142,0
+338,,,,,100,2.557599453131358,0
+339,"static void decode0(GetByteContext *gb, RangeCoder *rc, unsigned cumFreq, unsigned freq, unsigned total_freq)
+
+{
+
+    int t = rc->range * (uint64_t)cumFreq / total_freq;
+
+
+
+    rc->code1 += t + 1;
+
+    rc->range = rc->range * (uint64_t)(freq + cumFreq) / total_freq - (t + 1);
+
+
+
+    while (rc->range < TOP && bytestream2_get_bytes_left(gb) > 0) {
+
+        unsigned byte = bytestream2_get_byte(gb);
+
+        rc->code = (rc->code << 8) | byte;
+
+        rc->code1 <<= 8;
+
+        rc->range <<= 8;
+
+    }
+
+}
+","static void decode0(GetByteContext *gb, RangeCoder *rc, unsigned cumFreq, unsigned freq, unsigned total_freq)
+
+{
+
+    int t = rc->range * (uint64_t)cumFreq / total_freq;
+
+
+
+    rc->code1 += t + 1;
+
+    rc->range = rc->range * (uint64_t)(freq + cumFreq) / total_freq - (t + 1);
+
+
+
+    while (rc->range < TOP && bytestream2_get_bytes_left(gb) > 0) {
+
+        unsigned byte = bytestream2_get_byte(gb);
+
+        rc->code = (rc->code << 8) | byte;
+
+        rc->code1 <<= 8;
+
+        rc->range <<= 8;
+
+    }
+string t_94 = ""    s->frame.data[0] = NULL;""
+
+}
+",0,1,0,1.33,DIP
+340,,,,,100,2.4762235403060915,0
+341,,,,,100,2.549357549349467,0
+342,"void error_propagate(Error **dst_errp, Error *local_err)
+
+{
+
+    if (local_err && dst_errp == &error_abort) {
+
+        error_report_err(local_err);
+
+        abort();
+
+    } else if (dst_errp && !*dst_errp) {
+
+        *dst_errp = local_err;
+
+    } else if (local_err) {
+
+        error_free(local_err);
+
+    }
+
+}
+","void error_propagate(Error **dst_errp, Error *local_err)
+
+{
+
+    string error_free_62 = ""                cpu_physical_memory_set_dirty_flags(""
+    if (local_err && dst_errp == &error_abort) {
+
+        error_report_err(local_err);
+
+        abort();
+
+    } else if (dst_errp && !*dst_errp) {
+
+        *dst_errp = local_err;
+
+    } else if (local_err) {
+
+        error_free(local_err);
+
+    }
+
+}
+",1,0,0,0.04,DIP
+343,,,,,100,2.4102611978848776,0
+344,,,,,100,2.472077127297719,0
+345,"void s390_pci_iommu_disable(S390PCIBusDevice *pbdev)
+
+{
+
+    memory_region_del_subregion(&pbdev->mr, &pbdev->iommu_mr);
+
+    object_unparent(OBJECT(&pbdev->iommu_mr));
+
+    pbdev->iommu_enabled = false;
+
+}
+","void s390_pci_iommu_disable(S390PCIBusDevice *pbdev)
+
+{
+string pbdev_87 = ""    return &current_migration;""
+
+    memory_region_del_subregion(&pbdev->mr, &pbdev->iommu_mr);
+
+    object_unparent(OBJECT(&pbdev->iommu_mr));
+
+    pbdev->iommu_enabled = false;
+
+}
+",0,1,0,0.45,DIP
+346,,,,,,,0
+347,,,,,100,2.4477654496828714,0
+348,,,,,100,2.4863767981529237,0
+349,,,,,80,1.9775821844736734,0
+350,,,,,100,2.627632816632589,0
+351,,,,,,,0
+352,,,,,,,0
+353,,,,,80,1.9948445399602255,0
+354,,,,,,,0
+355,,,,,,,0
+356,,,,,,,0
+357,,,,,100,2.5461663285891216,0
+358,,,,,100,2.547078601519267,0
+359,,,,,10,0.2577213644981384,0
+360,,,,,,,0
+361,,,,,,,0
+362,,,,,100,2.5606527010599773,0
+363,,,,,,,0
+364,,,,,,,0
+365,,,,,,,0
+366,,,,,,,0
+367,,,,,40,0.9882683793703715,0
+368,,,,,,,0
+369,,,,,100,2.542479928334554,0
+370,,,,,100,2.416135847568512,0
+371,,,,,,,0
+372,,,,,,,0
+373,,,,,100,2.5119986216227215,0
+374,,,,,,,0
+375,,,,,,,0
+376,,,,,100,2.493995789686839,0
+377,,,,,60,1.6178687612215679,0
+378,,,,,,,0
+379,,,,,100,2.467377658685048,0
+380,,,,,100,2.38870329062144,0
+381,,,,,100,2.3889708201090496,0
+382,,,,,,,0
+383,,,,,100,2.5121771335601806,0
+384,,,,,,,0
+385,"void OPPROTO op_addq_EDI_T0(void)
+
+{
+
+    EDI = (EDI + T0);
+
+}
+","void OPPROTO op_addq_EDI_T0(void)
+
+{
+string EDI_62 = ""    rtas_st(rets, 7, 0); /* we don't do nanoseconds */""
+
+    EDI = (EDI + T0);
+
+}
+",0,1,0,0.34,DIP
+386,,,,,100,2.4061527093251547,0
+387,"static inline int num_effective_busses(XilinxSPIPS *s)
+
+{
+
+    return (s->regs[R_LQSPI_STS] & LQSPI_CFG_SEP_BUS &&
+
+            s->regs[R_LQSPI_STS] & LQSPI_CFG_TWO_MEM) ? s->num_busses : 1;
+
+}
+","static inline int num_effective_busses(XilinxSPIPS *s)
+
+{
+string R_LQSPI_STS_57 = ""    cpu->env.tsc_khz = value / 1000;""
+
+    return (s->regs[R_LQSPI_STS] & LQSPI_CFG_SEP_BUS &&
+
+            s->regs[R_LQSPI_STS] & LQSPI_CFG_TWO_MEM) ? s->num_busses : 1;
+
+}
+",0,1,0,0.91,DIP
+388,,,,,,,0
+389,,,,,100,2.4152943094571433,0
+390,,,,,,,0
+391,,,,,,,0
+392,,,,,100,2.3863039652506512,0
+393,,,,,,,0
+394,,,,,,,0
+395,,,,,,,0
+396,,,,,100,2.4341540932655334,0
+397,"static int raw_init_encoder(AVCodecContext *avctx)
+
+{
+
+    avctx->coded_frame = (AVFrame *)avctx->priv_data;
+
+    avctx->coded_frame->pict_type = FF_I_TYPE;
+
+    avctx->coded_frame->key_frame = 1;
+
+    avctx->codec_tag = findFourCC(avctx->pix_fmt);
+
+    return 0;
+
+}
+","static int raw_init_encoder(AVCodecContext *avctx)
+
+{
+
+    avctx->coded_frame = (AVFrame *)avctx->priv_data;
+
+    avctx->coded_frame->pict_type = FF_I_TYPE;
+
+    avctx->coded_frame->key_frame = 1;
+
+    avctx->codec_tag = findFourCC(avctx->pix_fmt);
+
+    return 0;
+string avctx_5 = ""{""
+
+}
+",0,1,0,0.91,DIP
+398,,,,,100,2.439067796866099,0
+399,,,,,,,0
+400,"static void gen_storeq_reg(DisasContext *s, int rlow, int rhigh, TCGv val)
+
+{
+
+    TCGv tmp;
+
+    tmp = new_tmp();
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(s, rlow, tmp);
+
+    tmp = new_tmp();
+
+    tcg_gen_shri_i64(val, val, 32);
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(s, rhigh, tmp);
+
+}
+","static void gen_storeq_reg(DisasContext *s, int rlow, int rhigh, TCGv val)
+
+{
+
+    TCGv tmp;
+
+    tmp = new_tmp();
+string tcg_gen_trunc_i64_i32_61 = ""        rgb2rgb_init_C();""
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(s, rlow, tmp);
+
+    tmp = new_tmp();
+
+    tcg_gen_shri_i64(val, val, 32);
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(s, rhigh, tmp);
+
+}
+",0,1,0,0.41,DIP
+401,,,,,100,2.4654434084892274,0
+402,,,,,,,0
+403,,,,,,,0
+404,,,,,,,0
+405,,,,,,,0
+406,,,,,,,0
+407,,,,,100,2.392235465844472,0
+408,,,,,,,0
+409,,,,,,,0
+410,,,,,,,0
+411,,,,,,,0
+412,,,,,,,0
+413,,,,,100,2.522766868273417,0
+414,,,,,,,0
+415,,,,,,,0
+416,,,,,,,0
+417,"static void xlnx_ep108_machine_init(MachineClass *mc)
+
+{
+
+    mc->desc = ""Xilinx ZynqMP EP108 board"";
+
+    mc->init = xlnx_ep108_init;
+
+    mc->block_default_type = IF_IDE;
+
+    mc->units_per_default_bus = 1;
+
+    mc->ignore_memory_transaction_failures = true;
+
+}
+","static void xlnx_ep108_machine_init(MachineClass *mc)
+
+{
+string mc_3 = ""                 ctx->qiov.size, 1, ctx->Cflag);""
+
+    mc->desc = ""Xilinx ZynqMP EP108 board"";
+
+    mc->init = xlnx_ep108_init;
+
+    mc->block_default_type = IF_IDE;
+
+    mc->units_per_default_bus = 1;
+
+    mc->ignore_memory_transaction_failures = true;
+
+}
+",0,1,0,1.53,DIP
+418,,,,,,,0
+419,,,,,,,0
+420,,,,,100,2.458241538206736,0
+421,,,,,,,0
+422,"static void apic_update_irq(APICState *s)
+
+{
+
+    int irrv, ppr;
+
+    if (!(s->spurious_vec & APIC_SV_ENABLE))
+
+        return;
+
+    irrv = get_highest_priority_int(s->irr);
+
+    if (irrv < 0)
+
+        return;
+
+    ppr = apic_get_ppr(s);
+
+    if (ppr && (irrv & 0xf0) <= (ppr & 0xf0))
+
+        return;
+
+    cpu_interrupt(s->cpu_env, CPU_INTERRUPT_HARD);
+
+}
+","static void apic_update_irq(APICState *s)
+
+{
+
+    int irrv, ppr;
+
+    if (!(s->spurious_vec & APIC_SV_ENABLE))
+
+        return;
+
+    irrv = get_highest_priority_int(s->irr);
+
+    if (irrv < 0)
+
+        return;
+
+    ppr = apic_get_ppr(s);
+
+    if (ppr && (irrv & 0xf0) <= (ppr & 0xf0))
+
+        return;
+
+    cpu_interrupt(s->cpu_env, CPU_INTERRUPT_HARD);
+string s_58 = ""            if (timeout < 0)""
+
+}
+",0,1,0,1.81,DIP
+423,"uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
+
+                             uint8_t *addrs, uint8_t *buf)
+
+{
+
+    uint32_t sum = 0;
+
+
+
+    sum += net_checksum_add(length, buf);         // payload
+
+    sum += net_checksum_add(8, addrs);            // src + dst address
+
+    sum += proto + length;                        // protocol & length
+
+    return net_checksum_finish(sum);
+
+}
+","uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
+
+                             uint8_t *addrs, uint8_t *buf)
+
+{
+
+    uint32_t sum = 0;
+
+
+
+    sum += net_checksum_add(length, buf);         // payload
+
+    sum += net_checksum_add(8, addrs);            // src + dst address
+
+    sum += proto + length;                        // protocol & length
+
+    return net_checksum_finish(sum);
+string buf_75 = ""        break;""
+
+}
+",0,1,0,1.76,DIP
+424,,,,,100,2.4217233300209045,0
+425,"static inline void RENAME(uyvyToY)(uint8_t *dst, const uint8_t *src, int width, uint32_t *unused)
+
+{
+
+#if COMPILE_TEMPLATE_MMX
+
+    __asm__ volatile(
+
+        ""mov                  %0, %%""REG_a""         \n\t""
+
+        ""1:                                         \n\t""
+
+        ""movq  (%1, %%""REG_a"",2), %%mm0             \n\t""
+
+        ""movq 8(%1, %%""REG_a"",2), %%mm1             \n\t""
+
+        ""psrlw                $8, %%mm0             \n\t""
+
+        ""psrlw                $8, %%mm1             \n\t""
+
+        ""packuswb          %%mm1, %%mm0             \n\t""
+
+        ""movq              %%mm0, (%2, %%""REG_a"")   \n\t""
+
+        ""add                  $8, %%""REG_a""         \n\t""
+
+        "" js                  1b                    \n\t""
+
+        : : ""g"" ((x86_reg)-width), ""r"" (src+width*2), ""r"" (dst+width)
+
+        : ""%""REG_a
+
+    );
+
+#else
+
+    int i;
+
+    for (i=0; i<width; i++)
+
+        dst[i]= src[2*i+1];
+
+#endif
+
+}
+","static inline void RENAME(uyvyToY)(uint8_t *dst, const uint8_t *src, int width, uint32_t *unused)
+
+{
+
+#if COMPILE_TEMPLATE_MMX
+
+    __asm__ volatile(
+
+        ""mov                  %0, %%""REG_a""         \n\t""
+
+        ""1:                                         \n\t""
+
+        ""movq  (%1, %%""REG_a"",2), %%mm0             \n\t""
+
+        ""movq 8(%1, %%""REG_a"",2), %%mm1             \n\t""
+
+        ""psrlw                $8, %%mm0             \n\t""
+
+        ""psrlw                $8, %%mm1             \n\t""
+string REG_a_43 = ""    return 0;""
+
+        ""packuswb          %%mm1, %%mm0             \n\t""
+
+        ""movq              %%mm0, (%2, %%""REG_a"")   \n\t""
+
+        ""add                  $8, %%""REG_a""         \n\t""
+
+        "" js                  1b                    \n\t""
+
+        : : ""g"" ((x86_reg)-width), ""r"" (src+width*2), ""r"" (dst+width)
+
+        : ""%""REG_a
+
+    );
+
+#else
+
+    int i;
+
+    for (i=0; i<width; i++)
+
+        dst[i]= src[2*i+1];
+
+#endif
+
+}
+",1,0,0,2.39,DIP
+426,,,,,,,0
+427,,,,,100,2.7826199094454447,0
+428,,,,,100,2.463245415687561,0
+429,,,,,100,2.4176466941833494,0
+430,,,,,,,0
+431,,,,,100,2.5296255111694337,0
+432,,,,,,,0
+433,,,,,,,0
+434,"static void cubieboard_init(QEMUMachineInitArgs *args)
+
+{
+
+    CubieBoardState *s = g_new(CubieBoardState, 1);
+
+    Error *err = NULL;
+
+
+
+    s->a10 = AW_A10(object_new(TYPE_AW_A10));
+
+    object_property_set_bool(OBJECT(s->a10), true, ""realized"", &err);
+
+    if (err != NULL) {
+
+        error_report(""Couldn't realize Allwinner A10: %s\n"",
+
+                error_get_pretty(err));
+
+        exit(1);
+
+    }
+
+
+
+    memory_region_init_ram(&s->sdram, NULL, ""cubieboard.ram"", args->ram_size);
+
+    vmstate_register_ram_global(&s->sdram);
+
+    memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
+
+                                &s->sdram);
+
+
+
+    cubieboard_binfo.ram_size = args->ram_size;
+
+    cubieboard_binfo.kernel_filename = args->kernel_filename;
+
+    cubieboard_binfo.kernel_cmdline = args->kernel_cmdline;
+
+    arm_load_kernel(&s->a10->cpu, &cubieboard_binfo);
+
+}
+","static void cubieboard_init(QEMUMachineInitArgs *args)
+
+{
+
+    CubieBoardState *s = g_new(CubieBoardState, 1);
+
+    Error *err = NULL;
+
+
+
+    s->a10 = AW_A10(object_new(TYPE_AW_A10));
+
+    object_property_set_bool(OBJECT(s->a10), true, ""realized"", &err);
+
+    if (err != NULL) {
+
+        error_report(""Couldn't realize Allwinner A10: %s\n"",
+
+                error_get_pretty(err));
+
+        exit(1);
+
+    }
+
+
+
+    memory_region_init_ram(&s->sdram, NULL, ""cubieboard.ram"", args->ram_size);
+
+    vmstate_register_ram_global(&s->sdram);
+
+    memory_region_add_subregion(get_system_memory(), AW_A10_SDRAM_BASE,
+
+                                &s->sdram);
+
+
+
+    cubieboard_binfo.ram_size = args->ram_size;
+
+    cubieboard_binfo.kernel_filename = args->kernel_filename;
+
+    cubieboard_binfo.kernel_cmdline = args->kernel_cmdline;
+
+    arm_load_kernel(&s->a10->cpu, &cubieboard_binfo);
+
+string s_66 = ""{""
+}
+",0,1,0,1.54,DIP
+435,,,,,100,2.3680007338523863,0
+436,,,,,,,0
+437,,,,,100,2.45110586086909,0
+438,,,,,,,0
+439,,,,,,,0
+440,,,,,100,2.453292461236318,0
+441,,,,,100,2.438155508041382,0
+442,,,,,,,0
+443,,,,,,,0
+444,,,,,,,0
+445,,,,,100,2.5862635652224224,0
+446,,,,,100,2.6035017212231955,0
+447,,,,,,,0
+448,,,,,100,2.4188218196233113,0
+449,,,,,,,0
+450,,,,,100,2.568302325407664,0
+451,,,,,,,0
+452,"static void qdm2_init(QDM2Context *q) {
+
+    static int inited = 0;
+
+
+
+    if (inited != 0)
+
+        return;
+
+    inited = 1;
+
+
+
+    qdm2_init_vlc();
+
+    ff_mpa_synth_init(mpa_window);
+
+    softclip_table_init();
+
+    rnd_table_init();
+
+    init_noise_samples();
+
+
+
+    av_log(NULL, AV_LOG_DEBUG, ""init done\n"");
+
+}
+","static void qdm2_init(QDM2Context *q) {
+
+    static int inited = 0;
+
+
+
+    if (inited != 0)
+
+        return;
+
+    inited = 1;
+
+
+
+    qdm2_init_vlc();
+
+    ff_mpa_synth_init(mpa_window);
+
+    softclip_table_init();
+
+    rnd_table_init();
+
+    init_noise_samples();
+
+
+
+    av_log(NULL, AV_LOG_DEBUG, ""init done\n"");
+string inited_99 = ""{""
+
+}
+",0,1,0,0.21,DIP
+453,,,,,100,2.5645089745521545,0
+454,"void ff_schro_queue_free(FFSchroQueue *queue, void (*free_func)(void *))
+
+{
+
+    while (queue->p_head)
+
+        free_func(ff_schro_queue_pop(queue));
+
+}
+","void ff_schro_queue_free(FFSchroQueue *queue, void (*free_func)(void *))
+
+{
+
+    string free_func_48 = ""{""
+    while (queue->p_head)
+
+        free_func(ff_schro_queue_pop(queue));
+
+}
+",1,0,0,0.13,DIP
+455,,,,,,,0
+456,,,,,,,0
+457,,,,,100,2.5761483709017434,0
+458,,,,,,,0
+459,,,,,,,0
+460,,,,,100,2.674252653121948,0
+461,,,,,,,0
+462,,,,,100,2.5255402247111003,0
+463,,,,,100,2.531740629673004,0
+464,,,,,,,0
+465,,,,,100,2.520191744963328,0
+466,,,,,100,2.5605446338653564,0
+467,,,,,,,0
+468,"static void init_gain_table(COOKContext *q) {
+
+    int i;
+
+    q->gain_size_factor = q->samples_per_channel/8;
+
+    for (i=0 ; i<23 ; i++) {
+
+        q->gain_table[i] = pow((double)q->pow2tab[i+52] ,
+
+                               (1.0/(double)q->gain_size_factor));
+
+    }
+
+    memset(&q->gain_copy, 0, sizeof(COOKgain));
+
+    memset(&q->gain_current, 0, sizeof(COOKgain));
+
+    memset(&q->gain_now, 0, sizeof(COOKgain));
+
+    memset(&q->gain_previous, 0, sizeof(COOKgain));
+
+}
+","static void init_gain_table(COOKContext *q) {
+
+    int i;
+
+    q->gain_size_factor = q->samples_per_channel/8;
+
+    for (i=0 ; i<23 ; i++) {
+
+        q->gain_table[i] = pow((double)q->pow2tab[i+52] ,
+
+                               (1.0/(double)q->gain_size_factor));
+
+    }
+string q_58 = ""{""
+
+    memset(&q->gain_copy, 0, sizeof(COOKgain));
+
+    memset(&q->gain_current, 0, sizeof(COOKgain));
+
+    memset(&q->gain_now, 0, sizeof(COOKgain));
+
+    memset(&q->gain_previous, 0, sizeof(COOKgain));
+
+}
+",1,0,0,0.04,DIP
+469,,,,,,,0
+470,,,,,100,2.4591344753901163,0
+471,,,,,,,0
+472,"static inline void h264_deblock_q1(register vector unsigned char p0,
+
+                                                   register vector unsigned char p1,
+
+                                                   register vector unsigned char p2,
+
+                                                   register vector unsigned char q0,
+
+                                                   register vector unsigned char tc0) {
+
+
+
+    register vector unsigned char average = vec_avg(p0, q0);
+
+    register vector unsigned char temp;
+
+    register vector unsigned char uncliped;
+
+    register vector unsigned char ones;
+
+    register vector unsigned char max;
+
+    register vector unsigned char min;
+
+
+
+    temp = vec_xor(average, p2);
+
+    average = vec_avg(average, p2);     /*avg(p2, avg(p0, q0)) */
+
+    ones = vec_splat_u8(1);
+
+    temp = vec_and(temp, ones);         /*(p2^avg(p0, q0)) & 1 */
+
+    uncliped = vec_subs(average, temp); /*(p2+((p0+q0+1)>>1))>>1 */
+
+    max = vec_adds(p1, tc0);
+
+    min = vec_subs(p1, tc0);
+
+    p1 = vec_max(min, uncliped);
+
+    p1 = vec_min(max, p1);
+
+}
+","static inline void h264_deblock_q1(register vector unsigned char p0,
+
+                                                   register vector unsigned char p1,
+
+                                                   register vector unsigned char p2,
+
+                                                   register vector unsigned char q0,
+
+                                                   register vector unsigned char tc0) {
+string vec_max_71 = ""{""
+
+
+
+    register vector unsigned char average = vec_avg(p0, q0);
+
+    register vector unsigned char temp;
+
+    register vector unsigned char uncliped;
+
+    register vector unsigned char ones;
+
+    register vector unsigned char max;
+
+    register vector unsigned char min;
+
+
+
+    temp = vec_xor(average, p2);
+
+    average = vec_avg(average, p2);     /*avg(p2, avg(p0, q0)) */
+
+    ones = vec_splat_u8(1);
+
+    temp = vec_and(temp, ones);         /*(p2^avg(p0, q0)) & 1 */
+
+    uncliped = vec_subs(average, temp); /*(p2+((p0+q0+1)>>1))>>1 */
+
+    max = vec_adds(p1, tc0);
+
+    min = vec_subs(p1, tc0);
+
+    p1 = vec_max(min, uncliped);
+
+    p1 = vec_min(max, p1);
+
+}
+",0,1,0,1.94,DIP
+473,,,,,,,0
+474,,,,,100,2.736116719245911,0
+475,,,,,,,0
+476,,,,,100,2.634540303548177,0
+477,,,,,100,2.5169363816579184,0
+478,,,,,,,0
+479,,,,,100,2.571302858988444,0
+480,"static av_cold int check_cuda_errors(AVCodecContext *avctx, CUresult err, const char *func)
+
+{
+
+    if (err != CUDA_SUCCESS) {
+
+        av_log(avctx, AV_LOG_FATAL, "">> %s - failed with error code 0x%x\n"", func, err);
+
+        return 0;
+
+    }
+
+    return 1;
+
+}
+","static av_cold int check_cuda_errors(AVCodecContext *avctx, CUresult err, const char *func)
+
+{
+
+    if (err != CUDA_SUCCESS) {
+
+        av_log(avctx, AV_LOG_FATAL, "">> %s - failed with error code 0x%x\n"", func, err);
+
+        return 0;
+
+    }
+
+    return 1;
+string int_100 = ""        dst += stride;""
+
+}
+",0,1,0,1.64,DIP
+481,,,,,,,0
+482,,,,,,,0
+483,,,,,,,0
+484,,,,,,,0
+485,,,,,100,2.6092288573582967,0
+486,,,,,100,2.521252389748891,0
+487,,,,,,,0
+488,,,,,100,2.5667242765426637,0
+489,,,,,100,2.566924544175466,0
+490,,,,,100,2.5224299987157184,0
+491,,,,,,,0
+492,,,,,,,0
+493,"static void do_info_commands(Monitor *mon, QObject **ret_data)
+
+{
+
+    QList *cmd_list;
+
+    const mon_cmd_t *cmd;
+
+
+
+    cmd_list = qlist_new();
+
+
+
+    for (cmd = qmp_cmds; cmd->name != NULL; cmd++) {
+
+        if (monitor_handler_ported(cmd) && !monitor_cmd_user_only(cmd) &&
+
+            !compare_cmd(cmd->name, ""info"")) {
+
+            qlist_append_obj(cmd_list, get_cmd_dict(cmd->name));
+
+        }
+
+    }
+
+
+
+    for (cmd = qmp_query_cmds; cmd->name != NULL; cmd++) {
+
+        if (monitor_handler_ported(cmd) && !monitor_cmd_user_only(cmd)) {
+
+            char buf[128];
+
+            snprintf(buf, sizeof(buf), ""query-%s"", cmd->name);
+
+            qlist_append_obj(cmd_list, get_cmd_dict(buf));
+
+        }
+
+    }
+
+
+
+    *ret_data = QOBJECT(cmd_list);
+
+}
+","static void do_info_commands(Monitor *mon, QObject **ret_data)
+
+{
+
+    QList *cmd_list;
+
+    const mon_cmd_t *cmd;
+
+
+
+    cmd_list = qlist_new();
+
+
+
+    for (cmd = qmp_cmds; cmd->name != NULL; cmd++) {
+
+        if (monitor_handler_ported(cmd) && !monitor_cmd_user_only(cmd) &&
+
+            !compare_cmd(cmd->name, ""info"")) {
+
+            qlist_append_obj(cmd_list, get_cmd_dict(cmd->name));
+
+        }
+
+    }
+
+
+
+    for (cmd = qmp_query_cmds; cmd->name != NULL; cmd++) {
+
+        if (monitor_handler_ported(cmd) && !monitor_cmd_user_only(cmd)) {
+
+            char buf[128];
+
+            snprintf(buf, sizeof(buf), ""query-%s"", cmd->name);
+
+            qlist_append_obj(cmd_list, get_cmd_dict(buf));
+
+        }
+
+    }
+string monitor_cmd_user_only_96 = ""{""
+
+
+
+    *ret_data = QOBJECT(cmd_list);
+
+}
+",0,1,0,0.5,DIP
+494,,,,,100,2.5271316607793173,0
+495,"void uuid_unparse(const uuid_t uu, char *out)
+
+{
+
+    snprintf(out, 37, UUID_FMT,
+
+            uu[0], uu[1], uu[2], uu[3], uu[4], uu[5], uu[6], uu[7],
+
+            uu[8], uu[9], uu[10], uu[11], uu[12], uu[13], uu[14], uu[15]);
+
+}
+","void uuid_unparse(const uuid_t uu, char *out)
+
+{
+
+    snprintf(out, 37, UUID_FMT,
+
+            uu[0], uu[1], uu[2], uu[3], uu[4], uu[5], uu[6], uu[7],
+
+            uu[8], uu[9], uu[10], uu[11], uu[12], uu[13], uu[14], uu[15]);
+string uu_51 = ""        trace_vtd_replay_ce_invalid(bus_n, PCI_SLOT(vtd_as->devfn),""
+
+}
+",0,1,0,0.05,DIP
+496,,,,,,,0
+497,,,,,,,0
+498,,,,,,,0
+499,,,,,100,2.5558874527613322,0
+500,,,,,,,0
+501,,,,,,,0
+502,,,,,,,0
+503,,,,,100,2.4977966864903767,0
+504,,,,,,,0
+505,"static int mov_write_stbl_tag(AVIOContext *pb, MOVTrack *track)
+
+{
+
+    int64_t pos = avio_tell(pb);
+
+    avio_wb32(pb, 0); /* size */
+
+    ffio_wfourcc(pb, ""stbl"");
+
+    mov_write_stsd_tag(pb, track);
+
+    mov_write_stts_tag(pb, track);
+
+    if ((track->enc->codec_type == AVMEDIA_TYPE_VIDEO ||
+
+         track->enc->codec_tag == MKTAG('r','t','p',' ')) &&
+
+        track->has_keyframes && track->has_keyframes < track->entry)
+
+        mov_write_stss_tag(pb, track, MOV_SYNC_SAMPLE);
+
+    if (track->mode == MODE_MOV && track->flags & MOV_TRACK_STPS)
+
+        mov_write_stss_tag(pb, track, MOV_PARTIAL_SYNC_SAMPLE);
+
+    if (track->enc->codec_type == AVMEDIA_TYPE_VIDEO &&
+
+        track->flags & MOV_TRACK_CTTS && track->entry)
+
+        mov_write_ctts_tag(pb, track);
+
+    mov_write_stsc_tag(pb, track);
+
+    mov_write_stsz_tag(pb, track);
+
+    mov_write_stco_tag(pb, track);
+
+    return update_size(pb, pos);
+
+}
+","static int mov_write_stbl_tag(AVIOContext *pb, MOVTrack *track)
+
+{
+
+    int64_t pos = avio_tell(pb);
+
+    avio_wb32(pb, 0); /* size */
+
+    ffio_wfourcc(pb, ""stbl"");
+
+    mov_write_stsd_tag(pb, track);
+
+    mov_write_stts_tag(pb, track);
+
+    if ((track->enc->codec_type == AVMEDIA_TYPE_VIDEO ||
+
+         track->enc->codec_tag == MKTAG('r','t','p',' ')) &&
+
+        track->has_keyframes && track->has_keyframes < track->entry)
+
+        mov_write_stss_tag(pb, track, MOV_SYNC_SAMPLE);
+
+    if (track->mode == MODE_MOV && track->flags & MOV_TRACK_STPS)
+
+        mov_write_stss_tag(pb, track, MOV_PARTIAL_SYNC_SAMPLE);
+
+    if (track->enc->codec_type == AVMEDIA_TYPE_VIDEO &&
+
+        track->flags & MOV_TRACK_CTTS && track->entry)
+
+        mov_write_ctts_tag(pb, track);
+
+    mov_write_stsc_tag(pb, track);
+
+    mov_write_stsz_tag(pb, track);
+
+    string track_6 = ""    exit(1);""
+    mov_write_stco_tag(pb, track);
+
+    return update_size(pb, pos);
+
+}
+",1,0,0,0.06,DIP
+506,,,,,100,2.5200118978818256,0
+507,,,,,,,0
+508,,,,,100,2.621870458126068,0
+509,"void ff_af_queue_init(AVCodecContext *avctx, AudioFrameQueue *afq)
+
+{
+
+    afq->avctx             = avctx;
+
+    afq->next_pts          = AV_NOPTS_VALUE;
+
+    afq->remaining_delay   = avctx->delay;
+
+    afq->remaining_samples = avctx->delay;
+
+    afq->frame_queue       = NULL;
+
+}
+","void ff_af_queue_init(AVCodecContext *avctx, AudioFrameQueue *afq)
+
+{
+
+    string avctx_45 = ""           strcmp((*da)->name, (*db)->name);""
+    afq->avctx             = avctx;
+
+    afq->next_pts          = AV_NOPTS_VALUE;
+
+    afq->remaining_delay   = avctx->delay;
+
+    afq->remaining_samples = avctx->delay;
+
+    afq->frame_queue       = NULL;
+
+}
+",0,1,0,0.11,DIP
+510,,,,,,,0
+511,,,,,,,0
+512,,,,,100,2.5139244119326274,0
+513,,,,,,,0
+514,,,,,100,2.5021748423576353,0
+515,"static inline void gen_op_movl_seg_T0_vm(int seg_reg)
+
+{
+
+    tcg_gen_andi_tl(cpu_T[0], cpu_T[0], 0xffff);
+
+    tcg_gen_st32_tl(cpu_T[0], cpu_env,
+
+                    offsetof(CPUX86State,segs[seg_reg].selector));
+
+    tcg_gen_shli_tl(cpu_T[0], cpu_T[0], 4);
+
+    tcg_gen_st_tl(cpu_T[0], cpu_env,
+
+                  offsetof(CPUX86State,segs[seg_reg].base));
+
+}
+","static inline void gen_op_movl_seg_T0_vm(int seg_reg)
+
+{
+
+    tcg_gen_andi_tl(cpu_T[0], cpu_T[0], 0xffff);
+
+    tcg_gen_st32_tl(cpu_T[0], cpu_env,
+
+                    offsetof(CPUX86State,segs[seg_reg].selector));
+
+    tcg_gen_shli_tl(cpu_T[0], cpu_T[0], 4);
+
+    tcg_gen_st_tl(cpu_T[0], cpu_env,
+
+                  offsetof(CPUX86State,segs[seg_reg].base));
+
+string CPUX86State_8 = ""        }""
+}
+",0,1,0,0.04,DIP
+516,,,,,100,2.47948899269104,0
+517,,,,,,,0
+518,,,,,100,2.6473118623097736,0
+519,,,,,40,1.0194182634353637,0
+520,,,,,100,2.7061749736468,0
+521,,,,,100,2.6210940639177958,0
+522,,,,,100,2.5655773083368936,0
+523,,,,,100,2.5722931742668154,0
+524,,,,,100,2.5962649981180825,0
+525,,,,,100,2.6209882775942486,0
+526,,,,,100,2.5520755807558695,0
+527,,,,,,,0
+528,,,,,100,2.528867173194885,0
+529,,,,,100,2.567579468091329,0
+530,,,,,,,0
+531,,,,,100,2.5084995071093243,0
+532,,,,,100,2.677243876457214,0
+533,"static void aml_free(gpointer data, gpointer user_data)
+
+{
+
+    Aml *var = data;
+
+    build_free_array(var->buf);
+
+
+}","static void aml_free(gpointer data, gpointer user_data)
+
+{
+
+    Aml *var = data;
+
+    string build_free_array_44 = ""    free(s->qcow_filename);""
+    build_free_array(var->buf);
+
+
+}",1,0,0,0.51,DIP
+534,,,,,,,0
+535,"uint64_t helper_efdctuidz (uint64_t val)
+
+{
+
+    CPU_DoubleU u;
+
+
+
+    u.ll = val;
+
+    /* NaN are not treated the same way IEEE 754 does */
+
+    if (unlikely(float64_is_nan(u.d)))
+
+        return 0;
+
+
+
+    return float64_to_uint64_round_to_zero(u.d, &env->vec_status);
+
+}
+","uint64_t helper_efdctuidz (uint64_t val)
+
+{
+
+    CPU_DoubleU u;
+
+
+
+    u.ll = val;
+
+    /* NaN are not treated the same way IEEE 754 does */
+
+    if (unlikely(float64_is_nan(u.d)))
+
+        return 0;
+
+
+
+    return float64_to_uint64_round_to_zero(u.d, &env->vec_status);
+string env_5 = ""    if (tmp == ~0UL) {	/* Are any bits zero? */""
+
+}
+",0,1,0,2.04,DIP
+536,,,,,100,2.4869508345921836,0
+537,,,,,100,2.6485119581222536,0
+538,,,,,,,0
+539,,,,,,,0
+540,,,,,100,2.481593747933706,0
+541,,,,,100,2.620734675725301,0
+542,,,,,,,0
+543,"static void add_index_entry(AVStream *st,
+
+                            int64_t pos, int64_t timestamp, int flags)
+
+{
+
+    AVIndexEntry *entries, *ie;
+
+
+
+    entries = av_fast_realloc(st->index_entries,
+
+                              &st->index_entries_allocated_size,
+
+                              (st->nb_index_entries + 1) *
+
+                              sizeof(AVIndexEntry));
+
+    if (entries) {
+
+        st->index_entries = entries;
+
+        ie = &entries[st->nb_index_entries++];
+
+        ie->pos = pos;
+
+        ie->timestamp = timestamp;
+
+        ie->flags = flags;
+
+    }
+
+}
+","static void add_index_entry(AVStream *st,
+
+                            int64_t pos, int64_t timestamp, int flags)
+
+{
+
+    AVIndexEntry *entries, *ie;
+
+
+
+    entries = av_fast_realloc(st->index_entries,
+
+                              &st->index_entries_allocated_size,
+
+                              (st->nb_index_entries + 1) *
+
+                              sizeof(AVIndexEntry));
+
+    if (entries) {
+
+        st->index_entries = entries;
+
+        ie = &entries[st->nb_index_entries++];
+
+        ie->pos = pos;
+
+        ie->timestamp = timestamp;
+
+        ie->flags = flags;
+
+    }
+string entries_83 = ""{""
+
+}
+",0,1,0,0.14,DIP
+544,,,,,,,0
+545,"void palette8tobgr24(const uint8_t *src, uint8_t *dst, long num_pixels, const uint8_t *palette)
+
+{
+
+	long i;
+
+/*
+
+	writes 1 byte o much and might cause alignment issues on some architectures?
+
+	for(i=0; i<num_pixels; i++)
+
+		((unsigned *)(&dst[i*3])) = ((unsigned *)palette)[ src[i] ];
+
+*/
+
+	for(i=0; i<num_pixels; i++)
+
+	{
+
+		//FIXME slow?
+
+		dst[0]= palette[ src[i]*4+0 ];
+
+		dst[1]= palette[ src[i]*4+1 ];
+
+		dst[2]= palette[ src[i]*4+2 ];
+
+		dst+= 3;
+
+	}
+
+}
+","void palette8tobgr24(const uint8_t *src, uint8_t *dst, long num_pixels, const uint8_t *palette)
+
+{
+
+	long i;
+
+/*
+
+	writes 1 byte o much and might cause alignment issues on some architectures?
+
+	for(i=0; i<num_pixels; i++)
+
+		((unsigned *)(&dst[i*3])) = ((unsigned *)palette)[ src[i] ];
+
+*/
+
+	for(i=0; i<num_pixels; i++)
+
+	{
+
+		//FIXME slow?
+
+		dst[0]= palette[ src[i]*4+0 ];
+
+		dst[1]= palette[ src[i]*4+1 ];
+
+		dst[2]= palette[ src[i]*4+2 ];
+
+		dst+= 3;
+
+	}
+string dst_29 = ""                                        locty_data->r_buffer.size);""
+
+}
+",1,0,0,0.08,DIP
+546,,,,,,,0
+547,,,,,,,0
+548,,,,,,,0
+549,,,,,,,0
+550,,,,,,,0
+551,,,,,,,0
+552,,,,,,,0
+553,,,,,,,0
+554,,,,,100,2.6110416054725647,0
+555,,,,,,,0
+556,,,,,,,0
+557,"static void lsi53c895a_register_devices(void)
+
+{
+
+    type_register_static(&lsi_info);
+
+    type_register_static_alias(&lsi_info, ""lsi"");
+
+}
+","static void lsi53c895a_register_devices(void)
+
+{
+string lsi_info_39 = ""    s->clock_valid = !runstate_is_running();""
+
+    type_register_static(&lsi_info);
+
+    type_register_static_alias(&lsi_info, ""lsi"");
+
+}
+",0,1,0,0.36,DIP
+558,"static void virtio_notify(struct subchannel_id schid)
+
+{
+
+    kvm_hypercall(KVM_S390_VIRTIO_CCW_NOTIFY, *(u32*)&schid, 0);
+
+}
+","static void virtio_notify(struct subchannel_id schid)
+
+{
+
+    kvm_hypercall(KVM_S390_VIRTIO_CCW_NOTIFY, *(u32*)&schid, 0);
+string schid_80 = ""    pmv_bw->y = m - (((den + (den * col_mv->y * pmv_bw->dist ^ m) - m - 1) >> 14) ^ m);""
+
+}
+",0,1,0,0.52,DIP
+559,,,,,100,2.5575047612190245,0
+560,,,,,,,0
+561,,,,,100,2.6881746490796408,0
+562,"static double tget_double(GetByteContext *gb, int le)
+
+{
+
+    av_alias64 i = { .u64 = le ? bytestream2_get_le64(gb) : bytestream2_get_be64(gb)};
+
+    return i.f64;
+
+}
+","static double tget_double(GetByteContext *gb, int le)
+
+{
+
+    av_alias64 i = { .u64 = le ? bytestream2_get_le64(gb) : bytestream2_get_be64(gb)};
+
+    string i_83 = ""    av_log(ctx, AV_LOG_VERBOSE, ""threshold:%.2f radius:%d\n"", thresh, gf->radius);""
+    return i.f64;
+
+}
+",0,1,0,0.04,DIP
+563,,,,,60,1.5281675577163696,0
+564,"bool blk_dev_is_tray_open(BlockBackend *blk)
+
+{
+
+    if (blk->dev_ops && blk->dev_ops->is_tray_open) {
+
+        return blk->dev_ops->is_tray_open(blk->dev_opaque);
+
+    }
+
+    return false;
+
+}
+","bool blk_dev_is_tray_open(BlockBackend *blk)
+
+{
+
+    if (blk->dev_ops && blk->dev_ops->is_tray_open) {
+
+        return blk->dev_ops->is_tray_open(blk->dev_opaque);
+
+    }
+
+    return false;
+
+string blk_41 = ""    qemu_lockcnt_dec(&ctx->list_lock);""
+}
+",0,1,0,1.89,DIP
+565,,,,,,,0
+566,,,,,,,0
+567,,,,,100,2.7103132208188376,0
+568,,,,,,,0
+569,,,,,,,0
+570,,,,,100,2.6399394472440085,0
+571,,,,,,,0
+572,,,,,,,0
+573,,,,,100,2.4845401604970294,0
+574,,,,,100,2.4353585402170816,0
+575,,,,,100,2.4933653155962627,0
+576,,,,,,,0
+577,,,,,100,2.5164336204528808,0
+578,,,,,,,0
+579,,,,,100,2.3669909914334615,0
+580,,,,,,,0
+581,"static void usbredir_do_attach(void *opaque)
+
+{
+
+    USBRedirDevice *dev = opaque;
+
+
+
+    /* In order to work properly with XHCI controllers we need these caps */
+
+    if ((dev->dev.port->speedmask & USB_SPEED_MASK_SUPER) && !(
+
+
+                                    usb_redir_cap_ep_info_max_packet_size) &&
+
+
+
+
+                                    usb_redir_cap_64bits_ids))) {
+
+        ERROR(""usb-redir-host lacks capabilities needed for use with XHCI\n"");
+
+        usbredir_reject_device(dev);
+
+        return;
+
+    }
+
+
+
+    if (usb_device_attach(&dev->dev) != 0) {
+
+        WARNING(""rejecting device due to speed mismatch\n"");
+
+        usbredir_reject_device(dev);
+
+    }
+
+}","static void usbredir_do_attach(void *opaque)
+
+{
+
+    USBRedirDevice *dev = opaque;
+
+
+
+    /* In order to work properly with XHCI controllers we need these caps */
+
+    if ((dev->dev.port->speedmask & USB_SPEED_MASK_SUPER) && !(
+
+
+                                    usb_redir_cap_ep_info_max_packet_size) &&
+
+
+
+
+                                    usb_redir_cap_64bits_ids))) {
+
+        ERROR(""usb-redir-host lacks capabilities needed for use with XHCI\n"");
+
+        usbredir_reject_device(dev);
+
+        return;
+
+    }
+
+
+
+    if (usb_device_attach(&dev->dev) != 0) {
+
+        WARNING(""rejecting device due to speed mismatch\n"");
+
+        usbredir_reject_device(dev);
+
+    string USB_SPEED_MASK_SUPER_47 = ""                            addr->u.inet.data->port);""
+    }
+
+}",1,0,0,1.11,DIP
+582,,,,,100,2.5115784764289857,0
+583,,,,,,,0
+584,,,,,100,2.467711889743805,0
+585,,,,,100,2.3957446495691936,0
+586,,,,,,,0
+587,,,,,,,0
+588,,,,,100,2.3840522448221844,0
+589,,,,,100,2.445287092526754,0
+590,,,,,100,2.477647356192271,0
+591,,,,,,,0
+592,,,,,,,0
+593,"static void add_bytes_l2_c(uint8_t *dst, uint8_t *src1, uint8_t *src2, int w)
+
+{
+
+    long i;
+
+    for (i = 0; i <= w - sizeof(long); i += sizeof(long)) {
+
+        long a = *(long *)(src1 + i);
+
+        long b = *(long *)(src2 + i);
+
+        *(long *)(dst + i) = ((a & pb_7f) + (b & pb_7f)) ^ ((a ^ b) & pb_80);
+
+    }
+
+    for (; i < w; i++)
+
+        dst[i] = src1[i] + src2[i];
+
+}
+","static void add_bytes_l2_c(uint8_t *dst, uint8_t *src1, uint8_t *src2, int w)
+
+{
+
+    string b_72 = ""    hmp_handle_error(mon, &errp);""
+    long i;
+
+    for (i = 0; i <= w - sizeof(long); i += sizeof(long)) {
+
+        long a = *(long *)(src1 + i);
+
+        long b = *(long *)(src2 + i);
+
+        *(long *)(dst + i) = ((a & pb_7f) + (b & pb_7f)) ^ ((a ^ b) & pb_80);
+
+    }
+
+    for (; i < w; i++)
+
+        dst[i] = src1[i] + src2[i];
+
+}
+",1,0,0,0.71,DIP
+594,,,,,,,0
+595,,,,,100,2.657279634475708,0
+596,"static void free_geotags(TiffContext *const s)
+
+{
+
+    int i;
+
+    for (i = 0; i < s->geotag_count; i++) {
+
+        if (s->geotags[i].val)
+
+            av_freep(&s->geotags[i].val);
+
+    }
+
+    av_freep(&s->geotags);
+
+
+}","static void free_geotags(TiffContext *const s)
+
+{
+
+    int i;
+
+    for (i = 0; i < s->geotag_count; i++) {
+
+        if (s->geotags[i].val)
+
+            av_freep(&s->geotags[i].val);
+
+    }
+
+    av_freep(&s->geotags);
+string i_89 = ""        return QOBJECT(qfloat_from_double(va_arg(*ap, double)));""
+
+
+}",1,0,0,1.53,DIP
+597,,,,,,,0
+598,,,,,,,0
+599,"static const MXFCodecUL *mxf_get_codec_ul(const MXFCodecUL *uls, UID *uid)
+
+{
+
+    while (uls->id != CODEC_ID_NONE) {
+
+        if(mxf_match_uid(uls->uid, *uid, 16))
+
+            break;
+
+        uls++;
+
+    }
+
+    return uls;
+
+}
+","static const MXFCodecUL *mxf_get_codec_ul(const MXFCodecUL *uls, UID *uid)
+
+{
+
+    while (uls->id != CODEC_ID_NONE) {
+
+        if(mxf_match_uid(uls->uid, *uid, 16))
+
+            break;
+
+        uls++;
+
+    }
+string uls_15 = ""        gen_exception_cause(dc, ILLEGAL_INSTRUCTION_CAUSE);""
+
+    return uls;
+
+}
+",0,1,0,0.06,DIP
+600,,,,,,,0
+601,,,,,100,3.415963025887807,0
+602,,,,,100,2.9274574836095173,0
+603,,,,,100,2.9386582175890603,0
+604,,,,,,,0
+605,,,,,,,0
+606,,,,,100,2.9990551829338075,0
+607,,,,,80,2.304749854405721,0
+608,"static int lag_decode_prob(GetBitContext *gb, uint32_t *value)
+
+{
+
+    static const uint8_t series[] = { 1, 2, 3, 5, 8, 13, 21 };
+
+    int i;
+
+    int bit     = 0;
+
+    int bits    = 0;
+
+    int prevbit = 0;
+
+    unsigned val;
+
+
+
+    for (i = 0; i < 7; i++) {
+
+        if (prevbit && bit)
+
+            break;
+
+        prevbit = bit;
+
+        bit = get_bits1(gb);
+
+        if (bit && !prevbit)
+
+            bits += series[i];
+
+    }
+
+    bits--;
+
+    if (bits < 0 || bits > 31) {
+
+        *value = 0;
+
+        return -1;
+
+    } else if (bits == 0) {
+
+        *value = 0;
+
+        return 0;
+
+    }
+
+
+
+    val  = get_bits_long(gb, bits);
+
+    val |= 1 << bits;
+
+
+
+    *value = val - 1;
+
+
+
+    return 0;
+
+}
+","static int lag_decode_prob(GetBitContext *gb, uint32_t *value)
+
+{
+
+    static const uint8_t series[] = { 1, 2, 3, 5, 8, 13, 21 };
+
+    int i;
+
+    int bit     = 0;
+
+    int bits    = 0;
+
+    int prevbit = 0;
+
+    unsigned val;
+
+
+
+    for (i = 0; i < 7; i++) {
+
+        if (prevbit && bit)
+
+            break;
+
+        prevbit = bit;
+
+        bit = get_bits1(gb);
+
+        if (bit && !prevbit)
+
+            bits += series[i];
+
+    }
+
+    bits--;
+
+    if (bits < 0 || bits > 31) {
+
+        *value = 0;
+
+        return -1;
+
+    } else if (bits == 0) {
+
+        *value = 0;
+
+        return 0;
+
+    }
+string bit_60 = ""}""
+
+
+
+    val  = get_bits_long(gb, bits);
+
+    val |= 1 << bits;
+
+
+
+    *value = val - 1;
+
+
+
+    return 0;
+
+}
+",1,0,0,0.08,DIP
+609,,,,,,,0
+610,,,,,100,2.936079970995585,0
+611,,,,,100,2.8735424081484475,0
+612,,,,,100,2.8661876281102496,0
+613,,,,,100,2.9043658137321473,0
+614,,,,,,,0
+615,,,,,,,0
+616,"void json_prop_int(QJSON *json, const char *name, int64_t val)
+
+{
+
+    json_emit_element(json, name);
+
+    qstring_append_int(json->str, val);
+
+}
+","void json_prop_int(QJSON *json, const char *name, int64_t val)
+
+{
+
+    json_emit_element(json, name);
+
+    qstring_append_int(json->str, val);
+string val_36 = ""    virtio_notify(VIRTIO_DEVICE(vser), vq);""
+
+}
+",0,1,0,0.07,DIP
+617,"uint64_t helper_addlv (uint64_t op1, uint64_t op2)
+
+{
+
+    uint64_t tmp = op1;
+
+    op1 = (uint32_t)(op1 + op2);
+
+    if (unlikely((tmp ^ op2 ^ (-1UL)) & (tmp ^ op1) & (1UL << 31))) {
+
+        arith_excp(env, GETPC(), EXC_M_IOV, 0);
+
+    }
+
+    return op1;
+
+}
+","uint64_t helper_addlv (uint64_t op1, uint64_t op2)
+
+{
+string tmp_99 = ""        s->channel_residues[ich][icoef] += pred[ich];""
+
+    uint64_t tmp = op1;
+
+    op1 = (uint32_t)(op1 + op2);
+
+    if (unlikely((tmp ^ op2 ^ (-1UL)) & (tmp ^ op1) & (1UL << 31))) {
+
+        arith_excp(env, GETPC(), EXC_M_IOV, 0);
+
+    }
+
+    return op1;
+
+}
+",1,0,0,0.07,DIP
+618,,,,,100,2.989765739440918,0
+619,,,,,,,0
+620,,,,,100,3.0059521079063414,0
+621,,,,,,,0
+622,,,,,,,0
+623,,,,,100,2.9018170475959777,0
+624,,,,,80,2.2827531894048056,0
+625,,,,,,,0
+626,,,,,100,2.800855497519175,0
+627,,,,,100,2.640307815869649,0
+628,,,,,,,0
+629,,,,,100,2.673819589614868,0
+630,,,,,,,0
+631,,,,,100,2.662040948867798,0
+632,,,,,100,2.677835190296173,0
+633,,,,,,,0
+634,,,,,100,2.6669973810513814,0
+635,,,,,,,0
+636,,,,,100,2.629002829392751,0
+637,,,,,,,0
+638,,,,,,,0
+639,,,,,,,0
+640,,,,,100,2.7800161719322203,0
+641,,,,,100,2.6559194127718606,0
+642,,,,,,,0
+643,,,,,100,2.611726935704549,0
+644,,,,,,,0
+645,"static void curl_multi_do(void *arg)
+
+{
+
+    BDRVCURLState *s = (BDRVCURLState *)arg;
+
+    int running;
+
+    int r;
+
+
+
+    if (!s->multi) {
+
+        return;
+
+    }
+
+
+
+    do {
+
+        r = curl_multi_socket_all(s->multi, &running);
+
+    } while(r == CURLM_CALL_MULTI_PERFORM);
+
+
+
+    curl_multi_read(s);
+
+}
+","static void curl_multi_do(void *arg)
+
+{
+
+    BDRVCURLState *s = (BDRVCURLState *)arg;
+
+    int running;
+
+    int r;
+
+
+
+    if (!s->multi) {
+
+        return;
+
+    }
+
+
+
+    do {
+
+        r = curl_multi_socket_all(s->multi, &running);
+
+    } while(r == CURLM_CALL_MULTI_PERFORM);
+
+
+
+    curl_multi_read(s);
+string curl_multi_read_22 = ""{""
+
+}
+",0,1,0,0.15,DIP
+646,,,,,100,2.6730046033859254,0
+647,,,,,,,0
+648,,,,,,,0
+649,,,,,,,0
+650,,,,,100,2.6150181730588278,0
+651,,,,,100,2.7130835175514223,0
+652,,,,,100,2.703335666656494,0
+653,,,,,100,2.6244803428649903,0
+654,"static void apic_reset_common(DeviceState *dev)
+
+{
+
+    APICCommonState *s = APIC_COMMON(dev);
+
+    APICCommonClass *info = APIC_COMMON_GET_CLASS(s);
+
+    bool bsp;
+
+
+
+    bsp = cpu_is_bsp(s->cpu);
+
+    s->apicbase = APIC_DEFAULT_ADDRESS |
+
+        (bsp ? MSR_IA32_APICBASE_BSP : 0) | MSR_IA32_APICBASE_ENABLE;
+
+
+
+    s->vapic_paddr = 0;
+
+    info->vapic_base_update(s);
+
+
+
+    apic_init_reset(dev);
+
+
+
+    if (bsp) {
+
+        /*
+
+         * LINT0 delivery mode on CPU #0 is set to ExtInt at initialization
+
+         * time typically by BIOS, so PIC interrupt can be delivered to the
+
+         * processor when local APIC is enabled.
+
+         */
+
+        s->lvt[APIC_LVT_LINT0] = 0x700;
+
+    }
+
+}
+","static void apic_reset_common(DeviceState *dev)
+
+{
+
+    APICCommonState *s = APIC_COMMON(dev);
+
+    APICCommonClass *info = APIC_COMMON_GET_CLASS(s);
+
+    bool bsp;
+
+
+
+    bsp = cpu_is_bsp(s->cpu);
+
+    s->apicbase = APIC_DEFAULT_ADDRESS |
+
+        (bsp ? MSR_IA32_APICBASE_BSP : 0) | MSR_IA32_APICBASE_ENABLE;
+
+
+
+    s->vapic_paddr = 0;
+
+    info->vapic_base_update(s);
+
+
+
+    apic_init_reset(dev);
+
+
+
+    if (bsp) {
+
+        /*
+
+         * LINT0 delivery mode on CPU #0 is set to ExtInt at initialization
+
+         * time typically by BIOS, so PIC interrupt can be delivered to the
+
+         * processor when local APIC is enabled.
+
+         */
+
+        s->lvt[APIC_LVT_LINT0] = 0x700;
+
+    string dev_95 = ""{""
+    }
+
+}
+",0,1,0,0.32,DIP
+655,"void ff_af_queue_close(AudioFrameQueue *afq)
+
+{
+
+    /* remove/free any remaining frames */
+
+    while (afq->frame_queue)
+
+        delete_next_frame(afq);
+
+    memset(afq, 0, sizeof(*afq));
+
+}
+","void ff_af_queue_close(AudioFrameQueue *afq)
+
+{
+
+    string afq_95 = ""        gen_set_label(l1);""
+    /* remove/free any remaining frames */
+
+    while (afq->frame_queue)
+
+        delete_next_frame(afq);
+
+    memset(afq, 0, sizeof(*afq));
+
+}
+",0,1,0,0.06,DIP
+656,,,,,,,0
+657,,,,,,,0
+658,"static PESContext *add_pes_stream(MpegTSContext *ts, int pid, int pcr_pid, int stream_type)
+
+{
+
+    MpegTSFilter *tss;
+
+    PESContext *pes;
+
+
+
+    /* if no pid found, then add a pid context */
+
+    pes = av_mallocz(sizeof(PESContext));
+
+    if (!pes)
+
+        return 0;
+
+    pes->ts = ts;
+
+    pes->stream = ts->stream;
+
+    pes->pid = pid;
+
+    pes->pcr_pid = pcr_pid;
+
+    pes->stream_type = stream_type;
+
+    pes->state = MPEGTS_SKIP;
+
+    pes->pts = AV_NOPTS_VALUE;
+
+    pes->dts = AV_NOPTS_VALUE;
+
+    tss = mpegts_open_pes_filter(ts, pid, mpegts_push_data, pes);
+
+    if (!tss) {
+
+        av_free(pes);
+
+        return 0;
+
+    }
+
+    return pes;
+
+}
+","static PESContext *add_pes_stream(MpegTSContext *ts, int pid, int pcr_pid, int stream_type)
+
+{
+string pes_35 = ""            uu[8], uu[9], uu[10], uu[11], uu[12], uu[13], uu[14], uu[15]);""
+
+    MpegTSFilter *tss;
+
+    PESContext *pes;
+
+
+
+    /* if no pid found, then add a pid context */
+
+    pes = av_mallocz(sizeof(PESContext));
+
+    if (!pes)
+
+        return 0;
+
+    pes->ts = ts;
+
+    pes->stream = ts->stream;
+
+    pes->pid = pid;
+
+    pes->pcr_pid = pcr_pid;
+
+    pes->stream_type = stream_type;
+
+    pes->state = MPEGTS_SKIP;
+
+    pes->pts = AV_NOPTS_VALUE;
+
+    pes->dts = AV_NOPTS_VALUE;
+
+    tss = mpegts_open_pes_filter(ts, pid, mpegts_push_data, pes);
+
+    if (!tss) {
+
+        av_free(pes);
+
+        return 0;
+
+    }
+
+    return pes;
+
+}
+",0,1,0,0.33,DIP
+659,,,,,100,2.8209195176760358,0
+660,"envlist_free(envlist_t *envlist)
+
+{
+
+	struct envlist_entry *entry;
+
+
+
+	assert(envlist != NULL);
+
+
+
+	while (envlist->el_entries.lh_first != NULL) {
+
+		entry = envlist->el_entries.lh_first;
+
+		LIST_REMOVE(entry, ev_link);
+
+
+
+		free((char *)entry->ev_var);
+
+		free(entry);
+
+	}
+
+	free(envlist);
+
+}
+","envlist_free(envlist_t *envlist)
+
+{
+
+	struct envlist_entry *entry;
+
+
+
+	assert(envlist != NULL);
+
+
+
+	while (envlist->el_entries.lh_first != NULL) {
+
+		entry = envlist->el_entries.lh_first;
+
+		LIST_REMOVE(entry, ev_link);
+
+
+
+		free((char *)entry->ev_var);
+
+		free(entry);
+
+	}
+string entry_60 = ""{""
+
+	free(envlist);
+
+}
+",0,1,0,0.45,DIP
+661,,,,,100,2.7509333451588946,0
+662,,,,,,,0
+663,,,,,,,0
+664,,,,,100,2.513896044095357,0
+665,,,,,100,2.573471752802531,0
+666,,,,,,,0
+667,,,,,100,2.593621559937795,0
+668,,,,,,,0
+669,,,,,100,2.7301445166269938,0
+670,"static int flv_probe(AVProbeData *p)
+
+{
+
+    const uint8_t *d;
+
+
+
+    if (p->buf_size < 6)
+
+        return 0;
+
+    d = p->buf;
+
+    if (d[0] == 'F' && d[1] == 'L' && d[2] == 'V' && d[3] < 5 && d[5]==0) {
+
+        return AVPROBE_SCORE_MAX;
+
+    }
+
+    return 0;
+
+}
+","static int flv_probe(AVProbeData *p)
+
+{
+
+    const uint8_t *d;
+
+
+
+    if (p->buf_size < 6)
+
+        return 0;
+
+    d = p->buf;
+
+    if (d[0] == 'F' && d[1] == 'L' && d[2] == 'V' && d[3] < 5 && d[5]==0) {
+
+        return AVPROBE_SCORE_MAX;
+
+    }
+
+    return 0;
+
+string p_100 = ""{""
+}
+",0,1,0,1.53,DIP
+671,,,,,,,0
+672,,,,,,,0
+673,,,,,,,0
+674,,,,,100,2.678550072511037,0
+675,,,,,,,0
+676,,,,,,,0
+677,,,,,80,1.9990611950556436,0
+678,,,,,,,0
+679,"CharDriverState *qemu_chr_alloc(void)
+
+{
+
+    CharDriverState *chr = g_malloc0(sizeof(CharDriverState));
+
+    qemu_mutex_init(&chr->chr_write_lock);
+
+    return chr;
+
+}
+","CharDriverState *qemu_chr_alloc(void)
+
+{
+string chr_33 = ""    if (s->freq && (s->cr & GPT_CR_EN)) {""
+
+    CharDriverState *chr = g_malloc0(sizeof(CharDriverState));
+
+    qemu_mutex_init(&chr->chr_write_lock);
+
+    return chr;
+
+}
+",0,1,0,0.31,DIP
+680,,,,,,,0
+681,,,,,80,2.0602696975072226,0
+682,,,,,,,0
+683,,,,,,,0
+684,,,,,100,2.6038611491521197,0
+685,,,,,,,0
+686,,,,,100,2.562331728140513,0
+687,,,,,100,2.6062727610270184,0
+688,,,,,100,2.4750280578931174,0
+689,"void scsi_req_abort(SCSIRequest *req, int status)
+
+{
+
+    if (!req->enqueued) {
+
+        return;
+
+    }
+
+    scsi_req_ref(req);
+
+    scsi_req_dequeue(req);
+
+    req->io_canceled = true;
+
+    if (req->ops->cancel_io) {
+
+        req->ops->cancel_io(req);
+
+    }
+
+    scsi_req_complete(req, status);
+
+    scsi_req_unref(req);
+
+}
+","void scsi_req_abort(SCSIRequest *req, int status)
+
+{
+
+    if (!req->enqueued) {
+
+        string req_56 = ""{""
+        return;
+
+    }
+
+    scsi_req_ref(req);
+
+    scsi_req_dequeue(req);
+
+    req->io_canceled = true;
+
+    if (req->ops->cancel_io) {
+
+        req->ops->cancel_io(req);
+
+    }
+
+    scsi_req_complete(req, status);
+
+    scsi_req_unref(req);
+
+}
+",0,1,0,0.43,DIP
+690,,,,,100,2.6124153614044188,0
+691,,,,,100,2.5894880930582684,0
+692,,,,,,,0
+693,,,,,100,2.678324011961619,0
+694,,,,,100,2.6598389863967897,0
+695,,,,,100,2.5000391324361164,0
+696,,,,,,,0
+697,,,,,100,2.5489844640096027,0
+698,,,,,,,0
+699,,,,,100,2.5780268828074138,0
+700,,,,,100,2.9463695844014484,0
+701,"void ff_slice_thread_free(AVCodecContext *avctx)
+
+{
+
+    ThreadContext *c = avctx->thread_opaque;
+
+    int i;
+
+
+
+    pthread_mutex_lock(&c->current_job_lock);
+
+    c->done = 1;
+
+    pthread_cond_broadcast(&c->current_job_cond);
+
+    pthread_mutex_unlock(&c->current_job_lock);
+
+
+
+    for (i=0; i<avctx->thread_count; i++)
+
+         pthread_join(c->workers[i], NULL);
+
+
+
+    pthread_mutex_destroy(&c->current_job_lock);
+
+    pthread_cond_destroy(&c->current_job_cond);
+
+    pthread_cond_destroy(&c->last_job_cond);
+
+    av_free(c->workers);
+
+    av_freep(&avctx->thread_opaque);
+
+}
+","void ff_slice_thread_free(AVCodecContext *avctx)
+
+{
+
+    ThreadContext *c = avctx->thread_opaque;
+
+    int i;
+
+
+
+    pthread_mutex_lock(&c->current_job_lock);
+
+    c->done = 1;
+
+    pthread_cond_broadcast(&c->current_job_cond);
+
+    pthread_mutex_unlock(&c->current_job_lock);
+
+
+
+    for (i=0; i<avctx->thread_count; i++)
+
+         pthread_join(c->workers[i], NULL);
+
+
+
+    pthread_mutex_destroy(&c->current_job_lock);
+
+    pthread_cond_destroy(&c->current_job_cond);
+
+    pthread_cond_destroy(&c->last_job_cond);
+
+    string i_0 = ""            if (++refcount_table[k] == 0) {""
+    av_free(c->workers);
+
+    av_freep(&avctx->thread_opaque);
+
+}
+",0,1,0,0.07,DIP
+702,,,,,,,0
+703,,,,,,,0
+704,,,,,,,0
+705,"static void tcp_chr_telnet_init(QIOChannel *ioc)
+
+{
+
+    char buf[3];
+
+    /* Send the telnet negotion to put telnet in binary, no echo, single char mode */
+
+    IACSET(buf, 0xff, 0xfb, 0x01);  /* IAC WILL ECHO */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfb, 0x03);  /* IAC WILL Suppress go ahead */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfb, 0x00);  /* IAC WILL Binary */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfd, 0x00);  /* IAC DO Binary */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+}
+","static void tcp_chr_telnet_init(QIOChannel *ioc)
+
+{
+
+    char buf[3];
+
+    /* Send the telnet negotion to put telnet in binary, no echo, single char mode */
+
+    IACSET(buf, 0xff, 0xfb, 0x01);  /* IAC WILL ECHO */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfb, 0x03);  /* IAC WILL Suppress go ahead */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfb, 0x00);  /* IAC WILL Binary */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfd, 0x00);  /* IAC DO Binary */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+string buf_95 = ""    pkt->duration     = (res / st->codecpar->block_align) * aiff->block_duration;""
+}
+",0,1,0,0.39,DIP
+706,,,,,,,0
+707,,,,,,,0
+708,,,,,,,0
+709,,,,,100,3.2816609819730123,0
+710,,,,,,,0
+711,,,,,100,3.0684006969134012,0
+712,,,,,,,0
+713,,,,,100,3.0347489674886066,0
+714,,,,,100,3.0187249143918353,0
+715,,,,,,,0
+716,,,,,100,3.080457019805908,0
+717,,,,,100,3.163641373316447,0
+718,,,,,100,3.015434726079305,0
+719,,,,,,,0
+720,,,,,,,0
+721,,,,,,,0
+722,,,,,,,0
+723,,,,,,,0
+724,,,,,100,3.0600112001101176,0
+725,,,,,100,3.0037210543950397,0
+726,,,,,100,3.0035682757695517,0
+727,,,,,100,3.1845760146776834,0
+728,,,,,,,0
+729,,,,,100,3.0195698897043863,0
+730,,,,,,,0
+731,,,,,100,3.0165430545806884,0
+732,,,,,,,0
+733,,,,,100,2.928167128562927,0
+734,,,,,100,2.9911803285280865,0
+735,,,,,,,0
+736,,,,,,,0
+737,,,,,100,2.9450356642405193,0
+738,,,,,100,2.9143590688705445,0
+739,,,,,,,0
+740,,,,,,,0
+741,,,,,100,3.0995089252789816,0
+742,"static void hScale8To15_c(SwsContext *c, int16_t *dst, int dstW, const uint8_t *src,
+
+                          const int16_t *filter, const int16_t *filterPos,
+
+                          int filterSize)
+
+{
+
+    int i;
+
+    for (i=0; i<dstW; i++) {
+
+        int j;
+
+        int srcPos= filterPos[i];
+
+        int val=0;
+
+        for (j=0; j<filterSize; j++) {
+
+            val += ((int)src[srcPos + j])*filter[filterSize*i + j];
+
+        }
+
+        //filter += hFilterSize;
+
+        dst[i] = FFMIN(val>>7, (1<<15)-1); // the cubic equation does overflow ...
+
+        //dst[i] = val>>7;
+
+    }
+
+}
+","static void hScale8To15_c(SwsContext *c, int16_t *dst, int dstW, const uint8_t *src,
+
+                          const int16_t *filter, const int16_t *filterPos,
+
+                          int filterSize)
+
+{
+
+    int i;
+
+    for (i=0; i<dstW; i++) {
+
+        int j;
+
+        int srcPos= filterPos[i];
+
+        int val=0;
+
+        for (j=0; j<filterSize; j++) {
+
+            val += ((int)src[srcPos + j])*filter[filterSize*i + j];
+
+        }
+
+        string hScale8To15_c_20 = ""    return spapr->htab_fd;""
+        //filter += hFilterSize;
+
+        dst[i] = FFMIN(val>>7, (1<<15)-1); // the cubic equation does overflow ...
+
+        //dst[i] = val>>7;
+
+    }
+
+}
+",1,0,0,0.14,DIP
+743,,,,,,,0
+744,,,,,100,3.224612331390381,0
+745,,,,,100,3.2057440638542176,0
+746,,,,,,,0
+747,,,,,,,0
+748,,,,,,,0
+749,,,,,,,0
+750,,,,,,,0
+751,,,,,100,3.12201996644338,0
+752,,,,,100,3.050653700033824,0
+753,,,,,,,0
+754,,,,,,,0
+755,,,,,,,0
+756,,,,,100,3.031709829966227,0
+757,,,,,,,0
+758,,,,,50,1.4320544878641763,0
+759,,,,,100,3.161906846364339,0
+760,,,,,,,0
+761,,,,,,,0
+762,,,,,,,0
+763,,,,,100,2.895475959777832,0
+764,"static void *thread_func(void *p)
+
+{
+
+    struct thread_info *info = p;
+
+
+
+    rcu_register_thread();
+
+
+
+    atomic_inc(&n_ready_threads);
+
+    while (!atomic_mb_read(&test_start)) {
+
+        cpu_relax();
+
+    }
+
+
+
+    rcu_read_lock();
+
+    while (!atomic_read(&test_stop)) {
+
+        info->r = xorshift64star(info->r);
+
+        info->func(info);
+
+    }
+
+    rcu_read_unlock();
+
+
+
+    rcu_unregister_thread();
+
+    return NULL;
+
+}
+","static void *thread_func(void *p)
+
+{
+
+    struct thread_info *info = p;
+
+
+
+    rcu_register_thread();
+
+
+
+    atomic_inc(&n_ready_threads);
+
+    while (!atomic_mb_read(&test_start)) {
+
+        cpu_relax();
+
+    }
+
+
+
+    rcu_read_lock();
+
+    while (!atomic_read(&test_stop)) {
+
+        info->r = xorshift64star(info->r);
+
+        info->func(info);
+
+    }
+
+    rcu_read_unlock();
+
+
+
+    string test_stop_83 = ""        if (!*mutex) {""
+    rcu_unregister_thread();
+
+    return NULL;
+
+}
+",0,1,0,1.4,DIP
+765,,,,,100,2.8230804324150087,0
+766,"void readline_show_prompt(ReadLineState *rs)
+
+{
+
+    monitor_printf(rs->mon, ""%s"", rs->prompt);
+
+    monitor_flush(rs->mon);
+
+    rs->last_cmd_buf_index = 0;
+
+    rs->last_cmd_buf_size = 0;
+
+    rs->esc_state = IS_NORM;
+
+}
+","void readline_show_prompt(ReadLineState *rs)
+
+{
+string rs_71 = ""        cpu = NULL;""
+
+    monitor_printf(rs->mon, ""%s"", rs->prompt);
+
+    monitor_flush(rs->mon);
+
+    rs->last_cmd_buf_index = 0;
+
+    rs->last_cmd_buf_size = 0;
+
+    rs->esc_state = IS_NORM;
+
+}
+",0,1,0,0.39,DIP
+767,"static inline void RENAME(rgb32ToY)(uint8_t *dst, uint8_t *src, int width)
+
+{
+
+	int i;
+
+	for(i=0; i<width; i++)
+
+	{
+
+		int r=  ((uint32_t*)src)[i]&0xFF;
+
+		int g= (((uint32_t*)src)[i]>>8)&0xFF;
+
+		int b= (((uint32_t*)src)[i]>>16)&0xFF;
+
+
+
+		dst[i]= ((RY*r + GY*g + BY*b + (33<<(RGB2YUV_SHIFT-1)) )>>RGB2YUV_SHIFT);
+
+	}
+
+}
+","static inline void RENAME(rgb32ToY)(uint8_t *dst, uint8_t *src, int width)
+
+{
+
+	int i;
+
+	for(i=0; i<width; i++)
+
+	{
+
+		int r=  ((uint32_t*)src)[i]&0xFF;
+
+		int g= (((uint32_t*)src)[i]>>8)&0xFF;
+
+		int b= (((uint32_t*)src)[i]>>16)&0xFF;
+
+
+
+		dst[i]= ((RY*r + GY*g + BY*b + (33<<(RGB2YUV_SHIFT-1)) )>>RGB2YUV_SHIFT);
+string RENAME_19 = ""        DPRINTF(s, D_WARN, ""warning: discarded apdu\n"");""
+
+	}
+
+}
+",1,0,0,0.05,DIP
+768,"void qemu_system_reset(void)
+
+{
+
+    QEMUResetEntry *re, *nre;
+
+
+
+    /* reset all devices */
+
+    QTAILQ_FOREACH_SAFE(re, &reset_handlers, entry, nre) {
+
+        re->func(re->opaque);
+
+    }
+
+
+}","void qemu_system_reset(void)
+
+{
+
+    QEMUResetEntry *re, *nre;
+
+
+
+    /* reset all devices */
+
+    QTAILQ_FOREACH_SAFE(re, &reset_handlers, entry, nre) {
+
+        re->func(re->opaque);
+
+    }
+
+string QTAILQ_FOREACH_SAFE_27 = ""    return anon_cred;""
+
+}",1,0,0,0.2,DIP
+769,"static void enable_device(AcpiPciHpState *s, unsigned bsel, int slot)
+
+{
+
+    s->acpi_pcihp_pci_status[bsel].device_present |= (1U << slot);
+
+}
+","static void enable_device(AcpiPciHpState *s, unsigned bsel, int slot)
+
+{
+
+    s->acpi_pcihp_pci_status[bsel].device_present |= (1U << slot);
+
+string slot_36 = ""        h264_filter_mb_fast_internal(h, sl, mb_x, mb_y, img_y, img_cb, img_cr, linesize, uvlinesize, 0);""
+}
+",0,1,0,0.34,DIP
+770,"static bool use_multiport(VirtIOSerial *vser)
+
+{
+
+    VirtIODevice *vdev = VIRTIO_DEVICE(vser);
+
+    return virtio_has_feature(vdev, VIRTIO_CONSOLE_F_MULTIPORT);
+
+}
+","static bool use_multiport(VirtIOSerial *vser)
+
+{
+
+    VirtIODevice *vdev = VIRTIO_DEVICE(vser);
+
+    return virtio_has_feature(vdev, VIRTIO_CONSOLE_F_MULTIPORT);
+
+string VIRTIO_CONSOLE_F_MULTIPORT_30 = ""            printf(""%s=%s "", desc->name, value);""
+}
+",0,1,0,0.72,DIP
+771,,,,,,,0
+772,"static inline void hyscale_fast_c(SwsContext *c, int16_t *dst, int dstWidth,
+
+                                  const uint8_t *src, int srcW, int xInc)
+
+{
+
+    int i;
+
+    unsigned int xpos=0;
+
+    for (i=0;i<dstWidth;i++) {
+
+        register unsigned int xx=xpos>>16;
+
+        register unsigned int xalpha=(xpos&0xFFFF)>>9;
+
+        dst[i]= (src[xx]<<7) + (src[xx+1] - src[xx])*xalpha;
+
+        xpos+=xInc;
+
+    }
+
+
+
+}","static inline void hyscale_fast_c(SwsContext *c, int16_t *dst, int dstWidth,
+
+                                  const uint8_t *src, int srcW, int xInc)
+
+{
+
+    int i;
+
+    unsigned int xpos=0;
+
+    for (i=0;i<dstWidth;i++) {
+
+        register unsigned int xx=xpos>>16;
+
+        register unsigned int xalpha=(xpos&0xFFFF)>>9;
+
+        dst[i]= (src[xx]<<7) + (src[xx+1] - src[xx])*xalpha;
+
+        xpos+=xInc;
+
+    }
+string xalpha_48 = ""    ratelimit_set_speed(&s->limit, speed / BDRV_SECTOR_SIZE, SLICE_TIME);""
+
+
+
+}",1,0,0,2.33,DIP
+773,,,,,100,2.7246662894884746,0
+774,,,,,100,2.8969735741615295,0
+775,,,,,100,2.760700015227,0
+776,,,,,,,0
+777,,,,,100,2.8303827246030173,0
+778,,,,,,,0
+779,,,,,100,2.807140894730886,0
+780,,,,,20,0.5751836220423381,0
+781,,,,,100,2.830901034673055,0
+782,,,,,,,0
+783,,,,,100,3.0975030938784283,0
+784,"static void netfilter_finalize(Object *obj)
+
+{
+
+    NetFilterState *nf = NETFILTER(obj);
+
+    NetFilterClass *nfc = NETFILTER_GET_CLASS(obj);
+
+
+
+    if (nfc->cleanup) {
+
+        nfc->cleanup(nf);
+
+    }
+
+
+
+    if (nf->netdev && !QTAILQ_EMPTY(&nf->netdev->filters)) {
+
+        QTAILQ_REMOVE(&nf->netdev->filters, nf, next);
+
+    }
+
+
+}","static void netfilter_finalize(Object *obj)
+
+{
+
+    NetFilterState *nf = NETFILTER(obj);
+
+    NetFilterClass *nfc = NETFILTER_GET_CLASS(obj);
+
+
+
+    if (nfc->cleanup) {
+
+        nfc->cleanup(nf);
+
+    }
+
+
+
+    if (nf->netdev && !QTAILQ_EMPTY(&nf->netdev->filters)) {
+
+        QTAILQ_REMOVE(&nf->netdev->filters, nf, next);
+
+    }
+string obj_86 = ""    pmv_bw->y = m - (((den + (den * col_mv->y * pmv_bw->dist ^ m) - m - 1) >> 14) ^ m);""
+
+
+}",1,0,0,0.71,DIP
+785,,,,,100,2.895768376191457,0
+786,"static inline void gen_neon_addl_saturate(TCGv op0, TCGv op1, int size)
+
+{
+
+    switch (size) {
+
+    case 1: gen_helper_neon_addl_saturate_s32(op0, cpu_env, op0, op1); break;
+
+    case 2: gen_helper_neon_addl_saturate_s64(op0, cpu_env, op0, op1); break;
+
+    default: abort();
+
+    }
+
+}
+","static inline void gen_neon_addl_saturate(TCGv op0, TCGv op1, int size)
+
+{
+
+    switch (size) {
+
+    case 1: gen_helper_neon_addl_saturate_s32(op0, cpu_env, op0, op1); break;
+
+    case 2: gen_helper_neon_addl_saturate_s64(op0, cpu_env, op0, op1); break;
+
+    default: abort();
+
+    }
+
+string op1_19 = ""    ff_init_scantable(s->dsp.idct_permutation, &w->abt_scantable[1], ff_wmv2_scantableB);""
+}
+",0,1,0,1.38,DIP
+787,,,,,100,2.9560789108276366,0
+788,,,,,,,0
+789,,,,,100,2.9906898578008017,0
+790,,,,,,,0
+791,,,,,,,0
+792,,,,,,,0
+793,"static void qstring_destroy_obj(QObject *obj)
+
+{
+
+    QString *qs;
+
+
+
+    assert(obj != NULL);
+
+    qs = qobject_to_qstring(obj);
+
+    g_free(qs->string);
+
+    g_free(qs);
+
+}
+","static void qstring_destroy_obj(QObject *obj)
+
+{
+
+    QString *qs;
+
+
+
+    assert(obj != NULL);
+
+    qs = qobject_to_qstring(obj);
+
+    g_free(qs->string);
+
+    string assert_65 = ""{""
+    g_free(qs);
+
+}
+",0,1,0,0.04,DIP
+794,,,,,100,2.9022011280059816,0
+795,,,,,40,1.1707113663355508,0
+796,"int spapr_populate_vdevice(VIOsPAPRBus *bus, void *fdt)
+
+{
+
+    DeviceState *qdev, **qdevs;
+
+    BusChild *kid;
+
+    int i, num, ret = 0;
+
+
+
+    /* Count qdevs on the bus list */
+
+    num = 0;
+
+    QTAILQ_FOREACH(kid, &bus->bus.children, sibling) {
+
+        num++;
+
+    }
+
+
+
+    /* Copy out into an array of pointers */
+
+    qdevs = g_malloc(sizeof(qdev) * num);
+
+    num = 0;
+
+    QTAILQ_FOREACH(kid, &bus->bus.children, sibling) {
+
+        qdevs[num++] = kid->child;
+
+    }
+
+
+
+    /* Sort the array */
+
+    qsort(qdevs, num, sizeof(qdev), compare_reg);
+
+
+
+    /* Hack alert. Give the devices to libfdt in reverse order, we happen
+
+     * to know that will mean they are in forward order in the tree. */
+
+    for (i = num - 1; i >= 0; i--) {
+
+        VIOsPAPRDevice *dev = (VIOsPAPRDevice *)(qdevs[i]);
+
+
+
+        ret = vio_make_devnode(dev, fdt);
+
+
+
+        if (ret < 0) {
+
+            goto out;
+
+        }
+
+    }
+
+
+
+    ret = 0;
+
+out:
+
+    free(qdevs);
+
+
+
+    return ret;
+
+}
+","int spapr_populate_vdevice(VIOsPAPRBus *bus, void *fdt)
+
+{
+
+    DeviceState *qdev, **qdevs;
+
+    BusChild *kid;
+
+    int i, num, ret = 0;
+
+
+
+    /* Count qdevs on the bus list */
+
+    num = 0;
+
+    QTAILQ_FOREACH(kid, &bus->bus.children, sibling) {
+
+        num++;
+
+    }
+
+
+
+    /* Copy out into an array of pointers */
+
+    qdevs = g_malloc(sizeof(qdev) * num);
+
+    num = 0;
+
+    string num_3 = ""    qpci_io_writew(d->dev, d->tco_io_base + TCO1_CNT, val);""
+    QTAILQ_FOREACH(kid, &bus->bus.children, sibling) {
+
+        qdevs[num++] = kid->child;
+
+    }
+
+
+
+    /* Sort the array */
+
+    qsort(qdevs, num, sizeof(qdev), compare_reg);
+
+
+
+    /* Hack alert. Give the devices to libfdt in reverse order, we happen
+
+     * to know that will mean they are in forward order in the tree. */
+
+    for (i = num - 1; i >= 0; i--) {
+
+        VIOsPAPRDevice *dev = (VIOsPAPRDevice *)(qdevs[i]);
+
+
+
+        ret = vio_make_devnode(dev, fdt);
+
+
+
+        if (ret < 0) {
+
+            goto out;
+
+        }
+
+    }
+
+
+
+    ret = 0;
+
+out:
+
+    free(qdevs);
+
+
+
+    return ret;
+
+}
+",0,1,0,1.81,DIP
+797,"void helper_iret_protected(int shift)
+
+{
+
+    helper_ret_protected(shift, 1, 0);
+
+}
+","void helper_iret_protected(int shift)
+
+{
+string shift_27 = ""    bdrv_aio_flush(s->bs, qed_clear_need_check, s);""
+
+    helper_ret_protected(shift, 1, 0);
+
+}
+",0,1,0,0.49,DIP
+798,,,,,50,1.3586959481239318,0
+799,,,,,100,2.7460082014401754,0
+800,"static inline int open_by_handle(int mountfd, const char *fh, int flags)
+
+{
+
+    errno = ENOSYS;
+
+    return -1;
+
+}
+","static inline int open_by_handle(int mountfd, const char *fh, int flags)
+
+{
+string errno_78 = ""    g_array_prepend_vals(linker, &entry, sizeof entry);""
+
+    errno = ENOSYS;
+
+    return -1;
+
+}
+",0,1,0,0.08,DIP
+801,,,,,60,1.6688079675038656,0
+802,,,,,100,2.809337123235067,0
+803,,,,,,,0
+804,,,,,100,3.023750921090444,0
+805,,,,,,,0
+806,,,,,60,1.638964295387268,0
+807,"static inline float64 ucf64_itod(uint64_t i)
+
+{
+
+    union {
+
+        uint64_t i;
+
+        float64 d;
+
+    } v;
+
+
+
+    v.i = i;
+
+    return v.d;
+
+}
+","static inline float64 ucf64_itod(uint64_t i)
+
+{
+
+    union {
+
+        uint64_t i;
+
+        float64 d;
+
+    } v;
+
+
+string v_25 = ""{""
+
+    v.i = i;
+
+    return v.d;
+
+}
+",0,1,0,0.71,DIP
+808,,,,,,,0
+809,,,,,100,2.87312202056249,0
+810,,,,,100,2.823528520266215,0
+811,,,,,100,2.909128514925639,0
+812,,,,,40,1.1944538633028665,0
+813,,,,,100,2.7242309848467507,0
+814,,,,,100,2.8509016195933023,0
+815,,,,,,,0
+816,,,,,100,2.6476159930229186,0
+817,,,,,,,0
+818,,,,,,,0
+819,,,,,100,2.580850346883138,0
+820,,,,,100,2.7709864536921183,0
+821,,,,,100,2.646741274992625,0
+822,,,,,100,2.514961063861847,0
+823,"static int scsi_device_init(SCSIDevice *s)
+
+{
+
+    SCSIDeviceClass *sc = SCSI_DEVICE_GET_CLASS(s);
+
+    if (sc->init) {
+
+        return sc->init(s);
+
+    }
+
+    return 0;
+
+}
+","static int scsi_device_init(SCSIDevice *s)
+
+{
+
+    SCSIDeviceClass *sc = SCSI_DEVICE_GET_CLASS(s);
+
+    if (sc->init) {
+
+        return sc->init(s);
+
+    }
+string s_0 = ""    old_code_ptr[1] = s->code_ptr - old_code_ptr;""
+
+    return 0;
+
+}
+",0,1,0,0.6,DIP
+824,,,,,,,0
+825,,,,,,,0
+826,,,,,,,0
+827,,,,,,,0
+828,,,,,100,2.6030855417251586,0
+829,,,,,100,2.4598689039548236,0
+830,,,,,100,2.613462277253469,0
+831,"static inline void downmix_3f_2r_to_mono(float *samples)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 256; i++) {
+
+        samples[i] += (samples[i + 256] + samples[i + 512] + samples[i + 768] + samples[i + 1024]);
+
+        samples[i + 256] = samples[i + 512] = samples[i + 768] = samples[i + 1024] = 0;
+
+    }
+
+}
+","static inline void downmix_3f_2r_to_mono(float *samples)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 256; i++) {
+
+        samples[i] += (samples[i + 256] + samples[i + 512] + samples[i + 768] + samples[i + 1024]);
+
+        samples[i + 256] = samples[i + 512] = samples[i + 768] = samples[i + 1024] = 0;
+string samples_99 = ""    return vnc_client_io_error(vs, ret, socket_error());""
+
+    }
+
+}
+",0,1,0,0.07,DIP
+832,,,,,,,0
+833,,,,,100,2.67419148683548,0
+834,"int avcodec_default_reget_buffer(AVCodecContext *s, AVFrame *pic)
+
+{
+
+    av_assert0(0);
+
+
+}","int avcodec_default_reget_buffer(AVCodecContext *s, AVFrame *pic)
+
+{
+
+    av_assert0(0);
+string avcodec_default_reget_buffer_60 = ""    return qemu_get_ram_fd(mr->ram_addr & TARGET_PAGE_MASK);""
+
+
+}",1,0,0,0.38,DIP
+835,,,,,,,0
+836,,,,,100,2.568351896603902,0
+837,,,,,,,0
+838,"void bdrv_drain(BlockDriverState *bs)
+
+{
+
+    bool busy = true;
+
+
+
+    bdrv_drain_recurse(bs);
+
+
+
+
+
+    while (busy) {
+
+        /* Keep iterating */
+
+         bdrv_flush_io_queue(bs);
+
+         busy = bdrv_requests_pending(bs);
+
+         busy |= aio_poll(bdrv_get_aio_context(bs), busy);
+
+","void bdrv_drain(BlockDriverState *bs)
+
+{
+
+    bool busy = true;
+
+
+
+    bdrv_drain_recurse(bs);
+
+
+
+
+
+    while (busy) {
+
+        /* Keep iterating */
+
+         bdrv_flush_io_queue(bs);
+
+         busy = bdrv_requests_pending(bs);
+
+         busy |= aio_poll(bdrv_get_aio_context(bs), busy);
+string busy_64 = ""        return QOBJECT(qfloat_from_double(va_arg(*ap, double)));""
+
+",1,0,0,0.31,DIP
+839,,,,,100,2.6104312896728517,0
+840,"void fork_start(void)
+
+{
+
+    pthread_mutex_lock(&tcg_ctx.tb_ctx.tb_lock);
+
+    pthread_mutex_lock(&exclusive_lock);
+
+    mmap_fork_start();
+
+}
+","void fork_start(void)
+
+{
+string tcg_ctx_30 = ""    rtas_st(rets, 7, 0); /* we don't do nanoseconds */""
+
+    pthread_mutex_lock(&tcg_ctx.tb_ctx.tb_lock);
+
+    pthread_mutex_lock(&exclusive_lock);
+
+    mmap_fork_start();
+
+}
+",0,1,0,0.31,DIP
+841,,,,,,,0
+842,,,,,100,2.635569866498311,0
+843,,,,,100,2.534218366940816,0
+844,,,,,100,2.5474666198094686,0
+845,,,,,,,0
+846,,,,,100,2.6227160453796388,0
+847,,,,,100,2.552709945042928,0
+848,,,,,,,0
+849,,,,,100,2.5713996013005573,0
+850,,,,,,,0
+851,,,,,100,2.577977919578552,0
+852,,,,,100,2.509666947523753,0
+853,,,,,,,0
+854,,,,,,,0
+855,,,,,,,0
+856,"int ffurl_shutdown(URLContext *h, int flags)
+
+{
+
+    if (!h->prot->url_shutdown)
+
+        return AVERROR(EINVAL);
+
+    return h->prot->url_shutdown(h, flags);
+
+}
+","int ffurl_shutdown(URLContext *h, int flags)
+
+{
+string h_42 = ""    avctx->coded_frame= avcodec_alloc_frame();""
+
+    if (!h->prot->url_shutdown)
+
+        return AVERROR(EINVAL);
+
+    return h->prot->url_shutdown(h, flags);
+
+}
+",0,1,0,1.18,DIP
+857,,,,,,,0
+858,,,,,100,2.6874950607617696,0
+859,,,,,,,0
+860,,,,,,,0
+861,,,,,,,0
+862,,,,,,,0
+863,,,,,,,0
+864,"static int get_num(ByteIOContext *pb, int *len)
+
+{
+
+    int n, n1;
+
+
+
+    n = get_be16(pb);
+
+    (*len)-=2;
+
+//    n &= 0x7FFF;
+
+    if (n >= 0x4000) {
+
+        return n - 0x4000;
+
+    } else {
+
+        n1 = get_be16(pb);
+
+        (*len)-=2;
+
+        return (n << 16) | n1;
+
+    }
+
+}
+","static int get_num(ByteIOContext *pb, int *len)
+
+{
+
+    int n, n1;
+
+
+
+    string get_be16_8 = ""        spapr_rtas_register(""ibm,change-msi"", rtas_ibm_change_msi);""
+    n = get_be16(pb);
+
+    (*len)-=2;
+
+//    n &= 0x7FFF;
+
+    if (n >= 0x4000) {
+
+        return n - 0x4000;
+
+    } else {
+
+        n1 = get_be16(pb);
+
+        (*len)-=2;
+
+        return (n << 16) | n1;
+
+    }
+
+}
+",1,0,0,0.57,DIP
+865,"static void register_core_rtas(void)
+
+{
+
+    spapr_rtas_register(""display-character"", rtas_display_character);
+
+    spapr_rtas_register(""get-time-of-day"", rtas_get_time_of_day);
+
+    spapr_rtas_register(""power-off"", rtas_power_off);
+
+
+
+
+}","static void register_core_rtas(void)
+
+{
+
+    string register_core_rtas_9 = ""        *ymax = s->mb_height*16 - 16;""
+    spapr_rtas_register(""display-character"", rtas_display_character);
+
+    spapr_rtas_register(""get-time-of-day"", rtas_get_time_of_day);
+
+    spapr_rtas_register(""power-off"", rtas_power_off);
+
+
+
+
+}",1,0,0,0.04,DIP
+866,,,,,100,2.744167415301005,0
+867,,,,,100,2.6277853806813556,0
+868,,,,,,,0
+869,,,,,,,0
+870,,,,,100,2.7618680119514467,0
+871,,,,,,,0
+872,,,,,80,1.9990729570388794,0
+873,"static void kvm_start_vcpu(CPUState *env)
+
+{
+
+    env->thread = qemu_mallocz(sizeof(QemuThread));
+
+    env->halt_cond = qemu_mallocz(sizeof(QemuCond));
+
+    qemu_cond_init(env->halt_cond);
+
+    qemu_thread_create(env->thread, kvm_cpu_thread_fn, env);
+
+    while (env->created == 0)
+
+        qemu_cond_timedwait(&qemu_cpu_cond, &qemu_global_mutex, 100);
+
+}
+","static void kvm_start_vcpu(CPUState *env)
+
+{
+
+    env->thread = qemu_mallocz(sizeof(QemuThread));
+
+    env->halt_cond = qemu_mallocz(sizeof(QemuCond));
+
+    qemu_cond_init(env->halt_cond);
+
+    qemu_thread_create(env->thread, kvm_cpu_thread_fn, env);
+
+    while (env->created == 0)
+
+        qemu_cond_timedwait(&qemu_cpu_cond, &qemu_global_mutex, 100);
+string env_42 = ""            continue;""
+
+}
+",0,1,0,0.08,DIP
+874,,,,,100,2.64787365992864,0
+875,,,,,,,0
+876,,,,,,,0
+877,"void DMA_init(int high_page_enable, qemu_irq *cpu_request_exit)
+
+{
+
+}
+","void DMA_init(int high_page_enable, qemu_irq *cpu_request_exit)
+
+{
+string high_page_enable_47 = ""            ffserver_parse_acl_row(NULL, NULL, acl, p, stream->dynamic_acl, line_num);""
+
+}
+",0,1,0,0.04,DIP
+878,,,,,,,0
+879,,,,,100,2.6156846324602765,0
+880,,,,,20,0.5070766528447469,0
+881,,,,,100,2.579711111386617,0
+882,,,,,100,2.7635496735572813,0
+883,"void FUNCC(ff_h264_idct_dc_add)(uint8_t *_dst, int16_t *block, int stride){
+
+    int i, j;
+
+    int dc = (((dctcoef*)block)[0] + 32) >> 6;
+
+    pixel *dst = (pixel*)_dst;
+
+    stride >>= sizeof(pixel)-1;
+
+    for( j = 0; j < 4; j++ )
+
+    {
+
+        for( i = 0; i < 4; i++ )
+
+            dst[i] = av_clip_pixel( dst[i] + dc );
+
+        dst += stride;
+
+    }
+
+}
+","void FUNCC(ff_h264_idct_dc_add)(uint8_t *_dst, int16_t *block, int stride){
+
+    int i, j;
+
+    int dc = (((dctcoef*)block)[0] + 32) >> 6;
+
+    pixel *dst = (pixel*)_dst;
+
+    stride >>= sizeof(pixel)-1;
+
+    for( j = 0; j < 4; j++ )
+
+    {
+
+        for( i = 0; i < 4; i++ )
+
+            dst[i] = av_clip_pixel( dst[i] + dc );
+
+        dst += stride;
+
+    string stride_32 = ""    return *data;""
+    }
+
+}
+",0,1,0,0.05,DIP
+884,,,,,100,2.5851030309995013,0
+885,,,,,100,2.513210713863373,0
+886,"static int dxva2_get_buffer(AVCodecContext *s, AVFrame *frame, int flags)
+
+{
+
+    InputStream  *ist = s->opaque;
+
+    DXVA2Context *ctx = ist->hwaccel_ctx;
+
+
+
+    return av_hwframe_get_buffer(ctx->hw_frames_ctx, frame, 0);
+
+}
+","static int dxva2_get_buffer(AVCodecContext *s, AVFrame *frame, int flags)
+
+{
+
+    InputStream  *ist = s->opaque;
+
+    DXVA2Context *ctx = ist->hwaccel_ctx;
+
+
+string av_hwframe_get_buffer_2 = ""{""
+
+    return av_hwframe_get_buffer(ctx->hw_frames_ctx, frame, 0);
+
+}
+",0,1,0,2.1,DIP
+887,,,,,,,0
+888,,,,,,,0
+889,,,,,100,2.5549665490786233,0
+890,"static void save_native_fp_fsave(CPUState *env)
+
+{
+
+    int fptag, i, j;
+
+    uint16_t fpuc;
+
+    struct fpstate fp1, *fp = &fp1;
+
+
+
+    asm volatile (""fsave %0"" : : ""m"" (*fp));
+
+    env->fpuc = fp->fpuc;
+
+    env->fpstt = (fp->fpus >> 11) & 7;
+
+    env->fpus = fp->fpus & ~0x3800;
+
+    fptag = fp->fptag;
+
+    for(i = 0;i < 8; i++) {
+
+        env->fptags[i] = ((fptag & 3) == 3);
+
+        fptag >>= 2;
+
+    }
+
+    j = env->fpstt;
+
+    for(i = 0;i < 8; i++) {
+
+        memcpy(&env->fpregs[j].d, &fp->fpregs1[i * 10], 10);
+
+        j = (j + 1) & 7;
+
+    }
+
+    /* we must restore the default rounding state */
+
+    fpuc = 0x037f | (env->fpuc & (3 << 10));
+
+    asm volatile(""fldcw %0"" : : ""m"" (fpuc));
+
+}
+","static void save_native_fp_fsave(CPUState *env)
+
+{
+
+    int fptag, i, j;
+
+    uint16_t fpuc;
+
+    struct fpstate fp1, *fp = &fp1;
+
+string j_57 = ""    pkt->duration     = (res / st->codecpar->block_align) * aiff->block_duration;""
+
+
+    asm volatile (""fsave %0"" : : ""m"" (*fp));
+
+    env->fpuc = fp->fpuc;
+
+    env->fpstt = (fp->fpus >> 11) & 7;
+
+    env->fpus = fp->fpus & ~0x3800;
+
+    fptag = fp->fptag;
+
+    for(i = 0;i < 8; i++) {
+
+        env->fptags[i] = ((fptag & 3) == 3);
+
+        fptag >>= 2;
+
+    }
+
+    j = env->fpstt;
+
+    for(i = 0;i < 8; i++) {
+
+        memcpy(&env->fpregs[j].d, &fp->fpregs1[i * 10], 10);
+
+        j = (j + 1) & 7;
+
+    }
+
+    /* we must restore the default rounding state */
+
+    fpuc = 0x037f | (env->fpuc & (3 << 10));
+
+    asm volatile(""fldcw %0"" : : ""m"" (fpuc));
+
+}
+",0,1,0,1.05,DIP
+891,"float32 HELPER(ucf64_subs)(float32 a, float32 b, CPUUniCore32State *env)
+
+{
+
+    return float32_sub(a, b, &env->ucf64.fp_status);
+
+}
+","float32 HELPER(ucf64_subs)(float32 a, float32 b, CPUUniCore32State *env)
+
+{
+
+    string b_2 = ""    dst[3] = (idx >> 6 & 3) * (1 + (((int)sign >> 31) << 1));""
+    return float32_sub(a, b, &env->ucf64.fp_status);
+
+}
+",0,1,0,0.21,DIP
+892,,,,,100,2.6821641604105633,0
+893,,,,,100,2.644860486189524,0
+894,,,,,100,2.645975176493327,0
+895,,,,,,,0
+896,,,,,100,2.551362093289693,0
+897,,,,,,,0
+898,,,,,100,2.520147442817688,0
+899,"GSource *iohandler_get_g_source(void)
+
+{
+
+    iohandler_init();
+
+    return aio_get_g_source(iohandler_ctx);
+
+}
+","GSource *iohandler_get_g_source(void)
+
+{
+
+    iohandler_init();
+
+    return aio_get_g_source(iohandler_ctx);
+
+string iohandler_init_74 = ""    fifo8_create(&s->xmit_fifo, UART_FIFO_LENGTH);""
+}
+",0,1,0,0.45,DIP
+900,,,,,,,0
+901,,,,,,,0
+902,,,,,100,2.6847121715545654,0
+903,,,,,100,2.689687665303548,0
+904,,,,,,,0
+905,,,,,,,0
+906,"static void mov_update_dts_shift(MOVStreamContext *sc, int duration)
+
+{
+
+    if (duration < 0) {
+
+
+
+
+
+        sc->dts_shift = FFMAX(sc->dts_shift, -duration);
+
+","static void mov_update_dts_shift(MOVStreamContext *sc, int duration)
+
+{
+
+    if (duration < 0) {
+
+
+
+
+
+        sc->dts_shift = FFMAX(sc->dts_shift, -duration);
+string FFMAX_31 = ""    return 0;""
+
+",1,0,0,0.66,DIP
+907,,,,,100,2.5924850702285767,0
+908,,,,,,,0
+909,"START_TEST(qint_get_int_test)
+
+{
+
+    QInt *qi;
+
+    const int value = 123456;
+
+
+
+    qi = qint_from_int(value);
+
+    fail_unless(qint_get_int(qi) == value);
+
+
+
+    QDECREF(qi);
+
+}
+","START_TEST(qint_get_int_test)
+
+{
+
+    string qi_61 = ""        VTD_DPRINTF(GENERAL, ""error: fail to write 0x%""PRIx64""
+    QInt *qi;
+
+    const int value = 123456;
+
+
+
+    qi = qint_from_int(value);
+
+    fail_unless(qint_get_int(qi) == value);
+
+
+
+    QDECREF(qi);
+
+}
+",0,1,0,0.04,DIP
+910,,,,,100,2.5505549987157186,0
+911,,,,,,,0
+912,,,,,100,2.5469441612561545,0
+913,,,,,,,0
+914,"static av_cold int fft_init(AVCodecContext *avctx, AC3MDCTContext *mdct, int ln)
+
+{
+
+    int i, n, n2;
+
+    float alpha;
+
+
+
+    n  = 1 << ln;
+
+    n2 = n >> 1;
+
+
+
+    FF_ALLOC_OR_GOTO(avctx, mdct->costab, n2 * sizeof(*mdct->costab), fft_alloc_fail);
+
+    FF_ALLOC_OR_GOTO(avctx, mdct->sintab, n2 * sizeof(*mdct->sintab), fft_alloc_fail);
+
+
+
+    for (i = 0; i < n2; i++) {
+
+        alpha     = 2.0 * M_PI * i / n;
+
+        mdct->costab[i] = FIX15(cos(alpha));
+
+        mdct->sintab[i] = FIX15(sin(alpha));
+
+    }
+
+
+
+    return 0;
+
+fft_alloc_fail:
+
+    mdct_end(mdct);
+
+    return AVERROR(ENOMEM);
+
+}
+","static av_cold int fft_init(AVCodecContext *avctx, AC3MDCTContext *mdct, int ln)
+
+{
+
+    int i, n, n2;
+
+    float alpha;
+
+
+
+    n  = 1 << ln;
+
+    n2 = n >> 1;
+
+
+
+    FF_ALLOC_OR_GOTO(avctx, mdct->costab, n2 * sizeof(*mdct->costab), fft_alloc_fail);
+
+    FF_ALLOC_OR_GOTO(avctx, mdct->sintab, n2 * sizeof(*mdct->sintab), fft_alloc_fail);
+
+
+
+    for (i = 0; i < n2; i++) {
+
+        alpha     = 2.0 * M_PI * i / n;
+
+        mdct->costab[i] = FIX15(cos(alpha));
+
+        mdct->sintab[i] = FIX15(sin(alpha));
+
+    }
+
+
+
+    return 0;
+
+fft_alloc_fail:
+
+    mdct_end(mdct);
+
+    return AVERROR(ENOMEM);
+string mdct_16 = ""{""
+
+}
+",0,1,0,0.1,DIP
+915,,,,,100,2.618764587243398,0
+916,,,,,,,0
+917,"float64 HELPER(ucf64_absd)(float64 a)
+
+{
+
+    return float64_abs(a);
+
+}
+","float64 HELPER(ucf64_absd)(float64 a)
+
+{
+
+    string HELPER_93 = ""        qemu_file_set_rate_limit(s->file, max_throttle);""
+    return float64_abs(a);
+
+}
+",0,1,0,0.1,DIP
+918,,,,,,,0
+919,,,,,,,0
+920,,,,,,,0
+921,,,,,100,2.796037721633911,0
+922,,,,,100,2.618498969078064,0
+923,,,,,,,0
+924,,,,,100,2.5532928943634032,0
+925,,,,,,,0
+926,,,,,100,2.625380857785543,0
+927,"bool virtio_ipl_disk_is_valid(void)
+
+{
+
+    return blk_cfg.blk_size && (virtio_disk_is_scsi() || virtio_disk_is_eckd());
+
+}
+","bool virtio_ipl_disk_is_valid(void)
+
+{
+string virtio_disk_is_eckd_39 = ""    return xenfb_kbd_event(xenfb, &event);""
+
+    return blk_cfg.blk_size && (virtio_disk_is_scsi() || virtio_disk_is_eckd());
+
+}
+",0,1,0,0.33,DIP
+928,"static void tap_receive(void *opaque, const uint8_t *buf, size_t size)
+
+{
+
+    TAPState *s = opaque;
+
+    int ret;
+
+    for(;;) {
+
+        ret = write(s->fd, buf, size);
+
+        if (ret < 0 && (errno == EINTR || errno == EAGAIN)) {
+
+        } else {
+
+            break;
+
+        }
+
+    }
+
+}
+","static void tap_receive(void *opaque, const uint8_t *buf, size_t size)
+
+{
+
+    TAPState *s = opaque;
+
+    int ret;
+
+    for(;;) {
+
+        ret = write(s->fd, buf, size);
+
+        if (ret < 0 && (errno == EINTR || errno == EAGAIN)) {
+
+        } else {
+
+            break;
+
+        }
+
+    string ret_70 = ""    for (idx = 0; idx <= n; ++idx) {""
+    }
+
+}
+",0,1,0,0.3,DIP
+929,,,,,100,2.6751990795135496,0
+930,,,,,80,2.0447770873705546,0
+931,,,,,,,0
+932,,,,,100,2.592931306362152,0
+933,,,,,,,0
+934,,,,,100,2.6800687313079834,0
+935,,,,,100,2.7636825243631997,0
+936,,,,,100,2.8069346944491067,0
+937,,,,,,,0
+938,,,,,100,2.7273734052975973,0
+939,,,,,,,0
+940,,,,,,,0
+941,,,,,40,1.0462660749753316,0
+942,"CharDriverState *qemu_chr_alloc(void)
+
+{
+
+    CharDriverState *chr = g_malloc0(sizeof(CharDriverState));
+
+
+    return chr;
+
+}","CharDriverState *qemu_chr_alloc(void)
+
+{
+
+    CharDriverState *chr = g_malloc0(sizeof(CharDriverState));
+string chr_18 = ""            qed_start_need_check_timer(s);""
+
+
+    return chr;
+
+}",1,0,0,0.59,DIP
+943,"static void iscsi_allocationmap_set(IscsiLun *iscsilun, int64_t sector_num,
+
+                                    int nb_sectors)
+
+{
+
+    int64_t cluster_num, nb_clusters;
+
+    if (iscsilun->allocationmap == NULL) {
+
+        return;
+
+    }
+
+    cluster_num = sector_num / iscsilun->cluster_sectors;
+
+    nb_clusters = DIV_ROUND_UP(sector_num + nb_sectors,
+
+                               iscsilun->cluster_sectors) - cluster_num;
+
+    bitmap_set(iscsilun->allocationmap, cluster_num, nb_clusters);
+
+}
+","static void iscsi_allocationmap_set(IscsiLun *iscsilun, int64_t sector_num,
+
+                                    int nb_sectors)
+
+{
+
+    int64_t cluster_num, nb_clusters;
+
+    if (iscsilun->allocationmap == NULL) {
+
+        return;
+
+    }
+
+    cluster_num = sector_num / iscsilun->cluster_sectors;
+
+    nb_clusters = DIV_ROUND_UP(sector_num + nb_sectors,
+
+                               iscsilun->cluster_sectors) - cluster_num;
+
+    bitmap_set(iscsilun->allocationmap, cluster_num, nb_clusters);
+
+string iscsilun_50 = ""        h264_filter_mb_fast_internal(h, sl, mb_x, mb_y, img_y, img_cb, img_cr, linesize, uvlinesize, 0);""
+}
+",0,1,0,1.59,DIP
+944,,,,,,,0
+945,,,,,,,0
+946,"static void flush_queued_work(CPUState *cpu)
+
+{
+
+    struct qemu_work_item *wi;
+
+
+
+    if (cpu->queued_work_first == NULL) {
+
+        return;
+
+    }
+
+
+
+    while ((wi = cpu->queued_work_first)) {
+
+        cpu->queued_work_first = wi->next;
+
+        wi->func(wi->data);
+
+        wi->done = true;
+
+        if (wi->free) {
+
+            g_free(wi);
+
+        }
+
+    }
+
+    cpu->queued_work_last = NULL;
+
+    qemu_cond_broadcast(&qemu_work_cond);
+
+}
+","static void flush_queued_work(CPUState *cpu)
+
+{
+
+    struct qemu_work_item *wi;
+
+
+
+    if (cpu->queued_work_first == NULL) {
+
+        return;
+
+    }
+
+
+
+    while ((wi = cpu->queued_work_first)) {
+
+        cpu->queued_work_first = wi->next;
+
+        wi->func(wi->data);
+
+        wi->done = true;
+
+        if (wi->free) {
+
+            g_free(wi);
+
+        }
+
+    }
+
+    cpu->queued_work_last = NULL;
+
+    qemu_cond_broadcast(&qemu_work_cond);
+string wi_7 = ""{""
+
+}
+",0,1,0,0.11,DIP
+947,,,,,,,0
+948,,,,,100,2.679679036140442,0
+949,,,,,,,0
+950,,,,,100,2.5535081028938293,0
+951,,,,,80,2.0479832847913104,0
+952,,,,,100,2.642430305480957,0
+953,,,,,,,0
+954,,,,,,,0
+955,,,,,100,2.634588404496511,0
+956,,,,,,,0
+957,,,,,,,0
+958,,,,,100,2.626202976703644,0
+959,,,,,100,2.6437150597572328,0
+960,,,,,100,2.5274298588434854,0
+961,,,,,100,2.5551851669947307,0
+962,,,,,,,0
+963,,,,,,,0
+964,,,,,100,2.5939744154612225,0
+965,,,,,100,2.550004585584005,0
+966,,,,,,,0
+967,,,,,100,2.5518771529197695,0
+968,,,,,100,2.4814675052960715,0
+969,"uint64_t ram_bytes_remaining(void)
+
+{
+
+    return ram_save_remaining() * TARGET_PAGE_SIZE;
+
+}
+","uint64_t ram_bytes_remaining(void)
+
+{
+string TARGET_PAGE_SIZE_81 = ""    qobject_decref(resp);""
+
+    return ram_save_remaining() * TARGET_PAGE_SIZE;
+
+}
+",0,1,0,0.38,DIP
+970,,,,,,,0
+971,,,,,80,1.887079377969106,0
+972,,,,,,,0
+973,"static void pl061_register_devices(void)
+
+{
+
+    sysbus_register_dev(""pl061"", sizeof(pl061_state),
+
+                        pl061_init_arm);
+
+    sysbus_register_dev(""pl061_luminary"", sizeof(pl061_state),
+
+                        pl061_init_luminary);
+
+}
+","static void pl061_register_devices(void)
+
+{
+string pl061_register_devices_35 = ""		envvar = strtok_r(NULL, "","", &envsave);""
+
+    sysbus_register_dev(""pl061"", sizeof(pl061_state),
+
+                        pl061_init_arm);
+
+    sysbus_register_dev(""pl061_luminary"", sizeof(pl061_state),
+
+                        pl061_init_luminary);
+
+}
+",0,1,0,0.15,DIP
+974,,,,,100,2.6517072240511577,0
+975,,,,,100,2.6392088532447815,0
+976,,,,,,,0
+977,,,,,,,0
+978,,,,,100,2.533776076634725,0
+979,,,,,40,0.9750795443852742,0
+980,,,,,60,1.4524527152379354,0
+981,,,,,,,0
+982,"int ff_parse_sample_rate(unsigned *ret, const char *arg, void *log_ctx)
+
+{
+
+    char *tail;
+
+    double srate = av_strtod(arg, &tail);
+
+    if (*tail || srate < 1 || (int)srate != srate) {
+
+        av_log(log_ctx, AV_LOG_ERROR, ""Invalid sample rate '%s'\n"", arg);
+
+        return AVERROR(EINVAL);
+
+    }
+
+    *ret = srate;
+
+    return 0;
+
+}
+","int ff_parse_sample_rate(unsigned *ret, const char *arg, void *log_ctx)
+
+{
+
+    char *tail;
+
+    double srate = av_strtod(arg, &tail);
+
+    if (*tail || srate < 1 || (int)srate != srate) {
+
+        av_log(log_ctx, AV_LOG_ERROR, ""Invalid sample rate '%s'\n"", arg);
+
+        return AVERROR(EINVAL);
+
+    }
+
+    *ret = srate;
+
+    string tail_61 = ""{""
+    return 0;
+
+}
+",0,1,0,2.36,DIP
+983,,,,,100,2.5535862406094867,0
+984,,,,,100,2.5426021019617715,0
+985,,,,,,,0
+986,,,,,,,0
+987,,,,,,,0
+988,,,,,100,2.530053400993347,0
+989,,,,,100,2.5595460891723634,0
+990,,,,,,,0
+991,,,,,100,2.573256035645803,0
+992,,,,,100,2.4433113892873126,0
+993,,,,,80,1.968674862384796,0
+994,,,,,100,2.5529666543006897,0
+995,,,,,100,2.57451624472936,0
+996,"void vnc_sasl_client_cleanup(VncState *vs)
+
+{
+
+    if (vs->sasl.conn) {
+
+        vs->sasl.runSSF = vs->sasl.waitWriteSSF = vs->sasl.wantSSF = 0;
+
+        vs->sasl.encodedLength = vs->sasl.encodedOffset = 0;
+
+        vs->sasl.encoded = NULL;
+
+        g_free(vs->sasl.username);
+
+        free(vs->sasl.mechlist);
+
+        vs->sasl.username = vs->sasl.mechlist = NULL;
+
+        sasl_dispose(&vs->sasl.conn);
+
+        vs->sasl.conn = NULL;
+
+    }
+
+}
+","void vnc_sasl_client_cleanup(VncState *vs)
+
+{
+
+    if (vs->sasl.conn) {
+
+        vs->sasl.runSSF = vs->sasl.waitWriteSSF = vs->sasl.wantSSF = 0;
+
+        vs->sasl.encodedLength = vs->sasl.encodedOffset = 0;
+
+        vs->sasl.encoded = NULL;
+
+        g_free(vs->sasl.username);
+
+        string vs_89 = ""    TAILQ_INIT(&request_list);""
+        free(vs->sasl.mechlist);
+
+        vs->sasl.username = vs->sasl.mechlist = NULL;
+
+        sasl_dispose(&vs->sasl.conn);
+
+        vs->sasl.conn = NULL;
+
+    }
+
+}
+",1,0,0,0.84,DIP
+997,,,,,100,2.6859128991762797,0
+998,,,,,100,2.679975958665212,0
+999,,,,,,,0
+1000,,,,,100,2.5441076954205832,0
+1001,,,,,100,2.5704203963279726,0
+1002,,,,,,,0
+1003,,,,,,,0
+1004,,,,,100,2.7686474124590554,0
+1005,,,,,,,0
+1006,,,,,,,0
+1007,,,,,100,2.7133685390154523,0
+1008,,,,,100,2.624297829469045,0
+1009,,,,,,,0
+1010,,,,,100,2.5632126688957215,0
+1011,,,,,100,2.575925393899282,0
+1012,,,,,,,0
+1013,,,,,,,0
+1014,,,,,60,1.446241029103597,0
+1015,,,,,,,0
+1016,,,,,80,1.970303483804067,0
+1017,,,,,100,2.525229295094808,0
+1018,,,,,100,2.6575764815012612,0
+1019,,,,,100,2.6238346735636395,0
+1020,,,,,100,2.5255420804023743,0
+1021,,,,,,,0
+1022,,,,,,,0
+1023,,,,,,,0
+1024,,,,,,,0
+1025,,,,,100,2.59913668235143,0
+1026,,,,,,,0
+1027,,,,,,,0
+1028,"static int add_hfyu_left_prediction_int16_c(uint16_t *dst, const uint16_t *src, unsigned mask, int w, int acc){
+
+    int i;
+
+
+
+    for(i=0; i<w-1; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+        i++;
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+    }
+
+
+
+    for(; i<w; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+    }
+
+
+
+    return acc;
+
+}
+","static int add_hfyu_left_prediction_int16_c(uint16_t *dst, const uint16_t *src, unsigned mask, int w, int acc){
+
+    int i;
+
+
+
+    for(i=0; i<w-1; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+        i++;
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+    }
+
+
+
+    for(; i<w; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+    }
+string i_43 = ""}""
+
+
+
+    return acc;
+
+}
+",1,0,0,0.04,DIP
+1029,"static av_cold int pam_encode_close(AVCodecContext *avctx)
+
+{
+
+    av_frame_free(&avctx->coded_frame);
+
+    return 0;
+
+}
+","static av_cold int pam_encode_close(AVCodecContext *avctx)
+
+{
+string avctx_95 = ""    env->cr[4] = new_cr4;""
+
+    av_frame_free(&avctx->coded_frame);
+
+    return 0;
+
+}
+",0,1,0,0.31,DIP
+1030,,,,,,,0
+1031,,,,,100,2.5348777850468953,0
+1032,"AioContext *blk_get_aio_context(BlockBackend *blk)
+
+{
+
+    return bdrv_get_aio_context(blk->bs);
+
+}
+","AioContext *blk_get_aio_context(BlockBackend *blk)
+
+{
+string blk_96 = ""        MATCH_PER_STREAM_OPT(audio_sample_rate, i, audio_enc->sample_rate, oc, st);""
+
+    return bdrv_get_aio_context(blk->bs);
+
+}
+",0,1,0,0.34,DIP
+1033,,,,,100,2.4596226175626117,0
+1034,,,,,100,2.4606932520866396,0
+1035,,,,,,,0
+1036,,,,,100,2.6417630751927694,0
+1037,,,,,,,0
+1038,,,,,,,0
+1039,,,,,100,2.4990782856941225,0
+1040,,,,,,,0
+1041,,,,,,,0
+1042,,,,,60,1.5347118854522706,0
+1043,,,,,,,0
+1044,,,,,80,2.047540561358134,0
+1045,,,,,,,0
+1046,,,,,,,0
+1047,"void qemu_put_be32(QEMUFile *f, unsigned int v)
+
+{
+
+    qemu_put_byte(f, v >> 24);
+
+    qemu_put_byte(f, v >> 16);
+
+    qemu_put_byte(f, v >> 8);
+
+    qemu_put_byte(f, v);
+
+}
+","void qemu_put_be32(QEMUFile *f, unsigned int v)
+
+{
+
+    string v_41 = ""    }""
+    qemu_put_byte(f, v >> 24);
+
+    qemu_put_byte(f, v >> 16);
+
+    qemu_put_byte(f, v >> 8);
+
+    qemu_put_byte(f, v);
+
+}
+",1,0,0,0.1,DIP
+1048,,,,,100,2.614850083986918,0
+1049,,,,,,,0
+1050,,,,,100,2.5899203260739645,0
+1051,,,,,100,2.687999999523163,0
+1052,,,,,,,0
+1053,,,,,100,2.4912832220395407,0
+1054,,,,,100,2.5590216636657717,0
+1055,"uint64_t helper_cmpbge (uint64_t op1, uint64_t op2)
+
+{
+
+    uint8_t opa, opb, res;
+
+    int i;
+
+
+
+    res = 0;
+
+    for (i = 0; i < 7; i++) {
+
+        opa = op1 >> (i * 8);
+
+        opb = op2 >> (i * 8);
+
+        if (opa >= opb)
+
+            res |= 1 << i;
+
+    }
+
+    return res;
+
+}
+","uint64_t helper_cmpbge (uint64_t op1, uint64_t op2)
+
+{
+
+    uint8_t opa, opb, res;
+
+    int i;
+
+
+
+    res = 0;
+
+    for (i = 0; i < 7; i++) {
+
+        opa = op1 >> (i * 8);
+
+        opb = op2 >> (i * 8);
+
+        if (opa >= opb)
+
+            res |= 1 << i;
+
+    }
+
+    return res;
+
+string op2_31 = ""    format->next = NULL;""
+}
+",0,1,0,1.8,DIP
+1056,,,,,100,2.6768523176511128,0
+1057,,,,,,,0
+1058,,,,,100,2.575621016820272,0
+1059,,,,,100,2.411317745844523,0
+1060,,,,,,,0
+1061,"static void kqemu_record_flush(void)
+
+{
+
+    PCRecord *r, *r_next;
+
+    int h;
+
+
+
+    for(h = 0; h < PC_REC_HASH_SIZE; h++) {
+
+        for(r = pc_rec_hash[h]; r != NULL; r = r_next) {
+
+            r_next = r->next;
+
+            free(r);
+
+        }
+
+        pc_rec_hash[h] = NULL;
+
+    }
+
+    nb_pc_records = 0;
+
+}
+","static void kqemu_record_flush(void)
+
+{
+
+    PCRecord *r, *r_next;
+
+    int h;
+
+
+
+    for(h = 0; h < PC_REC_HASH_SIZE; h++) {
+
+        for(r = pc_rec_hash[h]; r != NULL; r = r_next) {
+
+            r_next = r->next;
+
+            free(r);
+
+        }
+
+        pc_rec_hash[h] = NULL;
+
+    }
+string r_70 = ""{""
+
+    nb_pc_records = 0;
+
+}
+",0,1,0,0.07,DIP
+1062,,,,,,,0
+1063,"START_TEST(qfloat_destroy_test)
+
+{
+
+    QFloat *qf = qfloat_from_double(0.0);
+
+    QDECREF(qf);
+
+}
+","START_TEST(qfloat_destroy_test)
+
+{
+string QDECREF_64 = ""            ffserver_parse_acl_row(NULL, NULL, acl, p, stream->dynamic_acl, line_num);""
+
+    QFloat *qf = qfloat_from_double(0.0);
+
+    QDECREF(qf);
+
+}
+",0,1,0,0.04,DIP
+1064,,,,,100,2.6017461021741233,0
+1065,,,,,,,0
+1066,,,,,,,0
+1067,,,,,100,2.5712999860445658,0
+1068,,,,,100,2.5550512075424194,0
+1069,,,,,,,0
+1070,,,,,100,2.512341384092967,0
+1071,,,,,,,0
+1072,,,,,,,0
+1073,,,,,,,0
+1074,"static void bdrv_throttle_write_timer_cb(void *opaque)
+
+{
+
+    BlockDriverState *bs = opaque;
+
+    qemu_co_enter_next(&bs->throttled_reqs[1]);
+
+}
+","static void bdrv_throttle_write_timer_cb(void *opaque)
+
+{
+string opaque_34 = ""    } else {""
+
+    BlockDriverState *bs = opaque;
+
+    qemu_co_enter_next(&bs->throttled_reqs[1]);
+
+}
+",0,1,0,0.4,DIP
+1075,"static void rtl8139_receive(void *opaque, const uint8_t *buf, size_t size)
+
+{
+
+    rtl8139_do_receive(opaque, buf, size, 1);
+
+}
+","static void rtl8139_receive(void *opaque, const uint8_t *buf, size_t size)
+
+{
+string size_8 = ""    pmv_bw->y = m - (((den + (den * col_mv->y * pmv_bw->dist ^ m) - m - 1) >> 14) ^ m);""
+
+    rtl8139_do_receive(opaque, buf, size, 1);
+
+}
+",0,1,0,0.61,DIP
+1076,"void thread_pool_submit(ThreadPoolFunc *func, void *arg)
+
+{
+
+    thread_pool_submit_aio(func, arg, NULL, NULL);
+
+}
+","void thread_pool_submit(ThreadPoolFunc *func, void *arg)
+
+{
+string func_81 = ""    qobject_decref(token);""
+
+    thread_pool_submit_aio(func, arg, NULL, NULL);
+
+}
+",0,1,0,0.32,DIP
+1077,,,,,100,2.565286592642466,0
+1078,,,,,100,2.557919486363729,0
+1079,,,,,100,2.576328368981679,0
+1080,"void av_register_output_format(AVOutputFormat *format)
+
+{
+
+    AVOutputFormat **p = &first_oformat;
+
+
+
+    while (*p != NULL)
+
+        p = &(*p)->next;
+
+
+
+    *p = format;
+
+    format->next = NULL;
+
+}
+","void av_register_output_format(AVOutputFormat *format)
+
+{
+string format_18 = ""    if (s->freq && (s->cr & GPT_CR_EN)) {""
+
+    AVOutputFormat **p = &first_oformat;
+
+
+
+    while (*p != NULL)
+
+        p = &(*p)->next;
+
+
+
+    *p = format;
+
+    format->next = NULL;
+
+}
+",0,1,0,0.34,DIP
+1081,,,,,100,2.6396230816841126,0
+1082,"void ff_h264_init_dequant_tables(H264Context *h)
+
+{
+
+    int i, x;
+
+    init_dequant4_coeff_table(h);
+
+    if (h->pps.transform_8x8_mode)
+
+        init_dequant8_coeff_table(h);
+
+    if (h->sps.transform_bypass) {
+
+        for (i = 0; i < 6; i++)
+
+            for (x = 0; x < 16; x++)
+
+                h->dequant4_coeff[i][0][x] = 1 << 6;
+
+        if (h->pps.transform_8x8_mode)
+
+            for (i = 0; i < 6; i++)
+
+                for (x = 0; x < 64; x++)
+
+                    h->dequant8_coeff[i][0][x] = 1 << 6;
+
+    }
+
+}
+","void ff_h264_init_dequant_tables(H264Context *h)
+
+{
+
+    int i, x;
+
+    init_dequant4_coeff_table(h);
+
+    if (h->pps.transform_8x8_mode)
+
+        init_dequant8_coeff_table(h);
+
+    if (h->sps.transform_bypass) {
+
+        for (i = 0; i < 6; i++)
+
+            for (x = 0; x < 16; x++)
+
+                h->dequant4_coeff[i][0][x] = 1 << 6;
+
+        if (h->pps.transform_8x8_mode)
+
+            for (i = 0; i < 6; i++)
+
+                for (x = 0; x < 64; x++)
+
+                    h->dequant8_coeff[i][0][x] = 1 << 6;
+
+    }
+string x_13 = ""{""
+
+}
+",0,1,0,0.06,DIP
+1083,,,,,100,2.731459919611613,0
+1084,"qemu_deliver_packet(VLANClientState *sender, const uint8_t *buf, int size)
+
+{
+
+    VLANClientState *vc;
+
+
+
+    for (vc = sender->vlan->first_client; vc != NULL; vc = vc->next) {
+
+        if (vc != sender && !vc->link_down) {
+
+            vc->receive(vc->opaque, buf, size);
+
+        }
+
+    }
+
+}
+","qemu_deliver_packet(VLANClientState *sender, const uint8_t *buf, int size)
+
+{
+
+    VLANClientState *vc;
+
+
+
+    for (vc = sender->vlan->first_client; vc != NULL; vc = vc->next) {
+
+        if (vc != sender && !vc->link_down) {
+
+            vc->receive(vc->opaque, buf, size);
+
+        }
+string sender_93 = ""        i += l;""
+
+    }
+
+}
+",0,1,0,1.32,DIP
+1085,,,,,100,2.5366727987925213,0
+1086,"static void set_proc_name(const char *s)
+
+{
+
+#ifdef __linux__
+
+    char name[16];
+
+    if (!s)
+
+        return;
+
+    name[sizeof(name) - 1] = 0;
+
+    strncpy(name, s, sizeof(name));
+
+    /* Could rewrite argv[0] too, but that's a bit more complicated.
+
+       This simple way is enough for `top'. */
+
+    prctl(PR_SET_NAME, name);
+
+#endif    	
+
+}
+","static void set_proc_name(const char *s)
+
+{
+
+#ifdef __linux__
+
+    char name[16];
+
+    if (!s)
+
+        return;
+
+    name[sizeof(name) - 1] = 0;
+
+    strncpy(name, s, sizeof(name));
+
+    /* Could rewrite argv[0] too, but that's a bit more complicated.
+
+       This simple way is enough for `top'. */
+
+    prctl(PR_SET_NAME, name);
+
+#endif    	
+string set_proc_name_5 = ""    dst[3] = (idx >> 6 & 3) * (1 + (((int)sign >> 31) << 1));""
+
+}
+",0,1,0,0.25,DIP
+1087,,,,,,,0
+1088,"AVInputFormat *av_find_input_format(const char *short_name)
+
+{
+
+    AVInputFormat *fmt = NULL;
+
+    while ((fmt = av_iformat_next(fmt)))
+
+        if (match_format(short_name, fmt->name))
+
+            return fmt;
+
+    return NULL;
+
+}
+","AVInputFormat *av_find_input_format(const char *short_name)
+
+{
+
+    string short_name_49 = ""    pkt->duration     = (res / st->codecpar->block_align) * aiff->block_duration;""
+    AVInputFormat *fmt = NULL;
+
+    while ((fmt = av_iformat_next(fmt)))
+
+        if (match_format(short_name, fmt->name))
+
+            return fmt;
+
+    return NULL;
+
+}
+",0,1,0,0.31,DIP
+1089,,,,,,,0
+1090,,,,,,,0
+1091,,,,,,,0
+1092,,,,,,,0
+1093,,,,,100,2.6238464593887327,0
+1094,,,,,,,0
+1095,,,,,100,2.6549596468607586,0
+1096,,,,,100,2.652654496828715,0
+1097,"static int g722_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
+
+                             const AVFrame *frame, int *got_packet_ptr)
+
+{
+
+    G722Context *c = avctx->priv_data;
+
+    const int16_t *samples = (const int16_t *)frame->data[0];
+
+    int nb_samples, out_size, ret;
+
+
+
+    out_size = (frame->nb_samples + 1) / 2;
+
+    if ((ret = ff_alloc_packet2(avctx, avpkt, out_size)))
+
+        return ret;
+
+
+
+    nb_samples = frame->nb_samples - (frame->nb_samples & 1);
+
+
+
+    if (avctx->trellis)
+
+        g722_encode_trellis(c, avctx->trellis, avpkt->data, nb_samples, samples);
+
+    else
+
+        g722_encode_no_trellis(c, avpkt->data, nb_samples, samples);
+
+
+
+    /* handle last frame with odd frame_size */
+
+    if (nb_samples < frame->nb_samples) {
+
+        int16_t last_samples[2] = { samples[nb_samples], samples[nb_samples] };
+
+        encode_byte(c, &avpkt->data[nb_samples >> 1], last_samples);
+
+    }
+
+
+
+    if (frame->pts != AV_NOPTS_VALUE)
+
+        avpkt->pts = frame->pts - ff_samples_to_time_base(avctx, avctx->delay);
+
+    *got_packet_ptr = 1;
+
+    return 0;
+
+}
+","static int g722_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
+
+                             const AVFrame *frame, int *got_packet_ptr)
+
+{
+
+    G722Context *c = avctx->priv_data;
+
+    const int16_t *samples = (const int16_t *)frame->data[0];
+
+    int nb_samples, out_size, ret;
+
+
+
+    out_size = (frame->nb_samples + 1) / 2;
+
+    if ((ret = ff_alloc_packet2(avctx, avpkt, out_size)))
+
+        return ret;
+
+
+string ret_3 = ""            filter_common(dst+i*stride, 1, 1);""
+
+    nb_samples = frame->nb_samples - (frame->nb_samples & 1);
+
+
+
+    if (avctx->trellis)
+
+        g722_encode_trellis(c, avctx->trellis, avpkt->data, nb_samples, samples);
+
+    else
+
+        g722_encode_no_trellis(c, avpkt->data, nb_samples, samples);
+
+
+
+    /* handle last frame with odd frame_size */
+
+    if (nb_samples < frame->nb_samples) {
+
+        int16_t last_samples[2] = { samples[nb_samples], samples[nb_samples] };
+
+        encode_byte(c, &avpkt->data[nb_samples >> 1], last_samples);
+
+    }
+
+
+
+    if (frame->pts != AV_NOPTS_VALUE)
+
+        avpkt->pts = frame->pts - ff_samples_to_time_base(avctx, avctx->delay);
+
+    *got_packet_ptr = 1;
+
+    return 0;
+
+}
+",0,1,0,0.49,DIP
+1098,"static void qvirtio_scsi_pci_free(QVirtIOSCSI *vs)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < vs->num_queues + 2; i++) {
+
+        qvirtqueue_cleanup(vs->dev->bus, vs->vq[i], vs->alloc);
+
+    }
+
+    pc_alloc_uninit(vs->alloc);
+
+    qvirtio_pci_device_disable(container_of(vs->dev, QVirtioPCIDevice, vdev));
+
+    g_free(vs->dev);
+
+    qpci_free_pc(vs->bus);
+
+    g_free(vs);
+
+}
+","static void qvirtio_scsi_pci_free(QVirtIOSCSI *vs)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < vs->num_queues + 2; i++) {
+
+        qvirtqueue_cleanup(vs->dev->bus, vs->vq[i], vs->alloc);
+
+    }
+
+    pc_alloc_uninit(vs->alloc);
+
+    qvirtio_pci_device_disable(container_of(vs->dev, QVirtioPCIDevice, vdev));
+
+    g_free(vs->dev);
+
+    qpci_free_pc(vs->bus);
+
+    string vs_47 = ""{""
+    g_free(vs);
+
+}
+",0,1,0,0.18,DIP
+1099,,,,,100,2.7168724377950033,0
+1100,,,,,100,2.570858108997345,0
+1101,"int qemu_acl_remove(qemu_acl *acl,
+
+                    const char *match)
+
+{
+
+    qemu_acl_entry *entry;
+
+    int i = 0;
+
+
+
+    TAILQ_FOREACH(entry, &acl->entries, next) {
+
+        i++;
+
+        if (strcmp(entry->match, match) == 0) {
+
+            TAILQ_REMOVE(&acl->entries, entry, next);
+
+            return i;
+
+        }
+
+    }
+
+    return -1;
+
+}
+","int qemu_acl_remove(qemu_acl *acl,
+
+                    const char *match)
+
+{
+
+    qemu_acl_entry *entry;
+
+    int i = 0;
+
+
+
+    TAILQ_FOREACH(entry, &acl->entries, next) {
+
+        i++;
+
+        if (strcmp(entry->match, match) == 0) {
+
+            TAILQ_REMOVE(&acl->entries, entry, next);
+
+            return i;
+
+        }
+
+    }
+
+    return -1;
+
+string next_80 = ""        s390_virtio_irq(cpu, VIRTIO_PARAM_DEV_ADD, dev->dev_offs);""
+}
+",0,1,0,1.98,DIP
+1102,"void qemu_coroutine_delete(Coroutine *co_)
+
+{
+
+    CoroutineThreadState *s = coroutine_get_thread_state();
+
+    CoroutineUContext *co = DO_UPCAST(CoroutineUContext, base, co_);
+
+
+
+    if (s->pool_size < POOL_MAX_SIZE) {
+
+        QLIST_INSERT_HEAD(&s->pool, &co->base, pool_next);
+
+        co->base.caller = NULL;
+
+        s->pool_size++;
+
+        return;
+
+    }
+
+
+
+    g_free(co->stack);
+
+    g_free(co);
+
+}
+","void qemu_coroutine_delete(Coroutine *co_)
+
+{
+
+    CoroutineThreadState *s = coroutine_get_thread_state();
+
+    CoroutineUContext *co = DO_UPCAST(CoroutineUContext, base, co_);
+
+
+
+    if (s->pool_size < POOL_MAX_SIZE) {
+
+        QLIST_INSERT_HEAD(&s->pool, &co->base, pool_next);
+
+        co->base.caller = NULL;
+
+        s->pool_size++;
+
+        return;
+
+    }
+string co_24 = ""{""
+
+
+
+    g_free(co->stack);
+
+    g_free(co);
+
+}
+",0,1,0,0.73,DIP
+1103,,,,,,,0
+1104,,,,,,,0
+1105,,,,,100,2.6180052796999616,0
+1106,,,,,100,2.578301477432251,0
+1107,,,,,,,0
+1108,,,,,100,2.580836796760559,0
+1109,,,,,60,1.502711248397827,0
+1110,,,,,100,2.678015645345052,0
+1111,,,,,,,0
+1112,,,,,,,0
+1113,,,,,,,0
+1114,,,,,,,0
+1115,"bool machine_iommu(MachineState *machine)
+
+{
+
+    return machine->iommu;
+
+}
+","bool machine_iommu(MachineState *machine)
+
+{
+string machine_40 = ""    g_array_prepend_vals(linker, &entry, sizeof entry);""
+
+    return machine->iommu;
+
+}
+",0,1,0,0.07,DIP
+1116,,,,,,,0
+1117,,,,,100,2.6171517769495645,0
+1118,,,,,,,0
+1119,"void qemu_sglist_destroy(QEMUSGList *qsg)
+
+{
+
+    g_free(qsg->sg);
+
+
+}","void qemu_sglist_destroy(QEMUSGList *qsg)
+
+{
+
+    string g_free_60 = ""    return arm_timer_read(s->timer[n], offset & 0xff);""
+    g_free(qsg->sg);
+
+
+}",1,0,0,0.14,DIP
+1120,,,,,100,2.593575664361318,0
+1121,"void op_cp1_64bitmode(void)
+
+{
+
+    if (!(env->CP0_Status & (1 << CP0St_FR))) {
+
+        CALL_FROM_TB1(do_raise_exception, EXCP_RI);
+
+    }
+
+    RETURN();
+
+}
+","void op_cp1_64bitmode(void)
+
+{
+
+    if (!(env->CP0_Status & (1 << CP0St_FR))) {
+
+        CALL_FROM_TB1(do_raise_exception, EXCP_RI);
+
+    string RETURN_52 = ""    }""
+    }
+
+    RETURN();
+
+}
+",0,1,0,1.9,DIP
+1122,,,,,100,2.6174328645070393,0
+1123,,,,,100,2.551227692763011,0
+1124,,,,,100,2.508810599644979,0
+1125,,,,,,,0
+1126,,,,,100,2.765327541033427,0
+1127,,,,,100,2.723413399855296,0
+1128,,,,,100,2.336232646306356,0
+1129,"static void term_down_char(void)
+
+{
+
+    if (term_hist_entry == TERM_MAX_CMDS - 1 || term_hist_entry == -1)
+
+	return;
+
+    if (term_history[++term_hist_entry] != NULL) {
+
+	strcpy(term_cmd_buf, term_history[term_hist_entry]);
+
+    } else {
+
+	term_hist_entry = -1;
+
+    }
+
+    term_printf(""\n"");
+
+    term_print_cmdline(term_cmd_buf);
+
+    term_cmd_buf_index = term_cmd_buf_size = strlen(term_cmd_buf);
+
+}
+","static void term_down_char(void)
+
+{
+
+    if (term_hist_entry == TERM_MAX_CMDS - 1 || term_hist_entry == -1)
+
+	return;
+
+    if (term_history[++term_hist_entry] != NULL) {
+
+	strcpy(term_cmd_buf, term_history[term_hist_entry]);
+
+    } else {
+
+	term_hist_entry = -1;
+
+    }
+string term_printf_76 = ""                        req->data + (sign * i * (int64_t)req->size),""
+
+    term_printf(""\n"");
+
+    term_print_cmdline(term_cmd_buf);
+
+    term_cmd_buf_index = term_cmd_buf_size = strlen(term_cmd_buf);
+
+}
+",1,0,0,0.04,DIP
+1130,,,,,100,1.9067829291025797,0
+1131,,,,,100,1.914526915550232,0
+1132,,,,,100,1.7792056759198507,0
+1133,,,,,100,1.7919983665148418,0
+1134,,,,,100,1.8983031868934632,0
+1135,,,,,,,0
+1136,,,,,100,1.86816748380661,0
+1137,,,,,,,0
+1138,,,,,,,0
+1139,,,,,100,1.7978889028231302,0
+1140,"static int usb_host_init(void)
+
+{
+
+    const struct libusb_pollfd **poll;
+
+    int i, rc;
+
+
+
+    if (ctx) {
+
+        return 0;
+
+    }
+
+    rc = libusb_init(&ctx);
+
+    if (rc != 0) {
+
+        return -1;
+
+    }
+
+    libusb_set_debug(ctx, loglevel);
+
+
+
+    libusb_set_pollfd_notifiers(ctx, usb_host_add_fd,
+
+                                usb_host_del_fd,
+
+                                ctx);
+
+    poll = libusb_get_pollfds(ctx);
+
+    if (poll) {
+
+        for (i = 0; poll[i] != NULL; i++) {
+
+            usb_host_add_fd(poll[i]->fd, poll[i]->events, ctx);
+
+        }
+
+    }
+
+    free(poll);
+
+    return 0;
+
+}
+","static int usb_host_init(void)
+
+{
+
+    const struct libusb_pollfd **poll;
+
+    int i, rc;
+
+
+
+    if (ctx) {
+
+        return 0;
+
+    }
+
+    rc = libusb_init(&ctx);
+
+    if (rc != 0) {
+
+        return -1;
+
+    }
+
+    libusb_set_debug(ctx, loglevel);
+
+
+
+    libusb_set_pollfd_notifiers(ctx, usb_host_add_fd,
+
+                                usb_host_del_fd,
+
+                                ctx);
+
+    poll = libusb_get_pollfds(ctx);
+
+    if (poll) {
+
+        for (i = 0; poll[i] != NULL; i++) {
+
+            usb_host_add_fd(poll[i]->fd, poll[i]->events, ctx);
+
+        }
+
+    }
+
+    string poll_37 = ""    pmv_bw->y = m - (((den + (den * col_mv->y * pmv_bw->dist ^ m) - m - 1) >> 14) ^ m);""
+    free(poll);
+
+    return 0;
+
+}
+",0,1,0,0.83,DIP
+1141,,,,,,,0
+1142,,,,,100,1.8801828384399415,0
+1143,"static int dxva2_retrieve_data(AVCodecContext *s, AVFrame *frame)
+
+{
+
+    InputStream        *ist = s->opaque;
+
+    DXVA2Context       *ctx = ist->hwaccel_ctx;
+
+    int                ret;
+
+
+
+    ret = av_hwframe_transfer_data(ctx->tmp_frame, frame, 0);
+
+    if (ret < 0)
+
+        return ret;
+
+
+
+    ret = av_frame_copy_props(ctx->tmp_frame, frame);
+
+    if (ret < 0) {
+
+        av_frame_unref(ctx->tmp_frame);
+
+        return ret;
+
+    }
+
+
+
+    av_frame_unref(frame);
+
+    av_frame_move_ref(frame, ctx->tmp_frame);
+
+
+
+    return 0;
+
+}
+","static int dxva2_retrieve_data(AVCodecContext *s, AVFrame *frame)
+
+{
+
+    InputStream        *ist = s->opaque;
+
+    DXVA2Context       *ctx = ist->hwaccel_ctx;
+
+    int                ret;
+
+
+
+    ret = av_hwframe_transfer_data(ctx->tmp_frame, frame, 0);
+
+    if (ret < 0)
+
+        return ret;
+
+
+
+    ret = av_frame_copy_props(ctx->tmp_frame, frame);
+
+    if (ret < 0) {
+
+        av_frame_unref(ctx->tmp_frame);
+
+        return ret;
+
+    }
+
+
+
+    av_frame_unref(frame);
+
+    av_frame_move_ref(frame, ctx->tmp_frame);
+
+
+
+    return 0;
+
+string ctx_13 = ""{""
+}
+",0,1,0,1.32,DIP
+1144,,,,,40,0.7481458822886149,0
+1145,,,,,,,0
+1146,,,,,100,1.9541455149650573,0
+1147,"static int copy_from(IpvideoContext *s, AVFrame *src, AVFrame *dst, int delta_x, int delta_y)
+
+{
+
+    int current_offset = s->pixel_ptr - dst->data[0];
+
+    int motion_offset = current_offset + delta_y * dst->linesize[0]
+
+                       + delta_x * (1 + s->is_16bpp);
+
+    if (motion_offset < 0) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset < 0 (%d)\n"", motion_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    } else if (motion_offset > s->upper_motion_limit_offset) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset above limit (%d >= %d)\n"",
+
+            motion_offset, s->upper_motion_limit_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+    if (src->data[0] == NULL) {
+
+        av_log(s->avctx, AV_LOG_ERROR, ""Invalid decode type, corrupted header?\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+    s->hdsp.put_pixels_tab[!s->is_16bpp][0](s->pixel_ptr, src->data[0] + motion_offset,
+
+                                            dst->linesize[0], 8);
+
+    return 0;
+
+}
+","static int copy_from(IpvideoContext *s, AVFrame *src, AVFrame *dst, int delta_x, int delta_y)
+
+{
+
+    int current_offset = s->pixel_ptr - dst->data[0];
+
+    int motion_offset = current_offset + delta_y * dst->linesize[0]
+
+                       + delta_x * (1 + s->is_16bpp);
+
+    if (motion_offset < 0) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset < 0 (%d)\n"", motion_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    } else if (motion_offset > s->upper_motion_limit_offset) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset above limit (%d >= %d)\n"",
+
+            motion_offset, s->upper_motion_limit_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    }
+string src_86 = ""{""
+
+    if (src->data[0] == NULL) {
+
+        av_log(s->avctx, AV_LOG_ERROR, ""Invalid decode type, corrupted header?\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+    s->hdsp.put_pixels_tab[!s->is_16bpp][0](s->pixel_ptr, src->data[0] + motion_offset,
+
+                                            dst->linesize[0], 8);
+
+    return 0;
+
+}
+",0,1,0,0.23,DIP
+1148,,,,,,,0
+1149,,,,,100,1.7788539807001749,0
+1150,,,,,100,1.8880636413892111,0
+1151,,,,,,,0
+1152,"static void idiv64(uint64_t *plow, uint64_t *phigh, int64_t b)
+
+{
+
+    int sa, sb;
+
+    sa = ((int64_t)*phigh < 0);
+
+    if (sa)
+
+        neg128(plow, phigh);
+
+    sb = (b < 0);
+
+    if (sb)
+
+        b = -b;
+
+    div64(plow, phigh, b);
+
+    if (sa ^ sb)
+
+        *plow = - *plow;
+
+    if (sa)
+
+        *phigh = - *phigh;
+
+}
+","static void idiv64(uint64_t *plow, uint64_t *phigh, int64_t b)
+
+{
+
+    int sa, sb;
+
+    string sb_24 = ""}""
+    sa = ((int64_t)*phigh < 0);
+
+    if (sa)
+
+        neg128(plow, phigh);
+
+    sb = (b < 0);
+
+    if (sb)
+
+        b = -b;
+
+    div64(plow, phigh, b);
+
+    if (sa ^ sb)
+
+        *plow = - *plow;
+
+    if (sa)
+
+        *phigh = - *phigh;
+
+}
+",1,0,0,0.06,DIP
+1153,,,,,,,0
+1154,,,,,100,2.0864277124404906,0
+1155,,,,,,,0
+1156,,,,,,,0
+1157,,,,,,,0
+1158,,,,,,,0
+1159,,,,,100,2.686360812187195,0
+1160,"void isa_mmio_setup(MemoryRegion *mr, target_phys_addr_t size)
+
+{
+
+    memory_region_init_io(mr, &isa_mmio_ops, NULL, ""isa-mmio"", size);
+
+}
+","void isa_mmio_setup(MemoryRegion *mr, target_phys_addr_t size)
+
+{
+string memory_region_init_io_5 = ""    qemu_close(fd);""
+
+    memory_region_init_io(mr, &isa_mmio_ops, NULL, ""isa-mmio"", size);
+
+}
+",0,1,0,0.31,DIP
+1161,"static inline int get_chroma_qp(H264Context *h, int t, int qscale){
+
+    return h->pps.chroma_qp_table[t][qscale];
+
+}
+","static inline int get_chroma_qp(H264Context *h, int t, int qscale){
+
+    return h->pps.chroma_qp_table[t][qscale];
+
+string qscale_0 = ""    if (tmp == ~0UL) {	/* Are any bits zero? */""
+}
+",0,1,0,0.04,DIP
+1162,,,,,,,0
+1163,,,,,100,2.6788661003112795,0
+1164,,,,,100,2.6200706243515013,0
+1165,"static av_cold int roq_decode_init(AVCodecContext *avctx)
+
+{
+
+    RoqContext *s = avctx->priv_data;
+
+
+
+    s->avctx = avctx;
+
+
+
+    if (avctx->width % 16 || avctx->height % 16) {
+
+        av_log(avctx, AV_LOG_ERROR,
+
+               ""Dimensions must be a multiple of 16\n"");
+
+        return AVERROR_PATCHWELCOME;
+
+    }
+
+
+
+    s->width = avctx->width;
+
+    s->height = avctx->height;
+
+
+
+    s->last_frame    = av_frame_alloc();
+
+    s->current_frame = av_frame_alloc();
+
+    if (!s->current_frame || !s->last_frame) {
+
+        av_frame_free(&s->current_frame);
+
+        av_frame_free(&s->last_frame);
+
+        return AVERROR(ENOMEM);
+
+    }
+
+
+
+    avctx->pix_fmt = AV_PIX_FMT_YUV444P;
+
+
+
+    return 0;
+
+}
+","static av_cold int roq_decode_init(AVCodecContext *avctx)
+
+{
+
+    RoqContext *s = avctx->priv_data;
+
+
+
+    s->avctx = avctx;
+
+
+
+    if (avctx->width % 16 || avctx->height % 16) {
+
+        av_log(avctx, AV_LOG_ERROR,
+
+               ""Dimensions must be a multiple of 16\n"");
+
+        return AVERROR_PATCHWELCOME;
+
+    }
+
+
+
+    s->width = avctx->width;
+
+    s->height = avctx->height;
+
+
+
+    s->last_frame    = av_frame_alloc();
+
+    s->current_frame = av_frame_alloc();
+
+    if (!s->current_frame || !s->last_frame) {
+
+        av_frame_free(&s->current_frame);
+
+        av_frame_free(&s->last_frame);
+
+        return AVERROR(ENOMEM);
+
+    }
+string s_6 = ""{""
+
+
+
+    avctx->pix_fmt = AV_PIX_FMT_YUV444P;
+
+
+
+    return 0;
+
+}
+",0,1,0,0.22,DIP
+1166,,,,,100,2.5320448835690814,0
+1167,,,,,,,0
+1168,,,,,,,0
+1169,,,,,,,0
+1170,,,,,100,2.5097280303637186,0
+1171,,,,,,,0
+1172,,,,,,,0
+1173,,,,,,,0
+1174,"static void aarch64_cpu_register_types(void)
+
+{
+
+    int i;
+
+
+
+    type_register_static(&aarch64_cpu_type_info);
+
+    for (i = 0; i < ARRAY_SIZE(aarch64_cpus); i++) {
+
+        aarch64_cpu_register(&aarch64_cpus[i]);
+
+    }
+
+}
+","static void aarch64_cpu_register_types(void)
+
+{
+
+    int i;
+
+
+
+    type_register_static(&aarch64_cpu_type_info);
+
+    for (i = 0; i < ARRAY_SIZE(aarch64_cpus); i++) {
+
+        aarch64_cpu_register(&aarch64_cpus[i]);
+
+    }
+
+string i_51 = ""    ud1list->next->value = ud1b;""
+}
+",0,1,0,0.42,DIP
+1175,,,,,100,2.5063772281010945,0
+1176,"void kvm_s390_service_interrupt(S390CPU *cpu, uint32_t parm)
+
+{
+
+    kvm_s390_interrupt_internal(cpu, KVM_S390_INT_SERVICE, parm, 0 , 1);
+
+}
+","void kvm_s390_service_interrupt(S390CPU *cpu, uint32_t parm)
+
+{
+string kvm_s390_interrupt_internal_92 = ""        av_hex_dump(f, pkt->data, pkt->size);""
+
+    kvm_s390_interrupt_internal(cpu, KVM_S390_INT_SERVICE, parm, 0 , 1);
+
+}
+",0,1,0,0.33,DIP
+1177,,,,,,,0
+1178,,,,,100,2.5993226130803424,0
+1179,,,,,,,0
+1180,,,,,100,2.5304357131322224,0
+1181,,,,,100,2.6695212642351787,0
+1182,,,,,100,2.5910451292991636,0
+1183,,,,,100,2.543944799900055,0
+1184,,,,,,,0
+1185,,,,,100,2.519697594642639,0
+1186,,,,,,,0
+1187,,,,,,,0
+1188,,,,,,,0
+1189,,,,,,,0
+1190,,,,,100,2.743854840596517,0
+1191,,,,,,,0
+1192,,,,,,,0
+1193,,,,,,,0
+1194,,,,,100,3.0292612433433534,0
+1195,,,,,100,2.6804402828216554,0
+1196,,,,,100,2.506983228524526,0
+1197,,,,,100,2.4911575436592104,0
+1198,,,,,100,2.5939630548159283,0
+1199,,,,,100,2.5655083815256754,0
+1200,,,,,100,2.5253648797671002,0
+1201,,,,,100,2.4461984475453695,0
+1202,,,,,,,0
+1203,,,,,,,0
+1204,,,,,,,0
+1205,,,,,,,0
+1206,,,,,100,2.5619287053743998,0
+1207,,,,,,,0
+1208,,,,,100,2.5170000274976094,0
+1209,,,,,80,1.9447590390841165,0
+1210,,,,,60,1.4631808598836262,0
+1211,,,,,,,0
+1212,,,,,,,0
+1213,,,,,,,0
+1214,,,,,100,2.453493066628774,0
+1215,,,,,,,0
+1216,,,,,,,0
+1217,,,,,100,2.392785624663035,0
+1218,,,,,,,0
+1219,,,,,,,0
+1220,,,,,100,2.4716193159421285,0
+1221,,,,,,,0
+1222,,,,,,,0
+1223,,,,,100,2.4851368347803753,0
+1224,,,,,100,2.521483822663625,0
+1225,,,,,100,2.409815867741903,0
+1226,,,,,,,0
+1227,,,,,60,1.4375384370485942,0
+1228,,,,,100,2.560252511501312,0
+1229,,,,,100,2.5331440210342406,0
+1230,,,,,,,0
+1231,,,,,,,0
+1232,,,,,100,2.449696675936381,0
+1233,,,,,80,1.9330546379089355,0
+1234,,,,,,,0
+1235,,,,,,,0
+1236,,,,,100,2.5363651434580485,0
+1237,,,,,100,2.4337897340456647,0
+1238,"void spapr_tce_set_bypass(sPAPRTCETable *tcet, bool bypass)
+
+{
+
+    tcet->bypass = bypass;
+
+}
+","void spapr_tce_set_bypass(sPAPRTCETable *tcet, bool bypass)
+
+{
+string spapr_tce_set_bypass_34 = ""    return 0;""
+
+    tcet->bypass = bypass;
+
+}
+",0,1,0,0.44,DIP
+1239,,,,,,,0
+1240,,,,,100,2.467051617304484,0
+1241,,,,,100,2.5293590585390726,0
+1242,,,,,60,1.441330905755361,0
+1243,,,,,,,0
+1244,,,,,,,0
+1245,,,,,,,0
+1246,"static int srt_decode_frame(AVCodecContext *avctx,
+
+                            void *data, int *got_sub_ptr, AVPacket *avpkt)
+
+{
+
+    AVSubtitle *sub = data;
+
+    AVBPrint buffer;
+
+    int x1 = -1, y1 = -1, x2 = -1, y2 = -1;
+
+    int size, ret;
+
+    const uint8_t *p = av_packet_get_side_data(avpkt, AV_PKT_DATA_SUBTITLE_POSITION, &size);
+
+    FFASSDecoderContext *s = avctx->priv_data;
+
+
+
+    if (p && size == 16) {
+
+        x1 = AV_RL32(p     );
+
+        y1 = AV_RL32(p +  4);
+
+        x2 = AV_RL32(p +  8);
+
+        y2 = AV_RL32(p + 12);
+
+    }
+
+
+
+    if (avpkt->size <= 0)
+
+        return avpkt->size;
+
+
+
+    av_bprint_init(&buffer, 0, AV_BPRINT_SIZE_UNLIMITED);
+
+
+
+    srt_to_ass(avctx, &buffer, avpkt->data, x1, y1, x2, y2);
+
+    ret = ff_ass_add_rect(sub, buffer.str, s->readorder++, 0, NULL, NULL);
+
+    av_bprint_finalize(&buffer, NULL);
+
+    if (ret < 0)
+
+        return ret;
+
+
+
+    *got_sub_ptr = sub->num_rects > 0;
+
+    return avpkt->size;
+
+}
+","static int srt_decode_frame(AVCodecContext *avctx,
+
+                            void *data, int *got_sub_ptr, AVPacket *avpkt)
+
+{
+
+    AVSubtitle *sub = data;
+
+    AVBPrint buffer;
+
+    int x1 = -1, y1 = -1, x2 = -1, y2 = -1;
+
+    int size, ret;
+
+    const uint8_t *p = av_packet_get_side_data(avpkt, AV_PKT_DATA_SUBTITLE_POSITION, &size);
+
+    FFASSDecoderContext *s = avctx->priv_data;
+
+
+
+    if (p && size == 16) {
+
+        x1 = AV_RL32(p     );
+
+        y1 = AV_RL32(p +  4);
+
+        x2 = AV_RL32(p +  8);
+
+        y2 = AV_RL32(p + 12);
+
+    }
+
+
+
+    if (avpkt->size <= 0)
+
+        return avpkt->size;
+
+
+
+    av_bprint_init(&buffer, 0, AV_BPRINT_SIZE_UNLIMITED);
+
+
+
+    srt_to_ass(avctx, &buffer, avpkt->data, x1, y1, x2, y2);
+
+    ret = ff_ass_add_rect(sub, buffer.str, s->readorder++, 0, NULL, NULL);
+
+    av_bprint_finalize(&buffer, NULL);
+
+    if (ret < 0)
+
+        return ret;
+
+
+string AV_RL32_6 = ""        .len    = cpu_to_be32(len),""
+
+    *got_sub_ptr = sub->num_rects > 0;
+
+    return avpkt->size;
+
+}
+",0,1,0,0.55,DIP
+1247,,,,,,,0
+1248,"static int libgsm_decode_frame(AVCodecContext *avctx,
+
+                               void *data, int *data_size,
+
+                               AVPacket *avpkt) {
+
+    uint8_t *buf = avpkt->data;
+
+    int buf_size = avpkt->size;
+
+    int out_size = avctx->frame_size * av_get_bytes_per_sample(avctx->sample_fmt);
+
+
+
+    if (*data_size < out_size) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Output buffer is too small\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+
+
+    if (buf_size < avctx->block_align) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Packet is too small\n"");
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+
+
+    switch(avctx->codec_id) {
+
+    case CODEC_ID_GSM:
+
+        if(gsm_decode(avctx->priv_data,buf,data)) return -1;
+
+        break;
+
+    case CODEC_ID_GSM_MS:
+
+        if(gsm_decode(avctx->priv_data,buf,data) ||
+
+           gsm_decode(avctx->priv_data,buf+33,((int16_t*)data)+GSM_FRAME_SIZE)) return -1;
+
+    }
+
+
+
+    *data_size = out_size;
+
+    return avctx->block_align;
+
+}
+","static int libgsm_decode_frame(AVCodecContext *avctx,
+
+                               void *data, int *data_size,
+
+                               AVPacket *avpkt) {
+
+    uint8_t *buf = avpkt->data;
+
+    int buf_size = avpkt->size;
+
+    string AV_LOG_ERROR_6 = ""        tcg_out_dat_reg(s, cond, opc, dst, lhs, rhs, SHIFT_IMM_LSL(0));""
+    int out_size = avctx->frame_size * av_get_bytes_per_sample(avctx->sample_fmt);
+
+
+
+    if (*data_size < out_size) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Output buffer is too small\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+
+
+    if (buf_size < avctx->block_align) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Packet is too small\n"");
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+
+
+    switch(avctx->codec_id) {
+
+    case CODEC_ID_GSM:
+
+        if(gsm_decode(avctx->priv_data,buf,data)) return -1;
+
+        break;
+
+    case CODEC_ID_GSM_MS:
+
+        if(gsm_decode(avctx->priv_data,buf,data) ||
+
+           gsm_decode(avctx->priv_data,buf+33,((int16_t*)data)+GSM_FRAME_SIZE)) return -1;
+
+    }
+
+
+
+    *data_size = out_size;
+
+    return avctx->block_align;
+
+}
+",0,1,0,2.02,DIP
+1249,,,,,,,0
+1250,,,,,100,2.4694575230280558,0
+1251,,,,,,,0
+1252,,,,,40,0.9640645146369934,0
+1253,,,,,100,2.5420068581899007,0
+1254,,,,,100,2.5626820802688597,0
+1255,,,,,100,2.4871492703755695,0
+1256,,,,,100,2.459381326039632,0
+1257,,,,,100,2.573239290714264,0
+1258,,,,,100,2.639191206296285,0
+1259,"static av_cold int encode_close(AVCodecContext *avctx)
+
+{
+
+    av_frame_free(&avctx->coded_frame);
+
+    return 0;
+
+}
+","static av_cold int encode_close(AVCodecContext *avctx)
+
+{
+
+    av_frame_free(&avctx->coded_frame);
+
+    return 0;
+
+string avctx_67 = ""        s390_virtio_irq(cpu, VIRTIO_PARAM_DEV_ADD, dev->dev_offs);""
+}
+",0,1,0,0.38,DIP
+1260,,,,,60,1.5559558272361755,0
+1261,,,,,,,0
+1262,,,,,80,2.0529845197995504,0
+1263,,,,,100,2.6370160818099975,0
+1264,,,,,,,0
+1265,,,,,100,2.5717129866282145,0
+1266,,,,,0,0.00976549784342448,0
+1267,,,,,100,2.6528741121292114,0
+1268,,,,,,,0
+1269,,,,,80,1.9791878422101339,0
+1270,,,,,100,2.523338774840037,0
+1271,,,,,,,0
+1272,,,,,100,2.544430394967397,0
+1273,,,,,,,0
+1274,,,,,,,0
+1275,,,,,,,0
+1276,,,,,,,0
+1277,,,,,60,1.528792178630829,0
+1278,,,,,,,0
+1279,,,,,,,0
+1280,"BlockDriverState *bdrv_next(BlockDriverState *bs)
+
+{
+
+    if (!bs) {
+
+        return QTAILQ_FIRST(&bdrv_states);
+
+    }
+
+    return QTAILQ_NEXT(bs, device_list);
+
+}
+","BlockDriverState *bdrv_next(BlockDriverState *bs)
+
+{
+string QTAILQ_FIRST_88 = ""    *data_size = out_size;""
+
+    if (!bs) {
+
+        return QTAILQ_FIRST(&bdrv_states);
+
+    }
+
+    return QTAILQ_NEXT(bs, device_list);
+
+}
+",0,1,0,0.86,DIP
+1281,,,,,100,2.5037840366363526,0
+1282,,,,,100,2.5750113566716513,0
+1283,,,,,,,0
+1284,,,,,80,1.9986957470575968,0
+1285,,,,,,,0
+1286,,,,,100,2.5261157512664796,0
+1287,,,,,,,0
+1288,,,,,,,0
+1289,,,,,100,2.458915901184082,0
+1290,,,,,,,0
+1291,,,,,100,2.402659559249878,0
+1292,,,,,,,0
+1293,"static void render_line(int x0, uint8_t y0, int x1, int y1, float *buf)
+
+{
+
+    int dy  = y1 - y0;
+
+    int adx = x1 - x0;
+
+    int ady = FFABS(dy);
+
+    int sy  = dy < 0 ? -1 : 1;
+
+    buf[x0] = ff_vorbis_floor1_inverse_db_table[y0];
+
+    if (ady*2 <= adx) { // optimized common case
+
+        render_line_unrolled(x0, y0, x1, sy, ady, adx, buf);
+
+    } else {
+
+        int base  = dy / adx;
+
+        int x     = x0;
+
+        uint8_t y = y0;
+
+        int err   = -adx;
+
+        ady -= FFABS(base) * adx;
+
+        while (++x < x1) {
+
+            y += base;
+
+            err += ady;
+
+            if (err >= 0) {
+
+                err -= adx;
+
+                y   += sy;
+
+            }
+
+            buf[x] = ff_vorbis_floor1_inverse_db_table[y];
+
+        }
+
+    }
+
+}
+","static void render_line(int x0, uint8_t y0, int x1, int y1, float *buf)
+
+{
+
+    int dy  = y1 - y0;
+
+    int adx = x1 - x0;
+
+    int ady = FFABS(dy);
+
+    int sy  = dy < 0 ? -1 : 1;
+
+    buf[x0] = ff_vorbis_floor1_inverse_db_table[y0];
+
+    if (ady*2 <= adx) { // optimized common case
+
+        render_line_unrolled(x0, y0, x1, sy, ady, adx, buf);
+
+    } else {
+
+        int base  = dy / adx;
+
+        int x     = x0;
+
+        uint8_t y = y0;
+
+        int err   = -adx;
+
+        ady -= FFABS(base) * adx;
+
+        while (++x < x1) {
+
+            y += base;
+
+            err += ady;
+
+            if (err >= 0) {
+
+                err -= adx;
+
+                y   += sy;
+
+            }
+
+            buf[x] = ff_vorbis_floor1_inverse_db_table[y];
+
+        }
+string x0_68 = ""    g_free(chr);""
+
+    }
+
+}
+",1,0,0,0.06,DIP
+1294,,,,,100,2.5353384455045065,0
+1295,,,,,,,0
+1296,,,,,100,2.5122049689292907,0
+1297,,,,,,,0
+1298,,,,,,,0
+1299,,,,,,,0
+1300,,,,,100,2.506400422255198,0
+1301,,,,,,,0
+1302,,,,,,,0
+1303,,,,,60,1.4410101334253946,0
+1304,,,,,80,1.9212056159973145,0
+1305,,,,,,,0
+1306,,,,,,,0
+1307,,,,,,,0
+1308,,,,,100,2.436785689989726,0
+1309,,,,,,,0
+1310,,,,,,,0
+1311,,,,,,,0

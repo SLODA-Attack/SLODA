@@ -1,0 +1,5598 @@
+Index,Original Code,Adversarial Code,Program Length,Identifier Num,Replaced Identifiers,Query Times,Time Cost,Type
+3,,,,,,,,0
+4,,,,,,,,0
+7,,,,,,,,0
+8,,,,,,,,0
+13,"void do_tw (int flags)
+
+{
+
+    if (!likely(!(((int32_t)T0 < (int32_t)T1 && (flags & 0x10)) ||
+
+                  ((int32_t)T0 > (int32_t)T1 && (flags & 0x08)) ||
+
+                  ((int32_t)T0 == (int32_t)T1 && (flags & 0x04)) ||
+
+                  ((uint32_t)T0 < (uint32_t)T1 && (flags & 0x02)) ||
+
+                  ((uint32_t)T0 > (uint32_t)T1 && (flags & 0x01))))) {
+
+        do_raise_exception_err(EXCP_PROGRAM, EXCP_TRAP);
+
+    }
+
+}","void do_tw (int strings)
+
+{
+
+    if (!likely(!(((int32_t)T0 < (int32_t)T1 && (strings & 0x10)) ||
+
+                  ((int32_t)T0 > (int32_t)T1 && (strings & 0x08)) ||
+
+                  ((int32_t)T0 == (int32_t)T1 && (strings & 0x04)) ||
+
+                  ((uint32_t)T0 < (uint32_t)T1 && (strings & 0x02)) ||
+
+                  ((uint32_t)T0 > (uint32_t)T1 && (strings & 0x01))))) {
+
+        do_raise_exception_err(EXCP_PROGRAM, EXCP_TRAP);
+
+    }
+
+}",116.0,21.0,"flags:strings,",37.0,0.976550587018331,Greedy
+15,,,,,,,,0
+18,,,,,,,,0
+20,,,,,,,,0
+21,,,,,,,,0
+22,,,,,,,,0
+23,,,,,,,,0
+25,,,,,,,,0
+26,"static gboolean udp_chr_read(GIOChannel *chan, GIOCondition cond, void *opaque)
+
+{
+
+    CharDriverState *chr = opaque;
+
+    NetCharDriver *s = chr->opaque;
+
+    gsize bytes_read = 0;
+
+    GIOStatus status;
+
+
+
+    if (s->max_size == 0)
+
+        return FALSE;
+
+    status = g_io_channel_read_chars(s->chan, (gchar *)s->buf, sizeof(s->buf),
+
+                                     &bytes_read, NULL);
+
+    s->bufcnt = bytes_read;
+
+    s->bufptr = s->bufcnt;
+
+    if (status != G_IO_STATUS_NORMAL) {
+
+        return FALSE;
+
+    }
+
+
+
+    s->bufptr = 0;
+
+    while (s->max_size > 0 && s->bufptr < s->bufcnt) {
+
+        qemu_chr_be_write(chr, &s->buf[s->bufptr], 1);
+
+        s->bufptr++;
+
+        s->max_size = qemu_chr_be_can_write(chr);
+
+    }
+
+
+
+    return TRUE;
+
+}","static gboolean udp_chr_read(GIOChannel *proc, GIOCondition  pos, void *ipesc)
+
+{
+
+    CharDriverState * chcr = ipesc;
+
+    NetCharDriver *http =  chcr->ipesc;
+
+    gsize bytes_read = 0;
+
+    GIOStatus step;
+
+
+
+    if (http->max_size == 0)
+
+        return FALSE;
+
+    step = g_io_channel_read_chars(http->proc, (gchar *)http->buf, sizeof(http->buf),
+
+                                     &bytes_read, NULL);
+
+    http->bufcnt = bytes_read;
+
+    http->buffpointer = http->bufcnt;
+
+    if (step != G_IO_STATUS_NORMAL) {
+
+        return FALSE;
+
+    }
+
+
+
+    http->buffpointer = 0;
+
+    while (http->max_size > 0 && http->buffpointer < http->bufcnt) {
+
+        qemu_chr_be_write( chcr, &http->buf[http->buffpointer], 1);
+
+        http->buffpointer++;
+
+        http->max_size = qemu_chr_be_can_write( chcr);
+
+    }
+
+
+
+    return TRUE;
+
+}",162.0,35.0,"status:step,cond: pos,chan:proc,chr: chcr,opaque:ipesc,bufptr:buffpointer,s:http,",242.0,6.12971263329188,Greedy
+27,,,,,,,,0
+34,"void omap_mcbsp_i2s_attach(struct omap_mcbsp_s *s, I2SCodec *slave)
+
+{
+
+    s->codec = slave;
+
+    slave->rx_swallow = qemu_allocate_irqs(omap_mcbsp_i2s_swallow, s, 1)[0];
+
+    slave->tx_start = qemu_allocate_irqs(omap_mcbsp_i2s_start, s, 1)[0];
+
+}","void omap_mcbsp_i2s_attach(struct omap_mcbsp_s *server, I2SCodec *slave)
+
+{
+
+    server->codec = slave;
+
+    slave->rx_swallow = qemu_allocate_irqs(omap_mcbsp_i2s_swallow, server, 1)[0];
+
+    slave->tx_start = qemu_allocate_irqs(omap_mcbsp_i2s_start, server, 1)[0];
+
+}",52.0,13.0,"s:server,",39.0,1.00741385618846,Greedy
+36,,,,,,,,0
+40,,,,,,,,0
+46,,,,,,,,0
+47,,,,,,,,0
+49,,,,,,,,0
+50,,,,,,,,0
+54,,,,,,,,0
+56,,,,,,,,0
+57,,,,,,,,0
+58,,,,,,,,0
+59,,,,,,,,0
+60,,,,,,,,0
+64,,,,,,,,0
+66,,,,,,,,0
+67,,,,,,,,0
+69,,,,,,,,0
+71,,,,,,,,0
+75,,,,,,,,0
+81,,,,,,,,0
+84,,,,,,,,0
+85,,,,,,,,0
+88,,,,,,,,0
+90,,,,,,,,0
+91,,,,,,,,0
+95,"static void vp8_idct_dc_add4uv_c(uint8_t *dst, int16_t block[4][16], ptrdiff_t stride)
+
+{
+
+    vp8_idct_dc_add_c(dst+stride*0+0, block[0], stride);
+
+    vp8_idct_dc_add_c(dst+stride*0+4, block[1], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+0, block[2], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+4, block[3], stride);
+
+}","static void vp8_idct_dc_add4uv_c(uint8_t *gst, int16_t end[4][16], ptrdiff_t Strace)
+
+{
+
+    vp8_idct_dc_add_c(gst+Strace*0+0, end[0], Strace);
+
+    vp8_idct_dc_add_c(gst+Strace*0+4, end[1], Strace);
+
+    vp8_idct_dc_add_c(gst+Strace*4+0, end[2], Strace);
+
+    vp8_idct_dc_add_c(gst+Strace*4+4, end[3], Strace);
+
+}",94.0,24.0,"dst:gst,block:end,stride:Strace,",110.0,2.67202919324239,Greedy
+101,"int ffurl_alloc(URLContext **puc, const char *filename, int flags,
+
+                const AVIOInterruptCB *int_cb)
+
+{
+
+    URLProtocol *up = NULL;
+
+    char proto_str[128], proto_nested[128], *ptr;
+
+    size_t proto_len = strspn(filename, URL_SCHEME_CHARS);
+
+
+
+    if (filename[proto_len] != ':' || is_dos_path(filename))
+
+        strcpy(proto_str, ""file"");
+
+    else
+
+        av_strlcpy(proto_str, filename,
+
+                   FFMIN(proto_len + 1, sizeof(proto_str)));
+
+
+
+    av_strlcpy(proto_nested, proto_str, sizeof(proto_nested));
+
+    if ((ptr = strchr(proto_nested, '+')))
+
+        *ptr = '\0';
+
+
+
+    while (up = ffurl_protocol_next(up)) {
+
+        if (!strcmp(proto_str, up->name))
+
+            return url_alloc_for_protocol(puc, up, filename, flags, int_cb);
+
+        if (up->flags & URL_PROTOCOL_FLAG_NESTED_SCHEME &&
+
+            !strcmp(proto_nested, up->name))
+
+            return url_alloc_for_protocol(puc, up, filename, flags, int_cb);
+
+    }
+
+    *puc = NULL;
+
+    return AVERROR_PROTOCOL_NOT_FOUND;
+
+}","int ffurl_alloc(URLContext ** pou, const char *size, int planes,
+
+                const AVIOInterruptCB *intingfun)
+
+{
+
+    URLProtocol *pre = NULL;
+
+    char profrom_str[128], proto2gnesting[128], *code;
+
+    size_t proto_len = strspn(size, URL_SCHEME_CHARS);
+
+
+
+    if (size[proto_len] != ':' || is_dos_path(size))
+
+        strcpy(profrom_str, ""file"");
+
+    else
+
+        av_strlcpy(profrom_str, size,
+
+                   FFMIN(proto_len + 1, sizeof(profrom_str)));
+
+
+
+    av_strlcpy(proto2gnesting, profrom_str, sizeof(proto2gnesting));
+
+    if ((code = strchr(proto2gnesting, '+')))
+
+        *code = '\0';
+
+
+
+    while (pre = ffurl_protocol_next(pre)) {
+
+        if (!strcmp(profrom_str, pre->name))
+
+            return url_alloc_for_protocol( pou, pre, size, planes, intingfun);
+
+        if (pre->planes & URL_PROTOCOL_FLAG_NESTED_SCHEME &&
+
+            !strcmp(proto2gnesting, pre->name))
+
+            return url_alloc_for_protocol( pou, pre, size, planes, intingfun);
+
+    }
+
+    * pou = NULL;
+
+    return AVERROR_PROTOCOL_NOT_FOUND;
+
+}",206.0,58.0,"flags:planes,up:pre,int_cb:intingfun,ptr:code,filename:size,proto_nested:proto2gnesting,proto_str:profrom_str,puc: pou,",281.0,7.67566293875376,Greedy
+103,,,,,,,,0
+104,,,,,,,,0
+107,"static void create_map(vorbis_context *vc, unsigned floor_number)
+
+{
+
+    vorbis_floor *floors = vc->floors;
+
+    vorbis_floor0 *vf;
+
+    int idx;
+
+    int blockflag, n;
+
+    int32_t *map;
+
+
+
+    for (blockflag = 0; blockflag < 2; ++blockflag) {
+
+        n = vc->blocksize[blockflag] / 2;
+
+        floors[floor_number].data.t0.map[blockflag] =
+
+            av_malloc((n + 1) * sizeof(int32_t)); // n + sentinel
+
+
+
+        map =  floors[floor_number].data.t0.map[blockflag];
+
+        vf  = &floors[floor_number].data.t0;
+
+
+
+        for (idx = 0; idx < n; ++idx) {
+
+            map[idx] = floor(BARK((vf->rate * idx) / (2.0f * n)) *
+
+                             (vf->bark_map_size / BARK(vf->rate / 2.0f)));
+
+            if (vf->bark_map_size-1 < map[idx])
+
+                map[idx] = vf->bark_map_size - 1;
+
+        }
+
+        map[n] = -1;
+
+        vf->map_size[blockflag] = n;
+
+    }
+
+
+
+    for (idx = 0; idx <= n; ++idx) {
+
+        av_dlog(NULL, ""floor0 map: map at pos %d is %d\n"", idx, map[idx]);
+
+    }
+
+}","static void create_map(vorbis_context *lc, unsigned future_document)
+
+{
+
+    vorbis_floor *feores = lc->feores;
+
+    vorbis_floor0 *vccf;
+
+    int idx;
+
+    int typestyle, cn;
+
+    int32_t *mx;
+
+
+
+    for (typestyle = 0; typestyle < 2; ++typestyle) {
+
+        cn = lc->blocksize[typestyle] / 2;
+
+        feores[future_document].data.t0.mx[typestyle] =
+
+            av_malloc((cn + 1) * sizeof(int32_t)); // n + sentinel
+
+
+
+        mx =  feores[future_document].data.t0.mx[typestyle];
+
+        vccf  = &feores[future_document].data.t0;
+
+
+
+        for (idx = 0; idx < cn; ++idx) {
+
+            mx[idx] = floor(BARK((vccf->rate * idx) / (2.0f * cn)) *
+
+                             (vccf->bark_map_size / BARK(vccf->rate / 2.0f)));
+
+            if (vccf->bark_map_size-1 < mx[idx])
+
+                mx[idx] = vccf->bark_map_size - 1;
+
+        }
+
+        mx[cn] = -1;
+
+        vccf->map_size[typestyle] = cn;
+
+    }
+
+
+
+    for (idx = 0; idx <= cn; ++idx) {
+
+        av_dlog(NULL, ""floor0 map: map at pos %d is %d\n"", idx, mx[idx]);
+
+    }
+
+}",245.0,61.0,"vc:lc,n:cn,floors:feores,floor_number:future_document,map:mx,blockflag:typestyle,vf:vccf,",269.0,7.11622087558111,Greedy
+108,,,,,,,,0
+109,,,,,,,,0
+111,,,,,,,,0
+113,,,,,,,,0
+114,,,,,,,,0
+116,,,,,,,,0
+117,,,,,,,,0
+118,,,,,,,,0
+119,,,,,,,,0
+120,,,,,,,,0
+121,,,,,,,,0
+122,,,,,,,,0
+124,,,,,,,,0
+125,,,,,,,,0
+126,,,,,,,,0
+127,,,,,,,,0
+128,"static int load_matrix(MpegEncContext *s, uint16_t matrix0[64], uint16_t matrix1[64], int intra)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 64; i++) {
+
+        int j = s->dsp.idct_permutation[ff_zigzag_direct[i]];
+
+        int v = get_bits(&s->gb, 8);
+
+        if (v == 0) {
+
+            av_log(s->avctx, AV_LOG_ERROR, ""matrix damaged\n"");
+
+            return -1;
+
+        }
+
+        if (intra && i == 0 && v != 8) {
+
+            av_log(s->avctx, AV_LOG_ERROR, ""intra matrix specifies invalid DC quantizer %d, ignoring\n"", v);
+
+            v = 8; // needed by pink.mpg / issue1046
+
+        }
+
+        matrix0[j] = v;
+
+        if (matrix1)
+
+            matrix1[j] = v;
+
+    }
+
+    return 0;
+
+}","static int load_matrix(MpegEncContext *qs, uint16_t matrices0[64], uint16_t matric10[64], int  intbase)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 64; i++) {
+
+        int j = qs->dsp.idct_permutation[ff_zigzag_direct[i]];
+
+        int v = get_bits(&qs->gb, 8);
+
+        if (v == 0) {
+
+            av_log(qs->avctx, AV_LOG_ERROR, ""matrix damaged\n"");
+
+            return -1;
+
+        }
+
+        if ( intbase && i == 0 && v != 8) {
+
+            av_log(qs->avctx, AV_LOG_ERROR, ""intra matrix specifies invalid DC quantizer %d, ignoring\n"", v);
+
+            v = 8; // needed by pink.mpg / issue1046
+
+        }
+
+        matrices0[j] = v;
+
+        if (matric10)
+
+            matric10[j] = v;
+
+    }
+
+    return 0;
+
+}",149.0,35.0,"s:qs,matrix1:matric10,intra: intbase,matrix0:matrices0,",137.0,3.45381458202998,Greedy
+130,,,,,,,,0
+134,,,,,,,,0
+135,,,,,,,,0
+140,,,,,,,,0
+141,,,,,,,,0
+142,"static void gen_exception_insn(DisasContext *s, int offset, int excp)
+
+{
+
+    gen_a64_set_pc_im(s->pc - offset);
+
+    gen_exception(excp);
+
+    s->is_jmp = DISAS_JUMP;
+
+}","static void gen_exception_insn(DisasContext *service, int port, int Excp)
+
+{
+
+    gen_a64_set_pc_im(service->pc - port);
+
+    gen_exception(Excp);
+
+    service->is_jmp = DISAS_JUMP;
+
+}",36.0,11.0,"offset:port,s:service,excp:Excp,",90.0,2.66282460689545,Greedy
+147,,,,,,,,0
+150,,,,,,,,0
+151,,,,,,,,0
+152,,,,,,,,0
+154,,,,,,,,0
+155,,,,,,,,0
+158,,,,,,,,0
+160,,,,,,,,0
+161,,,,,,,,0
+164,,,,,,,,0
+170,,,,,,,,0
+171,"static int read_quant_table(RangeCoder *c, int16_t *quant_table, int scale)
+
+{
+
+    int v;
+
+    int i = 0;
+
+    uint8_t state[CONTEXT_SIZE];
+
+
+
+    memset(state, 128, sizeof(state));
+
+
+
+    for (v = 0; i < 128; v++) {
+
+        unsigned len = get_symbol(c, state, 0) + 1;
+
+
+
+        if (len > 128 - i)
+
+            return AVERROR_INVALIDDATA;
+
+
+
+        while (len--) {
+
+            quant_table[i] = scale * v;
+
+            i++;
+
+        }
+
+    }
+
+
+
+    for (i = 1; i < 128; i++)
+
+        quant_table[256 - i] = -quant_table[i];
+
+    quant_table[128] = -quant_table[127];
+
+
+
+    return 2 * v - 1;
+
+}","static int read_quant_table(RangeCoder *cm, int16_t *componentingtable, int size)
+
+{
+
+    int j;
+
+    int i = 0;
+
+    uint8_t state[CONTEXT_SIZE];
+
+
+
+    memset(state, 128, sizeof(state));
+
+
+
+    for (j = 0; i < 128; j++) {
+
+        unsigned pos = get_symbol(cm, state, 0) + 1;
+
+
+
+        if (pos > 128 - i)
+
+            return AVERROR_INVALIDDATA;
+
+
+
+        while (pos--) {
+
+            componentingtable[i] = size * j;
+
+            i++;
+
+        }
+
+    }
+
+
+
+    for (i = 1; i < 128; i++)
+
+        componentingtable[256 - i] = -componentingtable[i];
+
+    componentingtable[128] = -componentingtable[127];
+
+
+
+    return 2 * j - 1;
+
+}",146.0,37.0,"quant_table:componentingtable,scale:size,c:cm,v:j,len:pos,",183.0,4.5772430618604,Greedy
+173,,,,,,,,0
+174,,,,,,,,0
+177,,,,,,,,0
+180,,,,,,,,0
+183,,,,,,,,0
+186,,,,,,,,0
+187,,,,,,,,0
+188,,,,,,,,0
+189,,,,,,,,0
+190,,,,,,,,0
+191,,,,,,,,0
+193,,,,,,,,0
+196,,,,,,,,0
+203,,,,,,,,0
+206,,,,,,,,0
+209,,,,,,,,0
+211,,,,,,,,0
+215,,,,,,,,0
+216,,,,,,,,0
+218,,,,,,,,0
+219,,,,,,,,0
+220,,,,,,,,0
+221,,,,,,,,0
+223,,,,,,,,0
+228,,,,,,,,0
+229,,,,,,,,0
+236,,,,,,,,0
+238,,,,,,,,0
+239,,,,,,,,0
+241,,,,,,,,0
+242,,,,,,,,0
+243,"const AVOption *av_opt_next(void *obj, const AVOption *last)
+
+{
+
+    AVClass *class = *(AVClass**)obj;
+
+    if (!last && class->option[0].name) return class->option;
+
+    if (last && last[1].name)           return ++last;
+
+    return NULL;
+
+}","const AVOption *av_opt_next(void *obj, const AVOption *bottom)
+
+{
+
+    AVClass *class = *(AVClass**)obj;
+
+    if (!bottom && class->option[0].name) return class->option;
+
+    if (bottom && bottom[1].name)           return ++bottom;
+
+    return NULL;
+
+}",65.0,11.0,"last:bottom,",41.0,1.13191972176234,Greedy
+245,,,,,,,,0
+249,,,,,,,,0
+254,,,,,,,,0
+255,,,,,,,,0
+257,,,,,,,,0
+258,,,,,,,,0
+259,,,,,,,,0
+260,,,,,,,,0
+261,,,,,,,,0
+262,,,,,,,,0
+263,,,,,,,,0
+264,,,,,,,,0
+265,,,,,,,,0
+267,,,,,,,,0
+268,,,,,,,,0
+270,,,,,,,,0
+272,,,,,,,,0
+273,,,,,,,,0
+274,,,,,,,,0
+276,,,,,,,,0
+277,,,,,,,,0
+279,,,,,,,,0
+280,,,,,,,,0
+281,,,,,,,,0
+285,,,,,,,,0
+286,,,,,,,,0
+290,,,,,,,,0
+292,,,,,,,,0
+294,,,,,,,,0
+296,,,,,,,,0
+297,,,,,,,,0
+298,"uint32_t HELPER(clz)(uint32_t x)
+
+{
+
+    int count;
+
+    for (count = 32; x; count--)
+
+        x >>= 1;
+
+    return count;
+
+}","uint32_t HELPER(clz)(uint32_t xx)
+
+{
+
+    int code;
+
+    for (code = 32; xx; code--)
+
+        xx >>= 1;
+
+    return code;
+
+}",32.0,8.0,"x:xx,count:code,",68.0,1.64463922182719,Greedy
+299,,,,,,,,0
+300,"static void FUNCC(pred4x4_horizontal_add)(uint8_t *_pix, const int16_t *_block,
+
+                                          ptrdiff_t stride)
+
+{
+
+    int i;
+
+    pixel *pix = (pixel*)_pix;
+
+    const dctcoef *block = (const dctcoef*)_block;
+
+    stride >>= sizeof(pixel)-1;
+
+    for(i=0; i<4; i++){
+
+        pixel v = pix[-1];
+
+        pix[0]= v += block[0];
+
+        pix[1]= v += block[1];
+
+        pix[2]= v += block[2];
+
+        pix[3]= v +  block[3];
+
+        pix+= stride;
+
+        block+= 4;
+
+    }
+
+}","static void FUNCC(pred4x4_horizontal_add)(uint8_t *_Pixels, const int16_t *_block,
+
+                                          ptrdiff_t drided)
+
+{
+
+    int gi;
+
+    pixel *pix = (pixel*)_Pixels;
+
+    const dctcoef *block = (const dctcoef*)_block;
+
+    drided >>= sizeof(pixel)-1;
+
+    for(gi=0; gi<4; gi++){
+
+        pixel v = pix[-1];
+
+        pix[0]= v += block[0];
+
+        pix[1]= v += block[1];
+
+        pix[2]= v += block[2];
+
+        pix[3]= v +  block[3];
+
+        pix+= drided;
+
+        block+= 4;
+
+    }
+
+}",134.0,31.0,"_pix:_Pixels,stride:drided,_block:_block,i:gi,",126.0,3.10948932965597,Greedy
+303,,,,,,,,0
+305,,,,,,,,0
+312,,,,,,,,0
+313,,,,,,,,0
+315,,,,,,,,0
+317,,,,,,,,0
+318,,,,,,,,0
+319,,,,,,,,0
+320,,,,,,,,0
+321,,,,,,,,0
+326,,,,,,,,0
+327,,,,,,,,0
+330,,,,,,,,0
+332,,,,,,,,0
+333,,,,,,,,0
+334,,,,,,,,0
+339,"static void decode0(GetByteContext *gb, RangeCoder *rc, unsigned cumFreq, unsigned freq, unsigned total_freq)
+
+{
+
+    int t = rc->range * (uint64_t)cumFreq / total_freq;
+
+
+
+    rc->code1 += t + 1;
+
+    rc->range = rc->range * (uint64_t)(freq + cumFreq) / total_freq - (t + 1);
+
+
+
+    while (rc->range < TOP && bytestream2_get_bytes_left(gb) > 0) {
+
+        unsigned byte = bytestream2_get_byte(gb);
+
+        rc->code = (rc->code << 8) | byte;
+
+        rc->code1 <<= 8;
+
+        rc->range <<= 8;
+
+    }
+
+}","static void decode0(GetByteContext *hub, RangeCoder *rc, unsigned  cumfreue, unsigned freq, unsigned total_freqs)
+
+{
+
+    int t = rc->range * (uint64_t) cumfreue / total_freqs;
+
+
+
+    rc->code1 += t + 1;
+
+    rc->range = rc->range * (uint64_t)(freq +  cumfreue) / total_freqs - (t + 1);
+
+
+
+    while (rc->range < TOP && bytestream2_get_bytes_left(hub) > 0) {
+
+        unsigned byte = bytestream2_get_byte(hub);
+
+        rc->code = (rc->code << 8) | byte;
+
+        rc->code1 <<= 8;
+
+        rc->range <<= 8;
+
+    }
+
+}",121.0,30.0,"rc:rc,total_freq:total_freqs,gb:hub,cumFreq: cumfreue,",142.0,3.51758931875229,Greedy
+342,"void error_propagate(Error **dst_errp, Error *local_err)
+
+{
+
+    if (local_err && dst_errp == &error_abort) {
+
+        error_report_err(local_err);
+
+        abort();
+
+    } else if (dst_errp && !*dst_errp) {
+
+        *dst_errp = local_err;
+
+    } else if (local_err) {
+
+        error_free(local_err);
+
+    }
+
+}
+","void error_propagate(Error **dst_errp, Error * local_er)
+
+{
+
+    if ( local_er && dst_errp == &error_abort) {
+
+        error_report_err( local_er);
+
+        abort();
+
+    } else if (dst_errp && !*dst_errp) {
+
+        *dst_errp =  local_er;
+
+    } else if ( local_er) {
+
+        error_free( local_er);
+
+    }
+
+}
+",62.0,16.0,"dst_errp:dst_errp,local_err: local_er,",72.0,2.27008001009623,Greedy
+346,,,,,,,,0
+350,,,214.0,58.0,,500.0,13.559324880441,0
+351,,,,,,,,0
+352,,,,,,,,0
+354,,,,,,,,0
+355,,,,,,,,0
+356,,,,,,,,0
+360,,,,,,,,0
+361,,,,,,,,0
+363,,,,,,,,0
+364,,,,,,,,0
+365,,,,,,,,0
+366,,,,,,,,0
+368,,,,,,,,0
+371,,,,,,,,0
+372,,,,,,,,0
+373,,,,,,,,0
+374,,,,,,,,0
+375,,,,,,,,0
+378,,,,,,,,0
+382,,,,,,,,0
+384,,,,,,,,0
+385,,,,,,,,0
+388,,,,,,,,0
+390,"do_cksum(uint8_t *dp, uint8_t *de)
+
+{
+
+    unsigned int bsum[2] = {0, 0}, i, sum;
+
+
+
+    for (i = 1; dp < de; bsum[i^=1] += *dp++)
+
+        ;
+
+    sum = (bsum[0] << 8) + bsum[1];
+
+    sum = (sum >> 16) + (sum & 0xffff);
+
+    return ~(sum + (sum >> 16));
+
+}","do_cksum(uint8_t *dp, uint8_t *de)
+
+{
+
+    unsigned int astsum[2] = {0, 0}, si, cost;
+
+
+
+    for (si = 1; dp < de; astsum[si^=1] += *dp++)
+
+        ;
+
+    cost = (astsum[0] << 8) + astsum[1];
+
+    cost = (cost >> 16) + (cost & 0xffff);
+
+    return ~(cost + (cost >> 16));
+
+}",93.0,20.0,"i:si,sum:cost,bsum:astsum,",105.0,2.81041044394175,Greedy
+391,,,,,,,,0
+393,,,,,,,,0
+394,,,,,,,,0
+395,,,,,,,,0
+397,"static int raw_init_encoder(AVCodecContext *avctx)
+
+{
+
+    avctx->coded_frame = (AVFrame *)avctx->priv_data;
+
+    avctx->coded_frame->pict_type = FF_I_TYPE;
+
+    avctx->coded_frame->key_frame = 1;
+
+    avctx->codec_tag = findFourCC(avctx->pix_fmt);
+
+    return 0;
+
+}","static int raw_init_encoder(AVCodecContext *avecu)
+
+{
+
+    avecu->coded_frame = (AVFrame *)avecu->priv_data;
+
+    avecu->coded_frame->pict_type = FF_I_TYPE;
+
+    avecu->coded_frame->key_frame = 1;
+
+    avecu->codec_tag = findFourCC(avecu->pix_fmt);
+
+    return 0;
+
+}",52.0,10.0,"avctx:avecu,",38.0,0.98128441174825,Greedy
+399,,,,,,,,0
+400,"static void gen_storeq_reg(DisasContext *s, int rlow, int rhigh, TCGv val)
+
+{
+
+    TCGv tmp;
+
+    tmp = new_tmp();
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(s, rlow, tmp);
+
+    tmp = new_tmp();
+
+    tcg_gen_shri_i64(val, val, 32);
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(s, rhigh, tmp);
+
+}","static void gen_storeq_reg(DisasContext *ses, int prange, int rhigh, TCGv val)
+
+{
+
+    TCGv tmp;
+
+    tmp = new_tmp();
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(ses, prange, tmp);
+
+    tmp = new_tmp();
+
+    tcg_gen_shri_i64(val, val, 32);
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(ses, rhigh, tmp);
+
+}",75.0,27.0,"rlow:prange,s:ses,",76.0,1.89454761346181,Greedy
+402,,,,,,,,0
+403,,,,,,,,0
+404,,,,,,,,0
+405,,,,,,,,0
+406,,,,,,,,0
+408,,,,,,,,0
+409,,,,,,,,0
+410,,,,,,,,0
+411,,,,,,,,0
+412,,,,,,,,0
+414,,,,,,,,0
+415,,,,,,,,0
+416,,,,,,,,0
+418,,,,,,,,0
+419,,,,,,,,0
+421,,,,,,,,0
+422,"static void apic_update_irq(APICState *s)
+
+{
+
+    int irrv, ppr;
+
+    if (!(s->spurious_vec & APIC_SV_ENABLE))
+
+        return;
+
+    irrv = get_highest_priority_int(s->irr);
+
+    if (irrv < 0)
+
+        return;
+
+    ppr = apic_get_ppr(s);
+
+    if (ppr && (irrv & 0xf0) <= (ppr & 0xf0))
+
+        return;
+
+    cpu_interrupt(s->cpu_env, CPU_INTERRUPT_HARD);
+
+}","static void apic_update_irq(APICState *qs)
+
+{
+
+    int  irerv, uppp;
+
+    if (!(qs->spurious_vec & APIC_SV_ENABLE))
+
+        return;
+
+     irerv = get_highest_priority_int(qs->irr);
+
+    if ( irerv < 0)
+
+        return;
+
+    uppp = apic_get_ppr(qs);
+
+    if (uppp && ( irerv & 0xf0) <= (uppp & 0xf0))
+
+        return;
+
+    cpu_interrupt(qs->cpu_env, CPU_INTERRUPT_HARD);
+
+}",79.0,19.0,"s:qs,ppr:uppp,irrv: irerv,",104.0,2.62167975505193,Greedy
+425,"static inline void RENAME(uyvyToY)(uint8_t *dst, const uint8_t *src, int width, uint32_t *unused)
+
+{
+
+#if COMPILE_TEMPLATE_MMX
+
+    __asm__ volatile(
+
+        ""mov                  %0, %%""REG_a""         \n\t""
+
+        ""1:                                         \n\t""
+
+        ""movq  (%1, %%""REG_a"",2), %%mm0             \n\t""
+
+        ""movq 8(%1, %%""REG_a"",2), %%mm1             \n\t""
+
+        ""psrlw                $8, %%mm0             \n\t""
+
+        ""psrlw                $8, %%mm1             \n\t""
+
+        ""packuswb          %%mm1, %%mm0             \n\t""
+
+        ""movq              %%mm0, (%2, %%""REG_a"")   \n\t""
+
+        ""add                  $8, %%""REG_a""         \n\t""
+
+        "" js                  1b                    \n\t""
+
+        : : ""g"" ((x86_reg)-width), ""r"" (src+width*2), ""r"" (dst+width)
+
+        : ""%""REG_a
+
+    );
+
+#else
+
+    int i;
+
+    for (i=0; i<width; i++)
+
+        dst[i]= src[2*i+1];
+
+#endif
+
+}","static inline void RENAME(uyvyToY)(uint8_t *idsrc, const uint8_t *lib, int width, uint32_t *unsusing)
+
+{
+
+#if COMPILE_TEMPLATE_MMX
+
+    __asm__ volatile(
+
+        ""mov                  %0, %%""REG_a""         \n\t""
+
+        ""1:                                         \n\t""
+
+        ""movq  (%1, %%""REG_a"",2), %%mm0             \n\t""
+
+        ""movq 8(%1, %%""REG_a"",2), %%mm1             \n\t""
+
+        ""psrlw                $8, %%mm0             \n\t""
+
+        ""psrlw                $8, %%mm1             \n\t""
+
+        ""packuswb          %%mm1, %%mm0             \n\t""
+
+        ""movq              %%mm0, (%2, %%""REG_a"")   \n\t""
+
+        ""add                  $8, %%""REG_a""         \n\t""
+
+        "" js                  1b                    \n\t""
+
+        : : ""g"" ((x86_reg)-width), ""r"" (lib+width*2), ""r"" (idsrc+width)
+
+        : ""%""REG_a
+
+    );
+
+#else
+
+    int ii;
+
+    for (ii=0; ii<width; ii++)
+
+        idsrc[ii]= lib[2*ii+1];
+
+#endif
+
+}",156.0,27.0,"unused:unsusing,src:lib,dst:idsrc,i:ii,",118.0,3.21029108762741,Greedy
+426,,,,,,,,0
+430,,,,,,,,0
+432,,,,,,,,0
+433,,,,,,,,0
+436,,,,,,,,0
+437,"static void ac3_extract_exponents_c(uint8_t *exp, int32_t *coef, int nb_coefs)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < nb_coefs; i++) {
+
+        int e;
+
+        int v = abs(coef[i]);
+
+        if (v == 0)
+
+            e = 24;
+
+        else {
+
+            e = 23 - av_log2(v);
+
+            if (e >= 24) {
+
+                e = 24;
+
+                coef[i] = 0;
+
+            }
+
+            av_assert2(e >= 0);
+
+        }
+
+        exp[i] = e;
+
+    }
+
+}","static void ac3_extract_exponents_c(uint8_t *exp, int32_t *codeaf, int nb_coevn)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < nb_coevn; i++) {
+
+        int e;
+
+        int v = abs(codeaf[i]);
+
+        if (v == 0)
+
+            e = 24;
+
+        else {
+
+            e = 23 - av_log2(v);
+
+            if (e >= 24) {
+
+                e = 24;
+
+                codeaf[i] = 0;
+
+            }
+
+            av_assert2(e >= 0);
+
+        }
+
+        exp[i] = e;
+
+    }
+
+}",104.0,28.0,"nb_coefs:nb_coevn,coef:codeaf,",80.0,1.40679132938385,Greedy
+438,,,,,,,,0
+439,,,,,,,,0
+442,,,,,,,,0
+443,,,,,,,,0
+444,,,,,,,,0
+447,,,,,,,,0
+449,,,,,,,,0
+451,,,,,,,,0
+454,"void ff_schro_queue_free(FFSchroQueue *queue, void (*free_func)(void *))
+
+{
+
+    while (queue->p_head)
+
+        free_func(ff_schro_queue_pop(queue));
+
+}
+","void ff_schro_queue_free(FFSchroQueue *queue, void (*free2lambda)(void *))
+
+{
+
+    while (queue->p_head)
+
+        free2lambda(ff_schro_queue_pop(queue));
+
+}",33.0,7.0,"free_func:free2lambda,",28.0,0.28390341202418,Greedy
+455,,,,,,,,0
+456,,,,,,,,0
+457,"static int parse_fmtp(AVFormatContext *s,
+
+                      AVStream *stream, PayloadContext *data,
+
+                      const char *attr, const char *value)
+
+{
+
+    AVCodecParameters *par = stream->codecpar;
+
+    int res, i;
+
+
+
+    if (!strcmp(attr, ""config"")) {
+
+        res = parse_fmtp_config(par, value);
+
+
+
+        if (res < 0)
+
+            return res;
+
+    }
+
+
+
+    if (par->codec_id == AV_CODEC_ID_AAC) {
+
+        /* Looking for a known attribute */
+
+        for (i = 0; attr_names[i].str; ++i) {
+
+            if (!av_strcasecmp(attr, attr_names[i].str)) {
+
+                if (attr_names[i].type == ATTR_NAME_TYPE_INT) {
+
+                    *(int *)((char *)data+
+
+                        attr_names[i].offset) = atoi(value);
+
+                } else if (attr_names[i].type == ATTR_NAME_TYPE_STR)
+
+                    *(char **)((char *)data+
+
+                        attr_names[i].offset) = av_strdup(value);
+
+            }
+
+        }
+
+    }
+
+    return 0;
+
+}","static int parse_fmtp(AVFormatContext *parser,
+
+                      AVStream *ctx, PayloadContext *this,
+
+                      const char *option, const char *function)
+
+{
+
+    AVCodecParameters *parser = ctx->codecpar;
+
+    int arr, info;
+
+
+
+    if (!strcmp(option, ""config"")) {
+
+        arr = parse_fmtp_config(parser, function);
+
+
+
+        if (arr < 0)
+
+            return arr;
+
+    }
+
+
+
+    if (parser->codec_id == AV_CODEC_ID_AAC) {
+
+        /* Looking for a known attribute */
+
+        for (info = 0; attr_names[info].str; ++info) {
+
+            if (!av_strcasecmp(option, attr_names[info].str)) {
+
+                if (attr_names[info].type == ATTR_NAME_TYPE_INT) {
+
+                    *(int *)((char *)this+
+
+                        attr_names[info].offset) = atoi(function);
+
+                } else if (attr_names[info].type == ATTR_NAME_TYPE_STR)
+
+                    *(char **)((char *)this+
+
+                        attr_names[info].offset) = av_strdup(function);
+
+            }
+
+        }
+
+    }
+
+    return 0;
+
+}",196.0,44.0,"s:parser,data:this,attr:option,value:function,stream:ctx,par:parser,res:arr,i:info,",266.0,2.89092756509781,Greedy
+458,,,,,,,,0
+459,,,,,,,,0
+461,,,,,,,,0
+464,,,,,,,,0
+467,,,,,,,,0
+468,"static void init_gain_table(COOKContext *q) {
+
+    int i;
+
+    q->gain_size_factor = q->samples_per_channel/8;
+
+    for (i=0 ; i<23 ; i++) {
+
+        q->gain_table[i] = pow((double)q->pow2tab[i+52] ,
+
+                               (1.0/(double)q->gain_size_factor));
+
+    }
+
+    memset(&q->gain_copy, 0, sizeof(COOKgain));
+
+    memset(&q->gain_current, 0, sizeof(COOKgain));
+
+    memset(&q->gain_now, 0, sizeof(COOKgain));
+
+    memset(&q->gain_previous, 0, sizeof(COOKgain));
+
+}","static void init_gain_table(COOKContext *sync) {
+
+    int I;
+
+    sync->gain_size_factor = sync->samples_per_channel/8;
+
+    for (I=0 ; I<23 ; I++) {
+
+        sync->gain_table[I] = pow((double)sync->pow2tab[I+52] ,
+
+                               (1.0/(double)sync->gain_size_factor));
+
+    }
+
+    memset(&sync->gain_copy, 0, sizeof(COOKgain));
+
+    memset(&sync->gain_current, 0, sizeof(COOKgain));
+
+    memset(&sync->gain_now, 0, sizeof(COOKgain));
+
+    memset(&sync->gain_previous, 0, sizeof(COOKgain));
+
+}",131.0,26.0,"i:I,q:sync,",77.0,0.976267671585083,Greedy
+469,,,,,,,,0
+471,,,,,,,,0
+472,"static inline void h264_deblock_q1(register vector unsigned char p0,
+
+                                                   register vector unsigned char p1,
+
+                                                   register vector unsigned char p2,
+
+                                                   register vector unsigned char q0,
+
+                                                   register vector unsigned char tc0) {
+
+
+
+    register vector unsigned char average = vec_avg(p0, q0);
+
+    register vector unsigned char temp;
+
+    register vector unsigned char uncliped;
+
+    register vector unsigned char ones;
+
+    register vector unsigned char max;
+
+    register vector unsigned char min;
+
+
+
+    temp = vec_xor(average, p2);
+
+    average = vec_avg(average, p2);     /*avg(p2, avg(p0, q0)) */
+
+    ones = vec_splat_u8(1);
+
+    temp = vec_and(temp, ones);         /*(p2^avg(p0, q0)) & 1 */
+
+    uncliped = vec_subs(average, temp); /*(p2+((p0+q0+1)>>1))>>1 */
+
+    max = vec_adds(p1, tc0);
+
+    min = vec_subs(p1, tc0);
+
+    p1 = vec_max(min, uncliped);
+
+    p1 = vec_min(max, p1);
+
+}","static inline void h264_deblock_q1(register vector unsigned char p0,
+
+                                                   register vector unsigned char p1,
+
+                                                   register vector unsigned char p2,
+
+                                                   register vector unsigned char q0,
+
+                                                   register vector unsigned char tc0) {
+
+
+
+    register vector unsigned char average = vec_avg(p0, q0);
+
+    register vector unsigned char temp;
+
+    register vector unsigned char  unclipeded;
+
+    register vector unsigned char ones;
+
+    register vector unsigned char max;
+
+    register vector unsigned char p;
+
+
+
+    temp = vec_xor(average, p2);
+
+    average = vec_avg(average, p2);     /*avg(p2, avg(p0, q0)) */
+
+    ones = vec_splat_u8(1);
+
+    temp = vec_and(temp, ones);         /*(p2^avg(p0, q0)) & 1 */
+
+     unclipeded = vec_subs(average, temp); /*(p2+((p0+q0+1)>>1))>>1 */
+
+    max = vec_adds(p1, tc0);
+
+    p = vec_subs(p1, tc0);
+
+    p1 = vec_max(p,  unclipeded);
+
+    p1 = vec_min(max, p1);
+
+}",165.0,65.0,"min:p,uncliped: unclipeded,",80.0,0.865549715360006,Greedy
+473,,,,,,,,0
+474,"static int64_t do_strtosz(const char *nptr, char **end,
+
+                          const char default_suffix, int64_t unit)
+
+{
+
+    int64_t retval;
+
+    char *endptr;
+
+    unsigned char c;
+
+    int mul_required = 0;
+
+    double val, mul, integral, fraction;
+
+
+
+    errno = 0;
+
+    val = strtod(nptr, &endptr);
+
+    if (isnan(val) || endptr == nptr || errno != 0) {
+
+        retval = -EINVAL;
+
+        goto out;
+
+    }
+
+    fraction = modf(val, &integral);
+
+    if (fraction != 0) {
+
+        mul_required = 1;
+
+    }
+
+    c = *endptr;
+
+    mul = suffix_mul(c, unit);
+
+    if (mul >= 0) {
+
+        endptr++;
+
+    } else {
+
+        mul = suffix_mul(default_suffix, unit);
+
+        assert(mul >= 0);
+
+    }
+
+    if (mul == 1 && mul_required) {
+
+        retval = -EINVAL;
+
+        goto out;
+
+    }
+
+    if ((val * mul >= INT64_MAX) || val < 0) {
+
+        retval = -ERANGE;
+
+        goto out;
+
+    }
+
+    retval = val * mul;
+
+
+
+out:
+
+    if (end) {
+
+        *end = endptr;
+
+    } else if (*endptr) {
+
+        retval = -EINVAL;
+
+    }
+
+
+
+    return retval;
+
+}","static int64_t do_strtosz(const char *startPtr, char **enable,
+
+                          const char default_protrix, int64_t temp)
+
+{
+
+    int64_t RETobj;
+
+    char *offsetaddr;
+
+    unsigned char cn;
+
+    int mul_required = 0;
+
+    double abc,  mlu, Integraction, rflux;
+
+
+
+    errno = 0;
+
+    abc = strtod(startPtr, &offsetaddr);
+
+    if (isnan(abc) || offsetaddr == startPtr || errno != 0) {
+
+        RETobj = -EINVAL;
+
+        goto out;
+
+    }
+
+    rflux = modf(abc, &Integraction);
+
+    if (rflux != 0) {
+
+        mul_required = 1;
+
+    }
+
+    cn = *offsetaddr;
+
+     mlu = suffix_mul(cn, temp);
+
+    if ( mlu >= 0) {
+
+        offsetaddr++;
+
+    } else {
+
+         mlu = suffix_mul(default_protrix, temp);
+
+        assert( mlu >= 0);
+
+    }
+
+    if ( mlu == 1 && mul_required) {
+
+        RETobj = -EINVAL;
+
+        goto out;
+
+    }
+
+    if ((abc *  mlu >= INT64_MAX) || abc < 0) {
+
+        RETobj = -ERANGE;
+
+        goto out;
+
+    }
+
+    RETobj = abc *  mlu;
+
+
+
+out:
+
+    if (enable) {
+
+        *enable = offsetaddr;
+
+    } else if (*offsetaddr) {
+
+        RETobj = -EINVAL;
+
+    }
+
+
+
+    return RETobj;
+
+}",230.0,65.0,"retval:RETobj,endptr:offsetaddr,nptr:startPtr,default_suffix:default_protrix,end:enable,val:abc,unit:temp,mul: mlu,c:cn,fraction:rflux,integral:Integraction,",374.0,4.11208441654841,Greedy
+475,,,,,,,,0
+478,,,,,,,,0
+480,"static av_cold int check_cuda_errors(AVCodecContext *avctx, CUresult err, const char *func)
+
+{
+
+    if (err != CUDA_SUCCESS) {
+
+        av_log(avctx, AV_LOG_FATAL, "">> %s - failed with error code 0x%x\n"", func, err);
+
+        return 0;
+
+    }
+
+    return 1;
+
+}","static av_cold int check_cuda_errors(AVCodecContext *afcontext, CUresult all, const char *r)
+
+{
+
+    if (all != CUDA_SUCCESS) {
+
+        av_log(afcontext, AV_LOG_FATAL, "">> %s - failed with error code 0x%x\n"", r, all);
+
+        return 0;
+
+    }
+
+    return 1;
+
+}",48.0,12.0,"func:r,err:all,avctx:afcontext,",94.0,1.01530533234278,Greedy
+481,,,,,,,,0
+482,,,,,,,,0
+483,,,,,,,,0
+484,"static void switch_buffer(MPADecodeContext *s, int *pos, int *end_pos,
+
+                          int *end_pos2)
+
+{
+
+    if (s->in_gb.buffer && *pos >= s->gb.size_in_bits) {
+
+        s->gb           = s->in_gb;
+
+        s->in_gb.buffer = NULL;
+
+        assert((get_bits_count(&s->gb) & 7) == 0);
+
+        skip_bits_long(&s->gb, *pos - *end_pos);
+
+        *end_pos2 =
+
+        *end_pos  = *end_pos2 + get_bits_count(&s->gb) - *pos;
+
+        *pos      = get_bits_count(&s->gb);
+
+    }
+
+}","static void switch_buffer(MPADecodeContext *s, int *pos, int *end_pos,
+
+                          int *end_position1)
+
+{
+
+    if (s->in_gb.buffer && *pos >= s->gb.size_in_bits) {
+
+        s->gb           = s->in_gb;
+
+        s->in_gb.buffer = NULL;
+
+        assert((get_bits_count(&s->gb) & 7) == 0);
+
+        skip_bits_long(&s->gb, *pos - *end_pos);
+
+        *end_position1 =
+
+        *end_pos  = *end_position1 + get_bits_count(&s->gb) - *pos;
+
+        *pos      = get_bits_count(&s->gb);
+
+    }
+
+}",119.0,27.0,"end_pos2:end_position1,",41.0,0.458926375706991,Greedy
+487,,,,,,,,0
+491,,,,,,,,0
+492,,,,,,,,0
+495,"void uuid_unparse(const uuid_t uu, char *out)
+
+{
+
+    snprintf(out, 37, UUID_FMT,
+
+            uu[0], uu[1], uu[2], uu[3], uu[4], uu[5], uu[6], uu[7],
+
+            uu[8], uu[9], uu[10], uu[11], uu[12], uu[13], uu[14], uu[15]);
+
+}","void uuid_unparse(const uuid_t ubuntu, char *input)
+
+{
+
+    snprintf(input, 37, UUID_FMT,
+
+            ubuntu[0], ubuntu[1], ubuntu[2], ubuntu[3], ubuntu[4], ubuntu[5], ubuntu[6], ubuntu[7],
+
+            ubuntu[8], ubuntu[9], ubuntu[10], ubuntu[11], ubuntu[12], ubuntu[13], ubuntu[14], ubuntu[15]);
+
+}",102.0,22.0,"out:input,uu:ubuntu,",80.0,0.881124317646027,Greedy
+496,,,,,,,,0
+497,,,,,,,,0
+498,,,,,,,,0
+500,,,,,,,,0
+501,,,,,,,,0
+502,,,,,,,,0
+504,,,,,,,,0
+505,,,,,,,,0
+507,,,,,,,,0
+509,"void ff_af_queue_init(AVCodecContext *avctx, AudioFrameQueue *afq)
+
+{
+
+    afq->avctx             = avctx;
+
+    afq->next_pts          = AV_NOPTS_VALUE;
+
+    afq->remaining_delay   = avctx->delay;
+
+    afq->remaining_samples = avctx->delay;
+
+    afq->frame_queue       = NULL;
+
+}
+","void ff_af_queue_init(AVCodecContext *AVcam, AudioFrameQueue *afq)
+
+{
+
+    afq->AVcam             = AVcam;
+
+    afq->next_pts          = AV_NOPTS_VALUE;
+
+    afq->remaining_delay   = AVcam->delay;
+
+    afq->remaining_samples = AVcam->delay;
+
+    afq->frame_queue       = NULL;
+
+}
+",47.0,12.0,"avctx:AVcam,",42.0,0.523596930503845,Greedy
+510,,,,,,,,0
+511,,,,,,,,0
+513,,,,,,,,0
+517,,,,,,,,0
+525,"static void dyn_buf_write(void *opaque, UINT8 *buf, int buf_size)
+
+{
+
+    DynBuffer *d = opaque;
+
+    int new_size, new_allocated_size;
+
+    UINT8 *new_buffer;
+
+    
+
+    /* reallocate buffer if needed */
+
+    new_size = d->pos + buf_size;
+
+    new_allocated_size = d->allocated_size;
+
+    while (new_size > new_allocated_size) {
+
+        if (!new_allocated_size)
+
+            new_allocated_size = new_size;
+
+        else
+
+            new_allocated_size = (new_allocated_size * 3) / 2;
+
+    }
+
+    
+
+    if (new_allocated_size > d->allocated_size) {
+
+        new_buffer = av_malloc(new_allocated_size);
+
+        if (!new_buffer)
+
+            return;
+
+        memcpy(new_buffer, d->buffer, d->size);
+
+        av_free(d->buffer);
+
+        d->buffer = new_buffer;
+
+        d->allocated_size = new_allocated_size;
+
+    }
+
+    memcpy(d->buffer + d->pos, buf, buf_size);
+
+    d->pos = new_size;
+
+    if (d->pos > d->size)
+
+        d->size = d->pos;
+
+}","static void dyn_buf_write(void *operec, UINT8 *pos, int buf_Size)
+
+{
+
+    DynBuffer *d = operec;
+
+    int new5shape, new_allocated_size;
+
+    UINT8 *newJsize;
+
+    
+
+    /* reallocate buffer if needed */
+
+    new5shape = d->pos + buf_Size;
+
+    new_allocated_size = d->allocated_size;
+
+    while (new5shape > new_allocated_size) {
+
+        if (!new_allocated_size)
+
+            new_allocated_size = new5shape;
+
+        else
+
+            new_allocated_size = (new_allocated_size * 3) / 2;
+
+    }
+
+    
+
+    if (new_allocated_size > d->allocated_size) {
+
+        newJsize = av_malloc(new_allocated_size);
+
+        if (!newJsize)
+
+            return;
+
+        memcpy(newJsize, d->buffer, d->size);
+
+        av_free(d->buffer);
+
+        d->buffer = newJsize;
+
+        d->allocated_size = new_allocated_size;
+
+    }
+
+    memcpy(d->buffer + d->pos, pos, buf_Size);
+
+    d->pos = new5shape;
+
+    if (d->pos > d->size)
+
+        d->size = d->pos;
+
+}",169.0,48.0,"new_buffer:newJsize,opaque:operec,buf:pos,new_size:new5shape,buf_size:buf_Size,",191.0,3.39111707607905,Greedy
+527,,,,,,,,0
+530,,,,,,,,0
+532,"static void gpollfds_from_select(void)
+
+{
+
+    int fd;
+
+    for (fd = 0; fd <= nfds; fd++) {
+
+        int events = 0;
+
+        if (FD_ISSET(fd, &rfds)) {
+
+            events |= G_IO_IN | G_IO_HUP | G_IO_ERR;
+
+        }
+
+        if (FD_ISSET(fd, &wfds)) {
+
+            events |= G_IO_OUT | G_IO_ERR;
+
+        }
+
+        if (FD_ISSET(fd, &xfds)) {
+
+            events |= G_IO_PRI;
+
+        }
+
+        if (events) {
+
+            GPollFD pfd = {
+
+                .fd = fd,
+
+                .events = events,
+
+            };
+
+            g_array_append_val(gpollfds, pfd);
+
+        }
+
+    }
+
+}","static void gpollfds_from_select(void)
+
+{
+
+    int fun;
+
+    for (fun = 0; fun <= nfds; fun++) {
+
+        int events = 0;
+
+        if (FD_ISSET(fun, &rfds)) {
+
+            events |= G_IO_IN | G_IO_HUP | G_IO_ERR;
+
+        }
+
+        if (FD_ISSET(fun, &wfds)) {
+
+            events |= G_IO_OUT | G_IO_ERR;
+
+        }
+
+        if (FD_ISSET(fun, &xfds)) {
+
+            events |= G_IO_PRI;
+
+        }
+
+        if (events) {
+
+            GPollFD pfd = {
+
+                .fun = fun,
+
+                .events = events,
+
+            };
+
+            g_array_append_val(gpollfds, pfd);
+
+        }
+
+    }
+
+}",114.0,32.0,"fd:fun,",40.0,0.680567296346029,Greedy
+534,,,,,,,,0
+538,,,,,,,,0
+539,,,,,,,,0
+542,,,,,,,,0
+543,"static void add_index_entry(AVStream *st,
+
+                            int64_t pos, int64_t timestamp, int flags)
+
+{
+
+    AVIndexEntry *entries, *ie;
+
+    
+
+    entries = av_fast_realloc(st->index_entries,
+
+                              &st->index_entries_allocated_size,
+
+                              (st->nb_index_entries + 1) * 
+
+                              sizeof(AVIndexEntry));
+
+    if (entries) {
+
+        st->index_entries = entries;
+
+        ie = &entries[st->nb_index_entries++];
+
+        ie->pos = pos;
+
+        ie->timestamp = timestamp;
+
+        ie->flags = flags;
+
+    }
+
+}","static void add_index_entry(AVStream *stack,
+
+                            int64_t pos, int64_t timet, int FLAG)
+
+{
+
+    AVIndexEntry *entries, *ie;
+
+    
+
+    entries = av_fast_realloc(stack->index_entries,
+
+                              &stack->index_entries_allocated_size,
+
+                              (stack->nb_index_entries + 1) * 
+
+                              sizeof(AVIndexEntry));
+
+    if (entries) {
+
+        stack->index_entries = entries;
+
+        ie = &entries[stack->nb_index_entries++];
+
+        ie->pos = pos;
+
+        ie->timet = timet;
+
+        ie->FLAG = FLAG;
+
+    }
+
+}",94.0,25.0,"st:stack,flags:FLAG,timestamp:timet,",116.0,2.31747666200002,Greedy
+544,,,,,,,,0
+546,,,,,,,,0
+547,,,,,,,,0
+548,,,,,,,,0
+549,,,,,,,,0
+550,,,,,,,,0
+551,,,,,,,,0
+552,,,,,,,,0
+553,,,,,,,,0
+555,,,,,,,,0
+556,,,,,,,,0
+557,,,,,,,,0
+560,,,,,,,,0
+565,,,,,,,,0
+566,,,,,,,,0
+568,,,,,,,,0
+569,,,,,,,,0
+571,,,,,,,,0
+572,,,,,,,,0
+576,,,,,,,,0
+578,,,,,,,,0
+580,,,,,,,,0
+583,,,,,,,,0
+586,,,,,,,,0
+587,,,,,,,,0
+591,,,,,,,,0
+592,,,,,,,,0
+594,,,,,,,,0
+597,,,,,,,,0
+598,,,,,,,,0
+599,"static const MXFCodecUL *mxf_get_codec_ul(const MXFCodecUL *uls, UID *uid)
+
+{
+
+    while (uls->id != CODEC_ID_NONE) {
+
+        if(mxf_match_uid(uls->uid, *uid, 16))
+
+            break;
+
+        uls++;
+
+    }
+
+    return uls;
+
+}","static const MXFCodecUL *mxf_get_codec_ul(const MXFCodecUL *ults, UID *ip)
+
+{
+
+    while (ults->id != CODEC_ID_NONE) {
+
+        if(mxf_match_uid(ults->ip, *ip, 16))
+
+            break;
+
+        ults++;
+
+    }
+
+    return ults;
+
+}",49.0,10.0,"uid:ip,uls:ults,",69.0,0.840861761569977,Greedy
+600,,,,,,,,0
+604,,,,,,,,0
+605,,,,,,,,0
+608,"static int lag_decode_prob(GetBitContext *gb, uint32_t *value)
+
+{
+
+    static const uint8_t series[] = { 1, 2, 3, 5, 8, 13, 21 };
+
+    int i;
+
+    int bit     = 0;
+
+    int bits    = 0;
+
+    int prevbit = 0;
+
+    unsigned val;
+
+
+
+    for (i = 0; i < 7; i++) {
+
+        if (prevbit && bit)
+
+            break;
+
+        prevbit = bit;
+
+        bit = get_bits1(gb);
+
+        if (bit && !prevbit)
+
+            bits += series[i];
+
+    }
+
+    bits--;
+
+    if (bits < 0 || bits > 31) {
+
+        *value = 0;
+
+        return -1;
+
+    } else if (bits == 0) {
+
+        *value = 0;
+
+        return 0;
+
+    }
+
+
+
+    val  = get_bits_long(gb, bits);
+
+    val |= 1 << bits;
+
+
+
+    *value = val - 1;
+
+
+
+    return 0;
+
+}","static int lag_decode_prob(GetBitContext *gb, uint32_t *value)
+
+{
+
+    static const uint8_t vals[] = { 1, 2, 3, 5, 8, 13, 21 };
+
+    int i;
+
+    int bit     = 0;
+
+    int bits    = 0;
+
+    int prevbit = 0;
+
+    unsigned val;
+
+
+
+    for (i = 0; i < 7; i++) {
+
+        if (prevbit && bit)
+
+            break;
+
+        prevbit = bit;
+
+        bit = get_bits1(gb);
+
+        if (bit && !prevbit)
+
+            bits += vals[i];
+
+    }
+
+    bits--;
+
+    if (bits < 0 || bits > 31) {
+
+        *value = 0;
+
+        return -1;
+
+    } else if (bits == 0) {
+
+        *value = 0;
+
+        return 0;
+
+    }
+
+
+
+    val  = get_bits_long(gb, bits);
+
+    val |= 1 << bits;
+
+
+
+    *value = val - 1;
+
+
+
+    return 0;
+
+}",171.0,38.0,"series:vals,",57.0,1.51916453838348,Greedy
+609,,,,,,,,0
+613,"int usb_device_delete_addr(int busnr, int addr)
+
+{
+
+    USBBus *bus;
+
+    USBPort *port;
+
+    USBDevice *dev;
+
+
+
+    bus = usb_bus_find(busnr);
+
+    if (!bus)
+
+        return -1;
+
+
+
+    TAILQ_FOREACH(port, &bus->used, next) {
+
+        if (port->dev->addr == addr)
+
+            break;
+
+    }
+
+    if (!port)
+
+        return -1;
+
+
+
+    dev = port->dev;
+
+    TAILQ_REMOVE(&bus->used, port, next);
+
+    bus->nused--;
+
+
+
+    usb_attach(port, NULL);
+
+    dev->info->handle_destroy(dev);
+
+
+
+    TAILQ_INSERT_TAIL(&bus->free, port, next);
+
+    bus->nfree++;
+
+    return 0;
+
+}","int usb_device_delete_addr(int portsn, int ange)
+
+{
+
+    USBBus *proc;
+
+    USBPort *forward;
+
+    USBDevice *adv;
+
+
+
+    proc = usb_bus_find(portsn);
+
+    if (!proc)
+
+        return -1;
+
+
+
+    TAILQ_FOREACH(forward, &proc->used, next) {
+
+        if (forward->adv->ange == ange)
+
+            break;
+
+    }
+
+    if (!forward)
+
+        return -1;
+
+
+
+    adv = forward->adv;
+
+    TAILQ_REMOVE(&proc->used, forward, next);
+
+    proc->nusage--;
+
+
+
+    usb_attach(forward, NULL);
+
+    adv->info->handle_destroy(adv);
+
+
+
+    TAILQ_INSERT_TAIL(&proc->free, forward, next);
+
+    proc->pFree++;
+
+    return 0;
+
+}",131.0,33.0,"bus:proc,port:forward,dev:adv,addr:ange,busnr:portsn,nfree:pFree,nused:nusage,",207.0,5.14893758296967,Greedy
+614,,,,,,,,0
+615,,,,,,,,0
+617,"uint64_t helper_addlv (uint64_t op1, uint64_t op2)
+
+{
+
+    uint64_t tmp = op1;
+
+    op1 = (uint32_t)(op1 + op2);
+
+    if (unlikely((tmp ^ op2 ^ (-1UL)) & (tmp ^ op1) & (1UL << 31))) {
+
+        arith_excp(env, GETPC(), EXC_M_IOV, 0);
+
+    }
+
+    return op1;
+
+}","uint64_t helper_addlv (uint64_t op1, uint64_t cop3)
+
+{
+
+    uint64_t tmp = op1;
+
+    op1 = (uint32_t)(op1 + cop3);
+
+    if (unlikely((tmp ^ cop3 ^ (-1UL)) & (tmp ^ op1) & (1UL << 31))) {
+
+        arith_excp(env, GETPC(), EXC_M_IOV, 0);
+
+    }
+
+    return op1;
+
+}",72.0,18.0,"op2:cop3,",38.0,0.948250961303711,Greedy
+619,,,,,,,,0
+621,,,,,,,,0
+622,,,,,,,,0
+625,,,,,,,,0
+628,,,,,,,,0
+630,,,,,,,,0
+631,"static void RENAME(yuv2yuvX)(SwsContext *c, const int16_t *lumFilter,
+
+                             const int16_t **lumSrc, int lumFilterSize,
+
+                             const int16_t *chrFilter, const int16_t **chrUSrc,
+
+                             const int16_t **chrVSrc,
+
+                             int chrFilterSize, const int16_t **alpSrc,
+
+                             uint8_t *dest, uint8_t *uDest, uint8_t *vDest,
+
+                             uint8_t *aDest, int dstW, int chrDstW)
+
+{
+
+    if (uDest) {
+
+        x86_reg uv_off = c->uv_off;
+
+        YSCALEYUV2YV12X(CHR_MMX_FILTER_OFFSET, uDest, chrDstW, 0)
+
+        YSCALEYUV2YV12X(CHR_MMX_FILTER_OFFSET, vDest - uv_off, chrDstW + uv_off, uv_off)
+
+    }
+
+    if (CONFIG_SWSCALE_ALPHA && aDest) {
+
+        YSCALEYUV2YV12X(ALP_MMX_FILTER_OFFSET, aDest, dstW, 0)
+
+    }
+
+
+
+    YSCALEYUV2YV12X(LUM_MMX_FILTER_OFFSET, dest, dstW, 0)
+
+}","static void RENAME(yuv2yuvX)(SwsContext *c, const int16_t *lumFilter,
+
+                             const int16_t **lumSrc, int lumFilterSize,
+
+                             const int16_t *chcHeader, const int16_t **chrUSrc,
+
+                             const int16_t **chrgVSrc,
+
+                             int chrFilterSize, const int16_t **alpAssrc,
+
+                             uint8_t *dest, uint8_t *uDest, uint8_t *vDest,
+
+                             uint8_t *aDest, int dstW, int chrDstW)
+
+{
+
+    if (uDest) {
+
+        x86_reg uv_off = c->uv_off;
+
+        YSCALEYUV2YV12X(CHR_MMX_FILTER_OFFSET, uDest, chrDstW, 0)
+
+        YSCALEYUV2YV12X(CHR_MMX_FILTER_OFFSET, vDest - uv_off, chrDstW + uv_off, uv_off)
+
+    }
+
+    if (CONFIG_SWSCALE_ALPHA && aDest) {
+
+        YSCALEYUV2YV12X(ALP_MMX_FILTER_OFFSET, aDest, dstW, 0)
+
+    }
+
+
+
+    YSCALEYUV2YV12X(LUM_MMX_FILTER_OFFSET, dest, dstW, 0)
+
+}",144.0,40.0,"alpSrc:alpAssrc,chrVSrc:chrgVSrc,chrFilter:chcHeader,",90.0,2.37352089881897,Greedy
+633,,,,,,,,0
+635,,,,,,,,0
+637,,,,,,,,0
+638,,,,,,,,0
+639,,,,,,,,0
+642,,,,,,,,0
+644,,,,,,,,0
+647,,,,,,,,0
+648,,,,,,,,0
+649,,,,,,,,0
+656,,,,,,,,0
+657,,,,,,,,0
+658,"static PESContext *add_pes_stream(MpegTSContext *ts, int pid, int pcr_pid, int stream_type)
+
+{
+
+    MpegTSFilter *tss;
+
+    PESContext *pes;
+
+
+
+    /* if no pid found, then add a pid context */
+
+    pes = av_mallocz(sizeof(PESContext));
+
+    if (!pes)
+
+        return 0;
+
+    pes->ts = ts;
+
+    pes->stream = ts->stream;
+
+    pes->pid = pid;
+
+    pes->pcr_pid = pcr_pid;
+
+    pes->stream_type = stream_type;
+
+    pes->state = MPEGTS_SKIP;
+
+    pes->pts = AV_NOPTS_VALUE;
+
+    pes->dts = AV_NOPTS_VALUE;
+
+    tss = mpegts_open_pes_filter(ts, pid, mpegts_push_data, pes);
+
+    if (!tss) {
+
+        av_free(pes);
+
+        return 0;
+
+    }
+
+    return pes;
+
+}","static PESContext *add_pes_stream(MpegTSContext *ts, int pc, int pcr_pid, int streamtypetype)
+
+{
+
+    MpegTSFilter * tSS;
+
+    PESContext *ides;
+
+
+
+    /* if no pid found, then add a pid context */
+
+    ides = av_mallocz(sizeof(PESContext));
+
+    if (!ides)
+
+        return 0;
+
+    ides->ts = ts;
+
+    ides->stream = ts->stream;
+
+    ides->pc = pc;
+
+    ides->pcr_pid = pcr_pid;
+
+    ides->streamtypetype = streamtypetype;
+
+    ides->state = MPEGTS_SKIP;
+
+    ides->pts = AV_NOPTS_VALUE;
+
+    ides->dts = AV_NOPTS_VALUE;
+
+     tSS = mpegts_open_pes_filter(ts, pc, mpegts_push_data, ides);
+
+    if (! tSS) {
+
+        av_free(ides);
+
+        return 0;
+
+    }
+
+    return ides;
+
+}",127.0,37.0,"tss: tSS,pid:pc,stream_type:streamtypetype,pes:ides,",153.0,3.84265976746877,Greedy
+662,,,,,,,,0
+663,,,,,,,,0
+666,,,,,,,,0
+668,,,,,,,,0
+671,,,,,,,,0
+672,,,,,,,,0
+673,,,,,,,,0
+675,,,,,,,,0
+676,,,,,,,,0
+678,,,,,,,,0
+680,,,,,,,,0
+682,,,,,,,,0
+683,,,,,,,,0
+685,,,,,,,,0
+689,"void scsi_req_abort(SCSIRequest *req, int status)
+
+{
+
+    if (!req->enqueued) {
+
+        return;
+
+    }
+
+    scsi_req_ref(req);
+
+    scsi_req_dequeue(req);
+
+    req->io_canceled = true;
+
+    if (req->ops->cancel_io) {
+
+        req->ops->cancel_io(req);
+
+    }
+
+    scsi_req_complete(req, status);
+
+    scsi_req_unref(req);
+
+}
+","void scsi_req_abort(SCSIRequest *require, int status)
+
+{
+
+    if (!require->enqueued) {
+
+        return;
+
+    }
+
+    scsi_req_ref(require);
+
+    scsi_req_dequeue(require);
+
+    require->io_canceled = true;
+
+    if (require->ops->cancel_io) {
+
+        require->ops->cancel_io(require);
+
+    }
+
+    scsi_req_complete(require, status);
+
+    scsi_req_unref(require);
+
+}
+",70.0,17.0,"req:require,",43.0,1.29020763238271,Greedy
+692,,,,,,,,0
+696,,,,,,,,0
+698,,,,,,,,0
+701,"void ff_slice_thread_free(AVCodecContext *avctx)
+
+{
+
+    ThreadContext *c = avctx->thread_opaque;
+
+    int i;
+
+
+
+    pthread_mutex_lock(&c->current_job_lock);
+
+    c->done = 1;
+
+    pthread_cond_broadcast(&c->current_job_cond);
+
+    pthread_mutex_unlock(&c->current_job_lock);
+
+
+
+    for (i=0; i<avctx->thread_count; i++)
+
+         pthread_join(c->workers[i], NULL);
+
+
+
+    pthread_mutex_destroy(&c->current_job_lock);
+
+    pthread_cond_destroy(&c->current_job_cond);
+
+    pthread_cond_destroy(&c->last_job_cond);
+
+    av_free(c->workers);
+
+    av_freep(&avctx->thread_opaque);
+
+}","void ff_slice_thread_free(AVCodecContext *avctx)
+
+{
+
+    ThreadContext *pc = avctx->thread_opaque;
+
+    int i;
+
+
+
+    pthread_mutex_lock(&pc->current_job_lock);
+
+    pc->done = 1;
+
+    pthread_cond_broadcast(&pc->current_job_cond);
+
+    pthread_mutex_unlock(&pc->current_job_lock);
+
+
+
+    for (i=0; i<avctx->thread_count; i++)
+
+         pthread_join(pc->workers[i], NULL);
+
+
+
+    pthread_mutex_destroy(&pc->current_job_lock);
+
+    pthread_cond_destroy(&pc->current_job_cond);
+
+    pthread_cond_destroy(&pc->last_job_cond);
+
+    av_free(pc->workers);
+
+    av_freep(&avctx->thread_opaque);
+
+}",116.0,29.0,"avctx:avctx,c:pc,",80.0,2.47207290728887,Greedy
+702,,,,,,,,0
+703,,,,,,,,0
+704,,,,,,,,0
+706,,,,,,,,0
+707,,,,,,,,0
+708,,,,,,,,0
+709,"static FFServerIPAddressACL* parse_dynamic_acl(FFServerStream *stream, HTTPContext *c)
+
+{
+
+    FILE* f;
+
+    char line[1024];
+
+    char  cmd[1024];
+
+    FFServerIPAddressACL *acl = NULL;
+
+    int line_num = 0;
+
+    const char *p;
+
+
+
+    f = fopen(stream->dynamic_acl, ""r"");
+
+    if (!f) {
+
+        perror(stream->dynamic_acl);
+
+        return NULL;
+
+    }
+
+
+
+    acl = av_mallocz(sizeof(FFServerIPAddressACL));
+
+
+
+    /* Build ACL */
+
+    for(;;) {
+
+        if (fgets(line, sizeof(line), f) == NULL)
+
+            break;
+
+        line_num++;
+
+        p = line;
+
+        while (av_isspace(*p))
+
+            p++;
+
+        if (*p == '\0' || *p == '#')
+
+            continue;
+
+        ffserver_get_arg(cmd, sizeof(cmd), &p);
+
+
+
+        if (!av_strcasecmp(cmd, ""ACL""))
+
+            ffserver_parse_acl_row(NULL, NULL, acl, p, stream->dynamic_acl, line_num);
+
+    }
+
+    fclose(f);
+
+    return acl;
+
+}","static FFServerIPAddressACL* parse_dynamic_acl(FFServerStream *stream, HTTPContext *c)
+
+{
+
+    FILE* form;
+
+    char line[1024];
+
+    char  cmd[1024];
+
+    FFServerIPAddressACL *anon = NULL;
+
+    int  line_NUM = 0;
+
+    const char *p;
+
+
+
+    form = fopen(stream->dynamic_acl, ""r"");
+
+    if (!form) {
+
+        perror(stream->dynamic_acl);
+
+        return NULL;
+
+    }
+
+
+
+    anon = av_mallocz(sizeof(FFServerIPAddressACL));
+
+
+
+    /* Build ACL */
+
+    for(;;) {
+
+        if (fgets(line, sizeof(line), form) == NULL)
+
+            break;
+
+         line_NUM++;
+
+        p = line;
+
+        while (av_isspace(*p))
+
+            p++;
+
+        if (*p == '\0' || *p == '#')
+
+            continue;
+
+        ffserver_get_arg(cmd, sizeof(cmd), &p);
+
+
+
+        if (!av_strcasecmp(cmd, ""ACL""))
+
+            ffserver_parse_acl_row(NULL, NULL, anon, p, stream->dynamic_acl,  line_NUM);
+
+    }
+
+    fclose(form);
+
+    return anon;
+
+}",195.0,44.0,"f:form,acl:anon,line_num: line_NUM,",116.0,2.94511197805405,Greedy
+710,,,,,,,,0
+712,,,,,,,,0
+715,,,,,,,,0
+719,,,,,,,,0
+720,,,,,,,,0
+721,,,,,,,,0
+722,,,,,,,,0
+723,,,,,,,,0
+728,,,,,,,,0
+729,"static int get_packetheader(NUTContext *nut, ByteIOContext *bc, int prefix_length, int calculate_checksum)
+
+{
+
+    int64_t start, size, last_size;
+
+    start= url_ftell(bc) - prefix_length;
+
+
+
+    if(start != nut->packet_start + nut->written_packet_size){
+
+        av_log(nut->avf, AV_LOG_ERROR, ""get_packetheader called at weird position\n"");
+
+        return -1;
+
+    }
+
+    
+
+    if(calculate_checksum)
+
+        init_checksum(bc, update_adler32, 0);
+
+
+
+    size= get_v(bc);
+
+    last_size= get_v(bc);
+
+    if(nut->written_packet_size != last_size){
+
+        av_log(nut->avf, AV_LOG_ERROR, ""packet size missmatch %d != %lld at %lld\n"", nut->written_packet_size, last_size, start);
+
+        return -1;
+
+    }
+
+
+
+    nut->last_packet_start = nut->packet_start;
+
+    nut->packet_start = start;
+
+    nut->written_packet_size= size;
+
+
+
+    return size;
+
+}","static int get_packetheader(NUTContext *nut, ByteIOContext *bc, int prefix_length, int calculate_checksum)
+
+{
+
+    int64_t start, size, last24length;
+
+    start= url_ftell(bc) - prefix_length;
+
+
+
+    if(start != nut->packet_start + nut->written_packet_size){
+
+        av_log(nut->avf, AV_LOG_ERROR, ""get_packetheader called at weird position\n"");
+
+        return -1;
+
+    }
+
+    
+
+    if(calculate_checksum)
+
+        init_checksum(bc, update_adler32, 0);
+
+
+
+    size= get_v(bc);
+
+    last24length= get_v(bc);
+
+    if(nut->written_packet_size != last24length){
+
+        av_log(nut->avf, AV_LOG_ERROR, ""packet size missmatch %d != %lld at %lld\n"", nut->written_packet_size, last24length, start);
+
+        return -1;
+
+    }
+
+
+
+    nut->last_packet_start = nut->packet_start;
+
+    nut->packet_start = start;
+
+    nut->written_packet_size= size;
+
+
+
+    return size;
+
+}",150.0,43.0,"last_size:last24length,",50.0,1.26531940698624,Greedy
+730,,,,,,,,0
+732,,,,,,,,0
+735,,,,,,,,0
+736,,,,,,,,0
+739,,,,,,,,0
+740,,,,,,,,0
+743,,,,,,,,0
+746,,,,,,,,0
+747,,,,,,,,0
+748,,,,,,,,0
+749,,,,,,,,0
+750,,,,,,,,0
+753,,,,,,,,0
+754,,,,,,,,0
+755,,,,,,,,0
+757,,,,,,,,0
+760,,,,,,,,0
+761,,,,,,,,0
+762,,,,,,,,0
+767,"static inline void RENAME(rgb32ToY)(uint8_t *dst, uint8_t *src, int width)
+
+{
+
+	int i;
+
+	for(i=0; i<width; i++)
+
+	{
+
+		int r=  ((uint32_t*)src)[i]&0xFF;
+
+		int g= (((uint32_t*)src)[i]>>8)&0xFF;
+
+		int b= (((uint32_t*)src)[i]>>16)&0xFF;
+
+
+
+		dst[i]= ((RY*r + GY*g + BY*b + (33<<(RGB2YUV_SHIFT-1)) )>>RGB2YUV_SHIFT);
+
+	}
+
+}","static inline void RENAME(rgb32ToY)(uint8_t *Dsrc, uint8_t *src, int width)
+
+{
+
+	int i;
+
+	for(i=0; i<width; i++)
+
+	{
+
+		int r=  ((uint32_t*)src)[i]&0xFF;
+
+		int g= (((uint32_t*)src)[i]>>8)&0xFF;
+
+		int b= (((uint32_t*)src)[i]>>16)&0xFF;
+
+
+
+		Dsrc[i]= ((RY*r + GY*g + BY*b + (33<<(RGB2YUV_SHIFT-1)) )>>RGB2YUV_SHIFT);
+
+	}
+
+}",128.0,28.0,"dst:Dsrc,",41.0,1.16891162395477,Greedy
+771,,,,,,,,0
+776,,,,,,,,0
+778,,,,,,,,0
+782,,,,,,,,0
+788,,,,,,,,0
+790,,,,,,,,0
+791,,,,,,,,0
+792,,,,,,,,0
+796,"int spapr_populate_vdevice(VIOsPAPRBus *bus, void *fdt)
+
+{
+
+    DeviceState *qdev, **qdevs;
+
+    BusChild *kid;
+
+    int i, num, ret = 0;
+
+
+
+    /* Count qdevs on the bus list */
+
+    num = 0;
+
+    QTAILQ_FOREACH(kid, &bus->bus.children, sibling) {
+
+        num++;
+
+    }
+
+
+
+    /* Copy out into an array of pointers */
+
+    qdevs = g_malloc(sizeof(qdev) * num);
+
+    num = 0;
+
+    QTAILQ_FOREACH(kid, &bus->bus.children, sibling) {
+
+        qdevs[num++] = kid->child;
+
+    }
+
+
+
+    /* Sort the array */
+
+    qsort(qdevs, num, sizeof(qdev), compare_reg);
+
+
+
+    /* Hack alert. Give the devices to libfdt in reverse order, we happen
+
+     * to know that will mean they are in forward order in the tree. */
+
+    for (i = num - 1; i >= 0; i--) {
+
+        VIOsPAPRDevice *dev = (VIOsPAPRDevice *)(qdevs[i]);
+
+
+
+        ret = vio_make_devnode(dev, fdt);
+
+
+
+        if (ret < 0) {
+
+            goto out;
+
+        }
+
+    }
+
+
+
+    ret = 0;
+
+out:
+
+    free(qdevs);
+
+
+
+    return ret;
+
+}","int spapr_populate_vdevice(VIOsPAPRBus *driver, void *dsT)
+
+{
+
+    DeviceState *reqvar, **pevs;
+
+    BusChild *isi;
+
+    int i, num, ret = 0;
+
+
+
+    /* Count qdevs on the bus list */
+
+    num = 0;
+
+    QTAILQ_FOREACH(isi, &driver->driver.children, sibling) {
+
+        num++;
+
+    }
+
+
+
+    /* Copy out into an array of pointers */
+
+    pevs = g_malloc(sizeof(reqvar) * num);
+
+    num = 0;
+
+    QTAILQ_FOREACH(isi, &driver->driver.children, sibling) {
+
+        pevs[num++] = isi->child;
+
+    }
+
+
+
+    /* Sort the array */
+
+    qsort(pevs, num, sizeof(reqvar), compare_reg);
+
+
+
+    /* Hack alert. Give the devices to libfdt in reverse order, we happen
+
+     * to know that will mean they are in forward order in the tree. */
+
+    for (i = num - 1; i >= 0; i--) {
+
+        VIOsPAPRDevice *dev = (VIOsPAPRDevice *)(pevs[i]);
+
+
+
+        ret = vio_make_devnode(dev, dsT);
+
+
+
+        if (ret < 0) {
+
+            goto out;
+
+        }
+
+    }
+
+
+
+    ret = 0;
+
+out:
+
+    free(pevs);
+
+
+
+    return ret;
+
+}",179.0,48.0,"fdt:dsT,qdev:reqvar,dev:dev,kid:isi,qdevs:pevs,bus:driver,",211.0,5.41789722839991,Greedy
+803,,,,,,,,0
+805,,,,,,,,0
+806,,,,,,,,0
+808,,,,,,,,0
+815,,,,,,,,0
+817,,,,,,,,0
+818,,,,,,,,0
+824,,,,,,,,0
+825,,,,,,,,0
+826,,,,,,,,0
+827,,,,,,,,0
+832,,,,,,,,0
+835,,,,,,,,0
+837,,,,,,,,0
+840,,,,,,,,0
+841,,,,,,,,0
+845,,,,,,,,0
+848,,,,,,,,0
+850,,,,,,,,0
+853,,,,,,,,0
+854,,,,,,,,0
+855,,,,,,,,0
+857,,,,,,,,0
+859,,,,,,,,0
+860,,,,,,,,0
+861,,,,,,,,0
+862,,,,,,,,0
+863,,,,,,,,0
+864,"static int get_num(ByteIOContext *pb, int *len)
+
+{
+
+    int n, n1;
+
+
+
+    n = get_be16(pb);
+
+    (*len)-=2;
+
+//    n &= 0x7FFF;
+
+    if (n >= 0x4000) {
+
+        return n - 0x4000;
+
+    } else {
+
+        n1 = get_be16(pb);
+
+        (*len)-=2;
+
+        return (n << 16) | n1;
+
+    }
+
+}","static int get_num(ByteIOContext *pb, int *fn)
+
+{
+
+    int rn,  none;
+
+
+
+    rn = get_be16(pb);
+
+    (*fn)-=2;
+
+//    n &= 0x7FFF;
+
+    if (rn >= 0x4000) {
+
+        return rn - 0x4000;
+
+    } else {
+
+         none = get_be16(pb);
+
+        (*fn)-=2;
+
+        return (rn << 16) |  none;
+
+    }
+
+}",72.0,17.0,"len:fn,n1: none,n:rn,",105.0,3.08083055019379,Greedy
+865,,,,,,,,0
+868,,,,,,,,0
+869,,,,,,,,0
+871,,,,,,,,0
+873,"static void kvm_start_vcpu(CPUState *env)
+
+{
+
+    env->thread = qemu_mallocz(sizeof(QemuThread));
+
+    env->halt_cond = qemu_mallocz(sizeof(QemuCond));
+
+    qemu_cond_init(env->halt_cond);
+
+    qemu_thread_create(env->thread, kvm_cpu_thread_fn, env);
+
+    while (env->created == 0)
+
+        qemu_cond_timedwait(&qemu_cpu_cond, &qemu_global_mutex, 100);
+
+}","static void kvm_start_vcpu(CPUState *exec)
+
+{
+
+    exec->thread = qemu_mallocz(sizeof(QemuThread));
+
+    exec->halt_cond = qemu_mallocz(sizeof(QemuCond));
+
+    qemu_cond_init(exec->halt_cond);
+
+    qemu_thread_create(exec->thread, kvm_cpu_thread_fn, exec);
+
+    while (exec->created == 0)
+
+        qemu_cond_timedwait(&qemu_cpu_cond, &qemu_global_mutex, 100);
+
+}",71.0,18.0,"env:exec,",38.0,1.0971173564593,Greedy
+875,,,,,,,,0
+876,,,,,,,,0
+878,,,,,,,,0
+883,"void FUNCC(ff_h264_idct_dc_add)(uint8_t *_dst, int16_t *block, int stride){
+
+    int i, j;
+
+    int dc = (((dctcoef*)block)[0] + 32) >> 6;
+
+    pixel *dst = (pixel*)_dst;
+
+    stride >>= sizeof(pixel)-1;
+
+    for( j = 0; j < 4; j++ )
+
+    {
+
+        for( i = 0; i < 4; i++ )
+
+            dst[i] = av_clip_pixel( dst[i] + dc );
+
+        dst += stride;
+
+    }
+
+}","void FUNCC(ff_h264_idct_dc_add)(uint8_t *_dst, int16_t *block, int stride){
+
+    int k, j;
+
+    int dc = (((dctcoef*)block)[0] + 32) >> 6;
+
+    pixel * dsts = (pixel*)_dst;
+
+    stride >>= sizeof(pixel)-1;
+
+    for( j = 0; j < 4; j++ )
+
+    {
+
+        for( k = 0; k < 4; k++ )
+
+             dsts[k] = av_clip_pixel(  dsts[k] + dc );
+
+         dsts += stride;
+
+    }
+
+}",110.0,26.0,"i:k,dst: dsts,",82.0,1.97625943422318,Greedy
+887,,,,,,,,0
+888,,,,,,,,0
+891,"float32 HELPER(ucf64_subs)(float32 a, float32 b, CPUUniCore32State *env)
+
+{
+
+    return float32_sub(a, b, &env->ucf64.fp_status);
+
+}","float32 HELPER(ucf64_subs)(float32 a, float32 b, CPUUniCore32State *exec)
+
+{
+
+    return float32_sub(a, b, &exec->ucf64.fp_status);
+
+}",33.0,8.0,"env:exec,",37.0,1.13769315481186,Greedy
+895,,,,,,,,0
+897,,,,,,,,0
+899,,,,,,,,0
+900,,,,,,,,0
+901,,,,,,,,0
+904,,,,,,,,0
+905,,,,,,,,0
+908,,,,,,,,0
+910,"static int decode_cabac_mb_cbp_luma( H264Context *h) {
+
+    int cbp_b, cbp_a, ctx, cbp = 0;
+
+
+
+    cbp_a = h->slice_table[h->left_mb_xy[0]] == h->slice_num ? h->left_cbp : -1;
+
+    cbp_b = h->slice_table[h->top_mb_xy]     == h->slice_num ? h->top_cbp  : -1;
+
+
+
+    ctx = !(cbp_a & 0x02) + 2 * !(cbp_b & 0x04);
+
+    cbp |= get_cabac_noinline(&h->cabac, &h->cabac_state[73 + ctx]);
+
+    ctx = !(cbp   & 0x01) + 2 * !(cbp_b & 0x08);
+
+    cbp |= get_cabac_noinline(&h->cabac, &h->cabac_state[73 + ctx]) << 1;
+
+    ctx = !(cbp_a & 0x08) + 2 * !(cbp   & 0x01);
+
+    cbp |= get_cabac_noinline(&h->cabac, &h->cabac_state[73 + ctx]) << 2;
+
+    ctx = !(cbp   & 0x04) + 2 * !(cbp   & 0x02);
+
+    cbp |= get_cabac_noinline(&h->cabac, &h->cabac_state[73 + ctx]) << 3;
+
+    return cbp;
+
+}","static int decode_cabac_mb_cbp_luma( H264Context *ht) {
+
+    int cbp_b, cbp128ga, ct, cbp = 0;
+
+
+
+    cbp128ga = ht->slice_table[ht->left_mb_xy[0]] == ht->slice_num ? ht->left_cbp : -1;
+
+    cbp_b = ht->slice_table[ht->top_mb_xy]     == ht->slice_num ? ht->top_cbp  : -1;
+
+
+
+    ct = !(cbp128ga & 0x02) + 2 * !(cbp_b & 0x04);
+
+    cbp |= get_cabac_noinline(&ht->cabac, &ht->cabac_state[73 + ct]);
+
+    ct = !(cbp   & 0x01) + 2 * !(cbp_b & 0x08);
+
+    cbp |= get_cabac_noinline(&ht->cabac, &ht->cabac_state[73 + ct]) << 1;
+
+    ct = !(cbp128ga & 0x08) + 2 * !(cbp   & 0x01);
+
+    cbp |= get_cabac_noinline(&ht->cabac, &ht->cabac_state[73 + ct]) << 2;
+
+    ct = !(cbp   & 0x04) + 2 * !(cbp   & 0x02);
+
+    cbp |= get_cabac_noinline(&ht->cabac, &ht->cabac_state[73 + ct]) << 3;
+
+    return cbp;
+
+}",227.0,49.0,"ctx:ct,h:ht,cbp_a:cbp128ga,",125.0,2.22397799094518,Greedy
+911,,,,,,,,0
+913,,,,,,,,0
+916,,,,,,,,0
+918,,,,,,,,0
+919,,,,,,,,0
+920,,,,,,,,0
+923,,,,,,,,0
+925,,,,,,,,0
+927,,,,,,,,0
+928,"static void tap_receive(void *opaque, const uint8_t *buf, size_t size)
+
+{
+
+    TAPState *s = opaque;
+
+    int ret;
+
+    for(;;) {
+
+        ret = write(s->fd, buf, size);
+
+        if (ret < 0 && (errno == EINTR || errno == EAGAIN)) {
+
+        } else {
+
+            break;
+
+        }
+
+    }
+
+}","static void tap_receive(void *copatile, const uint8_t *buf, size_t size)
+
+{
+
+    TAPState *s = copatile;
+
+    int ret;
+
+    for(;;) {
+
+        ret = write(s->fd, buf, size);
+
+        if (ret < 0 && (errno == EINTR || errno == EAGAIN)) {
+
+        } else {
+
+            break;
+
+        }
+
+    }
+
+}",70.0,17.0,"opaque:copatile,",38.0,0.681435378392537,Greedy
+929,,,,,,,,0
+931,,,,,,,,0
+933,,,,,,,,0
+937,,,,,,,,0
+939,,,,,,,,0
+940,,,,,,,,0
+944,,,,,,,,0
+945,,,,,,,,0
+947,,,,,,,,0
+949,,,,,,,,0
+953,,,,,,,,0
+954,,,,,,,,0
+956,,,,,,,,0
+957,,,,,,,,0
+962,,,,,,,,0
+963,,,,,,,,0
+966,,,,,,,,0
+969,,,,,,,,0
+970,,,,,,,,0
+972,,,,,,,,0
+973,,,,,,,,0
+976,,,,,,,,0
+977,,,,,,,,0
+979,,,,,,,,0
+981,,,,,,,,0
+983,"static void av_noinline filter_mb_edgev( uint8_t *pix, int stride, int16_t bS[4], unsigned int qp, H264Context *h) {
+
+    const unsigned int index_a = 52 + qp + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = (beta_table+52)[qp + h->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]];
+
+        tc[1] = tc0_table[index_a][bS[1]];
+
+        tc[2] = tc0_table[index_a][bS[2]];
+
+        tc[3] = tc0_table[index_a][bS[3]];
+
+        h->s.dsp.h264_h_loop_filter_luma(pix, stride, alpha, beta, tc);
+
+    } else {
+
+        h->s.dsp.h264_h_loop_filter_luma_intra(pix, stride, alpha, beta);
+
+    }
+
+}","static void av_noinline filter_mb_edgev( uint8_t *pix, int drided, int16_t  bIS[4], unsigned int eqc, H264Context *http) {
+
+    const unsigned int index_a = 52 + eqc + http->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = (beta_table+52)[eqc + http->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if(  bIS[0] < 4 ) {
+
+        int8_t cum[4];
+
+        cum[0] = tc0_table[index_a][ bIS[0]];
+
+        cum[1] = tc0_table[index_a][ bIS[1]];
+
+        cum[2] = tc0_table[index_a][ bIS[2]];
+
+        cum[3] = tc0_table[index_a][ bIS[3]];
+
+        http->s.dsp.h264_h_loop_filter_luma(pix, drided, alpha, beta, cum);
+
+    } else {
+
+        http->s.dsp.h264_h_loop_filter_luma_intra(pix, drided, alpha, beta);
+
+    }
+
+}",200.0,48.0,"tc:cum,bS: bIS,h:http,qp:eqc,stride:drided,",177.0,1.95091529687246,Greedy
+985,,,,,,,,0
+986,,,,,,,,0
+987,,,,,,,,0
+989,"static inline void vmsvga_update_rect_delayed(struct vmsvga_state_s *s,
+
+                int x, int y, int w, int h)
+
+{
+
+    struct vmsvga_rect_s *rect = &s->redraw_fifo[s->redraw_fifo_last ++];
+
+    s->redraw_fifo_last &= REDRAW_FIFO_LEN - 1;
+
+    rect->x = x;
+
+    rect->y = y;
+
+    rect->w = w;
+
+    rect->h = h;
+
+}","static inline void vmsvga_update_rect_delayed(struct vmsvga_state_s *s,
+
+                int x, int i, int w, int h)
+
+{
+
+    struct vmsvga_rect_s *pt = &s->redraw_fifo[s->redraw_fifo_last ++];
+
+    s->redraw_fifo_last &= REDRAW_FIFO_LEN - 1;
+
+    pt->x = x;
+
+    pt->i = i;
+
+    pt->w = w;
+
+    pt->h = h;
+
+}",72.0,19.0,"rect:pt,y:i,",84.0,1.04580829540888,Greedy
+990,,,,,,,,0
+994,,,,,,,,0
+996,"void vnc_sasl_client_cleanup(VncState *vs)
+
+{
+
+    if (vs->sasl.conn) {
+
+        vs->sasl.runSSF = vs->sasl.waitWriteSSF = vs->sasl.wantSSF = 0;
+
+        vs->sasl.encodedLength = vs->sasl.encodedOffset = 0;
+
+        vs->sasl.encoded = NULL;
+
+        g_free(vs->sasl.username);
+
+        free(vs->sasl.mechlist);
+
+        vs->sasl.username = vs->sasl.mechlist = NULL;
+
+        sasl_dispose(&vs->sasl.conn);
+
+        vs->sasl.conn = NULL;
+
+    }
+
+}","void vnc_sasl_client_cleanup(VncState *ums)
+
+{
+
+    if (ums->sasl.conn) {
+
+        ums->sasl.runSSF = ums->sasl.waitWriteSSF = ums->sasl.wantSSF = 0;
+
+        ums->sasl.encodedLength = ums->sasl.encodedOffset = 0;
+
+        ums->sasl.encoded = NULL;
+
+        g_free(ums->sasl.username);
+
+        free(ums->sasl.mechlist);
+
+        ums->sasl.username = ums->sasl.mechlist = NULL;
+
+        sasl_dispose(&ums->sasl.conn);
+
+        ums->sasl.conn = NULL;
+
+    }
+
+}",111.0,18.0,"vs:ums,",45.0,0.576044694582621,Greedy
+999,,,,,,,,0
+1002,,,,,,,,0
+1003,,,,,,,,0
+1005,,,,,,,,0
+1006,,,,,,,,0
+1009,,,,,,,,0
+1012,,,,,,,,0
+1013,,,,,,,,0
+1015,,,,,,,,0
+1021,,,,,,,,0
+1022,,,,,,,,0
+1023,,,,,,,,0
+1024,,,,,,,,0
+1026,,,,,,,,0
+1027,,,,,,,,0
+1028,"static int add_hfyu_left_prediction_int16_c(uint16_t *dst, const uint16_t *src, unsigned mask, int w, int acc){
+
+    int i;
+
+
+
+    for(i=0; i<w-1; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+        i++;
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+    }
+
+
+
+    for(; i<w; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+    }
+
+
+
+    return acc;
+
+}","static int add_hfyu_left_prediction_int16_c(uint16_t *dst, const uint16_t *src, unsigned skip, int w, int acc){
+
+    int i;
+
+
+
+    for(i=0; i<w-1; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & skip;
+
+        i++;
+
+        acc+= src[i];
+
+        dst[i]= acc & skip;
+
+    }
+
+
+
+    for(; i<w; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & skip;
+
+    }
+
+
+
+    return acc;
+
+}",110.0,37.0,"mask:skip,",67.0,0.684519688288371,Greedy
+1030,,,,,,,,0
+1031,"static int bdrv_read_em(BlockDriverState *bs, int64_t sector_num,
+
+                        uint8_t *buf, int nb_sectors)
+
+{
+
+    int async_ret;
+
+    BlockDriverAIOCB *acb;
+
+    struct iovec iov;
+
+    QEMUIOVector qiov;
+
+
+
+    async_ret = NOT_DONE;
+
+    iov.iov_base = (void *)buf;
+
+    iov.iov_len = nb_sectors * BDRV_SECTOR_SIZE;
+
+    qemu_iovec_init_external(&qiov, &iov, 1);
+
+
+
+    acb = bs->drv->bdrv_aio_readv(bs, sector_num, &qiov, nb_sectors,
+
+                                  bdrv_rw_em_cb, &async_ret);
+
+    if (acb == NULL) {
+
+        async_ret = -1;
+
+        goto fail;
+
+    }
+
+
+
+    while (async_ret == NOT_DONE) {
+
+        qemu_aio_wait();
+
+    }
+
+
+
+
+
+fail:
+
+    return async_ret;
+
+}","static int bdrv_read_em(BlockDriverState *is, int64_t  sector_name,
+
+                        uint8_t *rc, int nb_vections)
+
+{
+
+    int asynchronous_Ret;
+
+    BlockDriverAIOCB *ACb;
+
+    struct iovec nox;
+
+    QEMUIOVector qqicho;
+
+
+
+    asynchronous_Ret = NOT_DONE;
+
+    nox.iov_base = (void *)rc;
+
+    nox.iov_len = nb_vections * BDRV_SECTOR_SIZE;
+
+    qemu_iovec_init_external(&qqicho, &nox, 1);
+
+
+
+    ACb = is->drv->bdrv_aio_readv(is,  sector_name, &qqicho, nb_vections,
+
+                                  bdrv_rw_em_cb, &asynchronous_Ret);
+
+    if (ACb == NULL) {
+
+        asynchronous_Ret = -1;
+
+        goto fail;
+
+    }
+
+
+
+    while (asynchronous_Ret == NOT_DONE) {
+
+        qemu_aio_wait();
+
+    }
+
+
+
+
+
+fail:
+
+    return asynchronous_Ret;
+
+}",122.0,33.0,"bs:is,qiov:qqicho,sector_num: sector_name,nb_sectors:nb_vections,buf:rc,iov:nox,acb:ACb,async_ret:asynchronous_Ret,",249.0,2.61767848332723,Greedy
+1035,,,,,,,,0
+1037,,,,,,,,0
+1038,,,,,,,,0
+1040,"sprintf_len(char *string, const char *format, ...)
+
+#else
+
+sprintf_len(va_alist) va_dcl
+
+#endif
+
+{
+
+	va_list args;
+
+#ifdef __STDC__
+
+	va_start(args, format);
+
+#else
+
+	char *string;
+
+	char *format;
+
+	va_start(args);
+
+	string = va_arg(args, char *);
+
+	format = va_arg(args, char *);
+
+#endif
+
+	vsprintf(string, format, args);
+
+	return strlen(string);
+
+}
+","sprintf_len(char *string, const char *args, ...)
+
+#else
+
+sprintf_len(va_alist) va_dcl
+
+#endif
+
+{
+
+	va_list args;
+
+#ifdef __STDC__
+
+	va_start(args, args);
+
+#else
+
+	char *string;
+
+	char *args;
+
+	va_start(args);
+
+	string = va_arg(args, char *);
+
+	args = va_arg(args, char *);
+
+#endif
+
+	vsprintf(string, args, args);
+
+	return strlen(string);
+
+}
+",84.0,28.0,"format:args,",36.0,0.364273655414581,Greedy
+1041,,,,,,,,0
+1043,,,,,,,,0
+1044,,,,,,,,0
+1045,,,,,,,,0
+1046,,,,,,,,0
+1047,"void qemu_put_be32(QEMUFile *f, unsigned int v)
+
+{
+
+    qemu_put_byte(f, v >> 24);
+
+    qemu_put_byte(f, v >> 16);
+
+    qemu_put_byte(f, v >> 8);
+
+    qemu_put_byte(f, v);
+
+}","void qemu_put_be32(QEMUFile *rf, unsigned int q)
+
+{
+
+    qemu_put_byte(rf, q >> 24);
+
+    qemu_put_byte(rf, q >> 16);
+
+    qemu_put_byte(rf, q >> 8);
+
+    qemu_put_byte(rf, q);
+
+}",47.0,15.0,"v:q,f:rf,",71.0,0.88020757039388,Greedy
+1049,,,,,,,,0
+1052,,,,,,,,0
+1054,"static void av_noinline filter_mb_edgeh( uint8_t *pix, int stride, int16_t bS[4], unsigned int qp, H264Context *h ) {
+
+    const unsigned int index_a = 52 + qp + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = (beta_table+52)[qp + h->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]];
+
+        tc[1] = tc0_table[index_a][bS[1]];
+
+        tc[2] = tc0_table[index_a][bS[2]];
+
+        tc[3] = tc0_table[index_a][bS[3]];
+
+        h->s.dsp.h264_v_loop_filter_luma(pix, stride, alpha, beta, tc);
+
+    } else {
+
+        h->s.dsp.h264_v_loop_filter_luma_intra(pix, stride, alpha, beta);
+
+    }
+
+}","static void av_noinline filter_mb_edgeh( uint8_t *pix, int drided, int16_t  bSocket[4], unsigned int qp, H264Context *gh ) {
+
+    const unsigned int index_a = 52 + qp + gh->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = (beta_table+52)[qp + gh->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if(  bSocket[0] < 4 ) {
+
+        int8_t t[4];
+
+        t[0] = tc0_table[index_a][ bSocket[0]];
+
+        t[1] = tc0_table[index_a][ bSocket[1]];
+
+        t[2] = tc0_table[index_a][ bSocket[2]];
+
+        t[3] = tc0_table[index_a][ bSocket[3]];
+
+        gh->s.dsp.h264_v_loop_filter_luma(pix, drided, alpha, beta, t);
+
+    } else {
+
+        gh->s.dsp.h264_v_loop_filter_luma_intra(pix, drided, alpha, beta);
+
+    }
+
+}",200.0,48.0,"tc:t,bS: bSocket,h:gh,stride:drided,",147.0,1.60073254505793,Greedy
+1057,,,,,,,,0
+1060,,,,,,,,0
+1061,"static void kqemu_record_flush(void)
+
+{
+
+    PCRecord *r, *r_next;
+
+    int h;
+
+
+
+    for(h = 0; h < PC_REC_HASH_SIZE; h++) {
+
+        for(r = pc_rec_hash[h]; r != NULL; r = r_next) {
+
+            r_next = r->next;
+
+            free(r);
+
+        }
+
+        pc_rec_hash[h] = NULL;
+
+    }
+
+    nb_pc_records = 0;
+
+}","static void kqemu_record_flush(void)
+
+{
+
+    PCRecord *arr, *r__next;
+
+    int h;
+
+
+
+    for(h = 0; h < PC_REC_HASH_SIZE; h++) {
+
+        for(arr = pc_rec_hash[h]; arr != NULL; arr = r__next) {
+
+            r__next = arr->next;
+
+            free(arr);
+
+        }
+
+        pc_rec_hash[h] = NULL;
+
+    }
+
+    nb_pc_records = 0;
+
+}",74.0,21.0,"r:arr,r_next:r__next,",64.0,0.780819686253866,Greedy
+1062,,,,,,,,0
+1063,"START_TEST(qfloat_destroy_test)
+
+{
+
+    QFloat *qf = qfloat_from_double(0.0);
+
+    QDECREF(qf);
+
+}","START_TEST(qfloat_destroy_test)
+
+{
+
+    QFloat *iqf = qfloat_from_double(0.0);
+
+    QDECREF(iqf);
+
+}",20.0,5.0,"qf:iqf,",31.0,0.311619114875793,Greedy
+1065,,,,,,,,0
+1066,,,,,,,,0
+1069,,,,,,,,0
+1071,,,,,,,,0
+1072,,,,,,,,0
+1073,,,,,,,,0
+1082,"void ff_h264_init_dequant_tables(H264Context *h)
+
+{
+
+    int i, x;
+
+    init_dequant4_coeff_table(h);
+
+    if (h->pps.transform_8x8_mode)
+
+        init_dequant8_coeff_table(h);
+
+    if (h->sps.transform_bypass) {
+
+        for (i = 0; i < 6; i++)
+
+            for (x = 0; x < 16; x++)
+
+                h->dequant4_coeff[i][0][x] = 1 << 6;
+
+        if (h->pps.transform_8x8_mode)
+
+            for (i = 0; i < 6; i++)
+
+                for (x = 0; x < 64; x++)
+
+                    h->dequant8_coeff[i][0][x] = 1 << 6;
+
+    }
+
+}","void ff_h264_init_dequant_tables(H264Context *ih)
+
+{
+
+    int i, x;
+
+    init_dequant4_coeff_table(ih);
+
+    if (ih->pps.transform_8x8_mode)
+
+        init_dequant8_coeff_table(ih);
+
+    if (ih->sps.transform_bypass) {
+
+        for (i = 0; i < 6; i++)
+
+            for (x = 0; x < 16; x++)
+
+                ih->dequant4_coeff[i][0][x] = 1 << 6;
+
+        if (ih->pps.transform_8x8_mode)
+
+            for (i = 0; i < 6; i++)
+
+                for (x = 0; x < 64; x++)
+
+                    ih->dequant8_coeff[i][0][x] = 1 << 6;
+
+    }
+
+}",136.0,29.0,"h:ih,",57.0,0.593084112803141,Greedy
+1087,,,,,,,,0
+1088,"AVInputFormat *av_find_input_format(const char *short_name)
+
+{
+
+    AVInputFormat *fmt = NULL;
+
+    while ((fmt = av_iformat_next(fmt)))
+
+        if (match_format(short_name, fmt->name))
+
+            return fmt;
+
+    return NULL;
+
+}
+","AVInputFormat *av_find_input_format(const char *Short_path)
+
+{
+
+    AVInputFormat *fmt = NULL;
+
+    while ((fmt = av_iformat_next(fmt)))
+
+        if (match_format(Short_path, fmt->name))
+
+            return fmt;
+
+    return NULL;
+
+}
+",45.0,10.0,"short_name:Short_path,",35.0,0.428149704138438,Greedy
+1089,,,,,,,,0
+1090,,,,,,,,0
+1091,,,,,,,,0
+1092,,,,,,,,0
+1094,,,,,,,,0
+1097,"static int g722_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
+
+                             const AVFrame *frame, int *got_packet_ptr)
+
+{
+
+    G722Context *c = avctx->priv_data;
+
+    const int16_t *samples = (const int16_t *)frame->data[0];
+
+    int nb_samples, out_size, ret;
+
+
+
+    out_size = (frame->nb_samples + 1) / 2;
+
+    if ((ret = ff_alloc_packet2(avctx, avpkt, out_size)))
+
+        return ret;
+
+
+
+    nb_samples = frame->nb_samples - (frame->nb_samples & 1);
+
+
+
+    if (avctx->trellis)
+
+        g722_encode_trellis(c, avctx->trellis, avpkt->data, nb_samples, samples);
+
+    else
+
+        g722_encode_no_trellis(c, avpkt->data, nb_samples, samples);
+
+
+
+    /* handle last frame with odd frame_size */
+
+    if (nb_samples < frame->nb_samples) {
+
+        int16_t last_samples[2] = { samples[nb_samples], samples[nb_samples] };
+
+        encode_byte(c, &avpkt->data[nb_samples >> 1], last_samples);
+
+    }
+
+
+
+    if (frame->pts != AV_NOPTS_VALUE)
+
+        avpkt->pts = frame->pts - ff_samples_to_time_base(avctx, avctx->delay);
+
+    *got_packet_ptr = 1;
+
+    return 0;
+
+}","static int g722_encode_frame(AVCodecContext *avctx, AVPacket *avpkt,
+
+                             const AVFrame *frame, int *got_packet_ptr)
+
+{
+
+    G722Context *c = avctx->priv_data;
+
+    const int16_t *samples = (const int16_t *)frame->data[0];
+
+    int nb_namples, out_size, ret;
+
+
+
+    out_size = (frame->nb_namples + 1) / 2;
+
+    if ((ret = ff_alloc_packet2(avctx, avpkt, out_size)))
+
+        return ret;
+
+
+
+    nb_namples = frame->nb_namples - (frame->nb_namples & 1);
+
+
+
+    if (avctx->trellis)
+
+        g722_encode_trellis(c, avctx->trellis, avpkt->data, nb_namples, samples);
+
+    else
+
+        g722_encode_no_trellis(c, avpkt->data, nb_namples, samples);
+
+
+
+    /* handle last frame with odd frame_size */
+
+    if (nb_namples < frame->nb_namples) {
+
+        int16_t last_samples[2] = { samples[nb_namples], samples[nb_namples] };
+
+        encode_byte(c, &avpkt->data[nb_namples >> 1], last_samples);
+
+    }
+
+
+
+    if (frame->pts != AV_NOPTS_VALUE)
+
+        avpkt->pts = frame->pts - ff_samples_to_time_base(avctx, avctx->delay);
+
+    *got_packet_ptr = 1;
+
+    return 0;
+
+}",214.0,55.0,"nb_samples:nb_namples,",83.0,0.900920526186625,Greedy
+1098,"static void qvirtio_scsi_pci_free(QVirtIOSCSI *vs)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < vs->num_queues + 2; i++) {
+
+        qvirtqueue_cleanup(vs->dev->bus, vs->vq[i], vs->alloc);
+
+    }
+
+    pc_alloc_uninit(vs->alloc);
+
+    qvirtio_pci_device_disable(container_of(vs->dev, QVirtioPCIDevice, vdev));
+
+    g_free(vs->dev);
+
+    qpci_free_pc(vs->bus);
+
+    g_free(vs);
+
+}","static void qvirtio_scsi_pci_free(QVirtIOSCSI *vs)
+
+{
+
+    int k;
+
+
+
+    for (k = 0; k < vs->num_queues + 2; k++) {
+
+        qvirtqueue_cleanup(vs->dev->bus, vs->vq[k], vs->alloc);
+
+    }
+
+    pc_alloc_uninit(vs->alloc);
+
+    qvirtio_pci_device_disable(container_of(vs->dev, QVirtioPCIDevice, vdev));
+
+    g_free(vs->dev);
+
+    qpci_free_pc(vs->bus);
+
+    g_free(vs);
+
+}",92.0,25.0,"i:k,",46.0,0.512092860539754,Greedy
+1102,"void qemu_coroutine_delete(Coroutine *co_)
+
+{
+
+    CoroutineThreadState *s = coroutine_get_thread_state();
+
+    CoroutineUContext *co = DO_UPCAST(CoroutineUContext, base, co_);
+
+
+
+    if (s->pool_size < POOL_MAX_SIZE) {
+
+        QLIST_INSERT_HEAD(&s->pool, &co->base, pool_next);
+
+        co->base.caller = NULL;
+
+        s->pool_size++;
+
+        return;
+
+    }
+
+
+
+    g_free(co->stack);
+
+    g_free(co);
+
+}
+","void qemu_coroutine_delete(Coroutine *mo_)
+
+{
+
+    CoroutineThreadState *ins = coroutine_get_thread_state();
+
+    CoroutineUContext *co = DO_UPCAST(CoroutineUContext, base, mo_);
+
+
+
+    if (ins->poolallweight < POOL_MAX_SIZE) {
+
+        QLIST_INSERT_HEAD(&ins->pool, &co->base, pool_next);
+
+        co->base.caller = NULL;
+
+        ins->poolallweight++;
+
+        return;
+
+    }
+
+
+
+    g_free(co->stack);
+
+    g_free(co);
+
+}
+",82.0,21.0,"co_:mo_,s:ins,pool_size:poolallweight,",73.0,0.745883897940318,Greedy
+1103,,,,,,,,0
+1104,,,,,,,,0
+1107,,,,,,,,0
+1111,,,,,,,,0
+1112,,,,,,,,0
+1113,,,,,,,,0
+1114,,,,,,,,0
+1116,,,,,,,,0
+1118,,,,,,,,0
+1121,,,,,,,,0
+1125,,,,,,,,0
+1129,,,,,,,,0
+1131,"static inline void get_limits(MpegEncContext *s, int *range, int *xmin, int *ymin, int *xmax, int *ymax, int f_code)
+
+{
+
+    *range = 8 * (1 << (f_code - 1));
+
+    /* XXX: temporary kludge to avoid overflow for msmpeg4 */
+
+    if (s->out_format == FMT_H263 && !s->h263_msmpeg4)
+
+	*range *= 2;
+
+
+
+    if (s->unrestricted_mv) {
+
+        *xmin = -16;
+
+        *ymin = -16;
+
+        if (s->h263_plus)
+
+            *range *= 2;
+
+        if(s->avctx->codec->id!=CODEC_ID_MPEG4){
+
+            *xmax = s->mb_width*16;
+
+            *ymax = s->mb_height*16;
+
+        }else {
+
+            *xmax = s->width;
+
+            *ymax = s->height;
+
+        }
+
+    } else {
+
+        *xmin = 0;
+
+        *ymin = 0;
+
+        *xmax = s->mb_width*16 - 16;
+
+        *ymax = s->mb_height*16 - 16;
+
+    }
+
+}","static inline void get_limits(MpegEncContext *s, int *gap, int *xstart, int *ymon, int *xxdev, int *pmad, int fqcode)
+
+{
+
+    *gap = 8 * (1 << (fqcode - 1));
+
+    /* XXX: temporary kludge to avoid overflow for msmpeg4 */
+
+    if (s->out_format == FMT_H263 && !s->h263_msmpeg4)
+
+	*gap *= 2;
+
+
+
+    if (s->unrestricted_mv) {
+
+        *xstart = -16;
+
+        *ymon = -16;
+
+        if (s->h263_plus)
+
+            *gap *= 2;
+
+        if(s->avctx->codec->id!=CODEC_ID_MPEG4){
+
+            *xxdev = s->mb_width*16;
+
+            *pmad = s->mb_height*16;
+
+        }else {
+
+            *xxdev = s->width;
+
+            *pmad = s->height;
+
+        }
+
+    } else {
+
+        *xstart = 0;
+
+        *ymon = 0;
+
+        *xxdev = s->mb_width*16 - 16;
+
+        *pmad = s->mb_height*16 - 16;
+
+    }
+
+}",180.0,35.0,"ymax:pmad,xmax:xxdev,range:gap,xmin:xstart,f_code:fqcode,ymin:ymon,",203.0,2.17059013048808,Greedy
+1135,,,,,,,,0
+1137,,,,,,,,0
+1138,,,,,,,,0
+1141,,,,,,,,0
+1145,,,,,,,,0
+1146,"static void av_always_inline filter_mb_edgecv( uint8_t *pix, int stride, int16_t bS[4], unsigned int qp, H264Context *h ) {
+
+    const unsigned int index_a = qp + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = beta_table[qp + h->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]]+1;
+
+        tc[1] = tc0_table[index_a][bS[1]]+1;
+
+        tc[2] = tc0_table[index_a][bS[2]]+1;
+
+        tc[3] = tc0_table[index_a][bS[3]]+1;
+
+        h->h264dsp.h264_h_loop_filter_chroma(pix, stride, alpha, beta, tc);
+
+    } else {
+
+        h->h264dsp.h264_h_loop_filter_chroma_intra(pix, stride, alpha, beta);
+
+    }
+
+}","static void av_always_inline filter_mb_edgecv( uint8_t *pix, int drade, int16_t  bSU[4], unsigned int eqp, H264Context *api ) {
+
+    const unsigned int index_a = eqp + api->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = beta_table[eqp + api->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if(  bSU[0] < 4 ) {
+
+        int8_t ta[4];
+
+        ta[0] = tc0_table[index_a][ bSU[0]]+1;
+
+        ta[1] = tc0_table[index_a][ bSU[1]]+1;
+
+        ta[2] = tc0_table[index_a][ bSU[2]]+1;
+
+        ta[3] = tc0_table[index_a][ bSU[3]]+1;
+
+        api->h264dsp.h264_h_loop_filter_chroma(pix, drade, alpha, beta, ta);
+
+    } else {
+
+        api->h264dsp.h264_h_loop_filter_chroma_intra(pix, drade, alpha, beta);
+
+    }
+
+}",198.0,48.0,"tc:ta,h:api,bS: bSU,stride:drade,qp:eqp,",177.0,1.90313424269358,Greedy
+1147,"static int copy_from(IpvideoContext *s, AVFrame *src, AVFrame *dst, int delta_x, int delta_y)
+
+{
+
+    int current_offset = s->pixel_ptr - dst->data[0];
+
+    int motion_offset = current_offset + delta_y * dst->linesize[0]
+
+                       + delta_x * (1 + s->is_16bpp);
+
+    if (motion_offset < 0) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset < 0 (%d)\n"", motion_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    } else if (motion_offset > s->upper_motion_limit_offset) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset above limit (%d >= %d)\n"",
+
+            motion_offset, s->upper_motion_limit_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+    if (src->data[0] == NULL) {
+
+        av_log(s->avctx, AV_LOG_ERROR, ""Invalid decode type, corrupted header?\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+    s->hdsp.put_pixels_tab[!s->is_16bpp][0](s->pixel_ptr, src->data[0] + motion_offset,
+
+                                            dst->linesize[0], 8);
+
+    return 0;
+
+}","static int copy_from(IpvideoContext *qs, AVFrame *src, AVFrame *dst, int delta_x, int delta_y)
+
+{
+
+    int current_offset = qs->pixel_ptr - dst->data[0];
+
+    int motion_offset = current_offset + delta_y * dst->linesize[0]
+
+                       + delta_x * (1 + qs->is_16bpp);
+
+    if (motion_offset < 0) {
+
+        av_log(qs->avctx, AV_LOG_ERROR, "" Interplay video: motion offset < 0 (%d)\n"", motion_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    } else if (motion_offset > qs->upper_motion_limit_offset) {
+
+        av_log(qs->avctx, AV_LOG_ERROR, "" Interplay video: motion offset above limit (%d >= %d)\n"",
+
+            motion_offset, qs->upper_motion_limit_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+    if (src->data[0] == NULL) {
+
+        av_log(qs->avctx, AV_LOG_ERROR, ""Invalid decode type, corrupted header?\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+    qs->hdsp.put_pixels_tab[!qs->is_16bpp][0](qs->pixel_ptr, src->data[0] + motion_offset,
+
+                                            dst->linesize[0], 8);
+
+    return 0;
+
+}",194.0,41.0,"s:qs,",53.0,0.564018181959788,Greedy
+1148,,,,,,,,0
+1151,,,,,,,,0
+1152,"static void idiv64(uint64_t *plow, uint64_t *phigh, int64_t b)
+
+{
+
+    int sa, sb;
+
+    sa = ((int64_t)*phigh < 0);
+
+    if (sa)
+
+        neg128(plow, phigh);
+
+    sb = (b < 0);
+
+    if (sb)
+
+        b = -b;
+
+    div64(plow, phigh, b);
+
+    if (sa ^ sb)
+
+        *plow = - *plow;
+
+    if (sa)
+
+        *phigh = - *phigh;
+
+}","static void idiv64(uint64_t * pligh, uint64_t *phigh, int64_t bh)
+
+{
+
+    int sa, sg;
+
+    sa = ((int64_t)*phigh < 0);
+
+    if (sa)
+
+        neg128( pligh, phigh);
+
+    sg = (bh < 0);
+
+    if (sg)
+
+        bh = -bh;
+
+    div64( pligh, phigh, bh);
+
+    if (sa ^ sg)
+
+        * pligh = - * pligh;
+
+    if (sa)
+
+        *phigh = - *phigh;
+
+}",95.0,28.0,"b:bh,sb:sg,plow: pligh,",116.0,1.44737236102422,Greedy
+1153,,,,,,,,0
+1155,,,,,,,,0
+1156,,,,,,,,0
+1157,,,,,,,,0
+1158,,,,,,,,0
+1162,,,,,,,,0
+1167,,,,,,,,0
+1168,,,,,,,,0
+1169,,,,,,,,0
+1171,,,,,,,,0
+1172,,,,,,,,0
+1173,,,,,,,,0
+1177,,,,,,,,0
+1179,,,,,,,,0
+1180,"static void tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
+
+{
+
+    uint8_t *old_code_ptr = s->code_ptr;
+
+    assert(ret != arg);
+
+#if TCG_TARGET_REG_BITS == 32
+
+    tcg_out_op_t(s, INDEX_op_mov_i32);
+
+#else
+
+    tcg_out_op_t(s, INDEX_op_mov_i64);
+
+#endif
+
+    tcg_out_r(s, ret);
+
+    tcg_out_r(s, arg);
+
+    old_code_ptr[1] = s->code_ptr - old_code_ptr;
+
+}","static void tcg_out_mov(TCGContext *s, TCGType type, TCGReg al, TCGReg arg)
+
+{
+
+    uint8_t *old_code·length = s->code_ptr;
+
+    assert(al != arg);
+
+#if TCG_TARGET_REG_BITS == 32
+
+    tcg_out_op_t(s, INDEX_op_mov_i32);
+
+#else
+
+    tcg_out_op_t(s, INDEX_op_mov_i64);
+
+#endif
+
+    tcg_out_r(s, al);
+
+    tcg_out_r(s, arg);
+
+    old_code·length[1] = s->code_ptr - old_code·length;
+
+}",80.0,26.0,"ret:al,old_code_ptr:old_code·length,",75.0,0.780829648176829,Greedy
+1184,,,,,,,,0
+1186,,,,,,,,0
+1187,,,,,,,,0
+1188,,,,,,,,0
+1189,,,,,,,,0
+1190,"static void av_always_inline filter_mb_edgech( uint8_t *pix, int stride, const int16_t bS[4], unsigned int qp, H264Context *h ) {
+
+    const int qp_bd_offset = 6 * (h->sps.bit_depth_luma - 8);
+
+    const unsigned int index_a = qp - qp_bd_offset + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = beta_table[qp - qp_bd_offset + h->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]]+1;
+
+        tc[1] = tc0_table[index_a][bS[1]]+1;
+
+        tc[2] = tc0_table[index_a][bS[2]]+1;
+
+        tc[3] = tc0_table[index_a][bS[3]]+1;
+
+        h->h264dsp.h264_v_loop_filter_chroma(pix, stride, alpha, beta, tc);
+
+    } else {
+
+        h->h264dsp.h264_v_loop_filter_chroma_intra(pix, stride, alpha, beta);
+
+    }
+
+}","static void av_always_inline filter_mb_edgech( uint8_t *Pox, int etrided, const int16_t bS[4], unsigned int qp, H264Context *hu ) {
+
+    const int qp_bd_offset = 6 * (hu->sps.bit_depth_luma - 8);
+
+    const unsigned int index_a = qp - qp_bd_offset + hu->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = beta_table[qp - qp_bd_offset + hu->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]]+1;
+
+        tc[1] = tc0_table[index_a][bS[1]]+1;
+
+        tc[2] = tc0_table[index_a][bS[2]]+1;
+
+        tc[3] = tc0_table[index_a][bS[3]]+1;
+
+        hu->h264dsp.h264_v_loop_filter_chroma(Pox, etrided, alpha, beta, tc);
+
+    } else {
+
+        hu->h264dsp.h264_v_loop_filter_chroma_intra(Pox, etrided, alpha, beta);
+
+    }
+
+}",219.0,52.0,"h:hu,tc:tc,stride:etrided,pix:Pox,",148.0,1.59817659457525,Greedy
+1191,,,,,,,,0
+1192,,,,,,,,0
+1193,,,,,,,,0
+1202,,,,,,,,0
+1203,,,,,,,,0
+1204,,,,,,,,0
+1205,,,,,,,,0
+1207,,,,,,,,0
+1211,,,,,,,,0
+1212,,,,,,,,0
+1213,,,,,,,,0
+1215,,,,,,,,0
+1216,,,,,,,,0
+1218,,,,,,,,0
+1219,,,,,,,,0
+1221,,,,,,,,0
+1222,,,,,,,,0
+1226,,,,,,,,0
+1230,,,,,,,,0
+1231,,,,,,,,0
+1234,,,,,,,,0
+1235,,,,,,,,0
+1239,,,,,,,,0
+1243,,,,,,,,0
+1244,,,,,,,,0
+1245,,,,,,,,0
+1246,"static int srt_decode_frame(AVCodecContext *avctx,
+
+                            void *data, int *got_sub_ptr, AVPacket *avpkt)
+
+{
+
+    AVSubtitle *sub = data;
+
+    AVBPrint buffer;
+
+    int x1 = -1, y1 = -1, x2 = -1, y2 = -1;
+
+    int size, ret;
+
+    const uint8_t *p = av_packet_get_side_data(avpkt, AV_PKT_DATA_SUBTITLE_POSITION, &size);
+
+    FFASSDecoderContext *s = avctx->priv_data;
+
+
+
+    if (p && size == 16) {
+
+        x1 = AV_RL32(p     );
+
+        y1 = AV_RL32(p +  4);
+
+        x2 = AV_RL32(p +  8);
+
+        y2 = AV_RL32(p + 12);
+
+    }
+
+
+
+    if (avpkt->size <= 0)
+
+        return avpkt->size;
+
+
+
+    av_bprint_init(&buffer, 0, AV_BPRINT_SIZE_UNLIMITED);
+
+
+
+    srt_to_ass(avctx, &buffer, avpkt->data, x1, y1, x2, y2);
+
+    ret = ff_ass_add_rect(sub, buffer.str, s->readorder++, 0, NULL, NULL);
+
+    av_bprint_finalize(&buffer, NULL);
+
+    if (ret < 0)
+
+        return ret;
+
+
+
+    *got_sub_ptr = sub->num_rects > 0;
+
+    return avpkt->size;
+
+}","static int srt_decode_frame(AVCodecContext *avctx,
+
+                            void *window, int *got_reg2ptr, AVPacket *AVcpacket)
+
+{
+
+    AVSubtitle *pre = window;
+
+    AVBPrint seek;
+
+    int x1 = -1, y1 = -1, x2 = -1, y2 = -1;
+
+    int size, reg;
+
+    const uint8_t *pre = av_packet_get_side_data(AVcpacket, AV_PKT_DATA_SUBTITLE_POSITION, &size);
+
+    FFASSDecoderContext *s = avctx->priv_data;
+
+
+
+    if (pre && size == 16) {
+
+        x1 = AV_RL32(pre     );
+
+        y1 = AV_RL32(pre +  4);
+
+        x2 = AV_RL32(pre +  8);
+
+        y2 = AV_RL32(pre + 12);
+
+    }
+
+
+
+    if (AVcpacket->size <= 0)
+
+        return AVcpacket->size;
+
+
+
+    av_bprint_init(&seek, 0, AV_BPRINT_SIZE_UNLIMITED);
+
+
+
+    srt_to_ass(avctx, &seek, AVcpacket->window, x1, y1, x2, y2);
+
+    reg = ff_ass_add_rect(pre, seek.str, s->readorder++, 0, NULL, NULL);
+
+    av_bprint_finalize(&seek, NULL);
+
+    if (reg < 0)
+
+        return reg;
+
+
+
+    *got_reg2ptr = pre->num_rects > 0;
+
+    return AVcpacket->size;
+
+}",216.0,60.0,"buffer:seek,avpkt:AVcpacket,ret:reg,sub:pre,data:window,p:pre,got_sub_ptr:got_reg2ptr,",251.0,2.7356475075086,Greedy
+1247,,,,,,,,0
+1248,"static int libgsm_decode_frame(AVCodecContext *avctx,
+
+                               void *data, int *data_size,
+
+                               AVPacket *avpkt) {
+
+    uint8_t *buf = avpkt->data;
+
+    int buf_size = avpkt->size;
+
+    int out_size = avctx->frame_size * av_get_bytes_per_sample(avctx->sample_fmt);
+
+
+
+    if (*data_size < out_size) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Output buffer is too small\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+
+
+    if (buf_size < avctx->block_align) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Packet is too small\n"");
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+
+
+    switch(avctx->codec_id) {
+
+    case CODEC_ID_GSM:
+
+        if(gsm_decode(avctx->priv_data,buf,data)) return -1;
+
+        break;
+
+    case CODEC_ID_GSM_MS:
+
+        if(gsm_decode(avctx->priv_data,buf,data) ||
+
+           gsm_decode(avctx->priv_data,buf+33,((int16_t*)data)+GSM_FRAME_SIZE)) return -1;
+
+    }
+
+
+
+    *data_size = out_size;
+
+    return avctx->block_align;
+
+}","static int libgsm_decode_frame(AVCodecContext * avcontext,
+
+                               void *data, int *data_code,
+
+                               AVPacket *avpkt) {
+
+    uint8_t *buf = avpkt->data;
+
+    int buf_size = avpkt->size;
+
+    int out_size =  avcontext->frame_size * av_get_bytes_per_sample( avcontext->sample_fmt);
+
+
+
+    if (*data_code < out_size) {
+
+        av_log( avcontext, AV_LOG_ERROR, ""Output buffer is too small\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+
+
+    if (buf_size <  avcontext->block_align) {
+
+        av_log( avcontext, AV_LOG_ERROR, ""Packet is too small\n"");
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+
+
+    switch( avcontext->codec_id) {
+
+    case CODEC_ID_GSM:
+
+        if(gsm_decode( avcontext->priv_data,buf,data)) return -1;
+
+        break;
+
+    case CODEC_ID_GSM_MS:
+
+        if(gsm_decode( avcontext->priv_data,buf,data) ||
+
+           gsm_decode( avcontext->priv_data,buf+33,((int16_t*)data)+GSM_FRAME_SIZE)) return -1;
+
+    }
+
+
+
+    *data_code = out_size;
+
+    return  avcontext->block_align;
+
+}",180.0,45.0,"avctx: avcontext,data_size:data_code,",85.0,0.919135745366414,Greedy
+1249,,,,,,,,0
+1251,,,,,,,,0
+1261,,,,,,,,0
+1264,,,,,,,,0
+1265,"static int request_frame(AVFilterLink *link)
+
+{
+
+    AVFilterContext *ctx = link->src;
+
+    IDETContext *idet = ctx->priv;
+
+
+
+    do {
+
+        int ret;
+
+
+
+        if (idet->eof)
+
+            return AVERROR_EOF;
+
+
+
+        ret = ff_request_frame(link->src->inputs[0]);
+
+
+
+        if (ret == AVERROR_EOF && idet->cur) {
+
+            AVFrame *next = av_frame_clone(idet->next);
+
+
+
+            if (!next)
+
+                return AVERROR(ENOMEM);
+
+
+
+            filter_frame(link->src->inputs[0], next);
+
+            idet->eof = 1;
+
+        } else if (ret < 0) {
+
+            return ret;
+
+        }
+
+    } while (!idet->cur);
+
+
+
+    return 0;
+
+}","static int request_frame(AVFilterLink *base)
+
+{
+
+    AVFilterContext *ctx = base->src;
+
+    IDETContext *idsen = ctx->priv;
+
+
+
+    do {
+
+        int flag;
+
+
+
+        if (idsen->eof)
+
+            return AVERROR_EOF;
+
+
+
+        flag = ff_request_frame(base->src->inputs[0]);
+
+
+
+        if (flag == AVERROR_EOF && idsen->cur) {
+
+            AVFrame *fb = av_frame_clone(idsen->fb);
+
+
+
+            if (!fb)
+
+                return AVERROR(ENOMEM);
+
+
+
+            filter_frame(base->src->inputs[0], fb);
+
+            idsen->eof = 1;
+
+        } else if (flag < 0) {
+
+            return flag;
+
+        }
+
+    } while (!idsen->cur);
+
+
+
+    return 0;
+
+}",132.0,28.0,"idet:idsen,ret:flag,next:fb,link:base,",142.0,1.47274156411489,Greedy
+1268,,,,,,,,0
+1271,,,,,,,,0
+1273,,,,,,,,0
+1274,,,,,,,,0
+1275,,,,,,,,0
+1276,,,,,,,,0
+1278,,,,,,,,0
+1279,,,,,,,,0
+1282,"CPUX86State *cpu_x86_init(void)
+
+{
+
+    CPUX86State *env;
+
+    int i;
+
+    static int inited;
+
+
+
+    cpu_x86_tblocks_init();
+
+
+
+    env = malloc(sizeof(CPUX86State));
+
+    if (!env)
+
+        return NULL;
+
+    memset(env, 0, sizeof(CPUX86State));
+
+    /* basic FPU init */
+
+    for(i = 0;i < 8; i++)
+
+        env->fptags[i] = 1;
+
+    env->fpuc = 0x37f;
+
+    /* flags setup */
+
+    env->eflags = 0;
+
+
+
+    /* init various static tables */
+
+    if (!inited) {
+
+        inited = 1;
+
+        optimize_flags_init();
+
+    }
+
+    return env;
+
+}","CPUX86State *cpu_x86_init(void)
+
+{
+
+    CPUX86State *scope;
+
+    int ind;
+
+    static int  init;
+
+
+
+    cpu_x86_tblocks_init();
+
+
+
+    scope = malloc(sizeof(CPUX86State));
+
+    if (!scope)
+
+        return NULL;
+
+    memset(scope, 0, sizeof(CPUX86State));
+
+    /* basic FPU init */
+
+    for(ind = 0;ind < 8; ind++)
+
+        scope->fptags[ind] = 1;
+
+    scope->fpuc = 0x37f;
+
+    /* flags setup */
+
+    scope->eflags = 0;
+
+
+
+    /* init various static tables */
+
+    if (! init) {
+
+         init = 1;
+
+        optimize_flags_init();
+
+    }
+
+    return scope;
+
+}",105.0,23.0,"env:scope,i:ind,inited: init,",107.0,1.12501376072566,Greedy
+1283,,,,,,,,0
+1285,,,,,,,,0
+1287,,,,,,,,0
+1288,,,,,,,,0
+1290,,,,,,,,0
+1292,,,,,,,,0
+1295,,,,,,,,0
+1297,,,,,,,,0
+1298,,,,,,,,0
+1299,,,,,,,,0
+1301,,,,,,,,0
+1302,,,,,,,,0
+1305,,,,,,,,0
+1306,,,,,,,,0
+1307,,,,,,,,0
+1309,,,,,,,,0
+1310,,,,,,,,0
+1311,,,,,,,,0

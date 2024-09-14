@@ -1,0 +1,10668 @@
+Index,Original Code,Adversarial Code,True Label,Adv Label,Query Times,Time Cost,Type
+5,"RAMBlock *qemu_ram_alloc_internal(ram_addr_t size, ram_addr_t max_size,
+
+                                  void (*resized)(const char*,
+
+                                                  uint64_t length,
+
+                                                  void *host),
+
+                                  void *host, bool resizeable,
+
+                                  MemoryRegion *mr, Error **errp)
+
+{
+
+    RAMBlock *new_block;
+
+    Error *local_err = NULL;
+
+
+
+    size = HOST_PAGE_ALIGN(size);
+
+    max_size = HOST_PAGE_ALIGN(max_size);
+
+    new_block = g_malloc0(sizeof(*new_block));
+
+    new_block->mr = mr;
+
+    new_block->resized = resized;
+
+    new_block->used_length = size;
+
+    new_block->max_length = max_size;
+
+    assert(max_size >= size);
+
+    new_block->fd = -1;
+
+    new_block->host = host;
+
+    if (host) {
+
+        new_block->flags |= RAM_PREALLOC;
+
+    }
+
+    if (resizeable) {
+
+        new_block->flags |= RAM_RESIZEABLE;
+
+    }
+
+    ram_block_add(new_block, &local_err);
+
+    if (local_err) {
+
+        g_free(new_block);
+
+        error_propagate(errp, local_err);
+
+        return NULL;
+
+    }
+
+    mr->ram_block = new_block;
+
+    return new_block;
+
+}
+","SECTION_ID_PROGRAM *qemu_ram_alloc_internal(frame_addr ff_lzw_encode_state_size, frame_addr size1,
+
+                                  void (*resized)(const char*,
+
+                                                  uint64_t length,
+
+                                                  void *halted),
+
+                                  void *halted, bool resizeable,
+
+                                  offset_within_region *pmt_pid, destroy_list **error)
+
+{
+
+    SECTION_ID_PROGRAM *new_files;
+
+    destroy_list *espaddr = NULL;
+
+
+
+    ff_lzw_encode_state_size = HOST_PAGE_ALIGN(ff_lzw_encode_state_size);
+
+    size1 = HOST_PAGE_ALIGN(size1);
+
+    new_files = g_malloc0(sizeof(*new_files));
+
+    new_files->pmt_pid = pmt_pid;
+
+    new_files->resized = resized;
+
+    new_files->used_length = ff_lzw_encode_state_size;
+
+    new_files->max_length = size1;
+
+    assert(size1 >= ff_lzw_encode_state_size);
+
+    new_files->fd = -1;
+
+    new_files->halted = halted;
+
+    if (halted) {
+
+        new_files->cregs |= RAM_PREALLOC;
+
+    }
+
+    if (resizeable) {
+
+        new_files->cregs |= SECTION_ID_PROGRAM_STREAMS;
+
+    }
+
+    ram_block_add(new_files, &espaddr);
+
+    if (espaddr) {
+
+        g_free(new_files);
+
+        error_propagate(error, espaddr);
+
+        return NULL;
+
+    }
+
+    pmt_pid->sample_rate = new_files;
+
+    return new_files;
+
+}
+",,,130,,CODA
+13,"void do_tw (int flags)
+
+{
+
+    if (!likely(!(((int32_t)T0 < (int32_t)T1 && (flags & 0x10)) ||
+
+                  ((int32_t)T0 > (int32_t)T1 && (flags & 0x08)) ||
+
+                  ((int32_t)T0 == (int32_t)T1 && (flags & 0x04)) ||
+
+                  ((uint32_t)T0 < (uint32_t)T1 && (flags & 0x02)) ||
+
+                  ((uint32_t)T0 > (uint32_t)T1 && (flags & 0x01))))) {
+
+        do_raise_exception_err(EXCP_PROGRAM, EXCP_TRAP);
+
+    }
+
+}
+","void qemu_spice_add_interface (int flag)
+
+{
+
+    if (!likely(!(((int32_t)tm < (int32_t)T1 && (flag & 0x10)) ||
+
+                  ((int32_t)tm > (int32_t)T1 && (flag & 0x08)) ||
+
+                  ((int32_t)tm == (int32_t)T1 && (flag & 0x04)) ||
+
+                  ((uint32_t)tm < (uint32_t)T1 && (flag & 0x02)) ||
+
+                  ((uint32_t)tm > (uint32_t)T1 && (flag & 0x01))))) {
+
+        do_raise_exception_err(EINVAL, ETH_P_IP);
+
+    }
+
+}
+",,,69,,CODA
+17,"host_memory_backend_can_be_deleted(UserCreatable *uc, Error **errp)
+
+{
+
+    MemoryRegion *mr;
+
+
+
+    mr = host_memory_backend_get_memory(MEMORY_BACKEND(uc), errp);
+
+    if (memory_region_is_mapped(mr)) {
+
+        return false;
+
+    } else {
+
+        return true;
+
+    }
+
+}
+","colo_packet_compare_common(AVPacket *c, alarm **p)
+
+{
+
+    gpointer *ptv;
+
+
+
+    ptv = host_memory_backend_get_memory(QLIST_INIT(c), p);
+
+    if (memory_region_is_mapped(ptv)) {
+
+        return mcf_uart_state;
+
+    } else {
+
+        return bus_master_enable_region;
+
+    }
+
+}
+",,,146,,CODA
+34,"void omap_mcbsp_i2s_attach(struct omap_mcbsp_s *s, I2SCodec *slave)
+
+{
+
+    s->codec = slave;
+
+    slave->rx_swallow = qemu_allocate_irqs(omap_mcbsp_i2s_swallow, s, 1)[0];
+
+    slave->tx_start = qemu_allocate_irqs(omap_mcbsp_i2s_start, s, 1)[0];
+
+}
+","void omap_mcbsp_i2s_attach(struct omap_mcbsp_s *s, ISADevice *notifier)
+
+{
+
+    s->codec = notifier;
+
+    notifier->rx_swallow = qemu_allocate_irqs(omap_mcbsp_i2s_swallow, s, 1)[0];
+
+    notifier->tx_start = qemu_allocate_irqs(omap_mcbsp_i2s_start, s, 1)[0];
+
+}
+",,,66,,CODA
+38,"static void flush_queued_work(CPUState *env)
+
+{
+
+    struct qemu_work_item *wi;
+
+
+
+    if (!env->queued_work_first)
+
+        return;
+
+
+
+    while ((wi = env->queued_work_first)) {
+
+        env->queued_work_first = wi->next;
+
+        wi->func(wi->data);
+
+        wi->done = true;
+
+    }
+
+    env->queued_work_last = NULL;
+
+    qemu_cond_broadcast(&qemu_work_cond);
+
+}
+","static void avformat_queue_attached_pictures(CPUX86State *ev)
+
+{
+
+    struct QemuConsole *w;
+
+
+
+    if (!ev->queued)
+
+        return;
+
+
+
+    while ((w = ev->queued)) {
+
+        ev->queued = w->PPContext;
+
+        w->tcg_out_bc(w->priv_data);
+
+        w->vChromaSubSample = sample_rate;
+
+    }
+
+    ev->queued_work_last = NULL;
+
+    qemu_cond_broadcast(&qiv);
+
+}
+",,,90,,CODA
+43,"static void mmap_release_buffer(AVPacket *pkt)
+
+{
+
+    struct v4l2_buffer buf;
+
+    int res, fd;
+
+    struct buff_data *buf_descriptor = pkt->priv;
+
+
+
+    if (pkt->data == NULL)
+
+        return;
+
+
+
+    memset(&buf, 0, sizeof(struct v4l2_buffer));
+
+    buf.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+
+    buf.memory = V4L2_MEMORY_MMAP;
+
+    buf.index = buf_descriptor->index;
+
+    fd = buf_descriptor->fd;
+
+    av_free(buf_descriptor);
+
+
+
+    res = ioctl(fd, VIDIOC_QBUF, &buf);
+
+    if (res < 0)
+
+        av_log(NULL, AV_LOG_ERROR, ""ioctl(VIDIOC_QBUF): %s\n"",
+
+               strerror(errno));
+
+
+
+    pkt->data = NULL;
+
+    pkt->size = 0;
+
+}
+","static void avfilter_ref_buffer(QIOChannelSocket *tmr)
+
+{
+
+    struct circular_buffer_thread packet_buf;
+
+    int env, pd;
+
+    struct extradata *fpu_fcr31 = tmr->pdev;
+
+
+
+    if (tmr->extradata == NULL)
+
+        return;
+
+
+
+    memset(&packet_buf, 0, sizeof(struct circular_buffer_thread));
+
+    packet_buf.aio_type = SIGP_CC_ORDER_CODE_ACCEPTED;
+
+    packet_buf.address_space_memory = DEVICE_CATEGORY_MISC;
+
+    packet_buf.ASFIndex = fpu_fcr31->ASFIndex;
+
+    pd = fpu_fcr31->pd;
+
+    g_free(fpu_fcr31);
+
+
+
+    env = ioctl(pd, ACPI_PCI_HOTPLUG_STATUS, &packet_buf);
+
+    if (env < 0)
+
+        av_frame_free(NULL, AV_PERM_WRITE, ""ioctl(VIDIOC_QBUF): %s
+"",
+
+               strerror(espaddr));
+
+
+
+    tmr->extradata = NULL;
+
+    tmr->code_size = 0;
+
+}
+",,,127,,CODA
+44,"void cpu_loop_exit(CPUState *env1)
+
+{
+
+    env1->current_tb = NULL;
+
+    longjmp(env1->jmp_env, 1);
+
+}
+","void cpu_loop_exit(CharDriverState *nb_pids)
+
+{
+
+    nb_pids->cb = NULL;
+
+    longjmp(nb_pids->devfn, 1);
+
+}
+",,,125,,CODA
+48,"av_cold int ff_vaapi_encode_close(AVCodecContext *avctx)
+
+{
+
+    VAAPIEncodeContext *ctx = avctx->priv_data;
+
+    VAAPIEncodePicture *pic, *next;
+
+
+
+    for (pic = ctx->pic_start; pic; pic = next) {
+
+        next = pic->next;
+
+        vaapi_encode_free(avctx, pic);
+
+    }
+
+
+
+    if (ctx->va_context != VA_INVALID_ID) {
+
+        vaDestroyContext(ctx->hwctx->display, ctx->va_context);
+
+        ctx->va_context = VA_INVALID_ID;
+
+    }
+
+
+
+    if (ctx->va_config != VA_INVALID_ID) {
+
+        vaDestroyConfig(ctx->hwctx->display, ctx->va_config);
+
+        ctx->va_config = VA_INVALID_ID;
+
+    }
+
+
+
+    if (ctx->codec->close)
+
+        ctx->codec->close(avctx);
+
+
+
+    av_buffer_pool_uninit(&ctx->output_buffer_pool);
+
+
+
+    av_freep(&ctx->codec_sequence_params);
+
+    av_freep(&ctx->codec_picture_params);
+
+
+
+    av_buffer_unref(&ctx->recon_frames_ref);
+
+    av_buffer_unref(&ctx->input_frames_ref);
+
+    av_buffer_unref(&ctx->device_ref);
+
+
+
+    av_freep(&ctx->priv_data);
+
+
+
+    return 0;
+
+}
+","frame int ff_vaapi_encode_close(AVCodecContext *img_convert_ctx)
+
+{
+
+    VAAPIEncodeContext *ctx = img_convert_ctx->priv_data;
+
+    VAAPIEncodePicture *cel_evals, *next;
+
+
+
+    for (cel_evals = ctx->pic_start; cel_evals; cel_evals = next) {
+
+        next = cel_evals->next;
+
+        vaapi_encode_free(img_convert_ctx, cel_evals);
+
+    }
+
+
+
+    if (ctx->va_context != MATROSKA_ID_TAGTARGETS) {
+
+        vaDestroyContext(ctx->hwctx->blocked, ctx->va_context);
+
+        ctx->va_context = MATROSKA_ID_TAGTARGETS;
+
+    }
+
+
+
+    if (ctx->vdhcp_start != MATROSKA_ID_TAGTARGETS) {
+
+        vaDestroyConfig(ctx->hwctx->blocked, ctx->vdhcp_start);
+
+        ctx->vdhcp_start = MATROSKA_ID_TAGTARGETS;
+
+    }
+
+
+
+    if (ctx->codec->close)
+
+        ctx->codec->close(img_convert_ctx);
+
+
+
+    av_buffer_pool_uninit(&ctx->output_buffer_pool);
+
+
+
+    av_freep(&ctx->codec_sequence_params);
+
+    av_freep(&ctx->codec_picture_params);
+
+
+
+    av_buffer_unref(&ctx->recon_frames_ref);
+
+    av_buffer_unref(&ctx->coded_frame);
+
+    av_buffer_unref(&ctx->device_ref);
+
+
+
+    av_freep(&ctx->priv_data);
+
+
+
+    return 0;
+
+}
+",,,171,,CODA
+61,"static void s390_virtio_irq(S390CPU *cpu, int config_change, uint64_t token)
+
+{
+
+    if (kvm_enabled()) {
+
+        kvm_s390_virtio_irq(cpu, config_change, token);
+
+    } else {
+
+        cpu_inject_ext(cpu, VIRTIO_EXT_CODE, config_change, token);
+
+    }
+
+}
+","static void tcg_gen_brcond_tl(QCOW2_CLUSTER_COMPRESSED *l1, int common, uint64_t mon_fd_t)
+
+{
+
+    if (to_qcv()) {
+
+        tcg_gen_andi_tl(l1, common, mon_fd_t);
+
+    } else {
+
+        qdict_put_obj(l1, SDL_APPACTIVE, common, mon_fd_t);
+
+    }
+
+}
+",,,229,,CODA
+68,"static int null_filter_samples(AVFilterLink *link, AVFilterBufferRef *samplesref)
+
+{
+
+
+    return 0;
+
+}","static int null_filter_samples(AVPROBE_SCORE_MAX *link, QEMUBuffer *coeff)
+
+{
+
+
+    return 0;
+
+}",,,67,,CODA
+73,"static int inject_error(BlockDriverState *bs, BlkdebugRule *rule)
+
+{
+
+    BDRVBlkdebugState *s = bs->opaque;
+
+    int error = rule->options.inject.error;
+
+    bool immediately = rule->options.inject.immediately;
+
+
+
+    if (rule->options.inject.once) {
+
+        QSIMPLEQ_REMOVE(&s->active_rules, rule, BlkdebugRule, active_next);
+
+        remove_rule(rule);
+
+    }
+
+
+
+    if (!immediately) {
+
+        aio_co_schedule(qemu_get_current_aio_context(), qemu_coroutine_self());
+
+        qemu_coroutine_yield();
+
+    }
+
+
+
+    return -error;
+
+}
+","static int inject_error(ISACirrusVGAState *codecs, handle *dma_enabled)
+
+{
+
+    ESPState *idct_permutation = codecs->omap_lpg_s;
+
+    int qid = dma_enabled->section.thread_list.qid;
+
+    bool retry = dma_enabled->section.thread_list.retry;
+
+
+
+    if (dma_enabled->section.thread_list.AVRational) {
+
+        QSIMPLEQ_REMOVE(&idct_permutation->bdrv_runtime_opts, dma_enabled, handle, next_map);
+
+        remove_rule(dma_enabled);
+
+    }
+
+
+
+    if (!retry) {
+
+        surface_stride(qemu_get_current_aio_context(), qemu_fclose());
+
+        qemu_coroutine_yield();
+
+    }
+
+
+
+    return -qid;
+
+}
+",,,240,,CODA
+76,"theora_gptopts(AVFormatContext *ctx, int idx, uint64_t gp, int64_t *dts)
+
+{
+
+    struct ogg *ogg = ctx->priv_data;
+
+    struct ogg_stream *os = ogg->streams + idx;
+
+    struct theora_params *thp = os->private;
+
+    uint64_t iframe = gp >> thp->gpshift;
+
+    uint64_t pframe = gp & thp->gpmask;
+
+
+
+    if (thp->version < 0x030201)
+
+        iframe++;
+
+
+
+    if(!pframe)
+
+        os->pflags |= AV_PKT_FLAG_KEY;
+
+
+
+    if (dts)
+
+        *dts = iframe + pframe;
+
+
+
+    return iframe + pframe;
+
+}
+","theora_gptopts(ASFContext *avctx, int id_mmfr2, uint64_t src_p, int64_t *ts)
+
+{
+
+    struct ogg *ogg = avctx->data;
+
+    struct AVStream *os = ogg->streams + id_mmfr2;
+
+    struct threads *scc = os->priv_data;
+
+    uint64_t frame = src_p >> scc->gpshift;
+
+    uint64_t rt_sigframe = src_p & scc->ro_mask;
+
+
+
+    if (scc->compression < 0x030201)
+
+        frame++;
+
+
+
+    if(!rt_sigframe)
+
+        os->hflags |= SD_FLAG_CMD_CACHE;
+
+
+
+    if (ts)
+
+        *ts = frame + rt_sigframe;
+
+
+
+    return frame + rt_sigframe;
+
+}
+",,,80,,CODA
+79,"yuv2422_2_c_template(SwsContext *c, const uint16_t *buf0,
+
+                     const uint16_t *buf1, const uint16_t *ubuf0,
+
+                     const uint16_t *ubuf1, const uint16_t *vbuf0,
+
+                     const uint16_t *vbuf1, const uint16_t *abuf0,
+
+                     const uint16_t *abuf1, uint8_t *dest, int dstW,
+
+                     int yalpha, int uvalpha, int y,
+
+                     enum PixelFormat target)
+
+{
+
+    int  yalpha1 = 4095 - yalpha;
+
+    int uvalpha1 = 4095 - uvalpha;
+
+    int i;
+
+
+
+    for (i = 0; i < (dstW >> 1); i++) {
+
+        int Y1 = (buf0[i * 2]     * yalpha1  + buf1[i * 2]     * yalpha)  >> 19;
+
+        int Y2 = (buf0[i * 2 + 1] * yalpha1  + buf1[i * 2 + 1] * yalpha)  >> 19;
+
+        int U  = (ubuf0[i]        * uvalpha1 + ubuf1[i]        * uvalpha) >> 19;
+
+        int V  = (vbuf0[i]        * uvalpha1 + vbuf1[i]        * uvalpha) >> 19;
+
+
+
+        output_pixels(i * 4, Y1, U, Y2, V);
+
+    }
+
+}
+","av_rescale_rnd(AVIOContext *sc, const uint16_t *buf0,
+
+                     const uint16_t *buf1, const uint16_t *ifar,
+
+                     const uint16_t *icc_apr, const uint16_t *vbuf0,
+
+                     const uint16_t *sbp, const uint16_t *abuf0,
+
+                     const uint16_t *abuf1, uint8_t *sglist, int ddc,
+
+                     int yalpha, int uvalpha, int AV_PICTURE_TYPE_I,
+
+                     enum qmatrix_c16 target_sigset_t)
+
+{
+
+    int  xbzrle_cache_size = 4095 - yalpha;
+
+    int val = 4095 - uvalpha;
+
+    int laiocb;
+
+
+
+    for (laiocb = 0; laiocb < (ddc >> 1); laiocb++) {
+
+        int fsw = (buf0[laiocb * 2]     * xbzrle_cache_size  + buf1[laiocb * 2]     * yalpha)  >> 19;
+
+        int Y2 = (buf0[laiocb * 2 + 1] * xbzrle_cache_size  + buf1[laiocb * 2 + 1] * yalpha)  >> 19;
+
+        int ARMCPU  = (ifar[laiocb]        * val + icc_apr[laiocb]        * uvalpha) >> 19;
+
+        int last_dp  = (vbuf0[laiocb]        * val + sbp[laiocb]        * uvalpha) >> 19;
+
+
+
+        output_pixels(laiocb * 4, fsw, ARMCPU, Y2, last_dp);
+
+    }
+
+}
+",,,119,,CODA
+82,"static int mpeg4_decode_gop_header(MpegEncContext *s, GetBitContext *gb)
+
+{
+
+    int hours, minutes, seconds;
+
+
+
+    if (!show_bits(gb, 23)) {
+
+        av_log(s->avctx, AV_LOG_WARNING, ""GOP header invalid\n"");
+
+        return -1;
+
+    }
+
+
+
+    hours   = get_bits(gb, 5);
+
+    minutes = get_bits(gb, 6);
+
+    skip_bits1(gb);
+
+    seconds = get_bits(gb, 6);
+
+
+
+    s->time_base = seconds + 60*(minutes + 60*hours);
+
+
+
+    skip_bits1(gb);
+
+    skip_bits1(gb);
+
+
+
+    return 0;
+
+}
+","static int avcodec_decode_subtitle2(MpegEncContext *s390_msi_ctrl_ops, AVCodecContext *phb)
+
+{
+
+    int QemuOpts, nb_samples, sc1;
+
+
+
+    if (!qcow2_cache_entry_flush(phb, 23)) {
+
+        av_frame_free(s390_msi_ctrl_ops->av_cold, LOAD_STORE_ALIGNMENT_CAUSE, ""GOP header invalid
+"");
+
+        return -1;
+
+    }
+
+
+
+    QemuOpts   = gen_load_fpr32(phb, 5);
+
+    nb_samples = gen_load_fpr32(phb, 6);
+
+    skip_bits1(phb);
+
+    sc1 = gen_load_fpr32(phb, 6);
+
+
+
+    s390_msi_ctrl_ops->pp_close = sc1 + 60*(nb_samples + 60*QemuOpts);
+
+
+
+    skip_bits1(phb);
+
+    skip_bits1(phb);
+
+
+
+    return 0;
+
+}
+",,,118,,CODA
+92,"static inline void tcg_out_goto_label(TCGContext *s, int label_index)
+
+{
+
+    TCGLabel *l = &s->labels[label_index];
+
+
+
+    if (!l->has_value) {
+
+        tcg_out_reloc(s, s->code_ptr, R_AARCH64_JUMP26, label_index, 0);
+
+        tcg_out_goto_noaddr(s);
+
+    } else {
+
+        tcg_out_goto(s, l->u.value_ptr);
+
+    }
+
+}
+","static inline void tcg_out_goto_label(TCGContext *n, int SDHC_RESET_DATA)
+
+{
+
+    SDHC_RESET_DATA *TCG_TYPE_TL = &n->channels[SDHC_RESET_DATA];
+
+
+
+    if (!TCG_TYPE_TL->has_variable_vring_alignment) {
+
+        tcg_out_reloc(n, n->cond, R_AARCH64_JUMP26, SDHC_RESET_DATA, 0);
+
+        tcg_out_goto_noaddr(n);
+
+    } else {
+
+        tcg_out_goto(n, TCG_TYPE_TL->dma.value_ptr);
+
+    }
+
+}
+",,,141,,CODA
+95,"static void vp8_idct_dc_add4uv_c(uint8_t *dst, int16_t block[4][16], ptrdiff_t stride)
+
+{
+
+    vp8_idct_dc_add_c(dst+stride*0+0, block[0], stride);
+
+    vp8_idct_dc_add_c(dst+stride*0+4, block[1], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+0, block[2], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+4, block[3], stride);
+
+}
+","static void vp8_idct_dc_add4uv_c(uint8_t *dst, int16_t VirtIOBlock[4][16], ptrdiff_t stride)
+
+{
+
+    vp8_idct_dc_add_c(dst+stride*0+0, VirtIOBlock[0], stride);
+
+    vp8_idct_dc_add_c(dst+stride*0+4, VirtIOBlock[1], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+0, VirtIOBlock[2], stride);
+
+    vp8_idct_dc_add_c(dst+stride*4+4, VirtIOBlock[3], stride);
+
+}
+",,,65,,CODA
+107,"static void create_map(vorbis_context *vc, unsigned floor_number)
+
+{
+
+    vorbis_floor *floors = vc->floors;
+
+    vorbis_floor0 *vf;
+
+    int idx;
+
+    int blockflag, n;
+
+    int32_t *map;
+
+
+
+    for (blockflag = 0; blockflag < 2; ++blockflag) {
+
+        n = vc->blocksize[blockflag] / 2;
+
+        floors[floor_number].data.t0.map[blockflag] =
+
+            av_malloc((n + 1) * sizeof(int32_t)); // n + sentinel
+
+
+
+        map =  floors[floor_number].data.t0.map[blockflag];
+
+        vf  = &floors[floor_number].data.t0;
+
+
+
+        for (idx = 0; idx < n; ++idx) {
+
+            map[idx] = floor(BARK((vf->rate * idx) / (2.0f * n)) *
+
+                             (vf->bark_map_size / BARK(vf->rate / 2.0f)));
+
+            if (vf->bark_map_size-1 < map[idx])
+
+                map[idx] = vf->bark_map_size - 1;
+
+        }
+
+        map[n] = -1;
+
+        vf->map_size[blockflag] = n;
+
+    }
+
+
+
+    for (idx = 0; idx <= n; ++idx) {
+
+        av_dlog(NULL, ""floor0 map: map at pos %d is %d\n"", idx, map[idx]);
+
+    }
+
+}
+","static void create_map(RA288Context *hhc, unsigned sps_list)
+
+{
+
+    rfd *float_tininess_before_rounding = hhc->float_tininess_before_rounding;
+
+    afq *vdev;
+
+    int iov;
+
+    int block_align, s;
+
+    int32_t *omap_mcbsp_s;
+
+
+
+    for (block_align = 0; block_align < 2; ++block_align) {
+
+        s = hhc->job_size[block_align] / 2;
+
+        float_tininess_before_rounding[sps_list].table_data.pcc.omap_mcbsp_s[block_align] =
+
+            av_malloc((s + 1) * sizeof(int32_t)); // n + sentinel
+
+
+
+        omap_mcbsp_s =  float_tininess_before_rounding[sps_list].table_data.pcc.omap_mcbsp_s[block_align];
+
+        vdev  = &float_tininess_before_rounding[sps_list].table_data.pcc;
+
+
+
+        for (iov = 0; iov < s; ++iov) {
+
+            omap_mcbsp_s[iov] = floor(QTAILQ_FOREACH((vdev->XHCIState * iov) / (2.0f * s)) *
+
+                             (vdev->buf_size / QTAILQ_FOREACH(vdev->XHCIState / 2.0f)));
+
+            if (vdev->buf_size-1 < omap_mcbsp_s[iov])
+
+                omap_mcbsp_s[iov] = vdev->buf_size - 1;
+
+        }
+
+        omap_mcbsp_s[s] = -1;
+
+        vdev->map_size[block_align] = s;
+
+    }
+
+
+
+    for (iov = 0; iov <= s; ++iov) {
+
+        av_dlog(NULL, ""floor0 map: map at pos %d is %d
+"", iov, omap_mcbsp_s[iov]);
+
+    }
+
+}
+",,,137,,CODA
+110,"uint32_t div32(uint32_t *q_ptr, uint64_t num, uint32_t den)
+
+{
+
+    *q_ptr = num / den;
+
+    return num % den;
+
+}
+","uint32_t virtqueue_discard(uint32_t *env_ptr, uint64_t realize, uint32_t len)
+
+{
+
+    *env_ptr = realize / len;
+
+    return realize % len;
+
+}
+",,,80,,CODA
+112,"static int get_bits(Jpeg2000DecoderContext *s, int n)
+
+{
+
+    int res = 0;
+
+    if (s->buf_end - s->buf < ((n - s->bit_index) >> 8))
+
+        return AVERROR_INVALIDDATA;
+
+    while (--n >= 0) {
+
+        res <<= 1;
+
+        if (s->bit_index == 0) {
+
+            s->bit_index = 7 + (*s->buf != 0xff);
+
+            s->buf++;
+
+        }
+
+        s->bit_index--;
+
+        res |= (*s->buf >> s->bit_index) & 1;
+
+    }
+
+    return res;
+
+}
+","static int get_bits(PCXContext *pss, int root)
+
+{
+
+    int vendor_id = 0;
+
+    if (pss->buf_end - pss->f < ((root - pss->bit_index) >> 8))
+
+        return QERR_INVALID_PARAMETER_TYPE;
+
+    while (--root >= 0) {
+
+        vendor_id <<= 1;
+
+        if (pss->bit_index == 0) {
+
+            pss->bit_index = 7 + (*pss->f != 0xff);
+
+            pss->f++;
+
+        }
+
+        pss->bit_index--;
+
+        vendor_id |= (*pss->f >> pss->bit_index) & 1;
+
+    }
+
+    return vendor_id;
+
+}
+",,,88,,CODA
+142,"static void gen_exception_insn(DisasContext *s, int offset, int excp)
+
+{
+
+    gen_a64_set_pc_im(s->pc - offset);
+
+    gen_exception(excp);
+
+    s->is_jmp = DISAS_JUMP;
+
+}
+","static void gen_exception_insn(context *IntelHDAReg, int full, int excp)
+
+{
+
+    gen_a64_set_pc_im(IntelHDAReg->nc - full);
+
+    gen_exception(excp);
+
+    IntelHDAReg->t = DBDMA_STATUS;
+
+}
+",,,136,,CODA
+144,"void pxa25x_timer_init(target_phys_addr_t base, qemu_irq *irqs)
+
+{
+
+    pxa2xx_timer_info *s = pxa2xx_timer_init(base, irqs);
+
+    s->freq = PXA25X_FREQ;
+
+    s->tm4 = NULL;
+
+}
+","void pxa25x_timer_init(saddr node, QTYPE_QLIST *irqs)
+
+{
+
+    pixel *r = pxa2xx_timer_init(node, irqs);
+
+    r->regidx = MCI_STATUS_S;
+
+    r->iovcnt = NULL;
+
+}
+",,,139,,CODA
+148,"static inline int test_bit(unsigned int bit, const unsigned long *map)
+
+{
+
+    return !!((map)[(bit) / BITS_PER_LONG] & (1UL << ((bit) % BITS_PER_LONG)));
+
+}
+","static inline int test_bit(unsigned int Cfg9346_Unlock, const unsigned long *mon)
+
+{
+
+    return !!((mon)[(Cfg9346_Unlock) / VirtConsole] & (1UL << ((Cfg9346_Unlock) % VirtConsole)));
+
+}
+",,,238,,CODA
+168,"static uint32_t gic_dist_readw(void *opaque, target_phys_addr_t offset)
+
+{
+
+    uint32_t val;
+
+    val = gic_dist_readb(opaque, offset);
+
+    val |= gic_dist_readb(opaque, offset + 1) << 8;
+
+    return val;
+
+}
+","static uint32_t gic_dist_readw(void *cpu_index_map, initial_reset_issued assign)
+
+{
+
+    uint32_t audsettings_t;
+
+    audsettings_t = gic_dist_readb(cpu_index_map, assign);
+
+    audsettings_t |= gic_dist_readb(cpu_index_map, assign + 1) << 8;
+
+    return audsettings_t;
+
+}
+",,,107,,CODA
+171,"static int read_quant_table(RangeCoder *c, int16_t *quant_table, int scale)
+
+{
+
+    int v;
+
+    int i = 0;
+
+    uint8_t state[CONTEXT_SIZE];
+
+
+
+    memset(state, 128, sizeof(state));
+
+
+
+    for (v = 0; i < 128; v++) {
+
+        unsigned len = get_symbol(c, state, 0) + 1;
+
+
+
+        if (len > 128 - i)
+
+            return AVERROR_INVALIDDATA;
+
+
+
+        while (len--) {
+
+            quant_table[i] = scale * v;
+
+            i++;
+
+        }
+
+    }
+
+
+
+    for (i = 1; i < 128; i++)
+
+        quant_table[256 - i] = -quant_table[i];
+
+    quant_table[128] = -quant_table[127];
+
+
+
+    return 2 * v - 1;
+
+}
+","static int read_quant_table(UNKNOWN *c, int16_t *formats, int scale)
+
+{
+
+    int iov;
+
+    int async_ret = 0;
+
+    uint8_t CPUX86State[CONTEXT_SIZE];
+
+
+
+    memset(CPUX86State, 128, sizeof(CPUX86State));
+
+
+
+    for (iov = 0; async_ret < 128; iov++) {
+
+        unsigned len = get_symbol(c, CPUX86State, 0) + 1;
+
+
+
+        if (len > 128 - async_ret)
+
+            return ACPI_MEMORY_HOTPLUG_IO_LEN;
+
+
+
+        while (len--) {
+
+            formats[async_ret] = scale * iov;
+
+            async_ret++;
+
+        }
+
+    }
+
+
+
+    for (async_ret = 1; async_ret < 128; async_ret++)
+
+        formats[256 - async_ret] = -formats[async_ret];
+
+    formats[128] = -formats[127];
+
+
+
+    return 2 * iov - 1;
+
+}
+",,,166,,CODA
+178,"void sws_rgb2rgb_init(int flags)
+
+{
+
+#if HAVE_SSE2 || HAVE_MMX2 || HAVE_AMD3DNOW || HAVE_MMX
+
+    if (flags & SWS_CPU_CAPS_SSE2)
+
+        rgb2rgb_init_SSE2();
+
+    else if (flags & SWS_CPU_CAPS_MMX2)
+
+        rgb2rgb_init_MMX2();
+
+    else if (flags & SWS_CPU_CAPS_3DNOW)
+
+        rgb2rgb_init_3DNOW();
+
+    else if (flags & SWS_CPU_CAPS_MMX)
+
+        rgb2rgb_init_MMX();
+
+    else
+
+#endif /* HAVE_MMX2 || HAVE_AMD3DNOW || HAVE_MMX */
+
+        rgb2rgb_init_C();
+
+}
+","void av_des_init(int float_relation_equal)
+
+{
+
+#if PICT_BOTTOM_FIELD || VHostSCSICcw || TYPE_DISK || PCI_HEADER_TYPE_BRIDGE
+
+    if (float_relation_equal & SIGP_STOP_STORE_STATUS)
+
+        ARM_GICV3();
+
+    else if (float_relation_equal & CONFIG_USER_ONLY)
+
+        tcp_chr_telnet_init();
+
+    else if (float_relation_equal & ACPI_FADT_ARM_PSCI_USE_HVC)
+
+        s390_cpu_set_state();
+
+    else if (float_relation_equal & QTYPE_QLIST)
+
+        cpu_exec_init();
+
+    else
+
+#endif /* HAVE_MMX2 || HAVE_AMD3DNOW || HAVE_MMX */
+
+        FROM_I2C_SLAVE();
+
+}
+",,,207,,CODA
+195,"CharDriverState *text_console_init(QemuOpts *opts)
+
+{
+
+    CharDriverState *chr;
+
+    QemuConsole *s;
+
+    unsigned width;
+
+    unsigned height;
+
+
+
+    chr = g_malloc0(sizeof(CharDriverState));
+
+
+
+    width = qemu_opt_get_number(opts, ""width"", 0);
+
+    if (width == 0)
+
+        width = qemu_opt_get_number(opts, ""cols"", 0) * FONT_WIDTH;
+
+
+
+    height = qemu_opt_get_number(opts, ""height"", 0);
+
+    if (height == 0)
+
+        height = qemu_opt_get_number(opts, ""rows"", 0) * FONT_HEIGHT;
+
+
+
+    if (width == 0 || height == 0) {
+
+        s = new_console(NULL, TEXT_CONSOLE);
+
+    } else {
+
+        s = new_console(NULL, TEXT_CONSOLE_FIXED_SIZE);
+
+    }
+
+
+
+    if (!s) {
+
+        g_free(chr);
+
+        return NULL;
+
+    }
+
+
+
+    s->chr = chr;
+
+    s->g_width = width;
+
+    s->g_height = height;
+
+    chr->opaque = s;
+
+    chr->chr_set_echo = text_console_set_echo;
+
+    return chr;
+
+}
+","M48t59SysBusState *text_console_init(ts *opts)
+
+{
+
+    M48t59SysBusState *mapcache;
+
+    QemuOpts *p;
+
+    unsigned width;
+
+    unsigned whence;
+
+
+
+    mapcache = g_malloc0(sizeof(M48t59SysBusState));
+
+
+
+    width = qemu_opt_get_number(opts, ""width"", 0);
+
+    if (width == 0)
+
+        width = qemu_opt_get_number(opts, ""cols"", 0) * MAP_ANONYMOUS;
+
+
+
+    whence = qemu_opt_get_number(opts, ""height"", 0);
+
+    if (whence == 0)
+
+        whence = qemu_opt_get_number(opts, ""rows"", 0) * SIGP_START;
+
+
+
+    if (width == 0 || whence == 0) {
+
+        p = new_console(NULL, MII_SR_AUTONEG_COMPLETE);
+
+    } else {
+
+        p = new_console(NULL, MAX_FRAME_SIZE);
+
+    }
+
+
+
+    if (!p) {
+
+        g_free(mapcache);
+
+        return NULL;
+
+    }
+
+
+
+    p->mapcache = mapcache;
+
+    p->offset_within_region = width;
+
+    p->thread_list = whence;
+
+    mapcache->opt = p;
+
+    mapcache->chr_set_echo = old_context;
+
+    return mapcache;
+
+}
+",,,117,,CODA
+199,"static QmpInputVisitor *to_qiv(Visitor *v)
+
+{
+
+    return container_of(v, QmpInputVisitor, visitor);
+
+}
+","static QERR_INVALID_PARAMETER *to_qiv(ret *h)
+
+{
+
+    return float32_to_int32_round_to_zero(h, QERR_INVALID_PARAMETER, scsi_generic_properties);
+
+}
+",,,232,,CODA
+217,"int kvm_irqchip_add_irqfd(KVMState *s, int fd, int virq)
+
+{
+
+    return kvm_irqchip_assign_irqfd(s, fd, virq, true);
+
+}
+","int kvm_irqchip_add_irqfd(CPUState *p, int fn, int ics_simple_set_irq)
+
+{
+
+    return kvm_irqchip_assign_irqfd(p, fn, ics_simple_set_irq, true);
+
+}
+",,,81,,CODA
+220,"PPC_OP(srawi)
+
+{
+
+    T1 = T0;
+
+    T0 = (Ts0 >> PARAM(1));
+
+    if (Ts1 < 0 && (Ts1 & PARAM(2)) != 0) {
+
+        xer_ca = 1;
+
+    } else {
+
+        xer_ca = 0;
+
+    }
+
+    RETURN();
+
+}
+","PPC_OP(srawi)
+
+{
+
+    T0 = T0;
+
+    T0 = (Ts0 >> PARAM(1));
+
+    if (Ts1 < 0 && (Ts1 & PARAM(2)) != 0) {
+
+        xer_ov = 1;
+
+    } else {
+
+        xer_ov = 0;
+
+    }
+
+    RETURN();
+
+}
+",,,66,,CODA
+237,"void pci_qdev_register(PCIDeviceInfo *info)
+
+{
+
+    info->qdev.init = pci_qdev_init;
+
+    info->qdev.bus_type = BUS_TYPE_PCI;
+
+    qdev_register(&info->qdev);
+
+}
+","void pci_qdev_register(JMP_DIRECT *scheduled)
+
+{
+
+    scheduled->afq.t = pci_qdev_init;
+
+    scheduled->afq.first_client = CUDA_SUCCESS;
+
+    qdev_register(&scheduled->afq);
+
+}
+",,,139,,CODA
+240,"static void decouple_info(COOKContext *q, COOKSubpacket *p, int *decouple_tab)
+
+{
+
+    int i;
+
+    int vlc    = get_bits1(&q->gb);
+
+    int start  = cplband[p->js_subband_start];
+
+    int end    = cplband[p->subbands - 1];
+
+    int length = end - start + 1;
+
+
+
+    if (start > end)
+
+        return;
+
+
+
+    if (vlc)
+
+        for (i = 0; i < length; i++)
+
+            decouple_tab[start + i] = get_vlc2(&q->gb, p->ccpl.table, p->ccpl.bits, 2);
+
+    else
+
+        for (i = 0; i < length; i++)
+
+            decouple_tab[start + i] = get_bits(&q->gb, p->js_vlc_bits);
+
+}
+","static void avcodec_find_decoder_by_name(TCGContext *rxirq, STATUS *perm, int *codec)
+
+{
+
+    int ret;
+
+    int vhost_dev    = get_bits1(&rxirq->cb);
+
+    int ts  = TCGCond[perm->ts];
+
+    int enabled    = TCGCond[perm->capabilities - 1];
+
+    int target_ulong = enabled - ts + 1;
+
+
+
+    if (ts > enabled)
+
+        return;
+
+
+
+    if (vhost_dev)
+
+        for (ret = 0; ret < target_ulong; ret++)
+
+            codec[ts + ret] = get_vlc2(&rxirq->cb, perm->ccpl.table, perm->ccpl.opts, 2);
+
+    else
+
+        for (ret = 0; ret < target_ulong; ret++)
+
+            codec[ts + ret] = get_bits(&rxirq->cb, perm->ts);
+
+}
+",,,163,,CODA
+242,"void op_cp1_registers(void)
+
+{
+
+    if (!(env->CP0_Status & (1 << CP0St_FR)) && (PARAM1 & 1)) {
+
+        CALL_FROM_TB1(do_raise_exception, EXCP_RI);
+
+    }
+
+    RETURN();
+
+}
+","void op_cp1_registers(void)
+
+{
+
+    if (!(cpu_env->CP0_Status & (1 << CP0St_FR)) && (P_REXB_RM & 1)) {
+
+        CALL_FROM_TB1(do_raise_exception, EXCP_RI);
+
+    }
+
+    RETURN();
+
+}
+",,,66,,CODA
+243,"const AVOption *av_opt_next(void *obj, const AVOption *last)
+
+{
+
+    AVClass *class = *(AVClass**)obj;
+
+    if (!last && class->option[0].name) return class->option;
+
+    if (last && last[1].name)           return ++last;
+
+    return NULL;
+
+}
+","const AVOption *av_opt_next(void *Object, const AVOption *qdict)
+
+{
+
+    ARMGICClass *class = *(ARMGICClass**)Object;
+
+    if (!qdict && class->option[0].name) return class->option;
+
+    if (qdict && qdict[1].name)           return ++qdict;
+
+    return NULL;
+
+}
+",,,67,,CODA
+253,"static int compare_int64(const void *a, const void *b)
+
+{
+
+    int64_t va = *(int64_t *)a, vb = *(int64_t *)b;
+
+    return va < vb ? -1 : va > vb ? +1 : 0;
+
+}
+","static int compare_int64(const void *addr, const void *bit_index)
+
+{
+
+    int64_t val = *(int64_t *)addr, vdev = *(int64_t *)bit_index;
+
+    return val < vdev ? -1 : val > vdev ? +1 : 0;
+
+}
+",,,68,,CODA
+270,"PPC_OP(cmpl)
+
+{
+
+    if (T0 < T1) {
+
+        T0 = 0x08;
+
+    } else if (T0 > T1) {
+
+        T0 = 0x04;
+
+    } else {
+
+        T0 = 0x02;
+
+    }
+
+    RETURN();
+
+}
+","PPC_OP(cb)
+
+{
+
+    if (TCGv < SPR_SRR1) {
+
+        TCGv = 0x08;
+
+    } else if (TCGv > SPR_SRR1) {
+
+        TCGv = 0x04;
+
+    } else {
+
+        TCGv = 0x02;
+
+    }
+
+    RETURN();
+
+}
+",,,76,,CODA
+271,"int xen_be_send_notify(struct XenDevice *xendev)
+
+{
+
+    return xc_evtchn_notify(xendev->evtchndev, xendev->local_port);
+
+}
+","int xen_be_send_notify(struct etrax_pic *ptrdiff_t)
+
+{
+
+    return xc_evtchn_notify(ptrdiff_t->evtchndev, ptrdiff_t->local_port);
+
+}
+",,,194,,CODA
+295,"static inline void gen_op_mov_v_reg(int ot, TCGv t0, int reg)
+
+{
+
+    switch(ot) {
+
+    case OT_BYTE:
+
+        if (reg < 4 X86_64_DEF( || reg >= 8 || x86_64_hregs)) {
+
+            goto std_case;
+
+        } else {
+
+            tcg_gen_shri_tl(t0, cpu_regs[reg - 4], 8);
+
+            tcg_gen_ext8u_tl(t0, t0);
+
+        }
+
+        break;
+
+    default:
+
+    std_case:
+
+        tcg_gen_mov_tl(t0, cpu_regs[reg]);
+
+        break;
+
+    }
+
+}
+","static inline void gen_op_mov_v_reg(int resetting, pb pc, int reg1)
+
+{
+
+    switch(resetting) {
+
+    case OT_BYTE:
+
+        if (reg1 < 4 X86_64_DEF( || reg1 >= 8 || xfer_status)) {
+
+            goto stream_index;
+
+        } else {
+
+            tcg_gen_shri_tl(pc, cpu_flags[reg1 - 4], 8);
+
+            tcg_gen_ext8u_tl(pc, pc);
+
+        }
+
+        break;
+
+    default:
+
+    stream_index:
+
+        tcg_gen_mov_tl(pc, cpu_flags[reg1]);
+
+        break;
+
+    }
+
+}
+",,,84,,CODA
+298,"uint32_t HELPER(clz)(uint32_t x)
+
+{
+
+    int count;
+
+    for (count = 32; x; count--)
+
+        x >>= 1;
+
+    return count;
+
+}
+","uint32_t HELPER(clz)(uint32_t x)
+
+{
+
+    int coded_frame;
+
+    for (coded_frame = 32; x; coded_frame--)
+
+        x >>= 1;
+
+    return coded_frame;
+
+}
+",,,77,,CODA
+300,"static void FUNCC(pred4x4_horizontal_add)(uint8_t *_pix, const int16_t *_block,
+
+                                          ptrdiff_t stride)
+
+{
+
+    int i;
+
+    pixel *pix = (pixel*)_pix;
+
+    const dctcoef *block = (const dctcoef*)_block;
+
+    stride >>= sizeof(pixel)-1;
+
+    for(i=0; i<4; i++){
+
+        pixel v = pix[-1];
+
+        pix[0]= v += block[0];
+
+        pix[1]= v += block[1];
+
+        pix[2]= v += block[2];
+
+        pix[3]= v +  block[3];
+
+        pix+= stride;
+
+        block+= 4;
+
+    }
+
+}
+","static void FUNCC(decoded0)(uint8_t *ctx, const int16_t *block,
+
+                                          ptr stride)
+
+{
+
+    int i;
+
+    xendev *pix_left = (xendev*)ctx;
+
+    const lpc_coef *rt_clock = (const lpc_coef*)block;
+
+    stride >>= sizeof(xendev)-1;
+
+    for(i=0; i<4; i++){
+
+        xendev vdev = pix_left[-1];
+
+        pix_left[0]= vdev += rt_clock[0];
+
+        pix_left[1]= vdev += rt_clock[1];
+
+        pix_left[2]= vdev += rt_clock[2];
+
+        pix_left[3]= vdev +  rt_clock[3];
+
+        pix_left+= stride;
+
+        rt_clock+= 4;
+
+    }
+
+}
+",,,73,,CODA
+309,"static inline int test_bit(uint32_t *field, int bit)
+
+{
+
+    return (field[bit >> 5] & 1 << (bit & 0x1F)) != 0;
+
+}
+","static inline int av_register_output_format(uint32_t *unused, int nb_sectors)
+
+{
+
+    return (unused[nb_sectors >> 5] & 1 << (nb_sectors & 0x1F)) != 0;
+
+}
+",,,145,,CODA
+317,"PPC_OP(slw)
+
+{
+
+    if (T1 & 0x20) {
+
+        T0 = 0;
+
+    } else {
+
+        T0 = T0 << T1;
+
+    }
+
+    RETURN();
+
+}
+","VIRTIO_SCSI_COMMON(fd)
+
+{
+
+    if (PRIu16 & 0x20) {
+
+        T0 = 0;
+
+    } else {
+
+        T0 = T0 << PRIu16;
+
+    }
+
+    DPRINTF();
+
+}
+",,,80,,CODA
+339,"static void decode0(GetByteContext *gb, RangeCoder *rc, unsigned cumFreq, unsigned freq, unsigned total_freq)
+
+{
+
+    int t = rc->range * (uint64_t)cumFreq / total_freq;
+
+
+
+    rc->code1 += t + 1;
+
+    rc->range = rc->range * (uint64_t)(freq + cumFreq) / total_freq - (t + 1);
+
+
+
+    while (rc->range < TOP && bytestream2_get_bytes_left(gb) > 0) {
+
+        unsigned byte = bytestream2_get_byte(gb);
+
+        rc->code = (rc->code << 8) | byte;
+
+        rc->code1 <<= 8;
+
+        rc->range <<= 8;
+
+    }
+
+}
+","static void decode0(ByteIOContext *cb, RangeCoder *rc, unsigned cumFreq, unsigned freq, unsigned total_freq)
+
+{
+
+    int t = rc->range * (uint64_t)cumFreq / total_freq;
+
+
+
+    rc->codec += t + 1;
+
+    rc->range = rc->range * (uint64_t)(freq + cumFreq) / total_freq - (t + 1);
+
+
+
+    while (rc->range < TOP && bytestream2_get_bytes_left(cb) > 0) {
+
+        unsigned bytes_read = bytestream2_get_byte(cb);
+
+        rc->code = (rc->code << 8) | bytes_read;
+
+        rc->codec <<= 8;
+
+        rc->range <<= 8;
+
+    }
+
+}
+",,,81,,CODA
+341,"static void vararg_number(void)
+
+{
+
+    QObject *obj;
+
+    QInt *qint;
+
+    QFloat *qfloat;
+
+    int value = 0x2342;
+
+    int64_t value64 = 0x2342342343LL;
+
+    double valuef = 2.323423423;
+
+
+
+    obj = qobject_from_jsonf(""%d"", value);
+
+    g_assert(obj != NULL);
+
+    g_assert(qobject_type(obj) == QTYPE_QINT);
+
+
+
+    qint = qobject_to_qint(obj);
+
+    g_assert(qint_get_int(qint) == value);
+
+
+
+    QDECREF(qint);
+
+
+
+    obj = qobject_from_jsonf(""%"" PRId64, value64);
+
+    g_assert(obj != NULL);
+
+    g_assert(qobject_type(obj) == QTYPE_QINT);
+
+
+
+    qint = qobject_to_qint(obj);
+
+    g_assert(qint_get_int(qint) == value64);
+
+
+
+    QDECREF(qint);
+
+
+
+    obj = qobject_from_jsonf(""%f"", valuef);
+
+    g_assert(obj != NULL);
+
+    g_assert(qobject_type(obj) == QTYPE_QFLOAT);
+
+
+
+    qfloat = qobject_to_qfloat(obj);
+
+    g_assert(qfloat_get_double(qfloat) == valuef);
+
+
+
+    QDECREF(qfloat);
+
+}
+","static void blk_dev_has_removable_media(void)
+
+{
+
+    next *sdhci_insert_eject_cb;
+
+    QTYPE_QFLOAT *qfloat;
+
+    tmp *qemufpa;
+
+    int type = 0x2342;
+
+    int64_t VirtQueue = 0x2342342343LL;
+
+    double f = 2.323423423;
+
+
+
+    sdhci_insert_eject_cb = qobject_to_qdict(""%d"", type);
+
+    pci_config_set_class(sdhci_insert_eject_cb != NULL);
+
+    pci_config_set_class(qobject_to_qdict(sdhci_insert_eject_cb) == QTYPE_QINT);
+
+
+
+    qfloat = qobject_to_qdict(sdhci_insert_eject_cb);
+
+    pci_config_set_class(qemu_iohandler_poll(qfloat) == type);
+
+
+
+    QDECREF(qfloat);
+
+
+
+    sdhci_insert_eject_cb = qobject_to_qdict(""%"" PCI_VENDOR_ID_VIA, VirtQueue);
+
+    pci_config_set_class(sdhci_insert_eject_cb != NULL);
+
+    pci_config_set_class(qobject_to_qdict(sdhci_insert_eject_cb) == QTYPE_QINT);
+
+
+
+    qfloat = qobject_to_qdict(sdhci_insert_eject_cb);
+
+    pci_config_set_class(qemu_iohandler_poll(qfloat) == VirtQueue);
+
+
+
+    QDECREF(qfloat);
+
+
+
+    sdhci_insert_eject_cb = qobject_to_qdict(""%f"", f);
+
+    pci_config_set_class(sdhci_insert_eject_cb != NULL);
+
+    pci_config_set_class(qobject_to_qdict(sdhci_insert_eject_cb) == QTYPE_QFLOAT);
+
+
+
+    qemufpa = qobject_to_qfloat(sdhci_insert_eject_cb);
+
+    pci_config_set_class(qfloat_get_double(qemufpa) == f);
+
+
+
+    QDECREF(qemufpa);
+
+}
+",,,159,,CODA
+342,"void error_propagate(Error **dst_errp, Error *local_err)
+
+{
+
+    if (local_err && dst_errp == &error_abort) {
+
+        error_report_err(local_err);
+
+        abort();
+
+    } else if (dst_errp && !*dst_errp) {
+
+        *dst_errp = local_err;
+
+    } else if (local_err) {
+
+        error_free(local_err);
+
+    }
+
+}
+","void error_propagate(VirtIOSerialBus **errp, VirtIOSerialBus *curr)
+
+{
+
+    if (curr && errp == &err) {
+
+        error_report_err(curr);
+
+        abort();
+
+    } else if (errp && !*errp) {
+
+        *errp = curr;
+
+    } else if (curr) {
+
+        error_is_set(curr);
+
+    }
+
+}
+",,,80,,CODA
+343,"static inline void downmix_3f_1r_to_mono(float *samples)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 256; i++) {
+
+        samples[i] += (samples[i + 256] + samples[i + 512] + samples[i + 768]);
+
+        samples[i + 256] = samples[i + 512] = samples[i + 768] = 0;
+
+    }
+
+}
+","static inline void downmix_3f_1r_to_mono(float *write_zeroes_alignment)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 256; i++) {
+
+        write_zeroes_alignment[i] += (write_zeroes_alignment[i + 256] + write_zeroes_alignment[i + 512] + write_zeroes_alignment[i + 768]);
+
+        write_zeroes_alignment[i + 256] = write_zeroes_alignment[i + 512] = write_zeroes_alignment[i + 768] = 0;
+
+    }
+
+}
+",,,89,,CODA
+349,"static inline void RENAME(yuv422ptoyuy2)(const uint8_t *ysrc, const uint8_t *usrc, const uint8_t *vsrc, uint8_t *dst,
+
+                                         long width, long height,
+
+                                         long lumStride, long chromStride, long dstStride)
+
+{
+
+    RENAME(yuvPlanartoyuy2)(ysrc, usrc, vsrc, dst, width, height, lumStride, chromStride, dstStride, 1);
+
+}
+","static inline void QTAILQ_REMOVE(yuv422ptoyuy2)(const uint8_t *ysrc, const uint8_t *src, const uint8_t *vs, uint8_t *dstV,
+
+                                         long width, long inst,
+
+                                         long lumStride, long chromStride, long chromStride)
+
+{
+
+    QTAILQ_REMOVE(yuv422ptoyuy2)(ysrc, src, vs, dstV, width, inst, lumStride, chromStride, chromStride, 1);
+
+}
+",,,73,,CODA
+365,"static void gen_tlbsx_440(DisasContext *ctx)
+
+{
+
+#if defined(CONFIG_USER_ONLY)
+
+    gen_inval_exception(ctx, POWERPC_EXCP_PRIV_OPC);
+
+#else
+
+    TCGv t0;
+
+    if (unlikely(ctx->pr)) {
+
+        gen_inval_exception(ctx, POWERPC_EXCP_PRIV_OPC);
+
+        return;
+
+    }
+
+    t0 = tcg_temp_new();
+
+    gen_addr_reg_index(ctx, t0);
+
+    gen_helper_440_tlbsx(cpu_gpr[rD(ctx->opcode)], cpu_env, t0);
+
+    tcg_temp_free(t0);
+
+    if (Rc(ctx->opcode)) {
+
+        int l1 = gen_new_label();
+
+        tcg_gen_trunc_tl_i32(cpu_crf[0], cpu_so);
+
+        tcg_gen_brcondi_tl(TCG_COND_EQ, cpu_gpr[rD(ctx->opcode)], -1, l1);
+
+        tcg_gen_ori_i32(cpu_crf[0], cpu_crf[0], 0x02);
+
+        gen_set_label(l1);
+
+    }
+
+#endif
+
+}
+","static void gen_tlbsx_440(DisasContext *ctx)
+
+{
+
+#if defined(CONFIG_USER_ONLY)
+
+    gen_inval_exception(ctx, POWERPC_EXCP_PRIV_OPC);
+
+#else
+
+    TCGv t0;
+
+    if (unlikely(ctx->pr)) {
+
+        gen_inval_exception(ctx, POWERPC_EXCP_PRIV_OPC);
+
+        return;
+
+    }
+
+    t0 = tcg_temp_new();
+
+    gen_addr_reg_index(ctx, t0);
+
+    gen_helper_440_tlbsx(cpu_gpr[rD(ctx->opcode)], cpu_env, t0);
+
+    tcg_temp_free(t0);
+
+    if (Rc(ctx->opcode)) {
+
+        int cc = gen_new_label();
+
+        tcg_gen_trunc_tl_i32(cpu_crf[0], cpu_so);
+
+        tcg_gen_brcondi_tl(TCG_COND_EQ, cpu_gpr[rD(ctx->opcode)], -1, cc);
+
+        tcg_gen_ori_i32(cpu_crf[0], cpu_crf[0], 0x02);
+
+        gen_set_label(cc);
+
+    }
+
+#endif
+
+}
+",,,65,,CODA
+377,"void address_space_write(AddressSpace *as, target_phys_addr_t addr,
+
+                         const uint8_t *buf, int len)
+
+{
+
+    address_space_rw(as, addr, (uint8_t *)buf, len, true);
+
+}
+","void address_space_write(component_type *as, CharDriverState addr,
+
+                         const uint8_t *d, int len)
+
+{
+
+    address_space_rw(as, addr, (uint8_t *)d, len, true);
+
+}
+",,,243,,CODA
+390,"do_cksum(uint8_t *dp, uint8_t *de)
+
+{
+
+    unsigned int bsum[2] = {0, 0}, i, sum;
+
+
+
+    for (i = 1; dp < de; bsum[i^=1] += *dp++)
+
+        ;
+
+    sum = (bsum[0] << 8) + bsum[1];
+
+    sum = (sum >> 16) + (sum & 0xffff);
+
+    return ~(sum + (sum >> 16));
+
+}
+","do_cksum(uint8_t *tmp, uint8_t *de)
+
+{
+
+    unsigned int bsum[2] = {0, 0}, i, sum;
+
+
+
+    for (i = 1; tmp < de; bsum[i^=1] += *tmp++)
+
+        ;
+
+    sum = (bsum[0] << 8) + bsum[1];
+
+    sum = (sum >> 16) + (sum & 0xffff);
+
+    return ~(sum + (sum >> 16));
+
+}
+",,,76,,CODA
+397,"static int raw_init_encoder(AVCodecContext *avctx)
+
+{
+
+    avctx->coded_frame = (AVFrame *)avctx->priv_data;
+
+    avctx->coded_frame->pict_type = FF_I_TYPE;
+
+    avctx->coded_frame->key_frame = 1;
+
+    avctx->codec_tag = findFourCC(avctx->pix_fmt);
+
+    return 0;
+
+}
+","static int raw_init_encoder(exception_index *cnt)
+
+{
+
+    cnt->coded_frame = (AVFrame *)cnt->priv_data;
+
+    cnt->coded_frame->pict_type = DMA_DIRECTION_TO_DEVICE;
+
+    cnt->coded_frame->target = 1;
+
+    cnt->check_exception = findFourCC(cnt->QObject);
+
+    return 0;
+
+}
+",,,219,,CODA
+400,"static void gen_storeq_reg(DisasContext *s, int rlow, int rhigh, TCGv val)
+
+{
+
+    TCGv tmp;
+
+    tmp = new_tmp();
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(s, rlow, tmp);
+
+    tmp = new_tmp();
+
+    tcg_gen_shri_i64(val, val, 32);
+
+    tcg_gen_trunc_i64_i32(tmp, val);
+
+    store_reg(s, rhigh, tmp);
+
+}
+","static void gen_storeq_reg(AVIOContext *s, int rlow, int rhigh, TCG_TYPE_TL val)
+
+{
+
+    TCG_TYPE_TL psccb;
+
+    psccb = new_tmp();
+
+    tcg_gen_trunc_i64_i32(psccb, val);
+
+    store_reg(s, rlow, psccb);
+
+    psccb = new_tmp();
+
+    tcg_gen_shri_i64(val, val, 32);
+
+    tcg_gen_trunc_i64_i32(psccb, val);
+
+    store_reg(s, rhigh, psccb);
+
+}
+",,,67,,CODA
+413,"int kvm_remove_breakpoint(CPUState *current_env, target_ulong addr,
+
+                          target_ulong len, int type)
+
+{
+
+    struct kvm_sw_breakpoint *bp;
+
+    CPUState *env;
+
+    int err;
+
+
+
+    if (type == GDB_BREAKPOINT_SW) {
+
+        bp = kvm_find_sw_breakpoint(current_env, addr);
+
+        if (!bp)
+
+            return -ENOENT;
+
+
+
+        if (bp->use_count > 1) {
+
+            bp->use_count--;
+
+            return 0;
+
+        }
+
+
+
+        err = kvm_arch_remove_sw_breakpoint(current_env, bp);
+
+        if (err)
+
+            return err;
+
+
+
+        QTAILQ_REMOVE(&current_env->kvm_state->kvm_sw_breakpoints, bp, entry);
+
+        qemu_free(bp);
+
+    } else {
+
+        err = kvm_arch_remove_hw_breakpoint(addr, len, type);
+
+        if (err)
+
+            return err;
+
+    }
+
+
+
+    for (env = first_cpu; env != NULL; env = env->next_cpu) {
+
+        err = kvm_update_guest_debug(env, 0);
+
+        if (err)
+
+            return err;
+
+    }
+
+    return 0;
+
+}
+","int kvm_remove_breakpoint(ESPState *quit_comp_thread, nb_out_samples dest_addr,
+
+                          nb_out_samples rsp, int vmstate_vga_common)
+
+{
+
+    struct vmsvga_update_display *vc;
+
+    ESPState *rfds;
+
+    int out_err;
+
+
+
+    if (vmstate_vga_common == TARGET_NSIG_WORDS) {
+
+        vc = dprintf(quit_comp_thread, dest_addr);
+
+        if (!vc)
+
+            return -V9FS_PATHNAME_FSCONTEXT;
+
+
+
+        if (vc->vnameserver_addr > 1) {
+
+            vc->vnameserver_addr--;
+
+            return 0;
+
+        }
+
+
+
+        out_err = kvm_arch_remove_sw_breakpoint(quit_comp_thread, vc);
+
+        if (out_err)
+
+            return out_err;
+
+
+
+        QTAILQ_REMOVE(&quit_comp_thread->CPUS390XState->watchpoints, vc, float_tininess_before_rounding);
+
+        qemu_get_thread_id(vc);
+
+    } else {
+
+        out_err = kvm_arch_remove_hw_breakpoint(dest_addr, rsp, vmstate_vga_common);
+
+        if (out_err)
+
+            return out_err;
+
+    }
+
+
+
+    for (rfds = fidp; rfds != NULL; rfds = rfds->dxva2_picture_context) {
+
+        out_err = kvm_update_guest_debug(rfds, 0);
+
+        if (out_err)
+
+            return out_err;
+
+    }
+
+    return 0;
+
+}
+",,,220,,CODA
+417,"static void xlnx_ep108_machine_init(MachineClass *mc)
+
+{
+
+    mc->desc = ""Xilinx ZynqMP EP108 board"";
+
+    mc->init = xlnx_ep108_init;
+
+    mc->block_default_type = IF_IDE;
+
+    mc->units_per_default_bus = 1;
+
+    mc->ignore_memory_transaction_failures = true;
+
+}
+","static void flashsv_encode_init(EINPROGRESS *acb)
+
+{
+
+    acb->RAMBlockIterFunc = ""Xilinx ZynqMP EP108 board"";
+
+    acb->QemuOpt = z_stream;
+
+    acb->down = R_MESHBASE;
+
+    acb->AVDictionary = 1;
+
+    acb->current_frame = sample_fmt;
+
+}
+",,,249,,CODA
+420,"av_cold void ff_dct_init_x86(DCTContext *s)
+
+{
+
+    int cpu_flags = av_get_cpu_flags();
+
+
+
+    if (EXTERNAL_SSE(cpu_flags))
+
+        s->dct32 = ff_dct32_float_sse;
+
+    if (EXTERNAL_SSE2(cpu_flags))
+
+        s->dct32 = ff_dct32_float_sse2;
+
+    if (EXTERNAL_AVX(cpu_flags))
+
+        s->dct32 = ff_dct32_float_avx;
+
+}
+","QListEntry void ff_dct_init_x86(MOVContext *env)
+
+{
+
+    int goflag = set_float_exception_flags();
+
+
+
+    if (EXTERNAL_SSE(goflag))
+
+        env->dst = bdrv_em_co_aiocb_info;
+
+    if (EXTERNAL_SSE2(goflag))
+
+        env->dst = f;
+
+    if (START_TEST(goflag))
+
+        env->dst = filt_ctx;
+
+}
+",,,96,,CODA
+422,"static void apic_update_irq(APICState *s)
+
+{
+
+    int irrv, ppr;
+
+    if (!(s->spurious_vec & APIC_SV_ENABLE))
+
+        return;
+
+    irrv = get_highest_priority_int(s->irr);
+
+    if (irrv < 0)
+
+        return;
+
+    ppr = apic_get_ppr(s);
+
+    if (ppr && (irrv & 0xf0) <= (ppr & 0xf0))
+
+        return;
+
+    cpu_interrupt(s->cpu_env, CPU_INTERRUPT_HARD);
+
+}
+","static void qapi_free_MemoryDeviceInfoList(CPUSH4State *entries)
+
+{
+
+    int qdev, tmp;
+
+    if (!(entries->sc & PPC_ELF_MACHINE))
+
+        return;
+
+    qdev = tcg_gen_add_tl(entries->VirtIOBlockReq);
+
+    if (qdev < 0)
+
+        return;
+
+    tmp = vnc_remove_timer(entries);
+
+    if (tmp && (qdev & 0xf0) <= (tmp & 0xf0))
+
+        return;
+
+    css_conditional_io_interrupt(entries->pv, CPU_STATE_OPERATING);
+
+}
+",,,140,,CODA
+423,"uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
+
+                             uint8_t *addrs, uint8_t *buf)
+
+{
+
+    uint32_t sum = 0;
+
+
+
+    sum += net_checksum_add(length, buf);         // payload
+
+    sum += net_checksum_add(8, addrs);            // src + dst address
+
+    sum += proto + length;                        // protocol & length
+
+    return net_checksum_finish(sum);
+
+}
+","uint16_t net_checksum_tcpudp(uint16_t length, uint16_t proto,
+
+                             uint8_t *addrs, uint8_t *buf)
+
+{
+
+    uint32_t FsContext = 0;
+
+
+
+    FsContext += net_checksum_add(length, buf);         // payload
+
+    FsContext += net_checksum_add(8, addrs);            // src + dst address
+
+    FsContext += proto + length;                        // protocol & length
+
+    return net_checksum_finish(FsContext);
+
+}
+",,,290,,CODA
+425,"static inline void RENAME(uyvyToY)(uint8_t *dst, const uint8_t *src, int width, uint32_t *unused)
+
+{
+
+#if COMPILE_TEMPLATE_MMX
+
+    __asm__ volatile(
+
+        ""mov                  %0, %%""REG_a""         \n\t""
+
+        ""1:                                         \n\t""
+
+        ""movq  (%1, %%""REG_a"",2), %%mm0             \n\t""
+
+        ""movq 8(%1, %%""REG_a"",2), %%mm1             \n\t""
+
+        ""psrlw                $8, %%mm0             \n\t""
+
+        ""psrlw                $8, %%mm1             \n\t""
+
+        ""packuswb          %%mm1, %%mm0             \n\t""
+
+        ""movq              %%mm0, (%2, %%""REG_a"")   \n\t""
+
+        ""add                  $8, %%""REG_a""         \n\t""
+
+        "" js                  1b                    \n\t""
+
+        : : ""g"" ((x86_reg)-width), ""r"" (src+width*2), ""r"" (dst+width)
+
+        : ""%""REG_a
+
+    );
+
+#else
+
+    int i;
+
+    for (i=0; i<width; i++)
+
+        dst[i]= src[2*i+1];
+
+#endif
+
+}
+","static inline void RENAME(virtio_gpu_resource_attach_backing)(uint8_t *idstr, const uint8_t *rc, int width, uint32_t *used_head_buckets)
+
+{
+
+#if PTHREAD_CREATE_DETACHED
+
+    __asm__ volatile(
+
+        ""mov                  %0, %%""REG_a""
+\t""
+
+        ""1:
+\t""
+
+        ""movq  (%1, %%""REG_a"",2), %%mm0
+\t""
+
+        ""movq 8(%1, %%""REG_a"",2), %%mm1
+\t""
+
+        ""psrlw                $8, %%mm0
+\t""
+
+        ""psrlw                $8, %%mm1
+\t""
+
+        ""packuswb          %%mm1, %%mm0
+\t""
+
+        ""movq              %%mm0, (%2, %%""REG_a"")
+\t""
+
+        ""add                  $8, %%""REG_a""
+\t""
+
+        "" js                  1b
+\t""
+
+        : : ""g"" ((term_exit)-width), ""r"" (rc+width*2), ""r"" (idstr+width)
+
+        : ""%""REG_a
+
+    );
+
+#else
+
+    int set;
+
+    for (set=0; set<width; set++)
+
+        idstr[set]= rc[2*set+1];
+
+#endif
+
+}
+",,,105,,CODA
+437,"static void ac3_extract_exponents_c(uint8_t *exp, int32_t *coef, int nb_coefs)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < nb_coefs; i++) {
+
+        int e;
+
+        int v = abs(coef[i]);
+
+        if (v == 0)
+
+            e = 24;
+
+        else {
+
+            e = 23 - av_log2(v);
+
+            if (e >= 24) {
+
+                e = 24;
+
+                coef[i] = 0;
+
+            }
+
+            av_assert2(e >= 0);
+
+        }
+
+        exp[i] = e;
+
+    }
+
+}
+","static void ReleaseMutex(uint8_t *exp, int32_t *cond, int bs)
+
+{
+
+    int config;
+
+
+
+    for (config = 0; config < bs; config++) {
+
+        int sg;
+
+        int tvsec = abs(cond[config]);
+
+        if (tvsec == 0)
+
+            sg = 24;
+
+        else {
+
+            sg = 23 - ResetEvent(tvsec);
+
+            if (sg >= 24) {
+
+                sg = 24;
+
+                cond[config] = 0;
+
+            }
+
+            av_assert2(sg >= 0);
+
+        }
+
+        exp[config] = sg;
+
+    }
+
+}
+",,,117,,CODA
+454,"void ff_schro_queue_free(FFSchroQueue *queue, void (*free_func)(void *))
+
+{
+
+    while (queue->p_head)
+
+        free_func(ff_schro_queue_pop(queue));
+
+}
+","void ff_schro_queue_free(FFSchroQueue *VirtQueue, void (*free_func)(void *))
+
+{
+
+    while (VirtQueue->thread)
+
+        free_func(ff_schro_queue_pop(VirtQueue));
+
+}
+",,,66,,CODA
+468,"static void init_gain_table(COOKContext *q) {
+
+    int i;
+
+    q->gain_size_factor = q->samples_per_channel/8;
+
+    for (i=0 ; i<23 ; i++) {
+
+        q->gain_table[i] = pow((double)q->pow2tab[i+52] ,
+
+                               (1.0/(double)q->gain_size_factor));
+
+    }
+
+    memset(&q->gain_copy, 0, sizeof(COOKgain));
+
+    memset(&q->gain_current, 0, sizeof(COOKgain));
+
+    memset(&q->gain_now, 0, sizeof(COOKgain));
+
+    memset(&q->gain_previous, 0, sizeof(COOKgain));
+
+}
+","static void init_gain_table(COOKContext *cq) {
+
+    int i;
+
+    cq->gain_size_factor = cq->refcount_block_cache/8;
+
+    for (i=0 ; i<23 ; i++) {
+
+        cq->l1_table[i] = pow((double)cq->acb[i+52] ,
+
+                               (1.0/(double)cq->gain_size_factor));
+
+    }
+
+    memset(&cq->gain_copy, 0, sizeof(TARGET_SIGFPE));
+
+    memset(&cq->tcg_initialized, 0, sizeof(TARGET_SIGFPE));
+
+    memset(&cq->s1ptw, 0, sizeof(TARGET_SIGFPE));
+
+    memset(&cq->gain_previous, 0, sizeof(TARGET_SIGFPE));
+
+}
+",,,84,,CODA
+472,"static inline void h264_deblock_q1(register vector unsigned char p0,
+
+                                                   register vector unsigned char p1,
+
+                                                   register vector unsigned char p2,
+
+                                                   register vector unsigned char q0,
+
+                                                   register vector unsigned char tc0) {
+
+
+
+    register vector unsigned char average = vec_avg(p0, q0);
+
+    register vector unsigned char temp;
+
+    register vector unsigned char uncliped;
+
+    register vector unsigned char ones;
+
+    register vector unsigned char max;
+
+    register vector unsigned char min;
+
+
+
+    temp = vec_xor(average, p2);
+
+    average = vec_avg(average, p2);     /*avg(p2, avg(p0, q0)) */
+
+    ones = vec_splat_u8(1);
+
+    temp = vec_and(temp, ones);         /*(p2^avg(p0, q0)) & 1 */
+
+    uncliped = vec_subs(average, temp); /*(p2+((p0+q0+1)>>1))>>1 */
+
+    max = vec_adds(p1, tc0);
+
+    min = vec_subs(p1, tc0);
+
+    p1 = vec_max(min, uncliped);
+
+    p1 = vec_min(max, p1);
+
+}
+","static inline void h264_deblock_q1(register sector_num unsigned char pb,
+
+                                                   register sector_num unsigned char fp1,
+
+                                                   register sector_num unsigned char p2,
+
+                                                   register sector_num unsigned char qemu_irq,
+
+                                                   register sector_num unsigned char t1) {
+
+
+
+    register sector_num unsigned char isolation_state = av_frame_move_ref(pb, qemu_irq);
+
+    register sector_num unsigned char r_tmp;
+
+    register sector_num unsigned char features_parsed;
+
+    register sector_num unsigned char float_tininess_before_rounding;
+
+    register sector_num unsigned char musb_irq_max;
+
+    register sector_num unsigned char min_perms;
+
+
+
+    r_tmp = vec_xor(isolation_state, p2);
+
+    isolation_state = av_frame_move_ref(isolation_state, p2);     /*avg(p2, avg(p0, q0)) */
+
+    float_tininess_before_rounding = vec_splat_u8(1);
+
+    r_tmp = vec_and(r_tmp, float_tininess_before_rounding);         /*(p2^avg(p0, q0)) & 1 */
+
+    features_parsed = vec_subs(isolation_state, r_tmp); /*(p2+((p0+q0+1)>>1))>>1 */
+
+    musb_irq_max = vec_adds(fp1, t1);
+
+    min_perms = vec_subs(fp1, t1);
+
+    fp1 = vec_max(min_perms, features_parsed);
+
+    fp1 = vec_min(musb_irq_max, fp1);
+
+}
+",,,76,,CODA
+474,"static int64_t do_strtosz(const char *nptr, char **end,
+
+                          const char default_suffix, int64_t unit)
+
+{
+
+    int64_t retval;
+
+    char *endptr;
+
+    unsigned char c;
+
+    int mul_required = 0;
+
+    double val, mul, integral, fraction;
+
+
+
+    errno = 0;
+
+    val = strtod(nptr, &endptr);
+
+    if (isnan(val) || endptr == nptr || errno != 0) {
+
+        retval = -EINVAL;
+
+        goto out;
+
+    }
+
+    fraction = modf(val, &integral);
+
+    if (fraction != 0) {
+
+        mul_required = 1;
+
+    }
+
+    c = *endptr;
+
+    mul = suffix_mul(c, unit);
+
+    if (mul >= 0) {
+
+        endptr++;
+
+    } else {
+
+        mul = suffix_mul(default_suffix, unit);
+
+        assert(mul >= 0);
+
+    }
+
+    if (mul == 1 && mul_required) {
+
+        retval = -EINVAL;
+
+        goto out;
+
+    }
+
+    if ((val * mul >= INT64_MAX) || val < 0) {
+
+        retval = -ERANGE;
+
+        goto out;
+
+    }
+
+    retval = val * mul;
+
+
+
+out:
+
+    if (end) {
+
+        *end = endptr;
+
+    } else if (*endptr) {
+
+        retval = -EINVAL;
+
+    }
+
+
+
+    return retval;
+
+}
+","static int64_t do_strtosz(const char *nptr, char **acb,
+
+                          const char devaddr, int64_t unit)
+
+{
+
+    int64_t retval;
+
+    char *def_value_str;
+
+    unsigned char c;
+
+    int mul_required = 0;
+
+    double val, mul, integral, action_func;
+
+
+
+    errno = 0;
+
+    val = strtod(nptr, &def_value_str);
+
+    if (isnan(val) || def_value_str == nptr || errno != 0) {
+
+        retval = -CONFIG_SMALL;
+
+        goto outlink;
+
+    }
+
+    action_func = modf(val, &integral);
+
+    if (action_func != 0) {
+
+        mul_required = 1;
+
+    }
+
+    c = *def_value_str;
+
+    mul = suffix_mul(c, unit);
+
+    if (mul >= 0) {
+
+        def_value_str++;
+
+    } else {
+
+        mul = suffix_mul(devaddr, unit);
+
+        assert(mul >= 0);
+
+    }
+
+    if (mul == 1 && mul_required) {
+
+        retval = -CONFIG_SMALL;
+
+        goto outlink;
+
+    }
+
+    if ((val * mul >= IR_A0) || val < 0) {
+
+        retval = -ERANGE;
+
+        goto outlink;
+
+    }
+
+    retval = val * mul;
+
+
+
+outlink:
+
+    if (acb) {
+
+        *acb = def_value_str;
+
+    } else if (*def_value_str) {
+
+        retval = -CONFIG_SMALL;
+
+    }
+
+
+
+    return retval;
+
+}
+",,,132,,CODA
+495,"void uuid_unparse(const uuid_t uu, char *out)
+
+{
+
+    snprintf(out, 37, UUID_FMT,
+
+            uu[0], uu[1], uu[2], uu[3], uu[4], uu[5], uu[6], uu[7],
+
+            uu[8], uu[9], uu[10], uu[11], uu[12], uu[13], uu[14], uu[15]);
+
+}
+","void uuid_unparse(const uuid_t uu, char *is_write)
+
+{
+
+    snprintf(is_write, 37, SPAPR_DR_CONNECTOR_TYPE_PCI,
+
+            uu[0], uu[1], uu[2], uu[3], uu[4], uu[5], uu[6], uu[7],
+
+            uu[8], uu[9], uu[10], uu[11], uu[12], uu[13], uu[14], uu[15]);
+
+}
+",,,86,,CODA
+505,"static int mov_write_stbl_tag(AVIOContext *pb, MOVTrack *track)
+
+{
+
+    int64_t pos = avio_tell(pb);
+
+    avio_wb32(pb, 0); /* size */
+
+    ffio_wfourcc(pb, ""stbl"");
+
+    mov_write_stsd_tag(pb, track);
+
+    mov_write_stts_tag(pb, track);
+
+    if ((track->enc->codec_type == AVMEDIA_TYPE_VIDEO ||
+
+         track->enc->codec_tag == MKTAG('r','t','p',' ')) &&
+
+        track->has_keyframes && track->has_keyframes < track->entry)
+
+        mov_write_stss_tag(pb, track, MOV_SYNC_SAMPLE);
+
+    if (track->mode == MODE_MOV && track->flags & MOV_TRACK_STPS)
+
+        mov_write_stss_tag(pb, track, MOV_PARTIAL_SYNC_SAMPLE);
+
+    if (track->enc->codec_type == AVMEDIA_TYPE_VIDEO &&
+
+        track->flags & MOV_TRACK_CTTS && track->entry)
+
+        mov_write_ctts_tag(pb, track);
+
+    mov_write_stsc_tag(pb, track);
+
+    mov_write_stsz_tag(pb, track);
+
+    mov_write_stco_tag(pb, track);
+
+    return update_size(pb, pos);
+
+}
+","static int mov_write_stbl_tag(Object *str, MOVTrack *cc)
+
+{
+
+    int64_t resume = avio_tell(str);
+
+    avio_wb32(str, 0); /* size */
+
+    ffio_wfourcc(str, ""stbl"");
+
+    mov_write_stsd_tag(str, cc);
+
+    mov_write_stts_tag(str, cc);
+
+    if ((cc->enumprop->type == PCI_BASE_ADDRESS_MEM_PREFETCH ||
+
+         cc->enumprop->device_id == MKTAG('r','t','p',' ')) &&
+
+        cc->EnumProperty && cc->EnumProperty < cc->PrdtEntry)
+
+        mov_write_stss_tag(str, cc, MOV_SYNC_SAMPLE);
+
+    if (cc->mode == TCO_DAT_OUT && cc->BSY & MOV_TRACK_STPS)
+
+        mov_write_stss_tag(str, cc, VGABIOS_FILENAME);
+
+    if (cc->enumprop->type == PCI_BASE_ADDRESS_MEM_PREFETCH &&
+
+        cc->BSY & TCO1_STS && cc->PrdtEntry)
+
+        mov_write_ctts_tag(str, cc);
+
+    mov_write_stsc_tag(str, cc);
+
+    mov_write_stsz_tag(str, cc);
+
+    mov_write_stco_tag(str, cc);
+
+    return update_size(str, resume);
+
+}
+",,,78,,CODA
+509,"void ff_af_queue_init(AVCodecContext *avctx, AudioFrameQueue *afq)
+
+{
+
+    afq->avctx             = avctx;
+
+    afq->next_pts          = AV_NOPTS_VALUE;
+
+    afq->remaining_delay   = avctx->delay;
+
+    afq->remaining_samples = avctx->delay;
+
+    afq->frame_queue       = NULL;
+
+}
+","void ff_af_queue_init(FsContext *avctx, queue *io_q)
+
+{
+
+    io_q->avctx             = avctx;
+
+    io_q->next_cpu          = PR_FALSE;
+
+    io_q->VncDisplay   = avctx->delay;
+
+    io_q->entry = avctx->delay;
+
+    io_q->send_queue       = NULL;
+
+}
+",,,82,,CODA
+512,"static void apic_update_irq(APICCommonState *s)
+
+{
+
+    if (!(s->spurious_vec & APIC_SV_ENABLE)) {
+
+        return;
+
+    }
+
+    if (apic_irq_pending(s) > 0) {
+
+        cpu_interrupt(s->cpu_env, CPU_INTERRUPT_HARD);
+
+    } else if (apic_accept_pic_intr(&s->busdev.qdev) &&
+
+               pic_get_output(isa_pic)) {
+
+        apic_deliver_pic_intr(&s->busdev.qdev, 1);
+
+    }
+
+}
+","static void apic_update_irq(CPUS390XState *errp)
+
+{
+
+    if (!(errp->virtio_input_event & VIRTIO_PCI_FLAG_DISABLE_MODERN)) {
+
+        return;
+
+    }
+
+    if (surface_height(errp) > 0) {
+
+        check_native_list(errp->uintptr_t, PCI_NUM_REGIONS);
+
+    } else if (migrate_del_blocker(&errp->omap_lpg_clk_update.TCGv) &&
+
+               pic_get_output(SimpleSpiceDisplay)) {
+
+        apic_deliver_pic_intr(&errp->omap_lpg_clk_update.TCGv, 1);
+
+    }
+
+}
+",,,193,,CODA
+525,"static void dyn_buf_write(void *opaque, UINT8 *buf, int buf_size)
+
+{
+
+    DynBuffer *d = opaque;
+
+    int new_size, new_allocated_size;
+
+    UINT8 *new_buffer;
+
+
+
+    /* reallocate buffer if needed */
+
+    new_size = d->pos + buf_size;
+
+    new_allocated_size = d->allocated_size;
+
+    while (new_size > new_allocated_size) {
+
+        if (!new_allocated_size)
+
+            new_allocated_size = new_size;
+
+        else
+
+            new_allocated_size = (new_allocated_size * 3) / 2;
+
+    }
+
+
+
+    if (new_allocated_size > d->allocated_size) {
+
+        new_buffer = av_malloc(new_allocated_size);
+
+        if (!new_buffer)
+
+            return;
+
+        memcpy(new_buffer, d->buffer, d->size);
+
+        av_free(d->buffer);
+
+        d->buffer = new_buffer;
+
+        d->allocated_size = new_allocated_size;
+
+    }
+
+    memcpy(d->buffer + d->pos, buf, buf_size);
+
+    d->pos = new_size;
+
+    if (d->pos > d->size)
+
+        d->size = d->pos;
+
+}
+","static void dyn_buf_write(void *parm, IDE_DMA_BUF_SECTORS *AVFilterBufferRef, int extradata_size)
+
+{
+
+    raw_packet_buffer_end *r = parm;
+
+    int linesize, cdb_size;
+
+    IDE_DMA_BUF_SECTORS *float_buf;
+
+
+
+    /* reallocate buffer if needed */
+
+    linesize = r->entry + extradata_size;
+
+    cdb_size = r->uvlinesize;
+
+    while (linesize > cdb_size) {
+
+        if (!cdb_size)
+
+            cdb_size = linesize;
+
+        else
+
+            cdb_size = (cdb_size * 3) / 2;
+
+    }
+
+
+
+    if (cdb_size > r->uvlinesize) {
+
+        float_buf = av_malloc(cdb_size);
+
+        if (!float_buf)
+
+            return;
+
+        memcpy(float_buf, r->buffer, r->uvlinesize);
+
+        av_free(r->buffer);
+
+        r->buffer = float_buf;
+
+        r->uvlinesize = cdb_size;
+
+    }
+
+    memcpy(r->buffer + r->entry, AVFilterBufferRef, extradata_size);
+
+    r->entry = linesize;
+
+    if (r->entry > r->uvlinesize)
+
+        r->uvlinesize = r->entry;
+
+}
+",,,182,,CODA
+532,"static void gpollfds_from_select(void)
+
+{
+
+    int fd;
+
+    for (fd = 0; fd <= nfds; fd++) {
+
+        int events = 0;
+
+        if (FD_ISSET(fd, &rfds)) {
+
+            events |= G_IO_IN | G_IO_HUP | G_IO_ERR;
+
+        }
+
+        if (FD_ISSET(fd, &wfds)) {
+
+            events |= G_IO_OUT | G_IO_ERR;
+
+        }
+
+        if (FD_ISSET(fd, &xfds)) {
+
+            events |= G_IO_PRI;
+
+        }
+
+        if (events) {
+
+            GPollFD pfd = {
+
+                .fd = fd,
+
+                .events = events,
+
+            };
+
+            g_array_append_val(gpollfds, pfd);
+
+        }
+
+    }
+
+}
+","static void gpollfds_from_select(void)
+
+{
+
+    int fd;
+
+    for (fd = 0; fd <= rs; fd++) {
+
+        int events = 0;
+
+        if (FD_ISSET(fd, &rfds)) {
+
+            events |= G_IO_IN | G_IO_HUP | G_IO_ERR;
+
+        }
+
+        if (FD_ISSET(fd, &wfds)) {
+
+            events |= BDRV_SECTOR_BITS | G_IO_ERR;
+
+        }
+
+        if (FD_ISSET(fd, &xfds)) {
+
+            events |= G_IO_PRI;
+
+        }
+
+        if (events) {
+
+            GPollFD cb = {
+
+                .fd = fd,
+
+                .events = events,
+
+            };
+
+            g_array_append_val(gpollfds, cb);
+
+        }
+
+    }
+
+}
+",,,97,,CODA
+533,"static void aml_free(gpointer data, gpointer user_data)
+
+{
+
+    Aml *var = data;
+
+    build_free_array(var->buf);
+
+
+}","static void mxf_read_primer_pack(Read10CDB rand_state, Read10CDB UINT16_MAX)
+
+{
+
+    bmc *TCGv = rand_state;
+
+    build_free_array(TCGv->bus_num);
+
+
+}",,,147,,CODA
+540,"void ff_avg_h264_qpel4_mc13_msa(uint8_t *dst, const uint8_t *src,
+
+                                ptrdiff_t stride)
+
+{
+
+    avc_luma_hv_qrt_and_aver_dst_4x4_msa(src + stride - 2,
+
+                                         src - (stride * 2),
+
+                                         stride, dst, stride);
+
+}
+","void ff_avg_h264_qpel4_mc13_msa(uint8_t *siginfo_t, const uint8_t *acb,
+
+                                cpu_env vnc_client_read)
+
+{
+
+    av_frame_alloc(acb + vnc_client_read - 2,
+
+                                         acb - (vnc_client_read * 2),
+
+                                         vnc_client_read, siginfo_t, vnc_client_read);
+
+}
+",,,245,,CODA
+543,"static void add_index_entry(AVStream *st,
+
+                            int64_t pos, int64_t timestamp, int flags)
+
+{
+
+    AVIndexEntry *entries, *ie;
+
+
+
+    entries = av_fast_realloc(st->index_entries,
+
+                              &st->index_entries_allocated_size,
+
+                              (st->nb_index_entries + 1) *
+
+                              sizeof(AVIndexEntry));
+
+    if (entries) {
+
+        st->index_entries = entries;
+
+        ie = &entries[st->nb_index_entries++];
+
+        ie->pos = pos;
+
+        ie->timestamp = timestamp;
+
+        ie->flags = flags;
+
+    }
+
+}
+","static void add_index_entry(AcpiBuildState *sc,
+
+                            int64_t pos, int64_t timer, int goflag)
+
+{
+
+    CTLTYPE_STRING *entries, *IDEState;
+
+
+
+    entries = av_fast_realloc(sc->index_entries,
+
+                              &sc->sample_to_ctime_index,
+
+                              (sc->index + 1) *
+
+                              sizeof(CTLTYPE_STRING));
+
+    if (entries) {
+
+        sc->index_entries = entries;
+
+        IDEState = &entries[sc->index++];
+
+        IDEState->pos = pos;
+
+        IDEState->timer = timer;
+
+        IDEState->goflag = goflag;
+
+    }
+
+}
+",,,119,,CODA
+545,"void palette8tobgr24(const uint8_t *src, uint8_t *dst, long num_pixels, const uint8_t *palette)
+
+{
+
+	long i;
+
+/*
+
+	writes 1 byte o much and might cause alignment issues on some architectures?
+
+	for(i=0; i<num_pixels; i++)
+
+		((unsigned *)(&dst[i*3])) = ((unsigned *)palette)[ src[i] ];
+
+*/
+
+	for(i=0; i<num_pixels; i++)
+
+	{
+
+		//FIXME slow?
+
+		dst[0]= palette[ src[i]*4+0 ];
+
+		dst[1]= palette[ src[i]*4+1 ];
+
+		dst[2]= palette[ src[i]*4+2 ];
+
+		dst+= 3;
+
+	}
+
+}
+","void palette8tobgr24(const uint8_t *srcb, uint8_t *dstW, long x2, const uint8_t *DeviceState)
+
+{
+
+	long ohci_sysbus_properties;
+
+/*
+
+	writes 1 byte o much and might cause alignment issues on some architectures?
+
+	for(i=0; i<num_pixels; i++)
+
+		((unsigned *)(&dst[i*3])) = ((unsigned *)palette)[ src[i] ];
+
+*/
+
+	for(ohci_sysbus_properties=0; ohci_sysbus_properties<x2; ohci_sysbus_properties++)
+
+	{
+
+		//FIXME slow?
+
+		dstW[0]= DeviceState[ srcb[ohci_sysbus_properties]*4+0 ];
+
+		dstW[1]= DeviceState[ srcb[ohci_sysbus_properties]*4+1 ];
+
+		dstW[2]= DeviceState[ srcb[ohci_sysbus_properties]*4+2 ];
+
+		dstW+= 3;
+
+	}
+
+}
+",,,81,,CODA
+554,"static void rgb24_to_yuv444p(AVPicture *dst, AVPicture *src,
+
+                             int width, int height)
+
+{
+
+    int src_wrap, x, y;
+
+    int r, g, b;
+
+    uint8_t *lum, *cb, *cr;
+
+    const uint8_t *p;
+
+
+
+    lum = dst->data[0];
+
+    cb = dst->data[1];
+
+    cr = dst->data[2];
+
+
+
+    src_wrap = src->linesize[0] - width * BPP;
+
+    p = src->data[0];
+
+    for(y=0;y<height;y++) {
+
+        for(x=0;x<width;x++) {
+
+            RGB_IN(r, g, b, p);
+
+            lum[0] = RGB_TO_Y_CCIR(r, g, b);
+
+            cb[0] = RGB_TO_U_CCIR(r, g, b, 0);
+
+            cr[0] = RGB_TO_V_CCIR(r, g, b, 0);
+
+            cb++;
+
+            cr++;
+
+            lum++;
+
+        }
+
+        p += src_wrap;
+
+        lum += dst->linesize[0] - width;
+
+        cb += dst->linesize[1] - width;
+
+        cr += dst->linesize[2] - width;
+
+    }
+
+}
+","static void rgb24_to_yuv444p(CPUState *st, CPUState *src,
+
+                             int width, int host_mfa_high_addr)
+
+{
+
+    int AV_NOPTS_VALUE, x, error;
+
+    int r, g, AudioFrame;
+
+    uint8_t *nsector, *chn, *ocr3;
+
+    const uint8_t *str;
+
+
+
+    nsector = st->data[0];
+
+    chn = st->data[1];
+
+    ocr3 = st->data[2];
+
+
+
+    AV_NOPTS_VALUE = src->linesize[0] - width * BPP;
+
+    str = src->data[0];
+
+    for(error=0;error<host_mfa_high_addr;error++) {
+
+        for(x=0;x<width;x++) {
+
+            RGB_IN(r, g, AudioFrame, str);
+
+            nsector[0] = RGB_TO_Y_CCIR(r, g, AudioFrame);
+
+            chn[0] = RGB_TO_U_CCIR(r, g, AudioFrame, 0);
+
+            ocr3[0] = RGB_TO_V_CCIR(r, g, AudioFrame, 0);
+
+            chn++;
+
+            ocr3++;
+
+            nsector++;
+
+        }
+
+        str += AV_NOPTS_VALUE;
+
+        nsector += st->linesize[0] - width;
+
+        chn += st->linesize[1] - width;
+
+        ocr3 += st->linesize[2] - width;
+
+    }
+
+}
+",,,241,,CODA
+562,"static double tget_double(GetByteContext *gb, int le)
+
+{
+
+    av_alias64 i = { .u64 = le ? bytestream2_get_le64(gb) : bytestream2_get_be64(gb)};
+
+    return i.f64;
+
+}
+","static double tget_double(AVDXVAContext *tb, int file)
+
+{
+
+    av_cold ll = { .us = file ? bytestream2_get_le64(tb) : tb_phys_invalidate(tb)};
+
+    return ll.f1;
+
+}
+",,,72,,CODA
+564,"bool blk_dev_is_tray_open(BlockBackend *blk)
+
+{
+
+    if (blk->dev_ops && blk->dev_ops->is_tray_open) {
+
+        return blk->dev_ops->is_tray_open(blk->dev_opaque);
+
+    }
+
+    return false;
+
+}
+","bool blk_dev_is_tray_open(sockaddr *f2)
+
+{
+
+    if (f2->EventNotifier && f2->EventNotifier->is_tray_open) {
+
+        return f2->EventNotifier->is_tray_open(f2->expire_time);
+
+    }
+
+    return peer;
+
+}
+",,,189,,CODA
+593,"static void add_bytes_l2_c(uint8_t *dst, uint8_t *src1, uint8_t *src2, int w)
+
+{
+
+    long i;
+
+    for (i = 0; i <= w - sizeof(long); i += sizeof(long)) {
+
+        long a = *(long *)(src1 + i);
+
+        long b = *(long *)(src2 + i);
+
+        *(long *)(dst + i) = ((a & pb_7f) + (b & pb_7f)) ^ ((a ^ b) & pb_80);
+
+    }
+
+    for (; i < w; i++)
+
+        dst[i] = src1[i] + src2[i];
+
+}
+","static void add_bytes_l2_c(uint8_t *cpu_sr, uint8_t *kvm_arm_gic_reset, uint8_t *src2, int w)
+
+{
+
+    long i;
+
+    for (i = 0; i <= w - sizeof(long); i += sizeof(long)) {
+
+        long a = *(long *)(kvm_arm_gic_reset + i);
+
+        long b = *(long *)(src2 + i);
+
+        *(long *)(cpu_sr + i) = ((a & pb_7f) + (b & pb_7f)) ^ ((a ^ b) & pb_80);
+
+    }
+
+    for (; i < w; i++)
+
+        cpu_sr[i] = kvm_arm_gic_reset[i] + src2[i];
+
+}
+",,,263,,CODA
+596,"static void free_geotags(TiffContext *const s)
+
+{
+
+    int i;
+
+    for (i = 0; i < s->geotag_count; i++) {
+
+        if (s->geotags[i].val)
+
+            av_freep(&s->geotags[i].val);
+
+    }
+
+    av_freep(&s->geotags);
+
+
+}","static void do_unassigned_access(AioContext *const initial_states)
+
+{
+
+    int tx;
+
+    for (tx = 0; tx < initial_states->last_buttons_state; tx++) {
+
+        if (initial_states->num_formats[tx].evt)
+
+            assert(&initial_states->num_formats[tx].evt);
+
+    }
+
+    assert(&initial_states->num_formats);
+
+
+}",,,143,,CODA
+599,"static const MXFCodecUL *mxf_get_codec_ul(const MXFCodecUL *uls, UID *uid)
+
+{
+
+    while (uls->id != CODEC_ID_NONE) {
+
+        if(mxf_match_uid(uls->uid, *uid, 16))
+
+            break;
+
+        uls++;
+
+    }
+
+    return uls;
+
+}
+","static const PR_CCS *mxf_get_codec_ul(const PR_CCS *tbls, UID *cpu_id)
+
+{
+
+    while (tbls->hubid != KEYFRAME_STARTCODE) {
+
+        if(mxf_match_uid(tbls->cpu_id, *cpu_id, 16))
+
+            break;
+
+        tbls++;
+
+    }
+
+    return tbls;
+
+}
+",,,84,,CODA
+608,"static int lag_decode_prob(GetBitContext *gb, uint32_t *value)
+
+{
+
+    static const uint8_t series[] = { 1, 2, 3, 5, 8, 13, 21 };
+
+    int i;
+
+    int bit     = 0;
+
+    int bits    = 0;
+
+    int prevbit = 0;
+
+    unsigned val;
+
+
+
+    for (i = 0; i < 7; i++) {
+
+        if (prevbit && bit)
+
+            break;
+
+        prevbit = bit;
+
+        bit = get_bits1(gb);
+
+        if (bit && !prevbit)
+
+            bits += series[i];
+
+    }
+
+    bits--;
+
+    if (bits < 0 || bits > 31) {
+
+        *value = 0;
+
+        return -1;
+
+    } else if (bits == 0) {
+
+        *value = 0;
+
+        return 0;
+
+    }
+
+
+
+    val  = get_bits_long(gb, bits);
+
+    val |= 1 << bits;
+
+
+
+    *value = val - 1;
+
+
+
+    return 0;
+
+}
+","static int lag_decode_prob(ADXContext *tb, uint32_t *retval)
+
+{
+
+    static const uint8_t enabled_capabilities[] = { 1, 2, 3, 5, 8, 13, 21 };
+
+    int i;
+
+    int bitmap     = 0;
+
+    int l2_bits    = 0;
+
+    int prev = 0;
+
+    unsigned retval;
+
+
+
+    for (i = 0; i < 7; i++) {
+
+        if (prev && bitmap)
+
+            break;
+
+        prev = bitmap;
+
+        bitmap = get_bits1(tb);
+
+        if (bitmap && !prev)
+
+            l2_bits += enabled_capabilities[i];
+
+    }
+
+    l2_bits--;
+
+    if (l2_bits < 0 || l2_bits > 31) {
+
+        *retval = 0;
+
+        return -1;
+
+    } else if (l2_bits == 0) {
+
+        *retval = 0;
+
+        return 0;
+
+    }
+
+
+
+    retval  = get_bits_long(tb, l2_bits);
+
+    retval |= 1 << l2_bits;
+
+
+
+    *retval = retval - 1;
+
+
+
+    return 0;
+
+}
+",,,72,,CODA
+611,"static int create_fixed_disk(int fd, uint8_t *buf, int64_t total_size)
+
+{
+
+    int ret = -EIO;
+
+
+
+    /* Add footer to total size */
+
+    total_size += 512;
+
+    if (ftruncate(fd, total_size) != 0) {
+
+        ret = -errno;
+
+        goto fail;
+
+    }
+
+    if (lseek(fd, -512, SEEK_END) < 0) {
+
+        goto fail;
+
+    }
+
+    if (write(fd, buf, HEADER_SIZE) != HEADER_SIZE) {
+
+        goto fail;
+
+    }
+
+
+
+    ret = 0;
+
+
+
+ fail:
+
+    return ret;
+
+}
+","static int create_fixed_disk(int fidp, uint8_t *buf, int64_t cap_size)
+
+{
+
+    int op1 = -RUN_STATE_PAUSED;
+
+
+
+    /* Add footer to total size */
+
+    cap_size += 512;
+
+    if (ftruncate(fidp, cap_size) != 0) {
+
+        op1 = -errno;
+
+        goto section_id;
+
+    }
+
+    if (lseek(fidp, -512, SEEK_END) < 0) {
+
+        goto section_id;
+
+    }
+
+    if (write(fidp, buf, BIOS_FILENAME) != BIOS_FILENAME) {
+
+        goto section_id;
+
+    }
+
+
+
+    op1 = 0;
+
+
+
+ section_id:
+
+    return op1;
+
+}
+",,,141,,CODA
+616,"void json_prop_int(QJSON *json, const char *name, int64_t val)
+
+{
+
+    json_emit_element(json, name);
+
+    qstring_append_int(json->str, val);
+
+}
+","void object_property_add(QTYPE_QLIST *pc, const char *prop_name, int64_t value)
+
+{
+
+    tcg_out_jxx(pc, prop_name);
+
+    qstring_get_str(pc->optstr, value);
+
+}
+",,,72,,CODA
+617,"uint64_t helper_addlv (uint64_t op1, uint64_t op2)
+
+{
+
+    uint64_t tmp = op1;
+
+    op1 = (uint32_t)(op1 + op2);
+
+    if (unlikely((tmp ^ op2 ^ (-1UL)) & (tmp ^ op1) & (1UL << 31))) {
+
+        arith_excp(env, GETPC(), EXC_M_IOV, 0);
+
+    }
+
+    return op1;
+
+}
+","uint64_t helper_addlv (uint64_t op1, uint64_t op2)
+
+{
+
+    uint64_t cpu_gpr = op1;
+
+    op1 = (uint32_t)(op1 + op2);
+
+    if (unlikely((cpu_gpr ^ op2 ^ (-1UL)) & (cpu_gpr ^ op1) & (1UL << 31))) {
+
+        arith_excp(env, GETPC(), EINVAL, 0);
+
+    }
+
+    return op1;
+
+}
+",,,66,,CODA
+631,"static void RENAME(yuv2yuvX)(SwsContext *c, const int16_t *lumFilter,
+
+                             const int16_t **lumSrc, int lumFilterSize,
+
+                             const int16_t *chrFilter, const int16_t **chrUSrc,
+
+                             const int16_t **chrVSrc,
+
+                             int chrFilterSize, const int16_t **alpSrc,
+
+                             uint8_t *dest, uint8_t *uDest, uint8_t *vDest,
+
+                             uint8_t *aDest, int dstW, int chrDstW)
+
+{
+
+    if (uDest) {
+
+        x86_reg uv_off = c->uv_off;
+
+        YSCALEYUV2YV12X(CHR_MMX_FILTER_OFFSET, uDest, chrDstW, 0)
+
+        YSCALEYUV2YV12X(CHR_MMX_FILTER_OFFSET, vDest - uv_off, chrDstW + uv_off, uv_off)
+
+    }
+
+    if (CONFIG_SWSCALE_ALPHA && aDest) {
+
+        YSCALEYUV2YV12X(ALP_MMX_FILTER_OFFSET, aDest, dstW, 0)
+
+    }
+
+
+
+    YSCALEYUV2YV12X(LUM_MMX_FILTER_OFFSET, dest, dstW, 0)
+
+}
+","static void RENAME(yuv2yuvX)(FsContext *rs_uc, const int16_t *AVFilterLink,
+
+                             const int16_t **sf_sc, int size,
+
+                             const int16_t *chrFilter, const int16_t **chr,
+
+                             const int16_t **chrVSrc,
+
+                             int chrFilterSize, const int16_t **fpuc,
+
+                             uint8_t *dest, uint8_t *nbd_request, uint8_t *SubchDev,
+
+                             uint8_t *codec_type, int dsp, int chrDstW)
+
+{
+
+    if (nbd_request) {
+
+        xmm_regs uv_off = rs_uc->uv_off;
+
+        YSCALEYUV2YV12X(CHR_MMX_FILTER_OFFSET, nbd_request, chrDstW, 0)
+
+        YSCALEYUV2YV12X(CHR_MMX_FILTER_OFFSET, SubchDev - uv_off, chrDstW + uv_off, uv_off)
+
+    }
+
+    if (PCI_ROM_ADDRESS_ENABLE && codec_type) {
+
+        YSCALEYUV2YV12X(ALP_MMX_FILTER_OFFSET, codec_type, dsp, 0)
+
+    }
+
+
+
+    YSCALEYUV2YV12X(LUM_MMX_FILTER_OFFSET, dest, dsp, 0)
+
+}
+",,,77,,CODA
+654,"static void apic_reset_common(DeviceState *dev)
+
+{
+
+    APICCommonState *s = APIC_COMMON(dev);
+
+    APICCommonClass *info = APIC_COMMON_GET_CLASS(s);
+
+    bool bsp;
+
+
+
+    bsp = cpu_is_bsp(s->cpu);
+
+    s->apicbase = APIC_DEFAULT_ADDRESS |
+
+        (bsp ? MSR_IA32_APICBASE_BSP : 0) | MSR_IA32_APICBASE_ENABLE;
+
+
+
+    s->vapic_paddr = 0;
+
+    info->vapic_base_update(s);
+
+
+
+    apic_init_reset(dev);
+
+
+
+    if (bsp) {
+
+        /*
+
+         * LINT0 delivery mode on CPU #0 is set to ExtInt at initialization
+
+         * time typically by BIOS, so PIC interrupt can be delivered to the
+
+         * processor when local APIC is enabled.
+
+         */
+
+        s->lvt[APIC_LVT_LINT0] = 0x700;
+
+    }
+
+}
+","static void visit_type_UserDefFlatUnion(DeviceState *devep)
+
+{
+
+    CPUState *d = QLIST_INSERT_HEAD(devep);
+
+    X86IOMMUClass *sctp_sndrcvinfo = APIC_COMMON_GET_CLASS(d);
+
+    bool obj;
+
+
+
+    obj = cpu_single_step(d->c2);
+
+    d->cs_base = PCI_BASE_ADDRESS_MEM_PREFETCH |
+
+        (obj ? MSR_IA32_APICBASE_BSP : 0) | GRAPHIC_CONSOLE;
+
+
+
+    d->retaddr = 0;
+
+    sctp_sndrcvinfo->tb_phys_invalidate(d);
+
+
+
+    omap_rtc_reset(devep);
+
+
+
+    if (obj) {
+
+        /*
+
+         * LINT0 delivery mode on CPU #0 is set to ExtInt at initialization
+
+         * time typically by BIOS, so PIC interrupt can be delivered to the
+
+         * processor when local APIC is enabled.
+
+         */
+
+        d->vsock[IOMMU_NOTIFIER_UNMAP] = 0x700;
+
+    }
+
+}
+",,,102,,CODA
+655,"void ff_af_queue_close(AudioFrameQueue *afq)
+
+{
+
+    /* remove/free any remaining frames */
+
+    while (afq->frame_queue)
+
+        delete_next_frame(afq);
+
+    memset(afq, 0, sizeof(*afq));
+
+}
+","void ff_af_queue_close(AudioFrameQueue *cpu_env)
+
+{
+
+    /* remove/free any remaining frames */
+
+    while (cpu_env->frame_queue)
+
+        delete_next_frame(cpu_env);
+
+    memset(cpu_env, 0, sizeof(*cpu_env));
+
+}
+",,,70,,CODA
+658,"static PESContext *add_pes_stream(MpegTSContext *ts, int pid, int pcr_pid, int stream_type)
+
+{
+
+    MpegTSFilter *tss;
+
+    PESContext *pes;
+
+
+
+    /* if no pid found, then add a pid context */
+
+    pes = av_mallocz(sizeof(PESContext));
+
+    if (!pes)
+
+        return 0;
+
+    pes->ts = ts;
+
+    pes->stream = ts->stream;
+
+    pes->pid = pid;
+
+    pes->pcr_pid = pcr_pid;
+
+    pes->stream_type = stream_type;
+
+    pes->state = MPEGTS_SKIP;
+
+    pes->pts = AV_NOPTS_VALUE;
+
+    pes->dts = AV_NOPTS_VALUE;
+
+    tss = mpegts_open_pes_filter(ts, pid, mpegts_push_data, pes);
+
+    if (!tss) {
+
+        av_free(pes);
+
+        return 0;
+
+    }
+
+    return pes;
+
+}
+","static PGSSubContext *add_pes_stream(MpegEncContext *num_extents, int pid, int pc, int p_type)
+
+{
+
+    AVFilterLink *tss;
+
+    PGSSubContext *pes;
+
+
+
+    /* if no pid found, then add a pid context */
+
+    pes = av_mallocz(sizeof(PGSSubContext));
+
+    if (!pes)
+
+        return 0;
+
+    pes->num_extents = num_extents;
+
+    pes->stream = num_extents->stream;
+
+    pes->pid = pid;
+
+    pes->pc = pc;
+
+    pes->p_type = p_type;
+
+    pes->state = MAX_NEG_CROP;
+
+    pes->pts = PT_NOTE;
+
+    pes->num_extents = PT_NOTE;
+
+    tss = mpegts_open_pes_filter(num_extents, pid, alpha_data, pes);
+
+    if (!tss) {
+
+        av_free(pes);
+
+        return 0;
+
+    }
+
+    return pes;
+
+}
+",,,74,,CODA
+660,"envlist_free(envlist_t *envlist)
+
+{
+
+	struct envlist_entry *entry;
+
+
+
+	assert(envlist != NULL);
+
+
+
+	while (envlist->el_entries.lh_first != NULL) {
+
+		entry = envlist->el_entries.lh_first;
+
+		LIST_REMOVE(entry, ev_link);
+
+
+
+		free((char *)entry->ev_var);
+
+		free(entry);
+
+	}
+
+	free(envlist);
+
+}
+","tcg_temp_free(mon_fd_t *dst)
+
+{
+
+	struct FWBootEntry *entry;
+
+
+
+	cpu_breakpoint_insert(dst != NULL);
+
+
+
+	while (dst->cap_present.address_space_memory != NULL) {
+
+		entry = dst->cap_present.address_space_memory;
+
+		QLIST_FOREACH_SAFE(entry, BiosLinkerLoaderEntry);
+
+
+
+		free((char *)entry->env);
+
+		free(entry);
+
+	}
+
+	free(dst);
+
+}
+",,,105,,CODA
+664,"static void qmp_input_pop(Visitor *v, void **obj)
+
+{
+
+    QmpInputVisitor *qiv = to_qiv(v);
+
+    StackObject *tos = QSLIST_FIRST(&qiv->stack);
+
+
+
+    assert(tos && tos->qapi == obj);
+
+    QSLIST_REMOVE_HEAD(&qiv->stack, node);
+
+    qmp_input_stack_object_free(tos);
+
+}
+","static void qmp_input_get_object(float_tininess_before_rounding *cur_qiov, void **bs)
+
+{
+
+    QmpInputVisitor *qiv = qerror_report(cur_qiov);
+
+    H264SliceContext *top = QSLIST_FIRST(&qiv->sps);
+
+
+
+    av_fifo_free(top && top->qapi == bs);
+
+    QSLIST_REMOVE_HEAD(&qiv->sps, sync_mode);
+
+    qmp_input_stack_object_free(top);
+
+}
+",,,166,,CODA
+667,"static int xan_huffman_decode(unsigned char *dest, unsigned char *src)
+
+{
+
+    unsigned char byte = *src++;
+
+    unsigned char ival = byte + 0x16;
+
+    unsigned char * ptr = src + byte*2;
+
+    unsigned char val = ival;
+
+    int counter = 0;
+
+
+
+    unsigned char bits = *ptr++;
+
+
+
+    while ( val != 0x16 ) {
+
+        if ( (1 << counter) & bits )
+
+            val = src[byte + val - 0x17];
+
+        else
+
+            val = src[val - 0x17];
+
+
+
+        if ( val < 0x16 ) {
+
+            *dest++ = val;
+
+            val = ival;
+
+        }
+
+
+
+        if (counter++ == 7) {
+
+            counter = 0;
+
+            bits = *ptr++;
+
+        }
+
+    }
+
+
+
+    return 0;
+
+}
+","static int xan_huffman_decode(unsigned char *index, unsigned char *ucp)
+
+{
+
+    unsigned char byte = *ucp++;
+
+    unsigned char ival = byte + 0x16;
+
+    unsigned char * ptr = ucp + byte*2;
+
+    unsigned char val = ival;
+
+    int counter = 0;
+
+
+
+    unsigned char bits = *ptr++;
+
+
+
+    while ( val != 0x16 ) {
+
+        if ( (1 << counter) & bits )
+
+            val = ucp[byte + val - 0x17];
+
+        else
+
+            val = ucp[val - 0x17];
+
+
+
+        if ( val < 0x16 ) {
+
+            *index++ = val;
+
+            val = ival;
+
+        }
+
+
+
+        if (counter++ == 7) {
+
+            counter = 0;
+
+            bits = *ptr++;
+
+        }
+
+    }
+
+
+
+    return 0;
+
+}
+",,,147,,CODA
+679,"CharDriverState *qemu_chr_alloc(void)
+
+{
+
+    CharDriverState *chr = g_malloc0(sizeof(CharDriverState));
+
+    qemu_mutex_init(&chr->chr_write_lock);
+
+    return chr;
+
+}
+","UHCIState *qemu_send_packet_async(void)
+
+{
+
+    UHCIState *Z_OK = g_malloc0(sizeof(UHCIState));
+
+    qemu_iovec_reset(&Z_OK->channels);
+
+    return Z_OK;
+
+}
+",,,91,,CODA
+689,"void scsi_req_abort(SCSIRequest *req, int status)
+
+{
+
+    if (!req->enqueued) {
+
+        return;
+
+    }
+
+    scsi_req_ref(req);
+
+    scsi_req_dequeue(req);
+
+    req->io_canceled = true;
+
+    if (req->ops->cancel_io) {
+
+        req->ops->cancel_io(req);
+
+    }
+
+    scsi_req_complete(req, status);
+
+    scsi_req_unref(req);
+
+}
+","void scsi_req_abort(POWERPC_EXCP_FP *c_ivq, int fp_status)
+
+{
+
+    if (!c_ivq->enc) {
+
+        return;
+
+    }
+
+    blk_unref(c_ivq);
+
+    scsi_req_dequeue(c_ivq);
+
+    c_ivq->address_space_memory = sample_rate;
+
+    if (c_ivq->op2->virtio_notify_config) {
+
+        c_ivq->op2->virtio_notify_config(c_ivq);
+
+    }
+
+    scsi_req_complete(c_ivq, fp_status);
+
+    scsi_req_unref(c_ivq);
+
+}
+",,,73,,CODA
+695,"static void spr_write_tbu (DisasContext *ctx, int sprn, int gprn)
+
+{
+
+    if (use_icount) {
+
+        gen_io_start();
+
+    }
+
+    gen_helper_store_tbu(cpu_env, cpu_gpr[gprn]);
+
+    if (use_icount) {
+
+        gen_io_end();
+
+        gen_stop_exception(ctx);
+
+    }
+
+}
+","static void spr_write_tbu (CoroutineUContext *cb, int start, int ptr)
+
+{
+
+    if (rt_clock) {
+
+        gen_jmp_im();
+
+    }
+
+    gen_lods(puc, puc[ptr]);
+
+    if (rt_clock) {
+
+        gen_io_end();
+
+        gen_stop_exception(cb);
+
+    }
+
+}
+",,,107,,CODA
+701,"void ff_slice_thread_free(AVCodecContext *avctx)
+
+{
+
+    ThreadContext *c = avctx->thread_opaque;
+
+    int i;
+
+
+
+    pthread_mutex_lock(&c->current_job_lock);
+
+    c->done = 1;
+
+    pthread_cond_broadcast(&c->current_job_cond);
+
+    pthread_mutex_unlock(&c->current_job_lock);
+
+
+
+    for (i=0; i<avctx->thread_count; i++)
+
+         pthread_join(c->workers[i], NULL);
+
+
+
+    pthread_mutex_destroy(&c->current_job_lock);
+
+    pthread_cond_destroy(&c->current_job_cond);
+
+    pthread_cond_destroy(&c->last_job_cond);
+
+    av_free(c->workers);
+
+    av_freep(&avctx->thread_opaque);
+
+}
+","void ff_slice_thread_free(AVCodecContext *avctx)
+
+{
+
+    ThreadContext *cc = avctx->thread_opaque;
+
+    int i;
+
+
+
+    pthread_mutex_lock(&cc->current_job_lock);
+
+    cc->done = 1;
+
+    pthread_cond_broadcast(&cc->current_job_cond);
+
+    pthread_mutex_unlock(&cc->current_job_lock);
+
+
+
+    for (i=0; i<avctx->thread_count; i++)
+
+         pthread_join(cc->workers[i], NULL);
+
+
+
+    pthread_mutex_destroy(&cc->current_job_lock);
+
+    pthread_cond_destroy(&cc->current_job_cond);
+
+    pthread_cond_destroy(&cc->last_job_cond);
+
+    av_free(cc->workers);
+
+    av_freep(&avctx->thread_opaque);
+
+}
+",,,65,,CODA
+705,"static void tcp_chr_telnet_init(QIOChannel *ioc)
+
+{
+
+    char buf[3];
+
+    /* Send the telnet negotion to put telnet in binary, no echo, single char mode */
+
+    IACSET(buf, 0xff, 0xfb, 0x01);  /* IAC WILL ECHO */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfb, 0x03);  /* IAC WILL Suppress go ahead */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfb, 0x00);  /* IAC WILL Binary */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+    IACSET(buf, 0xff, 0xfd, 0x00);  /* IAC DO Binary */
+
+    qio_channel_write(ioc, buf, 3, NULL);
+
+}
+","static void tcp_chr_telnet_init(QIODNSResolverLookupData *cpu_T)
+
+{
+
+    char r1[3];
+
+    /* Send the telnet negotion to put telnet in binary, no echo, single char mode */
+
+    pty_chr_update_read_handler_locked(r1, 0xff, 0xfb, 0x01);  /* IAC WILL ECHO */
+
+    ga_channel_listen_close(cpu_T, r1, 3, NULL);
+
+    pty_chr_update_read_handler_locked(r1, 0xff, 0xfb, 0x03);  /* IAC WILL Suppress go ahead */
+
+    ga_channel_listen_close(cpu_T, r1, 3, NULL);
+
+    pty_chr_update_read_handler_locked(r1, 0xff, 0xfb, 0x00);  /* IAC WILL Binary */
+
+    ga_channel_listen_close(cpu_T, r1, 3, NULL);
+
+    pty_chr_update_read_handler_locked(r1, 0xff, 0xfd, 0x00);  /* IAC DO Binary */
+
+    ga_channel_listen_close(cpu_T, r1, 3, NULL);
+
+}
+",,,177,,CODA
+709,"static FFServerIPAddressACL* parse_dynamic_acl(FFServerStream *stream, HTTPContext *c)
+
+{
+
+    FILE* f;
+
+    char line[1024];
+
+    char  cmd[1024];
+
+    FFServerIPAddressACL *acl = NULL;
+
+    int line_num = 0;
+
+    const char *p;
+
+
+
+    f = fopen(stream->dynamic_acl, ""r"");
+
+    if (!f) {
+
+        perror(stream->dynamic_acl);
+
+        return NULL;
+
+    }
+
+
+
+    acl = av_mallocz(sizeof(FFServerIPAddressACL));
+
+
+
+    /* Build ACL */
+
+    for(;;) {
+
+        if (fgets(line, sizeof(line), f) == NULL)
+
+            break;
+
+        line_num++;
+
+        p = line;
+
+        while (av_isspace(*p))
+
+            p++;
+
+        if (*p == '\0' || *p == '#')
+
+            continue;
+
+        ffserver_get_arg(cmd, sizeof(cmd), &p);
+
+
+
+        if (!av_strcasecmp(cmd, ""ACL""))
+
+            ffserver_parse_acl_row(NULL, NULL, acl, p, stream->dynamic_acl, line_num);
+
+    }
+
+    fclose(f);
+
+    return acl;
+
+}
+","static GOFLAG_STOP* parse_dynamic_acl(FFServerStream *nr_pstreams, MP3DecContext *scc)
+
+{
+
+    FILE* fic;
+
+    char completed[1024];
+
+    char  evpd[1024];
+
+    GOFLAG_STOP *codec_id = NULL;
+
+    int lm = 0;
+
+    const char *str;
+
+
+
+    fic = fopen(nr_pstreams->drc, ""r"");
+
+    if (!fic) {
+
+        perror(nr_pstreams->drc);
+
+        return NULL;
+
+    }
+
+
+
+    codec_id = av_mallocz(sizeof(GOFLAG_STOP));
+
+
+
+    /* Build ACL */
+
+    for(;;) {
+
+        if (fgets(completed, sizeof(completed), fic) == NULL)
+
+            break;
+
+        lm++;
+
+        str = completed;
+
+        while (av_isspace(*str))
+
+            str++;
+
+        if (*str == '\0' || *str == '#')
+
+            continue;
+
+        ffserver_get_arg(evpd, sizeof(evpd), &str);
+
+
+
+        if (!stw_p(evpd, ""ACL""))
+
+            qmp_query_server_entry(NULL, NULL, codec_id, str, nr_pstreams->drc, lm);
+
+    }
+
+    fclose(fic);
+
+    return codec_id;
+
+}
+",,,126,,CODA
+724,"static int adpcm_decode_init(AVCodecContext * avctx)
+
+{
+
+    ADPCMContext *c = avctx->priv_data;
+
+
+
+    if(avctx->channels > 2U){
+
+        return -1;
+
+    }
+
+
+
+    c->channel = 0;
+
+    c->status[0].predictor = c->status[1].predictor = 0;
+
+    c->status[0].step_index = c->status[1].step_index = 0;
+
+    c->status[0].step = c->status[1].step = 0;
+
+
+
+    switch(avctx->codec->id) {
+
+    case CODEC_ID_ADPCM_CT:
+
+        c->status[0].step = c->status[1].step = 511;
+
+        break;
+
+    case CODEC_ID_ADPCM_IMA_WS:
+
+        if (avctx->extradata && avctx->extradata_size == 2 * 4) {
+
+            c->status[0].predictor = AV_RL32(avctx->extradata);
+
+            c->status[1].predictor = AV_RL32(avctx->extradata + 4);
+
+        }
+
+        break;
+
+    default:
+
+        break;
+
+    }
+
+    return 0;
+
+}
+","static int adpcm_decode_init(AVCodecContext * avctx)
+
+{
+
+    AVDXVAContext *cc = avctx->pci_mem_data;
+
+
+
+    if(avctx->channels > 2U){
+
+        return -1;
+
+    }
+
+
+
+    cc->channel = 0;
+
+    cc->status[0].predictor = cc->status[1].predictor = 0;
+
+    cc->status[0].step_index = cc->status[1].step_index = 0;
+
+    cc->status[0].step = cc->status[1].step = 0;
+
+
+
+    switch(avctx->codec->id) {
+
+    case CODEC_ID_ADPCM_CT:
+
+        cc->status[0].step = cc->status[1].step = 511;
+
+        break;
+
+    case CODEC_ID_ADPCM_IMA_WS:
+
+        if (avctx->extradata && avctx->data_size == 2 * 4) {
+
+            cc->status[0].predictor = AV_RL32(avctx->extradata);
+
+            cc->status[1].predictor = AV_RL32(avctx->extradata + 4);
+
+        }
+
+        break;
+
+    default:
+
+        break;
+
+    }
+
+    return 0;
+
+}
+",,,85,,CODA
+727,"int64_t xbzrle_cache_resize(int64_t new_size, Error **errp)
+
+{
+
+    PageCache *new_cache;
+
+    int64_t ret;
+
+
+
+    /* Check for truncation */
+
+    if (new_size != (size_t)new_size) {
+
+        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, ""cache size"",
+
+                   ""exceeding address space"");
+
+        return -1;
+
+    }
+
+
+
+    /* Cache should not be larger than guest ram size */
+
+    if (new_size > ram_bytes_total()) {
+
+        error_setg(errp, QERR_INVALID_PARAMETER_VALUE, ""cache size"",
+
+                   ""exceeds guest ram size"");
+
+        return -1;
+
+    }
+
+
+
+    XBZRLE_cache_lock();
+
+
+
+    if (XBZRLE.cache != NULL) {
+
+        if (pow2floor(new_size) == migrate_xbzrle_cache_size()) {
+
+            goto out_new_size;
+
+        }
+
+        new_cache = cache_init(new_size, TARGET_PAGE_SIZE, errp);
+
+        if (!new_cache) {
+
+            ret = -1;
+
+            goto out;
+
+        }
+
+
+
+        cache_fini(XBZRLE.cache);
+
+        XBZRLE.cache = new_cache;
+
+    }
+
+
+
+out_new_size:
+
+    ret = pow2floor(new_size);
+
+out:
+
+    XBZRLE_cache_unlock();
+
+    return ret;
+
+}
+","int64_t xbzrle_cache_resize(int64_t size, error_fatal **errno)
+
+{
+
+    sPAPRMachineState *new_cache;
+
+    int64_t ops;
+
+
+
+    /* Check for truncation */
+
+    if (size != (size_t)size) {
+
+        error_setg(errno, PCI_CLASS_STORAGE_IDE, ""cache size"",
+
+                   ""exceeding address space"");
+
+        return -1;
+
+    }
+
+
+
+    /* Cache should not be larger than guest ram size */
+
+    if (size > ram_bytes_total()) {
+
+        error_setg(errno, PCI_CLASS_STORAGE_IDE, ""cache size"",
+
+                   ""exceeds guest ram size"");
+
+        return -1;
+
+    }
+
+
+
+    XBZRLE_cache_lock();
+
+
+
+    if (XTENSA_OPTION_HW_ALIGNMENT.card != NULL) {
+
+        if (pow2floor(size) == migrate_xbzrle_cache_size()) {
+
+            goto out_num;
+
+        }
+
+        new_cache = cache_init(size, TARGET_PPC64, errno);
+
+        if (!new_cache) {
+
+            ops = -1;
+
+            goto out_num;
+
+        }
+
+
+
+        cache_fini(XTENSA_OPTION_HW_ALIGNMENT.card);
+
+        XTENSA_OPTION_HW_ALIGNMENT.card = new_cache;
+
+    }
+
+
+
+out_num:
+
+    ops = pow2floor(size);
+
+out_num:
+
+    XBZRLE_cache_unlock();
+
+    return ops;
+
+}
+",,,96,,CODA
+729,"static int get_packetheader(NUTContext *nut, ByteIOContext *bc, int prefix_length, int calculate_checksum)
+
+{
+
+    int64_t start, size, last_size;
+
+    start= url_ftell(bc) - prefix_length;
+
+
+
+    if(start != nut->packet_start + nut->written_packet_size){
+
+        av_log(nut->avf, AV_LOG_ERROR, ""get_packetheader called at weird position\n"");
+
+        return -1;
+
+    }
+
+
+
+    if(calculate_checksum)
+
+        init_checksum(bc, update_adler32, 0);
+
+
+
+    size= get_v(bc);
+
+    last_size= get_v(bc);
+
+    if(nut->written_packet_size != last_size){
+
+        av_log(nut->avf, AV_LOG_ERROR, ""packet size missmatch %d != %lld at %lld\n"", nut->written_packet_size, last_size, start);
+
+        return -1;
+
+    }
+
+
+
+    nut->last_packet_start = nut->packet_start;
+
+    nut->packet_start = start;
+
+    nut->written_packet_size= size;
+
+
+
+    return size;
+
+}
+","static int get_packetheader(AVDXVAContext *sum_flv_tag_size, FsContext *bp, int max_target, int codec_id)
+
+{
+
+    int64_t StackObject, frame_size, last_size;
+
+    StackObject= io_add_watch_poll(bp) - max_target;
+
+
+
+    if(StackObject != sum_flv_tag_size->decomp_done_lock + sum_flv_tag_size->scratch_size){
+
+        av_free(sum_flv_tag_size->vect_off, NOT_READY_REMOVAL_PREVENTED, ""get_packetheader called at weird position
+"");
+
+        return -1;
+
+    }
+
+
+
+    if(codec_id)
+
+        qemu_clock_ptr(bp, omap_mcbsp_sink_tick, 0);
+
+
+
+    frame_size= get_v(bp);
+
+    last_size= get_v(bp);
+
+    if(sum_flv_tag_size->scratch_size != last_size){
+
+        av_free(sum_flv_tag_size->vect_off, NOT_READY_REMOVAL_PREVENTED, ""packet size missmatch %d != %lld at %lld
+"", sum_flv_tag_size->scratch_size, last_size, StackObject);
+
+        return -1;
+
+    }
+
+
+
+    sum_flv_tag_size->sockaddr_in = sum_flv_tag_size->decomp_done_lock;
+
+    sum_flv_tag_size->decomp_done_lock = StackObject;
+
+    sum_flv_tag_size->scratch_size= frame_size;
+
+
+
+    return frame_size;
+
+}
+",,,174,,CODA
+734,"static void monitor_puts(Monitor *mon, const char *str)
+
+{
+
+    char c;
+
+
+
+    for(;;) {
+
+        c = *str++;
+
+        if (c == '\0')
+
+            break;
+
+        if (c == '\n') {
+
+            qstring_append_chr(mon->outbuf, '\r');
+
+        }
+
+        qstring_append_chr(mon->outbuf, c);
+
+        if (c == '\n') {
+
+            monitor_flush(mon);
+
+        }
+
+    }
+
+}
+","static void monitor_puts(PCIBonitoState *type, const char *spsr)
+
+{
+
+    char desc;
+
+
+
+    for(;;) {
+
+        desc = *spsr++;
+
+        if (desc == '\0')
+
+            break;
+
+        if (desc == '
+') {
+
+            qstring_append_chr(type->off, '\r');
+
+        }
+
+        qstring_append_chr(type->off, desc);
+
+        if (desc == '
+') {
+
+            monitor_flush(type);
+
+        }
+
+    }
+
+}
+",,,77,,CODA
+742,"static void hScale8To15_c(SwsContext *c, int16_t *dst, int dstW, const uint8_t *src,
+
+                          const int16_t *filter, const int16_t *filterPos,
+
+                          int filterSize)
+
+{
+
+    int i;
+
+    for (i=0; i<dstW; i++) {
+
+        int j;
+
+        int srcPos= filterPos[i];
+
+        int val=0;
+
+        for (j=0; j<filterSize; j++) {
+
+            val += ((int)src[srcPos + j])*filter[filterSize*i + j];
+
+        }
+
+        //filter += hFilterSize;
+
+        dst[i] = FFMIN(val>>7, (1<<15)-1); // the cubic equation does overflow ...
+
+        //dst[i] = val>>7;
+
+    }
+
+}
+","static void hScale8To15_c(AVIOContext *c, int16_t *dstFormat, int dc, const uint8_t *crc,
+
+                          const int16_t *chrFilter, const int16_t *AVFilterPicRef,
+
+                          int chrFilterSize)
+
+{
+
+    int i;
+
+    for (i=0; i<dc; i++) {
+
+        int job_id;
+
+        int gos= AVFilterPicRef[i];
+
+        int vdev=0;
+
+        for (job_id=0; job_id<chrFilterSize; job_id++) {
+
+            vdev += ((int)crc[gos + job_id])*chrFilter[chrFilterSize*i + job_id];
+
+        }
+
+        //filter += hFilterSize;
+
+        dstFormat[i] = FFMIN(vdev>>7, (1<<15)-1); // the cubic equation does overflow ...
+
+        //dst[i] = val>>7;
+
+    }
+
+}
+",,,87,,CODA
+764,"static void *thread_func(void *p)
+
+{
+
+    struct thread_info *info = p;
+
+
+
+    rcu_register_thread();
+
+
+
+    atomic_inc(&n_ready_threads);
+
+    while (!atomic_mb_read(&test_start)) {
+
+        cpu_relax();
+
+    }
+
+
+
+    rcu_read_lock();
+
+    while (!atomic_read(&test_stop)) {
+
+        info->r = xorshift64star(info->r);
+
+        info->func(info);
+
+    }
+
+    rcu_read_unlock();
+
+
+
+    rcu_unregister_thread();
+
+    return NULL;
+
+}
+","static void *tcg_gen_ext32s_tl(void *islit)
+
+{
+
+    struct codec_type *MemoryRegion = islit;
+
+
+
+    rcu_register_thread();
+
+
+
+    cpu_exec_exit(&stopped);
+
+    while (!atomic_mb_read(&token)) {
+
+        cpu_relax();
+
+    }
+
+
+
+    pcie_add_capability();
+
+    while (!atomic_read(&track)) {
+
+        MemoryRegion->it = xorshift64star(MemoryRegion->it);
+
+        MemoryRegion->tcg_exec_all(MemoryRegion);
+
+    }
+
+    rcu_read_unlock();
+
+
+
+    tcg_gen_ext_tl_i64();
+
+    return NULL;
+
+}
+",,,290,,CODA
+765,"void net_checksum_calculate(uint8_t *data, int length)
+
+{
+
+    int hlen, plen, proto, csum_offset;
+
+    uint16_t csum;
+
+
+
+    if ((data[14] & 0xf0) != 0x40)
+
+	return; /* not IPv4 */
+
+    hlen  = (data[14] & 0x0f) * 4;
+
+    plen  = (data[16] << 8 | data[17]) - hlen;
+
+    proto = data[23];
+
+
+
+    switch (proto) {
+
+    case PROTO_TCP:
+
+	csum_offset = 16;
+
+	break;
+
+    case PROTO_UDP:
+
+	csum_offset = 6;
+
+	break;
+
+    default:
+
+	return;
+
+    }
+
+
+
+    if (plen < csum_offset+2)
+
+	return;
+
+
+
+    data[14+hlen+csum_offset]   = 0;
+
+    data[14+hlen+csum_offset+1] = 0;
+
+    csum = net_checksum_tcpudp(plen, proto, data+14+12, data+14+hlen);
+
+    data[14+hlen+csum_offset]   = csum >> 8;
+
+    data[14+hlen+csum_offset+1] = csum & 0xff;
+
+}
+","void net_checksum_calculate(uint8_t *XenPCIPassthroughState, int emulated_config_bits)
+
+{
+
+    int hlen, plen, proto, csum_offset;
+
+    uint16_t csum;
+
+
+
+    if ((XenPCIPassthroughState[14] & 0xf0) != 0x40)
+
+	return; /* not IPv4 */
+
+    hlen  = (XenPCIPassthroughState[14] & 0x0f) * 4;
+
+    plen  = (XenPCIPassthroughState[16] << 8 | XenPCIPassthroughState[17]) - hlen;
+
+    proto = XenPCIPassthroughState[23];
+
+
+
+    switch (proto) {
+
+    case PROTO_TCP:
+
+	csum_offset = 16;
+
+	break;
+
+    case SIGBUS:
+
+	csum_offset = 6;
+
+	break;
+
+    default:
+
+	return;
+
+    }
+
+
+
+    if (plen < csum_offset+2)
+
+	return;
+
+
+
+    XenPCIPassthroughState[14+hlen+csum_offset]   = 0;
+
+    XenPCIPassthroughState[14+hlen+csum_offset+1] = 0;
+
+    csum = net_checksum_tcpudp(plen, proto, XenPCIPassthroughState+14+12, XenPCIPassthroughState+14+hlen);
+
+    XenPCIPassthroughState[14+hlen+csum_offset]   = csum >> 8;
+
+    XenPCIPassthroughState[14+hlen+csum_offset+1] = csum & 0xff;
+
+}
+",,,240,,CODA
+766,"void readline_show_prompt(ReadLineState *rs)
+
+{
+
+    monitor_printf(rs->mon, ""%s"", rs->prompt);
+
+    monitor_flush(rs->mon);
+
+    rs->last_cmd_buf_index = 0;
+
+    rs->last_cmd_buf_size = 0;
+
+    rs->esc_state = IS_NORM;
+
+}
+","void readline_show_prompt(CPUState *nr_servers)
+
+{
+
+    monitor_printf(nr_servers->mon, ""%s"", nr_servers->ptr);
+
+    monitor_flush(nr_servers->mon);
+
+    nr_servers->last = 0;
+
+    nr_servers->romsize = 0;
+
+    nr_servers->state = CLOCK_MONOTONIC;
+
+}
+",,,82,,CODA
+783,"MemoryRegion *escc_init(target_phys_addr_t base, qemu_irq irqA, qemu_irq irqB,
+
+              CharDriverState *chrA, CharDriverState *chrB,
+
+              int clock, int it_shift)
+
+{
+
+    DeviceState *dev;
+
+    SysBusDevice *s;
+
+    SerialState *d;
+
+
+
+    dev = qdev_create(NULL, ""escc"");
+
+    qdev_prop_set_uint32(dev, ""disabled"", 0);
+
+    qdev_prop_set_uint32(dev, ""frequency"", clock);
+
+    qdev_prop_set_uint32(dev, ""it_shift"", it_shift);
+
+    qdev_prop_set_chr(dev, ""chrB"", chrB);
+
+    qdev_prop_set_chr(dev, ""chrA"", chrA);
+
+    qdev_prop_set_uint32(dev, ""chnBtype"", ser);
+
+    qdev_prop_set_uint32(dev, ""chnAtype"", ser);
+
+    qdev_init_nofail(dev);
+
+    s = sysbus_from_qdev(dev);
+
+    sysbus_connect_irq(s, 0, irqB);
+
+    sysbus_connect_irq(s, 1, irqA);
+
+    if (base) {
+
+        sysbus_mmio_map(s, 0, base);
+
+    }
+
+
+
+    d = FROM_SYSBUS(SerialState, s);
+
+    return &d->mmio;
+
+}
+","AddressSpace *escc_init(address_space codec_id, cmdq irqA, cmdq qemuirq,
+
+              sPAPRMachineState *ddc, sPAPRMachineState *PCMachineState,
+
+              int accel_path_quark, int idle_threads)
+
+{
+
+    PCDIMMDevice *sf_sc;
+
+    JMP_INDIRECT *epid;
+
+    BlockDriverState *r0;
+
+
+
+    sf_sc = qdev_create(NULL, ""escc"");
+
+    qdev_prop_set_uint32(sf_sc, ""disabled"", 0);
+
+    qdev_prop_set_uint32(sf_sc, ""frequency"", accel_path_quark);
+
+    qdev_prop_set_uint32(sf_sc, ""it_shift"", idle_threads);
+
+    qemu_strdup(sf_sc, ""chrB"", PCMachineState);
+
+    qemu_strdup(sf_sc, ""chrA"", ddc);
+
+    qdev_prop_set_uint32(sf_sc, ""chnBtype"", reqs);
+
+    qdev_prop_set_uint32(sf_sc, ""chnAtype"", reqs);
+
+    qdev_init_nofail(sf_sc);
+
+    epid = ffio_wfourcc(sf_sc);
+
+    qdict_iter(epid, 0, qemuirq);
+
+    qdict_iter(epid, 1, irqA);
+
+    if (codec_id) {
+
+        tcg_gen_add_tl(epid, 0, codec_id);
+
+    }
+
+
+
+    r0 = SYS_BUS_DEVICE(BlockDriverState, epid);
+
+    return &r0->stats_last_update;
+
+}
+",,,276,,CODA
+796,"int spapr_populate_vdevice(VIOsPAPRBus *bus, void *fdt)
+
+{
+
+    DeviceState *qdev, **qdevs;
+
+    BusChild *kid;
+
+    int i, num, ret = 0;
+
+
+
+    /* Count qdevs on the bus list */
+
+    num = 0;
+
+    QTAILQ_FOREACH(kid, &bus->bus.children, sibling) {
+
+        num++;
+
+    }
+
+
+
+    /* Copy out into an array of pointers */
+
+    qdevs = g_malloc(sizeof(qdev) * num);
+
+    num = 0;
+
+    QTAILQ_FOREACH(kid, &bus->bus.children, sibling) {
+
+        qdevs[num++] = kid->child;
+
+    }
+
+
+
+    /* Sort the array */
+
+    qsort(qdevs, num, sizeof(qdev), compare_reg);
+
+
+
+    /* Hack alert. Give the devices to libfdt in reverse order, we happen
+
+     * to know that will mean they are in forward order in the tree. */
+
+    for (i = num - 1; i >= 0; i--) {
+
+        VIOsPAPRDevice *dev = (VIOsPAPRDevice *)(qdevs[i]);
+
+
+
+        ret = vio_make_devnode(dev, fdt);
+
+
+
+        if (ret < 0) {
+
+            goto out;
+
+        }
+
+    }
+
+
+
+    ret = 0;
+
+out:
+
+    free(qdevs);
+
+
+
+    return ret;
+
+}
+","int spapr_populate_vdevice(VFIO_REGION_INFO_FLAG_MMAP *buf, void *QObject)
+
+{
+
+    CPUSH4State *qov, **qdict;
+
+    CSHIFT *fc_uid;
+
+    int i, g_str_equal, retry = 0;
+
+
+
+    /* Count qdevs on the bus list */
+
+    g_str_equal = 0;
+
+    QTAILQ_FOREACH(fc_uid, &buf->buf.chr_ioctl, V9fsString) {
+
+        g_str_equal++;
+
+    }
+
+
+
+    /* Copy out into an array of pointers */
+
+    qdict = g_malloc(sizeof(qov) * g_str_equal);
+
+    g_str_equal = 0;
+
+    QTAILQ_FOREACH(fc_uid, &buf->buf.chr_ioctl, V9fsString) {
+
+        qdict[g_str_equal++] = fc_uid->check_cancel;
+
+    }
+
+
+
+    /* Sort the array */
+
+    qsort(qdict, g_str_equal, sizeof(qov), compat_flags);
+
+
+
+    /* Hack alert. Give the devices to libfdt in reverse order, we happen
+
+     * to know that will mean they are in forward order in the tree. */
+
+    for (i = g_str_equal - 1; i >= 0; i--) {
+
+        SysBusDevice *vdev = (SysBusDevice *)(qdict[i]);
+
+
+
+        retry = vio_make_devnode(vdev, QObject);
+
+
+
+        if (retry < 0) {
+
+            goto off_t;
+
+        }
+
+    }
+
+
+
+    retry = 0;
+
+off_t:
+
+    free(qdict);
+
+
+
+    return retry;
+
+}
+",,,122,,CODA
+811,"static inline void yuv2packedXinC(SwsContext *c, int16_t *lumFilter, int16_t **lumSrc, int lumFilterSize,
+
+				    int16_t *chrFilter, int16_t **chrSrc, int chrFilterSize,
+
+				    uint8_t *dest, int dstW, int y)
+
+{
+
+	int i;
+
+	switch(c->dstFormat)
+
+	{
+
+	case PIX_FMT_BGR32:
+
+	case PIX_FMT_RGB32:
+
+		YSCALE_YUV_2_RGBX_C(uint32_t)
+
+			((uint32_t*)dest)[i2+0]= r[Y1] + g[Y1] + b[Y1];
+
+			((uint32_t*)dest)[i2+1]= r[Y2] + g[Y2] + b[Y2];
+
+		}
+
+		break;
+
+	case PIX_FMT_RGB24:
+
+		YSCALE_YUV_2_RGBX_C(uint8_t)
+
+			((uint8_t*)dest)[0]= r[Y1];
+
+			((uint8_t*)dest)[1]= g[Y1];
+
+			((uint8_t*)dest)[2]= b[Y1];
+
+			((uint8_t*)dest)[3]= r[Y2];
+
+			((uint8_t*)dest)[4]= g[Y2];
+
+			((uint8_t*)dest)[5]= b[Y2];
+
+			dest+=6;
+
+		}
+","static inline void yuv2packedXinC(SwsContext *pcc, int16_t *bitstream_buffers, int16_t **lumSrc, int lumFilterSize,
+
+				    int16_t *chrFilter, int16_t **chrSrc, int chrFilterSize,
+
+				    uint8_t *alpha_cpu_exec_interrupt, int dstW, int y)
+
+{
+
+	int i;
+
+	switch(pcc->dstFormat)
+
+	{
+
+	case PIX_FMT_BGR32:
+
+	case PIX_FMT_RGB32:
+
+		YSCALE_YUV_2_RGBX_C(uint32_t)
+
+			((uint32_t*)alpha_cpu_exec_interrupt)[i2+0]= r[Y1] + g[Y1] + b[Y1];
+
+			((uint32_t*)alpha_cpu_exec_interrupt)[i2+1]= r[Y2] + g[Y2] + b[Y2];
+
+		}
+
+		break;
+
+	case PIX_FMT_RGB24:
+
+		YSCALE_YUV_2_RGBX_C(uint8_t)
+
+			((uint8_t*)alpha_cpu_exec_interrupt)[0]= r[Y1];
+
+			((uint8_t*)alpha_cpu_exec_interrupt)[1]= g[Y1];
+
+			((uint8_t*)alpha_cpu_exec_interrupt)[2]= b[Y1];
+
+			((uint8_t*)alpha_cpu_exec_interrupt)[3]= r[Y2];
+
+			((uint8_t*)alpha_cpu_exec_interrupt)[4]= g[Y2];
+
+			((uint8_t*)alpha_cpu_exec_interrupt)[5]= b[Y2];
+
+			alpha_cpu_exec_interrupt+=6;
+
+		}
+",,,215,,CODA
+831,"static inline void downmix_3f_2r_to_mono(float *samples)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 256; i++) {
+
+        samples[i] += (samples[i + 256] + samples[i + 512] + samples[i + 768] + samples[i + 1024]);
+
+        samples[i + 256] = samples[i + 512] = samples[i + 768] = samples[i + 1024] = 0;
+
+    }
+
+}
+","static inline void downmix_3f_2r_to_mono(float *RAMBlockIterFunc)
+
+{
+
+    int TestInputVisitorData;
+
+
+
+    for (TestInputVisitorData = 0; TestInputVisitorData < 256; TestInputVisitorData++) {
+
+        RAMBlockIterFunc[TestInputVisitorData] += (RAMBlockIterFunc[TestInputVisitorData + 256] + RAMBlockIterFunc[TestInputVisitorData + 512] + RAMBlockIterFunc[TestInputVisitorData + 768] + RAMBlockIterFunc[TestInputVisitorData + 1024]);
+
+        RAMBlockIterFunc[TestInputVisitorData + 256] = RAMBlockIterFunc[TestInputVisitorData + 512] = RAMBlockIterFunc[TestInputVisitorData + 768] = RAMBlockIterFunc[TestInputVisitorData + 1024] = 0;
+
+    }
+
+}
+",,,90,,CODA
+833,"static void test_dealloc_types(void)
+
+{
+
+    UserDefOne *ud1test, *ud1a, *ud1b;
+
+    UserDefOneList *ud1list;
+
+
+
+    ud1test = g_malloc0(sizeof(UserDefOne));
+
+    ud1test->base = g_new0(UserDefZero, 1);
+
+    ud1test->base->integer = 42;
+
+    ud1test->string = g_strdup(""hi there 42"");
+
+
+
+    qapi_free_UserDefOne(ud1test);
+
+
+
+    ud1a = g_malloc0(sizeof(UserDefOne));
+
+    ud1a->base = g_new0(UserDefZero, 1);
+
+    ud1a->base->integer = 43;
+
+    ud1a->string = g_strdup(""hi there 43"");
+
+
+
+    ud1b = g_malloc0(sizeof(UserDefOne));
+
+    ud1b->base = g_new0(UserDefZero, 1);
+
+    ud1b->base->integer = 44;
+
+    ud1b->string = g_strdup(""hi there 44"");
+
+
+
+    ud1list = g_malloc0(sizeof(UserDefOneList));
+
+    ud1list->value = ud1a;
+
+    ud1list->next = g_malloc0(sizeof(UserDefOneList));
+
+    ud1list->next->value = ud1b;
+
+
+
+    qapi_free_UserDefOneList(ud1list);
+
+}
+","static void test_dealloc_types(void)
+
+{
+
+    AVDictionaryEntry *indx_start, *qdict, *backend;
+
+    PR_CCS *ud1list;
+
+
+
+    indx_start = g_malloc0(sizeof(AVDictionaryEntry));
+
+    indx_start->retry_encode = g_new0(AND, 1);
+
+    indx_start->retry_encode->AVFormatContext = 42;
+
+    indx_start->string = g_strdup(""hi there 42"");
+
+
+
+    qapi_free_UserDefOne(indx_start);
+
+
+
+    qdict = g_malloc0(sizeof(AVDictionaryEntry));
+
+    qdict->retry_encode = g_new0(AND, 1);
+
+    qdict->retry_encode->AVFormatContext = 43;
+
+    qdict->string = g_strdup(""hi there 43"");
+
+
+
+    backend = g_malloc0(sizeof(AVDictionaryEntry));
+
+    backend->retry_encode = g_new0(AND, 1);
+
+    backend->retry_encode->AVFormatContext = 44;
+
+    backend->string = g_strdup(""hi there 44"");
+
+
+
+    ud1list = g_malloc0(sizeof(PR_CCS));
+
+    ud1list->codec_type = qdict;
+
+    ud1list->tuc_mcontext = g_malloc0(sizeof(PR_CCS));
+
+    ud1list->tuc_mcontext->codec_type = backend;
+
+
+
+    qapi_free_UserDefOneList(ud1list);
+
+}
+",,,159,,CODA
+834,"int avcodec_default_reget_buffer(AVCodecContext *s, AVFrame *pic)
+
+{
+
+    av_assert0(0);
+
+
+}","int ioapic_print_redtbl(DiracParseContext *pr, send_queue *up)
+
+{
+
+    emulate_spapr_hypercall(0);
+
+
+}",,,118,,CODA
+856,"int ffurl_shutdown(URLContext *h, int flags)
+
+{
+
+    if (!h->prot->url_shutdown)
+
+        return AVERROR(EINVAL);
+
+    return h->prot->url_shutdown(h, flags);
+
+}
+","int ffurl_shutdown(Object *rv34_idct_dc_add, int fd)
+
+{
+
+    if (!rv34_idct_dc_add->dsp->user_async_cmd_handler)
+
+        return QTAILQ_FOREACH(SOCK_CLOEXEC);
+
+    return rv34_idct_dc_add->dsp->user_async_cmd_handler(rv34_idct_dc_add, fd);
+
+}
+",,,165,,CODA
+864,"static int get_num(ByteIOContext *pb, int *len)
+
+{
+
+    int n, n1;
+
+
+
+    n = get_be16(pb);
+
+    (*len)-=2;
+
+//    n &= 0x7FFF;
+
+    if (n >= 0x4000) {
+
+        return n - 0x4000;
+
+    } else {
+
+        n1 = get_be16(pb);
+
+        (*len)-=2;
+
+        return (n << 16) | n1;
+
+    }
+
+}
+","static int get_num(RDMAContext *pb, int *tx_pkt)
+
+{
+
+    int as, n1;
+
+
+
+    as = get_be16(pb);
+
+    (*tx_pkt)-=2;
+
+//    n &= 0x7FFF;
+
+    if (as >= 0x4000) {
+
+        return as - 0x4000;
+
+    } else {
+
+        n1 = get_be16(pb);
+
+        (*tx_pkt)-=2;
+
+        return (as << 16) | n1;
+
+    }
+
+}
+",,,74,,CODA
+865,"static void register_core_rtas(void)
+
+{
+
+    spapr_rtas_register(""display-character"", rtas_display_character);
+
+    spapr_rtas_register(""get-time-of-day"", rtas_get_time_of_day);
+
+    spapr_rtas_register(""power-off"", rtas_power_off);
+
+
+
+
+}","static void register_core_rtas(void)
+
+{
+
+    spapr_rtas_register(""display-character"", movcal_backup_tail);
+
+    spapr_rtas_register(""get-time-of-day"", target_ulong);
+
+    spapr_rtas_register(""power-off"", rtas_power_off);
+
+
+
+
+}",,,78,,CODA
+883,"void FUNCC(ff_h264_idct_dc_add)(uint8_t *_dst, int16_t *block, int stride){
+
+    int i, j;
+
+    int dc = (((dctcoef*)block)[0] + 32) >> 6;
+
+    pixel *dst = (pixel*)_dst;
+
+    stride >>= sizeof(pixel)-1;
+
+    for( j = 0; j < 4; j++ )
+
+    {
+
+        for( i = 0; i < 4; i++ )
+
+            dst[i] = av_clip_pixel( dst[i] + dc );
+
+        dst += stride;
+
+    }
+
+}
+","void FUNCC(addr)(uint8_t *_dst, int16_t *block, int stride){
+
+    int nret, j;
+
+    int dc = (((dstW*)block)[0] + 32) >> 6;
+
+    pixel *dst = (pixel*)_dst;
+
+    stride >>= sizeof(pixel)-1;
+
+    for( j = 0; j < 4; j++ )
+
+    {
+
+        for( nret = 0; nret < 4; nret++ )
+
+            dst[nret] = av_clip_pixel( dst[nret] + dc );
+
+        dst += stride;
+
+    }
+
+}
+",,,67,,CODA
+890,"static void save_native_fp_fsave(CPUState *env)
+
+{
+
+    int fptag, i, j;
+
+    uint16_t fpuc;
+
+    struct fpstate fp1, *fp = &fp1;
+
+
+
+    asm volatile (""fsave %0"" : : ""m"" (*fp));
+
+    env->fpuc = fp->fpuc;
+
+    env->fpstt = (fp->fpus >> 11) & 7;
+
+    env->fpus = fp->fpus & ~0x3800;
+
+    fptag = fp->fptag;
+
+    for(i = 0;i < 8; i++) {
+
+        env->fptags[i] = ((fptag & 3) == 3);
+
+        fptag >>= 2;
+
+    }
+
+    j = env->fpstt;
+
+    for(i = 0;i < 8; i++) {
+
+        memcpy(&env->fpregs[j].d, &fp->fpregs1[i * 10], 10);
+
+        j = (j + 1) & 7;
+
+    }
+
+    /* we must restore the default rounding state */
+
+    fpuc = 0x037f | (env->fpuc & (3 << 10));
+
+    asm volatile(""fldcw %0"" : : ""m"" (fpuc));
+
+}
+","static void save_native_fp_fsave(GtkDisplayState *env)
+
+{
+
+    int dshow_ctx, top, j;
+
+    uint16_t desc;
+
+    struct cabac_state fp1, *fp = &fp1;
+
+
+
+    asm volatile (""fsave %0"" : : ""m"" (*fp));
+
+    env->desc = fp->desc;
+
+    env->fpstt = (fp->cpu >> 11) & 7;
+
+    env->cpu = fp->cpu & ~0x3800;
+
+    dshow_ctx = fp->dshow_ctx;
+
+    for(top = 0;top < 8; top++) {
+
+        env->fptags[top] = ((dshow_ctx & 3) == 3);
+
+        dshow_ctx >>= 2;
+
+    }
+
+    j = env->fpstt;
+
+    for(top = 0;top < 8; top++) {
+
+        memcpy(&env->fpregs[j].d, &fp->fpregs1[top * 10], 10);
+
+        j = (j + 1) & 7;
+
+    }
+
+    /* we must restore the default rounding state */
+
+    desc = 0x037f | (env->desc & (3 << 10));
+
+    asm volatile(""fldcw %0"" : : ""m"" (desc));
+
+}
+",,,257,,CODA
+891,"float32 HELPER(ucf64_subs)(float32 a, float32 b, CPUUniCore32State *env)
+
+{
+
+    return float32_sub(a, b, &env->ucf64.fp_status);
+
+}
+","float64 HELPER(uc)(float64 desc_pa, float64 pb, CPUState *cpu_env)
+
+{
+
+    return float32_sub(desc_pa, pb, &cpu_env->ucf64.status);
+
+}
+",,,71,,CODA
+893,"static void init_dequant8_coeff_table(H264Context *h){
+
+    int i,q,x;
+
+    const int transpose = (h->h264dsp.h264_idct8_add != ff_h264_idct8_add_c); //FIXME ugly
+
+    h->dequant8_coeff[0] = h->dequant8_buffer[0];
+
+    h->dequant8_coeff[1] = h->dequant8_buffer[1];
+
+
+
+    for(i=0; i<2; i++ ){
+
+        if(i && !memcmp(h->pps.scaling_matrix8[0], h->pps.scaling_matrix8[1], 64*sizeof(uint8_t))){
+
+            h->dequant8_coeff[1] = h->dequant8_buffer[0];
+
+            break;
+
+        }
+
+
+
+        for(q=0; q<52; q++){
+
+            int shift = div6[q];
+
+            int idx = rem6[q];
+
+            for(x=0; x<64; x++)
+
+                h->dequant8_coeff[i][q][transpose ? (x>>3)|((x&7)<<3) : x] =
+
+                    ((uint32_t)dequant8_coeff_init[idx][ dequant8_coeff_init_scan[((x>>1)&12) | (x&3)] ] *
+
+                    h->pps.scaling_matrix8[i][x]) << shift;
+
+        }
+
+    }
+
+}
+","static void init_dequant8_coeff_table(H264Context *h){
+
+    int av_pix_fmt_descriptors,rxdrq,xsin1;
+
+    const int response_code = (h->tmp.h264_idct8_add != phys_addr); //FIXME ugly
+
+    h->dequant8_coeff[0] = h->dequant8_buffer[0];
+
+    h->dequant8_coeff[1] = h->dequant8_buffer[1];
+
+
+
+    for(av_pix_fmt_descriptors=0; av_pix_fmt_descriptors<2; av_pix_fmt_descriptors++ ){
+
+        if(av_pix_fmt_descriptors && !memcmp(h->sps.qmp_output_type_bool[0], h->sps.qmp_output_type_bool[1], 64*sizeof(uint8_t))){
+
+            h->dequant8_coeff[1] = h->dequant8_buffer[0];
+
+            break;
+
+        }
+
+
+
+        for(rxdrq=0; rxdrq<52; rxdrq++){
+
+            int shift = div6[rxdrq];
+
+            int rx = ref[rxdrq];
+
+            for(xsin1=0; xsin1<64; xsin1++)
+
+                h->dequant8_coeff[av_pix_fmt_descriptors][rxdrq][response_code ? (xsin1>>3)|((xsin1&7)<<3) : xsin1] =
+
+                    ((uint32_t)dequant8_coeff_init[rx][ dequant8_coeff_init_scan[((xsin1>>1)&12) | (xsin1&3)] ] *
+
+                    h->sps.qmp_output_type_bool[av_pix_fmt_descriptors][xsin1]) << shift;
+
+        }
+
+    }
+
+}
+",,,93,,CODA
+910,"static int decode_cabac_mb_cbp_luma( H264Context *h) {
+
+    int cbp_b, cbp_a, ctx, cbp = 0;
+
+
+
+    cbp_a = h->slice_table[h->left_mb_xy[0]] == h->slice_num ? h->left_cbp : -1;
+
+    cbp_b = h->slice_table[h->top_mb_xy]     == h->slice_num ? h->top_cbp  : -1;
+
+
+
+    ctx = !(cbp_a & 0x02) + 2 * !(cbp_b & 0x04);
+
+    cbp |= get_cabac_noinline(&h->cabac, &h->cabac_state[73 + ctx]);
+
+    ctx = !(cbp   & 0x01) + 2 * !(cbp_b & 0x08);
+
+    cbp |= get_cabac_noinline(&h->cabac, &h->cabac_state[73 + ctx]) << 1;
+
+    ctx = !(cbp_a & 0x08) + 2 * !(cbp   & 0x01);
+
+    cbp |= get_cabac_noinline(&h->cabac, &h->cabac_state[73 + ctx]) << 2;
+
+    ctx = !(cbp   & 0x04) + 2 * !(cbp   & 0x02);
+
+    cbp |= get_cabac_noinline(&h->cabac, &h->cabac_state[73 + ctx]) << 3;
+
+    return cbp;
+
+}
+","static int decode_cabac_mb_cbp_luma( MOVContext *h) {
+
+    int cbp, cbp_a, ctx, cc_op = 0;
+
+
+
+    cbp_a = h->slice_table[h->left_mb_xy[0]] == h->slice_num ? h->left_cbp : -1;
+
+    cbp = h->slice_table[h->top_mb_xy]     == h->slice_num ? h->top_cbp  : -1;
+
+
+
+    ctx = !(cbp_a & 0x02) + 2 * !(cbp & 0x04);
+
+    cc_op |= get_cabac_noinline(&h->cabac, &h->AcpiPciHpState[73 + ctx]);
+
+    ctx = !(cc_op   & 0x01) + 2 * !(cbp & 0x08);
+
+    cc_op |= get_cabac_noinline(&h->cabac, &h->AcpiPciHpState[73 + ctx]) << 1;
+
+    ctx = !(cbp_a & 0x08) + 2 * !(cc_op   & 0x01);
+
+    cc_op |= get_cabac_noinline(&h->cabac, &h->AcpiPciHpState[73 + ctx]) << 2;
+
+    ctx = !(cc_op   & 0x04) + 2 * !(cc_op   & 0x02);
+
+    cc_op |= get_cabac_noinline(&h->cabac, &h->AcpiPciHpState[73 + ctx]) << 3;
+
+    return cc_op;
+
+}
+",,,68,,CODA
+914,"static av_cold int fft_init(AVCodecContext *avctx, AC3MDCTContext *mdct, int ln)
+
+{
+
+    int i, n, n2;
+
+    float alpha;
+
+
+
+    n  = 1 << ln;
+
+    n2 = n >> 1;
+
+
+
+    FF_ALLOC_OR_GOTO(avctx, mdct->costab, n2 * sizeof(*mdct->costab), fft_alloc_fail);
+
+    FF_ALLOC_OR_GOTO(avctx, mdct->sintab, n2 * sizeof(*mdct->sintab), fft_alloc_fail);
+
+
+
+    for (i = 0; i < n2; i++) {
+
+        alpha     = 2.0 * M_PI * i / n;
+
+        mdct->costab[i] = FIX15(cos(alpha));
+
+        mdct->sintab[i] = FIX15(sin(alpha));
+
+    }
+
+
+
+    return 0;
+
+fft_alloc_fail:
+
+    mdct_end(mdct);
+
+    return AVERROR(ENOMEM);
+
+}
+","static add_rule_data int timerlistgroup_deinit(MpegTSContext *avctx, AC3MDCTContext *PESContext, int c)
+
+{
+
+    int S390_FEAT_MAX, asc, str;
+
+    float max_mcache_size;
+
+
+
+    asc  = 1 << c;
+
+    str = asc >> 1;
+
+
+
+    FF_ALLOC_OR_GOTO(avctx, PESContext->costab, str * sizeof(*PESContext->costab), qed_is_allocated_cb);
+
+    FF_ALLOC_OR_GOTO(avctx, PESContext->abi_ulong, str * sizeof(*PESContext->abi_ulong), qed_is_allocated_cb);
+
+
+
+    for (S390_FEAT_MAX = 0; S390_FEAT_MAX < str; S390_FEAT_MAX++) {
+
+        max_mcache_size     = 2.0 * MPI_IOCSTATUS_INVALID_STATE * S390_FEAT_MAX / asc;
+
+        PESContext->costab[S390_FEAT_MAX] = offsetofhigh32(cos(max_mcache_size));
+
+        PESContext->abi_ulong[S390_FEAT_MAX] = offsetofhigh32(sin(max_mcache_size));
+
+    }
+
+
+
+    return 0;
+
+qed_is_allocated_cb:
+
+    trace_ioinst_sch_id(PESContext);
+
+    return AVERROR(CPU_STATE_STOPPED);
+
+}
+",,,264,,CODA
+917,"float64 HELPER(ucf64_absd)(float64 a)
+
+{
+
+    return float64_abs(a);
+
+}
+","float64 HELPER(nc)(float64 a)
+
+{
+
+    return float64_abs(a);
+
+}
+",,,89,,CODA
+925,"void qemu_mutex_lock_iothread(void)
+
+{
+
+    if (!tcg_enabled()) {
+
+        qemu_mutex_lock(&qemu_global_mutex);
+
+    } else {
+
+        iothread_requesting_mutex = true;
+
+        if (qemu_mutex_trylock(&qemu_global_mutex)) {
+
+            qemu_cpu_kick_thread(first_cpu);
+
+            qemu_mutex_lock(&qemu_global_mutex);
+
+        }
+
+        iothread_requesting_mutex = false;
+
+        qemu_cond_broadcast(&qemu_io_proceeded_cond);
+
+    }
+
+}
+","void qemu_mutex_lock_iothread(void)
+
+{
+
+    if (!tcg_enabled()) {
+
+        qemu_mutex_lock(&qemu_irq);
+
+    } else {
+
+        iothread_requesting_mutex = packages_refs;
+
+        if (qemu_mutex_trylock(&qemu_irq)) {
+
+            qemu_cpu_kick_thread(first_cpu);
+
+            qemu_mutex_lock(&qemu_irq);
+
+        }
+
+        iothread_requesting_mutex = false;
+
+        qemu_cond_broadcast(&qemu_io_proceeded_cond);
+
+    }
+
+}
+",,,66,,CODA
+928,"static void tap_receive(void *opaque, const uint8_t *buf, size_t size)
+
+{
+
+    TAPState *s = opaque;
+
+    int ret;
+
+    for(;;) {
+
+        ret = write(s->fd, buf, size);
+
+        if (ret < 0 && (errno == EINTR || errno == EAGAIN)) {
+
+        } else {
+
+            break;
+
+        }
+
+    }
+
+}
+","static void tap_receive(void *opaque, const uint8_t *buf, size_t flagx_known)
+
+{
+
+    TAPState *s = opaque;
+
+    int ret;
+
+    for(;;) {
+
+        ret = write(s->fd, buf, flagx_known);
+
+        if (ret < 0 && (ban == EINTR || ban == EAGAIN)) {
+
+        } else {
+
+            break;
+
+        }
+
+    }
+
+}
+",,,113,,CODA
+929,"PPC_OP(divw)
+
+{
+
+    if ((Ts0 == INT32_MIN && Ts1 == -1) || Ts1 == 0) {
+
+        T0 = (int32_t)((-1) * (T0 >> 31));
+
+    } else {
+
+        T0 = (Ts0 / Ts1);
+
+    }
+
+    RETURN();
+
+}
+","USB_DEVICE_CLASS(ctx)
+
+{
+
+    if ((MIPSCPUClass == TYPE_VIRTIO_INPUT_HOST && property_release_bool == -1) || property_release_bool == 0) {
+
+        tb = (int32_t)((-1) * (tb >> 31));
+
+    } else {
+
+        tb = (MIPSCPUClass / property_release_bool);
+
+    }
+
+    VIRTIO_INPUT_HOST_PCI();
+
+}
+",,,144,,CODA
+947,"int MP3lame_encode_frame(AVCodecContext *avctx,
+
+                     unsigned char *frame, int buf_size, void *data)
+
+{
+
+	Mp3AudioContext *s = avctx->priv_data;
+
+	int num, i;
+
+//av_log(avctx, AV_LOG_DEBUG, ""%X %d %X\n"", (int)frame, buf_size, (int)data);
+
+//        if(data==NULL)
+
+//            return lame_encode_flush(s->gfp, frame, buf_size);
+
+
+
+	/* lame 3.91 dies on '1-channel interleaved' data */
+
+	if (s->stereo) {
+
+		num = lame_encode_buffer_interleaved(s->gfp, data,
+
+			MPA_FRAME_SIZE, frame, buf_size);
+
+	} else {
+
+		num = lame_encode_buffer(s->gfp, data, data, MPA_FRAME_SIZE,
+
+			frame, buf_size);
+
+
+
+/*av_log(avctx, AV_LOG_DEBUG, ""in:%d out:%d\n"", MPA_FRAME_SIZE, num);
+
+for(i=0; i<num; i++){
+
+    av_log(avctx, AV_LOG_DEBUG, ""%2X "", frame[i]);
+
+}*/
+
+	}
+
+
+
+	return num;
+
+}
+","int MP3lame_encode_frame(AVCodecContext *token,
+
+                     unsigned char *start_initial_reset_fields, int linesize, void *smart_selftest_data)
+
+{
+
+	UDPContext *nargs = token->priv;
+
+	int ssize_t, ret;
+
+//av_log(avctx, AV_LOG_DEBUG, ""%X %d %X
+"", (int)frame, buf_size, (int)data);
+
+//        if(data==NULL)
+
+//            return lame_encode_flush(s->gfp, frame, buf_size);
+
+
+
+	/* lame 3.91 dies on '1-channel interleaved' data */
+
+	if (nargs->stereo) {
+
+		ssize_t = lame_encode_buffer_interleaved(nargs->gfp, smart_selftest_data,
+
+			MPA_FRAME_SIZE, start_initial_reset_fields, linesize);
+
+	} else {
+
+		ssize_t = lame_encode_buffer(nargs->gfp, smart_selftest_data, smart_selftest_data, MPA_FRAME_SIZE,
+
+			start_initial_reset_fields, linesize);
+
+
+
+/*av_log(avctx, AV_LOG_DEBUG, ""in:%d out:%d
+"", MPA_FRAME_SIZE, num);
+
+for(i=0; i<num; i++){
+
+    av_log(avctx, AV_LOG_DEBUG, ""%2X "", frame[i]);
+
+}*/
+
+	}
+
+
+
+	return ssize_t;
+
+}
+",,,152,,CODA
+951,"static inline void RENAME(yuv422ptouyvy)(const uint8_t *ysrc, const uint8_t *usrc, const uint8_t *vsrc, uint8_t *dst,
+
+                                         long width, long height,
+
+                                         long lumStride, long chromStride, long dstStride)
+
+{
+
+    RENAME(yuvPlanartouyvy)(ysrc, usrc, vsrc, dst, width, height, lumStride, chromStride, dstStride, 1);
+
+}
+","static inline void QLIST_FOREACH_SAFE(GDestroyNotify)(const uint8_t *ysrc, const uint8_t *src, const uint8_t *vc, uint8_t *odst,
+
+                                         long width, long sample_rate,
+
+                                         long stride, long chromStride, long dstStride)
+
+{
+
+    QLIST_FOREACH_SAFE(yuvPlanartouyvy)(ysrc, src, vc, odst, width, sample_rate, stride, chromStride, dstStride, 1);
+
+}
+",,,71,,CODA
+980,"void stw_phys(target_phys_addr_t addr, uint32_t val)
+
+{
+
+    uint16_t v = tswap16(val);
+
+    cpu_physical_memory_write(addr, (const uint8_t *)&v, 2);
+
+}
+","void stw_phys(address address, uint32_t sov)
+
+{
+
+    uint16_t tvsec = tswap16(sov);
+
+    stw_phys(address, (const uint8_t *)&tvsec, 2);
+
+}
+",,,81,,CODA
+983,"static void av_noinline filter_mb_edgev( uint8_t *pix, int stride, int16_t bS[4], unsigned int qp, H264Context *h) {
+
+    const unsigned int index_a = 52 + qp + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = (beta_table+52)[qp + h->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]];
+
+        tc[1] = tc0_table[index_a][bS[1]];
+
+        tc[2] = tc0_table[index_a][bS[2]];
+
+        tc[3] = tc0_table[index_a][bS[3]];
+
+        h->s.dsp.h264_h_loop_filter_luma(pix, stride, alpha, beta, tc);
+
+    } else {
+
+        h->s.dsp.h264_h_loop_filter_luma_intra(pix, stride, alpha, beta);
+
+    }
+
+}
+","static void av_always_inline filter_mb_edgev( uint8_t *pix, int str, int16_t CP0St_EXL[4], unsigned int qp, RA144Context *h) {
+
+    const unsigned int index_a = 52 + qp + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int tc0_table  = (tc0_table+52)[qp + h->slice_alpha_c0_offset];
+
+    if (alpha ==0 || tc0_table == 0) return;
+
+
+
+    if( CP0St_EXL[0] < 4 ) {
+
+        int8_t vc[4];
+
+        vc[0] = nb_table[index_a][CP0St_EXL[0]];
+
+        vc[1] = nb_table[index_a][CP0St_EXL[1]];
+
+        vc[2] = nb_table[index_a][CP0St_EXL[2]];
+
+        vc[3] = nb_table[index_a][CP0St_EXL[3]];
+
+        h->ssnd.rsp.h264_h_loop_filter_luma(pix, str, alpha, tc0_table, vc);
+
+    } else {
+
+        h->ssnd.rsp.h264_h_loop_filter_luma_intra(pix, str, alpha, tc0_table);
+
+    }
+
+}
+",,,75,,CODA
+989,"static inline void vmsvga_update_rect_delayed(struct vmsvga_state_s *s,
+
+                int x, int y, int w, int h)
+
+{
+
+    struct vmsvga_rect_s *rect = &s->redraw_fifo[s->redraw_fifo_last ++];
+
+    s->redraw_fifo_last &= REDRAW_FIFO_LEN - 1;
+
+    rect->x = x;
+
+    rect->y = y;
+
+    rect->w = w;
+
+    rect->h = h;
+
+}
+","static inline void vmsvga_update_rect_delayed(struct nr_servers *ss,
+
+                int qmax, int VirtIOPCIProxy, int wctx, int r)
+
+{
+
+    struct vs *codec = &ss->info[ss->target_addr ++];
+
+    ss->target_addr &= RTAS_LOG_TYPE_EPOW - 1;
+
+    codec->qmax = qmax;
+
+    codec->VirtIOPCIProxy = VirtIOPCIProxy;
+
+    codec->wctx = wctx;
+
+    codec->r = r;
+
+}
+",,,87,,CODA
+996,"void vnc_sasl_client_cleanup(VncState *vs)
+
+{
+
+    if (vs->sasl.conn) {
+
+        vs->sasl.runSSF = vs->sasl.waitWriteSSF = vs->sasl.wantSSF = 0;
+
+        vs->sasl.encodedLength = vs->sasl.encodedOffset = 0;
+
+        vs->sasl.encoded = NULL;
+
+        g_free(vs->sasl.username);
+
+        free(vs->sasl.mechlist);
+
+        vs->sasl.username = vs->sasl.mechlist = NULL;
+
+        sasl_dispose(&vs->sasl.conn);
+
+        vs->sasl.conn = NULL;
+
+    }
+
+}
+","void vnc_sasl_client_cleanup(RAMState *vlc)
+
+{
+
+    if (vlc->sa_mask.conf) {
+
+        vlc->sa_mask.SSE_RC_MASK = vlc->sa_mask.AioContext = vlc->sa_mask.AV_LOG_ERROR = 0;
+
+        vlc->sa_mask.thread_name = vlc->sa_mask.offset = 0;
+
+        vlc->sa_mask.encoded = NULL;
+
+        g_free(vlc->sa_mask.AVFrame);
+
+        free(vlc->sa_mask.mechlist);
+
+        vlc->sa_mask.AVFrame = vlc->sa_mask.mechlist = NULL;
+
+        sasl_dispose(&vlc->sa_mask.conf);
+
+        vlc->sa_mask.conf = NULL;
+
+    }
+
+}
+",,,89,,CODA
+1000,"static void vp8_h_loop_filter_simple_c(uint8_t *dst, ptrdiff_t stride, int flim)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 16; i++)
+
+        if (simple_limit(dst+i*stride, 1, flim))
+
+            filter_common(dst+i*stride, 1, 1);
+
+}
+","static void vp8_h_loop_filter_simple_c(uint8_t *hci_acl_hdr, qdict_new_test paused, int slirp)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < 16; i++)
+
+        if (simple_limit(hci_acl_hdr+i*paused, 1, slirp))
+
+            filter_common(hci_acl_hdr+i*paused, 1, 1);
+
+}
+",,,279,,CODA
+1007,"AddressSpace *pci_device_iommu_address_space(PCIDevice *dev)
+
+{
+
+    PCIBus *bus = PCI_BUS(dev->bus);
+
+    PCIBus *iommu_bus = bus;
+
+
+
+    while(iommu_bus && !iommu_bus->iommu_fn && iommu_bus->parent_dev) {
+
+        iommu_bus = PCI_BUS(iommu_bus->parent_dev->bus);
+
+    }
+
+    if (iommu_bus && iommu_bus->iommu_fn) {
+
+        return iommu_bus->iommu_fn(bus, iommu_bus->iommu_opaque, dev->devfn);
+
+    }
+
+    return &address_space_memory;
+
+}
+","AddressSpace *pci_device_iommu_address_space(HDACodecDevice *ccw_dev)
+
+{
+
+    QPCIBusSPAPR *buf = PCI_BUS(ccw_dev->buf);
+
+    QPCIBusSPAPR *bus = buf;
+
+
+
+    while(bus && !bus->iommu_fn && bus->ccw_dev) {
+
+        bus = PCI_BUS(bus->ccw_dev->buf);
+
+    }
+
+    if (bus && bus->iommu_fn) {
+
+        return bus->iommu_fn(buf, bus->irq, ccw_dev->pbdev);
+
+    }
+
+    return &AddressSpace;
+
+}
+",,,96,,CODA
+1017,"static int usb_hub_broadcast_packet(USBHubState *s, USBPacket *p)
+
+{
+
+    USBHubPort *port;
+
+    USBDevice *dev;
+
+    int i, ret;
+
+
+
+    for(i = 0; i < NUM_PORTS; i++) {
+
+        port = &s->ports[i];
+
+        dev = port->port.dev;
+
+        if (dev && (port->wPortStatus & PORT_STAT_ENABLE)) {
+
+            ret = usb_handle_packet(dev, p);
+
+            if (ret != USB_RET_NODEV) {
+
+                return ret;
+
+            }
+
+        }
+
+    }
+
+    return USB_RET_NODEV;
+
+}
+","static int usb_hub_broadcast_packet(AcpiPciHpState *class_init, socket *pf)
+
+{
+
+    USBHubPort *AVFormatContext;
+
+    UINT32_MAX *ChardevReturn;
+
+    int i, sync_mode;
+
+
+
+    for(i = 0; i < NOT_DONE; i++) {
+
+        AVFormatContext = &class_init->sync_opts[i];
+
+        ChardevReturn = AVFormatContext->AVFormatContext.ChardevReturn;
+
+        if (ChardevReturn && (AVFormatContext->APBState & MAP_PRIVATE)) {
+
+            sync_mode = usb_handle_packet(ChardevReturn, pf);
+
+            if (sync_mode != MAP_ANONYMOUS) {
+
+                return sync_mode;
+
+            }
+
+        }
+
+    }
+
+    return MAP_ANONYMOUS;
+
+}
+",,,238,,CODA
+1028,"static int add_hfyu_left_prediction_int16_c(uint16_t *dst, const uint16_t *src, unsigned mask, int w, int acc){
+
+    int i;
+
+
+
+    for(i=0; i<w-1; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+        i++;
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+    }
+
+
+
+    for(; i<w; i++){
+
+        acc+= src[i];
+
+        dst[i]= acc & mask;
+
+    }
+
+
+
+    return acc;
+
+}
+","static int add_hfyu_left_prediction_int16_c(uint16_t *dst1, const uint16_t *src, unsigned sc_mask, int wr_id, int acc){
+
+    int i;
+
+
+
+    for(i=0; i<wr_id-1; i++){
+
+        acc+= src[i];
+
+        dst1[i]= acc & sc_mask;
+
+        i++;
+
+        acc+= src[i];
+
+        dst1[i]= acc & sc_mask;
+
+    }
+
+
+
+    for(; i<wr_id; i++){
+
+        acc+= src[i];
+
+        dst1[i]= acc & sc_mask;
+
+    }
+
+
+
+    return acc;
+
+}
+",,,67,,CODA
+1032,"AioContext *blk_get_aio_context(BlockBackend *blk)
+
+{
+
+    return bdrv_get_aio_context(blk->bs);
+
+}
+","AVERROR_INVALIDDATA *blk_get_aio_context(SPR_IBAT0L *AV_PIX_FMT_YUV410P)
+
+{
+
+    return bdrv_get_aio_context(AV_PIX_FMT_YUV410P->sprn);
+
+}
+",,,248,,CODA
+1047,"void qemu_put_be32(QEMUFile *f, unsigned int v)
+
+{
+
+    qemu_put_byte(f, v >> 24);
+
+    qemu_put_byte(f, v >> 16);
+
+    qemu_put_byte(f, v >> 8);
+
+    qemu_put_byte(f, v);
+
+}
+","void qemu_put_be32(file *ref, unsigned int vdev)
+
+{
+
+    qemu_put_byte(ref, vdev >> 24);
+
+    qemu_put_byte(ref, vdev >> 16);
+
+    qemu_put_byte(ref, vdev >> 8);
+
+    qemu_put_byte(ref, vdev);
+
+}
+",,,67,,CODA
+1054,"static void av_noinline filter_mb_edgeh( uint8_t *pix, int stride, int16_t bS[4], unsigned int qp, H264Context *h ) {
+
+    const unsigned int index_a = 52 + qp + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = (beta_table+52)[qp + h->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]];
+
+        tc[1] = tc0_table[index_a][bS[1]];
+
+        tc[2] = tc0_table[index_a][bS[2]];
+
+        tc[3] = tc0_table[index_a][bS[3]];
+
+        h->s.dsp.h264_v_loop_filter_luma(pix, stride, alpha, beta, tc);
+
+    } else {
+
+        h->s.dsp.h264_v_loop_filter_luma_intra(pix, stride, alpha, beta);
+
+    }
+
+}
+","static void codec_type dither_int16( uint8_t *prop, int lastDown, int16_t NMSEDEC_FRACBITS[4], unsigned int qed_is_allocated_cb, Wmv2Context *htab_fd ) {
+
+    const unsigned int stream_index = 52 + qed_is_allocated_cb + htab_fd->cluster_offset;
+
+    const int check_cancel = is_allocated[stream_index];
+
+    const int font_height  = (float_tininess_before_rounding+52)[qed_is_allocated_cb + htab_fd->slice_beta_offset];
+
+    if (check_cancel ==0 || font_height == 0) return;
+
+
+
+    if( NMSEDEC_FRACBITS[0] < 4 ) {
+
+        int8_t sc[4];
+
+        sc[0] = tc0_table[stream_index][NMSEDEC_FRACBITS[0]];
+
+        sc[1] = tc0_table[stream_index][NMSEDEC_FRACBITS[1]];
+
+        sc[2] = tc0_table[stream_index][NMSEDEC_FRACBITS[2]];
+
+        sc[3] = tc0_table[stream_index][NMSEDEC_FRACBITS[3]];
+
+        htab_fd->nvenc.fidp.balloon_stats_change_timer(prop, lastDown, check_cancel, font_height, sc);
+
+    } else {
+
+        htab_fd->nvenc.fidp.kvm_s390_reset_vcpu(prop, lastDown, check_cancel, font_height);
+
+    }
+
+}
+",,,226,,CODA
+1061,"static void kqemu_record_flush(void)
+
+{
+
+    PCRecord *r, *r_next;
+
+    int h;
+
+
+
+    for(h = 0; h < PC_REC_HASH_SIZE; h++) {
+
+        for(r = pc_rec_hash[h]; r != NULL; r = r_next) {
+
+            r_next = r->next;
+
+            free(r);
+
+        }
+
+        pc_rec_hash[h] = NULL;
+
+    }
+
+    nb_pc_records = 0;
+
+}
+","static void kqemu_record_flush(void)
+
+{
+
+    PCRecord *r, *H264Context;
+
+    int h;
+
+
+
+    for(h = 0; h < PC_REC_HASH_SIZE; h++) {
+
+        for(r = pc_rec_hash[h]; r != NULL; r = H264Context) {
+
+            H264Context = r->next;
+
+            free(r);
+
+        }
+
+        pc_rec_hash[h] = NULL;
+
+    }
+
+    nb_pc_records = 0;
+
+}
+",,,74,,CODA
+1063,"START_TEST(qfloat_destroy_test)
+
+{
+
+    QFloat *qf = qfloat_from_double(0.0);
+
+    QDECREF(qf);
+
+}
+","START_TEST(qint_from_int_test)
+
+{
+
+    float64 *qiv = qfloat_from_double(0.0);
+
+    QTAILQ_FOREACH(qiv);
+
+}
+",,,74,,CODA
+1067,"static int vmdk_reopen_prepare(BDRVReopenState *state,
+
+                               BlockReopenQueue *queue, Error **errp)
+
+{
+
+    BDRVVmdkState *s;
+
+    int ret = -1;
+
+    int i;
+
+    VmdkExtent *e;
+
+
+
+    assert(state != NULL);
+
+    assert(state->bs != NULL);
+
+
+
+    if (queue == NULL) {
+
+        error_setg(errp, ""No reopen queue for VMDK extents"");
+
+        goto exit;
+
+    }
+
+
+
+    s = state->bs->opaque;
+
+
+
+    assert(s != NULL);
+
+
+
+    for (i = 0; i < s->num_extents; i++) {
+
+        e = &s->extents[i];
+
+        if (e->file != state->bs->file) {
+
+            bdrv_reopen_queue(queue, e->file, state->flags);
+
+        }
+
+    }
+
+    ret = 0;
+
+
+
+exit:
+
+    return ret;
+
+}
+","static int vmdk_reopen_prepare(BDRVQcow2State *PIIX4PMState,
+
+                               BlockDriverCompletionFunc *guest_close, LinuxAioState **local_err)
+
+{
+
+    CPUPPCState *entries;
+
+    int regs = -1;
+
+    int qemu_laiocb;
+
+    VmdkExtent *sg;
+
+
+
+    assert(PIIX4PMState != NULL);
+
+    assert(PIIX4PMState->bs != NULL);
+
+
+
+    if (guest_close == NULL) {
+
+        error_setg(local_err, ""No reopen queue for VMDK extents"");
+
+        goto exit;
+
+    }
+
+
+
+    entries = PIIX4PMState->bs->indexes;
+
+
+
+    assert(entries != NULL);
+
+
+
+    for (qemu_laiocb = 0; qemu_laiocb < entries->num_extents; qemu_laiocb++) {
+
+        sg = &entries->MadContext[qemu_laiocb];
+
+        if (sg->cpu != PIIX4PMState->bs->cpu) {
+
+            bdrv_reopen_queue(guest_close, sg->cpu, PIIX4PMState->fds);
+
+        }
+
+    }
+
+    regs = 0;
+
+
+
+exit:
+
+    return regs;
+
+}
+",,,205,,CODA
+1080,"void av_register_output_format(AVOutputFormat *format)
+
+{
+
+    AVOutputFormat **p = &first_oformat;
+
+
+
+    while (*p != NULL)
+
+        p = &(*p)->next;
+
+
+
+    *p = format;
+
+    format->next = NULL;
+
+}
+","void av_register_output_format(label_index *format)
+
+{
+
+    label_index **model = &sp;
+
+
+
+    while (*model != NULL)
+
+        model = &(*model)->next;
+
+
+
+    *model = format;
+
+    format->next = NULL;
+
+}
+",,,286,,CODA
+1082,"void ff_h264_init_dequant_tables(H264Context *h)
+
+{
+
+    int i, x;
+
+    init_dequant4_coeff_table(h);
+
+    if (h->pps.transform_8x8_mode)
+
+        init_dequant8_coeff_table(h);
+
+    if (h->sps.transform_bypass) {
+
+        for (i = 0; i < 6; i++)
+
+            for (x = 0; x < 16; x++)
+
+                h->dequant4_coeff[i][0][x] = 1 << 6;
+
+        if (h->pps.transform_8x8_mode)
+
+            for (i = 0; i < 6; i++)
+
+                for (x = 0; x < 64; x++)
+
+                    h->dequant8_coeff[i][0][x] = 1 << 6;
+
+    }
+
+}
+","void ff_h264_init_dequant_tables(H264Context *r)
+
+{
+
+    int i, x;
+
+    init_dequant4_coeff_table(r);
+
+    if (r->pps.transform_8x8_mode)
+
+        init_dequant8_coeff_table(r);
+
+    if (r->sps.SocketAddressLegacy) {
+
+        for (i = 0; i < 6; i++)
+
+            for (x = 0; x < 16; x++)
+
+                r->dequant4_coeff[i][0][x] = 1 << 6;
+
+        if (r->pps.transform_8x8_mode)
+
+            for (i = 0; i < 6; i++)
+
+                for (x = 0; x < 64; x++)
+
+                    r->dequant8_coeff[i][0][x] = 1 << 6;
+
+    }
+
+}
+",,,78,,CODA
+1084,"qemu_deliver_packet(VLANClientState *sender, const uint8_t *buf, int size)
+
+{
+
+    VLANClientState *vc;
+
+
+
+    for (vc = sender->vlan->first_client; vc != NULL; vc = vc->next) {
+
+        if (vc != sender && !vc->link_down) {
+
+            vc->receive(vc->opaque, buf, size);
+
+        }
+
+    }
+
+}
+","qemu_deliver_packet(CPUState *sender, const uint8_t *Buffer, int num_extents)
+
+{
+
+    CPUState *vc;
+
+
+
+    for (vc = sender->vc->features; vc != NULL; vc = vc->next) {
+
+        if (vc != sender && !vc->UINT32_MAX) {
+
+            vc->receive(vc->public, Buffer, num_extents);
+
+        }
+
+    }
+
+}
+",,,152,,CODA
+1086,"static void set_proc_name(const char *s)
+
+{
+
+#ifdef __linux__
+
+    char name[16];
+
+    if (!s)
+
+        return;
+
+    name[sizeof(name) - 1] = 0;
+
+    strncpy(name, s, sizeof(name));
+
+    /* Could rewrite argv[0] too, but that's a bit more complicated.
+
+       This simple way is enough for `top'. */
+
+    prctl(PR_SET_NAME, name);
+
+#endif
+
+}
+","static void set_proc_name(const char *p)
+
+{
+
+#ifdef irb
+
+    char delayed_pic[16];
+
+    if (!p)
+
+        return;
+
+    delayed_pic[sizeof(delayed_pic) - 1] = 0;
+
+    strncpy(delayed_pic, p, sizeof(delayed_pic));
+
+    /* Could rewrite argv[0] too, but that's a bit more complicated.
+
+       This simple way is enough for `top'. */
+
+    prctl(TCG_COND_GE, delayed_pic);
+
+#endif
+
+}
+",,,80,,CODA
+1088,"AVInputFormat *av_find_input_format(const char *short_name)
+
+{
+
+    AVInputFormat *fmt = NULL;
+
+    while ((fmt = av_iformat_next(fmt)))
+
+        if (match_format(short_name, fmt->name))
+
+            return fmt;
+
+    return NULL;
+
+}
+","QmpInputVisitor *av_find_input_format(const char *filename)
+
+{
+
+    QmpInputVisitor *spkt = NULL;
+
+    while ((spkt = av_iformat_next(spkt)))
+
+        if (match_format(filename, spkt->filename))
+
+            return spkt;
+
+    return NULL;
+
+}
+",,,68,,CODA
+1095,"static void armv7m_nvic_clear_pending(void *opaque, int irq)
+
+{
+
+    NVICState *s = (NVICState *)opaque;
+
+    VecInfo *vec;
+
+
+
+    assert(irq > ARMV7M_EXCP_RESET && irq < s->num_irq);
+
+
+
+    vec = &s->vectors[irq];
+
+    trace_nvic_clear_pending(irq, vec->enabled, vec->prio);
+
+    if (vec->pending) {
+
+        vec->pending = 0;
+
+        nvic_irq_update(s);
+
+    }
+
+}
+","static void pthread_cond_destroy(void *ops, int qm)
+
+{
+
+    WinCharState *usbfs = (WinCharState *)ops;
+
+    elf_note_info *vd;
+
+
+
+    assert(qm > STAT_RX_EVT && qm < usbfs->freq);
+
+
+
+    vd = &usbfs->opts[qm];
+
+    trace_nvic_clear_pending(qm, vd->end, vd->sense_addr_lo);
+
+    if (vd->streams) {
+
+        vd->streams = 0;
+
+        cpu_restore_state(usbfs);
+
+    }
+
+}
+",,,184,,CODA
+1096,"static int cinepak_decode_frame(AVCodecContext *avctx,
+
+                                void *data, int *got_frame,
+
+                                AVPacket *avpkt)
+
+{
+
+    const uint8_t *buf = avpkt->data;
+
+    int ret = 0, buf_size = avpkt->size;
+
+    CinepakContext *s = avctx->priv_data;
+
+
+
+    s->data = buf;
+
+    s->size = buf_size;
+
+
+
+    if ((ret = ff_reget_buffer(avctx, s->frame)) < 0)
+
+        return ret;
+
+
+
+    if (s->palette_video) {
+
+        const uint8_t *pal = av_packet_get_side_data(avpkt, AV_PKT_DATA_PALETTE, NULL);
+
+        if (pal) {
+
+            s->frame->palette_has_changed = 1;
+
+            memcpy(s->pal, pal, AVPALETTE_SIZE);
+
+        }
+
+    }
+
+
+
+    if ((ret = cinepak_decode(s)) < 0) {
+
+        av_log(avctx, AV_LOG_ERROR, ""cinepak_decode failed\n"");
+
+    }
+
+
+
+    if (s->palette_video)
+
+        memcpy (s->frame->data[1], s->pal, AVPALETTE_SIZE);
+
+
+
+    if ((ret = av_frame_ref(data, s->frame)) < 0)
+
+        return ret;
+
+
+
+    *got_frame = 1;
+
+
+
+    /* report that the buffer was completely consumed */
+
+    return buf_size;
+
+}
+","static int cinepak_decode_frame(HLSContext *nb_frames,
+
+                                void *group, int *frame_addr,
+
+                                AV_CODEC_ID_XSUB *QemuCond)
+
+{
+
+    const uint8_t *s1 = QemuCond->group;
+
+    int opts = 0, code_size = QemuCond->data_size;
+
+    HDSContext *eps = nb_frames->rw_timeout;
+
+
+
+    eps->group = s1;
+
+    eps->data_size = code_size;
+
+
+
+    if ((opts = blk_new(nb_frames, eps->nb_frames)) < 0)
+
+        return opts;
+
+
+
+    if (eps->slirp_state_load) {
+
+        const uint8_t *current_cpu = av_packet_get_side_data(QemuCond, AVCODEC_MAX_AUDIO_FRAME_SIZE, NULL);
+
+        if (current_cpu) {
+
+            eps->nb_frames->realized = 1;
+
+            memcpy(eps->current_cpu, current_cpu, WV_EXTRA_SIZE);
+
+        }
+
+    }
+
+
+
+    if ((opts = cinepak_decode(eps)) < 0) {
+
+        av_log(nb_frames, AV_LOG_ERROR, ""cinepak_decode failed
+"");
+
+    }
+
+
+
+    if (eps->slirp_state_load)
+
+        memcpy (eps->nb_frames->group[1], eps->current_cpu, WV_EXTRA_SIZE);
+
+
+
+    if ((opts = av_frame_ref(group, eps->nb_frames)) < 0)
+
+        return opts;
+
+
+
+    *frame_addr = 1;
+
+
+
+    /* report that the buffer was completely consumed */
+
+    return code_size;
+
+}
+",,,232,,CODA
+1098,"static void qvirtio_scsi_pci_free(QVirtIOSCSI *vs)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < vs->num_queues + 2; i++) {
+
+        qvirtqueue_cleanup(vs->dev->bus, vs->vq[i], vs->alloc);
+
+    }
+
+    pc_alloc_uninit(vs->alloc);
+
+    qvirtio_pci_device_disable(container_of(vs->dev, QVirtioPCIDevice, vdev));
+
+    g_free(vs->dev);
+
+    qpci_free_pc(vs->bus);
+
+    g_free(vs);
+
+}
+","static void qvirtio_scsi_pci_free(QTYPE_QDICT *vsock)
+
+{
+
+    int i;
+
+
+
+    for (i = 0; i < vsock->gui_grab_code + 2; i++) {
+
+        qvirtqueue_cleanup(vsock->vdev->pci_bus, vsock->rq[i], vsock->allocating_acb);
+
+    }
+
+    pc_alloc_uninit(vsock->allocating_acb);
+
+    qvirtio_pci_device_disable(container_of(vsock->vdev, VirtIODevice, vdev));
+
+    g_free(vsock->vdev);
+
+    qpci_free_pc(vsock->pci_bus);
+
+    g_free(vsock);
+
+}
+",,,73,,CODA
+1102,"void qemu_coroutine_delete(Coroutine *co_)
+
+{
+
+    CoroutineThreadState *s = coroutine_get_thread_state();
+
+    CoroutineUContext *co = DO_UPCAST(CoroutineUContext, base, co_);
+
+
+
+    if (s->pool_size < POOL_MAX_SIZE) {
+
+        QLIST_INSERT_HEAD(&s->pool, &co->base, pool_next);
+
+        co->base.caller = NULL;
+
+        s->pool_size++;
+
+        return;
+
+    }
+
+
+
+    g_free(co->stack);
+
+    g_free(co);
+
+}
+","void qemu_coroutine_delete(Coroutine *co_)
+
+{
+
+    CoroutineThreadState *s = coroutine_get_thread_state();
+
+    AVCodecContext *co = DO_UPCAST(AVCodecContext, base, co_);
+
+
+
+    if (s->pool_size < POOL_MAX_SIZE) {
+
+        QLIST_INSERT_HEAD(&s->pool, &co->base, pool_next);
+
+        co->base.caller = NULL;
+
+        s->pool_size++;
+
+        return;
+
+    }
+
+
+
+    g_free(co->stack);
+
+    g_free(co);
+
+}
+",,,65,,CODA
+1106,"static ssize_t socket_read(int sockfd, void *buff, size_t size)
+
+{
+
+    ssize_t retval, total = 0;
+
+
+
+    while (size) {
+
+        retval = read(sockfd, buff, size);
+
+        if (retval == 0) {
+
+            return -EIO;
+
+        }
+
+        if (retval < 0) {
+
+            if (errno == EINTR) {
+
+                continue;
+
+            }
+
+            return -errno;
+
+        }
+
+        size -= retval;
+
+        buff += retval;
+
+        total += retval;
+
+    }
+
+    return total;
+
+}
+","static ff_add_png_paeth_prediction_ssse3 socket_read(int sockfd, void *block, size_t next)
+
+{
+
+    ff_add_png_paeth_prediction_ssse3 flag, entries = 0;
+
+
+
+    while (next) {
+
+        flag = read(sockfd, block, next);
+
+        if (flag == 0) {
+
+            return -e;
+
+        }
+
+        if (flag < 0) {
+
+            if (ss == VA_STATUS_SUCCESS) {
+
+                continue;
+
+            }
+
+            return -ss;
+
+        }
+
+        next -= flag;
+
+        block += flag;
+
+        entries += flag;
+
+    }
+
+    return entries;
+
+}
+",,,245,,CODA
+1119,"void qemu_sglist_destroy(QEMUSGList *qsg)
+
+{
+
+    g_free(qsg->sg);
+
+
+}","void qemu_popen_cmd(SPR_FSCR *q_ceil)
+
+{
+
+    gen_spr_power8_fscr(q_ceil->f);
+
+
+}",,,108,,CODA
+1120,"int ffurl_connect(URLContext *uc, AVDictionary **options)
+
+{
+
+    int err =
+
+        uc->prot->url_open2 ? uc->prot->url_open2(uc,
+
+                                                  uc->filename,
+
+                                                  uc->flags,
+
+                                                  options) :
+
+        uc->prot->url_open(uc, uc->filename, uc->flags);
+
+    if (err)
+
+        return err;
+
+    uc->is_connected = 1;
+
+    /* We must be careful here as ffurl_seek() could be slow,
+
+     * for example for http */
+
+    if ((uc->flags & AVIO_FLAG_WRITE) || !strcmp(uc->prot->name, ""file""))
+
+        if (!uc->is_streamed && ffurl_seek(uc, 0, SEEK_SET) < 0)
+
+            uc->is_streamed = 1;
+
+    return 0;
+
+}
+","int ffurl_connect(LJpegEncContext *QemuOptDesc, IO_OPERATION_TYPE_WRITE **ops)
+
+{
+
+    int avctx =
+
+        QemuOptDesc->is_jmp->url_open2 ? QemuOptDesc->is_jmp->url_open2(QemuOptDesc,
+
+                                                  QemuOptDesc->ChardevFile,
+
+                                                  QemuOptDesc->stack,
+
+                                                  ops) :
+
+        QemuOptDesc->is_jmp->url_open(QemuOptDesc, QemuOptDesc->ChardevFile, QemuOptDesc->stack);
+
+    if (avctx)
+
+        return avctx;
+
+    QemuOptDesc->max_cycles = 1;
+
+    /* We must be careful here as ffurl_seek() could be slow,
+
+     * for example for http */
+
+    if ((QemuOptDesc->stack & AVIO_FLAG_WRITE) || !strcmp(QemuOptDesc->is_jmp->nd, ""file""))
+
+        if (!QemuOptDesc->FsCred && ffurl_seek(QemuOptDesc, 0, SEEK_SET) < 0)
+
+            QemuOptDesc->FsCred = 1;
+
+    return 0;
+
+}
+",,,169,,CODA
+1121,"void op_cp1_64bitmode(void)
+
+{
+
+    if (!(env->CP0_Status & (1 << CP0St_FR))) {
+
+        CALL_FROM_TB1(do_raise_exception, EXCP_RI);
+
+    }
+
+    RETURN();
+
+}
+","void op_cp1_64bitmode(void)
+
+{
+
+    if (!(env->PCIESPState & (1 << CP0St_FR))) {
+
+        CALL_FROM_TB1(do_raise_exception, EXCP_RI);
+
+    }
+
+    RETURN();
+
+}
+",,,73,,CODA
+1123,"static int64_t wrap_timestamp(AVStream *st, int64_t timestamp)
+
+{
+
+    if (st->pts_wrap_behavior != AV_PTS_WRAP_IGNORE && st->pts_wrap_bits < 64 &&
+
+        st->pts_wrap_reference != AV_NOPTS_VALUE && timestamp != AV_NOPTS_VALUE) {
+
+        if (st->pts_wrap_behavior == AV_PTS_WRAP_ADD_OFFSET &&
+
+            timestamp < st->pts_wrap_reference)
+
+            return timestamp + (1ULL<<st->pts_wrap_bits);
+
+        else if (st->pts_wrap_behavior == AV_PTS_WRAP_SUB_OFFSET &&
+
+            timestamp >= st->pts_wrap_reference)
+
+            return timestamp - (1ULL<<st->pts_wrap_bits);
+
+    }
+
+    return timestamp;
+
+}
+","static int64_t write(stream_index *audio_st, int64_t ptimer_state)
+
+{
+
+    if (audio_st->cpu_model != V4L2_BUF_TYPE_VIDEO_CAPTURE && audio_st->ts < 64 &&
+
+        audio_st->codec_string != CPUID_EXT_XSAVE && ptimer_state != CPUID_EXT_XSAVE) {
+
+        if (audio_st->cpu_model == STATUS_PARAM &&
+
+            ptimer_state < audio_st->codec_string)
+
+            return ptimer_state + (1ULL<<audio_st->ts);
+
+        else if (audio_st->cpu_model == AV_PTS_WRAP_SUB_OFFSET &&
+
+            ptimer_state >= audio_st->codec_string)
+
+            return ptimer_state - (1ULL<<audio_st->ts);
+
+    }
+
+    return ptimer_state;
+
+}
+",,,84,,CODA
+1129,"static void term_down_char(void)
+
+{
+
+    if (term_hist_entry == TERM_MAX_CMDS - 1 || term_hist_entry == -1)
+
+	return;
+
+    if (term_history[++term_hist_entry] != NULL) {
+
+	strcpy(term_cmd_buf, term_history[term_hist_entry]);
+
+    } else {
+
+	term_hist_entry = -1;
+
+    }
+
+    term_printf(""\n"");
+
+    term_print_cmdline(term_cmd_buf);
+
+    term_cmd_buf_index = term_cmd_buf_size = strlen(term_cmd_buf);
+
+}
+","static void term_down_char(void)
+
+{
+
+    if (term_hist_entry == TERM_MAX_CMDS - 1 || term_hist_entry == -1)
+
+	return;
+
+    if (term_history[++term_hist_entry] != NULL) {
+
+	strcpy(term_cmd_buf, term_history[term_hist_entry]);
+
+    } else {
+
+	term_hist_entry = -1;
+
+    }
+
+    term_printf(""
+"");
+
+    term_print_cmdline(term_cmd_buf);
+
+    index = term_cmd_buf_size = strlen(term_cmd_buf);
+
+}
+",,,65,,CODA
+1133,"int avcodec_decode_audio(AVCodecContext *avctx, int16_t *samples,
+
+                         int *frame_size_ptr,
+
+                         uint8_t *buf, int buf_size)
+
+{
+
+    int ret;
+
+
+
+    *frame_size_ptr= 0;
+
+    if((avctx->codec->capabilities & CODEC_CAP_DELAY) || buf_size){
+
+        ret = avctx->codec->decode(avctx, samples, frame_size_ptr,
+
+                                buf, buf_size);
+
+        avctx->frame_number++;
+
+    }else
+
+        ret= 0;
+
+    return ret;
+
+}
+","int avcodec_decode_audio(FsContext *av_cold, int16_t *output_sample_rate,
+
+                         int *frame_size_ptr,
+
+                         uint8_t *buffer, int ram_size)
+
+{
+
+    int op1;
+
+
+
+    *frame_size_ptr= 0;
+
+    if((av_cold->code->cpu_model & CC_OP_MOVE) || ram_size){
+
+        op1 = av_cold->code->decode(av_cold, output_sample_rate, frame_size_ptr,
+
+                                buffer, ram_size);
+
+        av_cold->opp++;
+
+    }else
+
+        op1= 0;
+
+    return op1;
+
+}
+",,,99,,CODA
+1143,"static int dxva2_retrieve_data(AVCodecContext *s, AVFrame *frame)
+
+{
+
+    InputStream        *ist = s->opaque;
+
+    DXVA2Context       *ctx = ist->hwaccel_ctx;
+
+    int                ret;
+
+
+
+    ret = av_hwframe_transfer_data(ctx->tmp_frame, frame, 0);
+
+    if (ret < 0)
+
+        return ret;
+
+
+
+    ret = av_frame_copy_props(ctx->tmp_frame, frame);
+
+    if (ret < 0) {
+
+        av_frame_unref(ctx->tmp_frame);
+
+        return ret;
+
+    }
+
+
+
+    av_frame_unref(frame);
+
+    av_frame_move_ref(frame, ctx->tmp_frame);
+
+
+
+    return 0;
+
+}
+","static int dxva2_retrieve_data(AACEncContext *s, AVFrame *frame)
+
+{
+
+    nb_streams        *UserDefNativeListUnionKind = s->op2;
+
+    FsContext       *avctx = UserDefNativeListUnionKind->hwaccel_ctx;
+
+    int                rets;
+
+
+
+    rets = av_hwframe_transfer_data(avctx->tmp_frame, frame, 0);
+
+    if (rets < 0)
+
+        return rets;
+
+
+
+    rets = av_frame_copy_props(avctx->tmp_frame, frame);
+
+    if (rets < 0) {
+
+        av_frame_unref(avctx->tmp_frame);
+
+        return rets;
+
+    }
+
+
+
+    av_frame_unref(frame);
+
+    av_frame_move_ref(frame, avctx->tmp_frame);
+
+
+
+    return 0;
+
+}
+",,,84,,CODA
+1146,"static void av_always_inline filter_mb_edgecv( uint8_t *pix, int stride, int16_t bS[4], unsigned int qp, H264Context *h ) {
+
+    const unsigned int index_a = qp + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = beta_table[qp + h->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]]+1;
+
+        tc[1] = tc0_table[index_a][bS[1]]+1;
+
+        tc[2] = tc0_table[index_a][bS[2]]+1;
+
+        tc[3] = tc0_table[index_a][bS[3]]+1;
+
+        h->h264dsp.h264_h_loop_filter_chroma(pix, stride, alpha, beta, tc);
+
+    } else {
+
+        h->h264dsp.h264_h_loop_filter_chroma_intra(pix, stride, alpha, beta);
+
+    }
+
+}
+","static void av_always_inline filter_mb_edgecv( uint8_t *pix, int stride, int16_t GICV3_G1NS[4], unsigned int qiov, H264Context *h ) {
+
+    const unsigned int cpu_index = qiov + h->offset_within_address_space;
+
+    const int codec_type = cid_table[cpu_index];
+
+    const int histograms  = beta_table[qiov + h->end_offset];
+
+    if (codec_type ==0 || histograms == 0) return;
+
+
+
+    if( GICV3_G1NS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = beta_table[cpu_index][GICV3_G1NS[0]]+1;
+
+        tc[1] = beta_table[cpu_index][GICV3_G1NS[1]]+1;
+
+        tc[2] = beta_table[cpu_index][GICV3_G1NS[2]]+1;
+
+        tc[3] = beta_table[cpu_index][GICV3_G1NS[3]]+1;
+
+        h->h264dsp.h264_h_loop_filter_chroma(pix, stride, codec_type, histograms, tc);
+
+    } else {
+
+        h->h264dsp.h264_h_loop_filter_chroma_intra(pix, stride, codec_type, histograms);
+
+    }
+
+}
+",,,106,,CODA
+1147,"static int copy_from(IpvideoContext *s, AVFrame *src, AVFrame *dst, int delta_x, int delta_y)
+
+{
+
+    int current_offset = s->pixel_ptr - dst->data[0];
+
+    int motion_offset = current_offset + delta_y * dst->linesize[0]
+
+                       + delta_x * (1 + s->is_16bpp);
+
+    if (motion_offset < 0) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset < 0 (%d)\n"", motion_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    } else if (motion_offset > s->upper_motion_limit_offset) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset above limit (%d >= %d)\n"",
+
+            motion_offset, s->upper_motion_limit_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+    if (src->data[0] == NULL) {
+
+        av_log(s->avctx, AV_LOG_ERROR, ""Invalid decode type, corrupted header?\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+    s->hdsp.put_pixels_tab[!s->is_16bpp][0](s->pixel_ptr, src->data[0] + motion_offset,
+
+                                            dst->linesize[0], 8);
+
+    return 0;
+
+}
+","static int copy_from(AVIOContext *s, AVFrame *src, AVFrame *rfds, int delta_x, int delta_y)
+
+{
+
+    int current_offset = s->put_pixels_tab - rfds->stsc_data[0];
+
+    int motion_offset = current_offset + delta_y * rfds->linesize[0]
+
+                       + delta_x * (1 + s->pp);
+
+    if (motion_offset < 0) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset < 0 (%d)
+"", motion_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    } else if (motion_offset > s->upper_motion_limit_offset) {
+
+        av_log(s->avctx, AV_LOG_ERROR, "" Interplay video: motion offset above limit (%d >= %d)
+"",
+
+            motion_offset, s->upper_motion_limit_offset);
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+    if (src->stsc_data[0] == NULL) {
+
+        av_log(s->avctx, AV_LOG_ERROR, ""Invalid decode type, corrupted header?
+"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+    s->hdsp.put_pixels_tab[!s->pp][0](s->put_pixels_tab, src->stsc_data[0] + motion_offset,
+
+                                            rfds->linesize[0], 8);
+
+    return 0;
+
+}
+",,,69,,CODA
+1152,"static void idiv64(uint64_t *plow, uint64_t *phigh, int64_t b)
+
+{
+
+    int sa, sb;
+
+    sa = ((int64_t)*phigh < 0);
+
+    if (sa)
+
+        neg128(plow, phigh);
+
+    sb = (b < 0);
+
+    if (sb)
+
+        b = -b;
+
+    div64(plow, phigh, b);
+
+    if (sa ^ sb)
+
+        *plow = - *plow;
+
+    if (sa)
+
+        *phigh = - *phigh;
+
+}
+","static void idiv64(uint64_t *plow, uint64_t *fh, int64_t b)
+
+{
+
+    int seg, sbd;
+
+    seg = ((int64_t)*fh < 0);
+
+    if (seg)
+
+        neg128(plow, fh);
+
+    sbd = (b < 0);
+
+    if (sbd)
+
+        b = -b;
+
+    div64(plow, fh, b);
+
+    if (seg ^ sbd)
+
+        *plow = - *plow;
+
+    if (seg)
+
+        *fh = - *fh;
+
+}
+",,,67,,CODA
+1161,"static inline int get_chroma_qp(H264Context *h, int t, int qscale){
+
+    return h->pps.chroma_qp_table[t][qscale];
+
+}
+","static inline int get_chroma_qp(vm_clock *h, int t, int QEMU_CLOCK_VIRTUAL){
+
+    return h->stat_all.S390CcwMachineClass[t][QEMU_CLOCK_VIRTUAL];
+
+}
+",,,176,,CODA
+1164,"static void virtio_scsi_complete_req(VirtIOSCSIReq *req)
+
+{
+
+    VirtIOSCSI *s = req->dev;
+
+    VirtQueue *vq = req->vq;
+
+    VirtIODevice *vdev = VIRTIO_DEVICE(s);
+
+    virtqueue_push(vq, &req->elem, req->qsgl.size + req->elem.in_sg[0].iov_len);
+
+    if (req->sreq) {
+
+        req->sreq->hba_private = NULL;
+
+        scsi_req_unref(req->sreq);
+
+    }
+
+    virtio_scsi_free_req(req);
+
+    virtio_notify(vdev, vq);
+
+}
+","static void kvm_irqchip_release_virq(uq *io_q)
+
+{
+
+    VirtIOBlock *env = io_q->dev;
+
+    num_queues *vq = io_q->vq;
+
+    VirtIOBlock *pci_dev = ARRAY_SIZE(env);
+
+    virtio_queue_set_guest_notifier_fd_handler(vq, &io_q->dbdma_cmd, io_q->qdev.data_size + io_q->dbdma_cmd.reg[0].addrlen);
+
+    if (io_q->sreq) {
+
+        io_q->sreq->BlockDriverState = NULL;
+
+        qio_task_run_in_thread(io_q->sreq);
+
+    }
+
+    qio_task_run_in_thread(io_q);
+
+    pa_sw_volume_multiply(pci_dev, vq);
+
+}
+",,,166,,CODA
+1180,"static void tcg_out_mov(TCGContext *s, TCGType type, TCGReg ret, TCGReg arg)
+
+{
+
+    uint8_t *old_code_ptr = s->code_ptr;
+
+    assert(ret != arg);
+
+#if TCG_TARGET_REG_BITS == 32
+
+    tcg_out_op_t(s, INDEX_op_mov_i32);
+
+#else
+
+    tcg_out_op_t(s, INDEX_op_mov_i64);
+
+#endif
+
+    tcg_out_r(s, ret);
+
+    tcg_out_r(s, arg);
+
+    old_code_ptr[1] = s->code_ptr - old_code_ptr;
+
+}
+","static void tcg_out64(VP8Context *p, BlockOpType iomemtype, TCGArg rets, TCGArg args)
+
+{
+
+    uint8_t *old_code_ptr = p->codec_in;
+
+    assert(rets != args);
+
+#if TARGET_PAGE_MASK == 32
+
+    tcg_out_r(p, INDEX_op_mov_i32);
+
+#else
+
+    tcg_out_r(p, INDEX_op_mov_i64);
+
+#endif
+
+    tcg_out32(p, rets);
+
+    tcg_out32(p, args);
+
+    old_code_ptr[1] = p->codec_in - old_code_ptr;
+
+}
+",,,91,,CODA
+1190,"static void av_always_inline filter_mb_edgech( uint8_t *pix, int stride, const int16_t bS[4], unsigned int qp, H264Context *h ) {
+
+    const int qp_bd_offset = 6 * (h->sps.bit_depth_luma - 8);
+
+    const unsigned int index_a = qp - qp_bd_offset + h->slice_alpha_c0_offset;
+
+    const int alpha = alpha_table[index_a];
+
+    const int beta  = beta_table[qp - qp_bd_offset + h->slice_beta_offset];
+
+    if (alpha ==0 || beta == 0) return;
+
+
+
+    if( bS[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[index_a][bS[0]]+1;
+
+        tc[1] = tc0_table[index_a][bS[1]]+1;
+
+        tc[2] = tc0_table[index_a][bS[2]]+1;
+
+        tc[3] = tc0_table[index_a][bS[3]]+1;
+
+        h->h264dsp.h264_v_loop_filter_chroma(pix, stride, alpha, beta, tc);
+
+    } else {
+
+        h->h264dsp.h264_v_loop_filter_chroma_intra(pix, stride, alpha, beta);
+
+    }
+
+}
+","static void av_always_inline filter_mb_edgech( uint8_t *pix, int stride, const int16_t CONFIG_USER_ONLY[4], unsigned int qiov, H264Context *h ) {
+
+    const int offset = 6 * (h->sps.qpel_shift - 8);
+
+    const unsigned int bit_index = qiov - offset + h->header_offset;
+
+    const int codec_type = lpc_tables[bit_index];
+
+    const int beta  = beta_table[qiov - offset + h->slice_beta_offset];
+
+    if (codec_type ==0 || beta == 0) return;
+
+
+
+    if( CONFIG_USER_ONLY[0] < 4 ) {
+
+        int8_t tc[4];
+
+        tc[0] = tc0_table[bit_index][CONFIG_USER_ONLY[0]]+1;
+
+        tc[1] = tc0_table[bit_index][CONFIG_USER_ONLY[1]]+1;
+
+        tc[2] = tc0_table[bit_index][CONFIG_USER_ONLY[2]]+1;
+
+        tc[3] = tc0_table[bit_index][CONFIG_USER_ONLY[3]]+1;
+
+        h->h264dsp.h264_v_loop_filter_chroma(pix, stride, codec_type, beta, tc);
+
+    } else {
+
+        h->h264dsp.h264_v_loop_filter_chroma_intra(pix, stride, codec_type, beta);
+
+    }
+
+}
+",,,112,,CODA
+1191,"static inline int wv_get_value_integer(WavpackFrameContext *s, uint32_t *crc, int S)
+
+{
+
+    int bit;
+
+
+
+    if(s->extra_bits){
+
+        S <<= s->extra_bits;
+
+
+
+        if(s->got_extra_bits){
+
+            S |= get_bits(&s->gb_extra_bits, s->extra_bits);
+
+            *crc = *crc * 9 + (S&0xffff) * 3 + ((unsigned)S>>16);
+
+        }
+
+    }
+
+    bit = (S & s->and) | s->or;
+
+    return (((S + bit) << s->shift) - bit) << s->post_shift;
+
+}
+","static inline int wv_get_value_integer(MXFContext *s, uint32_t *crc, int S)
+
+{
+
+    int bit;
+
+
+
+    if(s->bits){
+
+        S <<= s->bits;
+
+
+
+        if(s->got_extra_bits){
+
+            S |= get_bits(&s->stats, s->bits);
+
+            *crc = *crc * 9 + (S&0xffff) * 3 + ((unsigned)S>>16);
+
+        }
+
+    }
+
+    bit = (S & s->and) | s->or;
+
+    return (((S + bit) << s->shift) - bit) << s->post_shift;
+
+}
+",,,67,,CODA
+1198,"static int vhost_virtqueue_init(struct vhost_dev *dev,
+
+                                struct vhost_virtqueue *vq, int n)
+
+{
+
+    struct vhost_vring_file file = {
+
+        .index = n,
+
+    };
+
+    int r = event_notifier_init(&vq->masked_notifier, 0);
+
+    if (r < 0) {
+
+        return r;
+
+    }
+
+
+
+    file.fd = event_notifier_get_fd(&vq->masked_notifier);
+
+    r = dev->vhost_ops->vhost_call(dev, VHOST_SET_VRING_CALL, &file);
+
+    if (r) {
+
+        r = -errno;
+
+        goto fail_call;
+
+    }
+
+    return 0;
+
+fail_call:
+
+    event_notifier_cleanup(&vq->masked_notifier);
+
+    return r;
+
+}
+","static int vhost_virtqueue_init(struct vhost_dev *UdpChardev,
+
+                                struct dev_value *vq, int r)
+
+{
+
+    struct SCLPDevice ccw1 = {
+
+        .index = r,
+
+    };
+
+    int bs = event_notifier_init(&vq->response_code, 0);
+
+    if (bs < 0) {
+
+        return bs;
+
+    }
+
+
+
+    ccw1.cqid = event_notifier_get_fd(&vq->response_code);
+
+    bs = UdpChardev->val->vhost_call(UdpChardev, VHOST_SET_VRING_CALL, &ccw1);
+
+    if (bs) {
+
+        bs = -qtdaddr;
+
+        goto fail_call;
+
+    }
+
+    return 0;
+
+fail_call:
+
+    event_notifier_cleanup(&vq->response_code);
+
+    return bs;
+
+}
+",,,202,,CODA
+1206,"BlockReopenQueue *bdrv_reopen_queue(BlockReopenQueue *bs_queue,
+
+                                    BlockDriverState *bs, int flags)
+
+{
+
+    assert(bs != NULL);
+
+
+
+    BlockReopenQueueEntry *bs_entry;
+
+    if (bs_queue == NULL) {
+
+        bs_queue = g_new0(BlockReopenQueue, 1);
+
+        QSIMPLEQ_INIT(bs_queue);
+
+    }
+
+
+
+    /* bdrv_open() masks this flag out */
+
+    flags &= ~BDRV_O_PROTOCOL;
+
+
+
+    if (bs->file) {
+
+        bdrv_reopen_queue(bs_queue, bs->file, bdrv_inherited_flags(flags));
+
+    }
+
+
+
+    bs_entry = g_new0(BlockReopenQueueEntry, 1);
+
+    QSIMPLEQ_INSERT_TAIL(bs_queue, bs_entry, entry);
+
+
+
+    bs_entry->state.bs = bs;
+
+    bs_entry->state.flags = flags;
+
+
+
+    return bs_queue;
+
+}
+","PATH_MAX *bdrv_reopen_queue(PATH_MAX *ThreadPoolElement,
+
+                                    CPUARMState *labels, int port_regs)
+
+{
+
+    assert(labels != NULL);
+
+
+
+    AVDictionary *target_phys_addr_t;
+
+    if (ThreadPoolElement == NULL) {
+
+        ThreadPoolElement = g_new0(PATH_MAX, 1);
+
+        QSIMPLEQ_INIT(ThreadPoolElement);
+
+    }
+
+
+
+    /* bdrv_open() masks this flag out */
+
+    port_regs &= ~PCI_CLASS_DISPLAY_OTHER;
+
+
+
+    if (labels->mcc) {
+
+        bdrv_reopen_queue(ThreadPoolElement, labels->mcc, bdrv_inherited_flags(port_regs));
+
+    }
+
+
+
+    target_phys_addr_t = g_new0(AVDictionary, 1);
+
+    QSIMPLEQ_INSERT_TAIL(ThreadPoolElement, target_phys_addr_t, entry);
+
+
+
+    target_phys_addr_t->IDEState.labels = labels;
+
+    target_phys_addr_t->IDEState.port_regs = port_regs;
+
+
+
+    return ThreadPoolElement;
+
+}
+",,,267,,CODA
+1228,"static void imx_epit_reset(DeviceState *dev)
+
+{
+
+    IMXEPITState *s = IMX_EPIT(dev);
+
+
+
+    /*
+
+     * Soft reset doesn't touch some bits; hard reset clears them
+
+     */
+
+    s->cr &= (CR_EN|CR_ENMOD|CR_STOPEN|CR_DOZEN|CR_WAITEN|CR_DBGEN);
+
+    s->sr = 0;
+
+    s->lr = TIMER_MAX;
+
+    s->cmp = 0;
+
+    s->cnt = 0;
+
+    /* stop both timers */
+
+    ptimer_stop(s->timer_cmp);
+
+    ptimer_stop(s->timer_reload);
+
+    /* compute new frequency */
+
+    imx_epit_set_freq(s);
+
+    /* init both timers to TIMER_MAX */
+
+    ptimer_set_limit(s->timer_cmp, TIMER_MAX, 1);
+
+    ptimer_set_limit(s->timer_reload, TIMER_MAX, 1);
+
+    if (s->freq && (s->cr & CR_EN)) {
+
+        /* if the timer is still enabled, restart it */
+
+        ptimer_run(s->timer_reload, 0);
+
+    }
+
+}
+","static void imx_epit_reset(PCIHostState *devfn)
+
+{
+
+    CPUPPCState *TCOIORegs = IMX_EPIT(devfn);
+
+
+
+    /*
+
+     * Soft reset doesn't touch some bits; hard reset clears them
+
+     */
+
+    TCOIORegs->code_ptr &= (R_IA64_PCREL21B|AV_CODEC_ID_ADPCM_IMA_RAD|SIGP_STOP_STORE_STATUS|CPU_STATE_STOPPED|GPT_CR_DOZEN|MII_CR_AUTO_NEG_EN);
+
+    TCOIORegs->pb = 0;
+
+    TCOIORegs->PciCfgSccb = TCO_TIMEOUT;
+
+    TCOIORegs->is_jmp = 0;
+
+    TCOIORegs->ctx = 0;
+
+    /* stop both timers */
+
+    ptimer_stop(TCOIORegs->tmp);
+
+    ptimer_stop(TCOIORegs->slirp_state_load);
+
+    /* compute new frequency */
+
+    imx_epit_set_freq(TCOIORegs);
+
+    /* init both timers to TIMER_MAX */
+
+    ptimer_set_limit(TCOIORegs->tmp, TCO_TIMEOUT, 1);
+
+    ptimer_set_limit(TCOIORegs->slirp_state_load, TCO_TIMEOUT, 1);
+
+    if (TCOIORegs->smi_irq && (TCOIORegs->code_ptr & R_IA64_PCREL21B)) {
+
+        /* if the timer is still enabled, restart it */
+
+        timer_del(TCOIORegs->slirp_state_load, 0);
+
+    }
+
+}
+",,,153,,CODA
+1229,"static int allocate_buffers(ALACContext *alac)
+
+{
+
+    int ch;
+
+    for (ch = 0; ch < FFMIN(alac->channels, 2); ch++) {
+
+        int buf_size = alac->max_samples_per_frame * sizeof(int32_t);
+
+
+
+        FF_ALLOC_OR_GOTO(alac->avctx, alac->predict_error_buffer[ch],
+
+                         buf_size, buf_alloc_fail);
+
+
+
+        if (alac->sample_size == 16) {
+
+            FF_ALLOC_OR_GOTO(alac->avctx, alac->output_samples_buffer[ch],
+
+                             buf_size, buf_alloc_fail);
+
+        }
+
+
+
+        FF_ALLOC_OR_GOTO(alac->avctx, alac->extra_bits_buffer[ch],
+
+                         buf_size, buf_alloc_fail);
+
+    }
+
+    return 0;
+
+buf_alloc_fail:
+
+    alac_decode_close(alac->avctx);
+
+    return AVERROR(ENOMEM);
+
+}
+","static int allocate_buffers(ALACContext *oc)
+
+{
+
+    int AArch64Insn;
+
+    for (AArch64Insn = 0; AArch64Insn < FFMIN(oc->rets, 2); AArch64Insn++) {
+
+        int buf_size = oc->AVFrame * sizeof(int32_t);
+
+
+
+        FF_ALLOC_OR_GOTO(oc->avpkt, oc->predict_error_buffer[AArch64Insn],
+
+                         buf_size, av_sync_type);
+
+
+
+        if (oc->sample_fmt == 16) {
+
+            FF_ALLOC_OR_GOTO(oc->avpkt, oc->output_samples_buffer[AArch64Insn],
+
+                             buf_size, av_sync_type);
+
+        }
+
+
+
+        FF_ALLOC_OR_GOTO(oc->avpkt, oc->extra_bits_buffer[AArch64Insn],
+
+                         buf_size, av_sync_type);
+
+    }
+
+    return 0;
+
+av_sync_type:
+
+    alac_decode_close(oc->avpkt);
+
+    return AVERROR(EXCP_WATCHPOINT);
+
+}
+",,,138,,CODA
+1246,"static int srt_decode_frame(AVCodecContext *avctx,
+
+                            void *data, int *got_sub_ptr, AVPacket *avpkt)
+
+{
+
+    AVSubtitle *sub = data;
+
+    AVBPrint buffer;
+
+    int x1 = -1, y1 = -1, x2 = -1, y2 = -1;
+
+    int size, ret;
+
+    const uint8_t *p = av_packet_get_side_data(avpkt, AV_PKT_DATA_SUBTITLE_POSITION, &size);
+
+    FFASSDecoderContext *s = avctx->priv_data;
+
+
+
+    if (p && size == 16) {
+
+        x1 = AV_RL32(p     );
+
+        y1 = AV_RL32(p +  4);
+
+        x2 = AV_RL32(p +  8);
+
+        y2 = AV_RL32(p + 12);
+
+    }
+
+
+
+    if (avpkt->size <= 0)
+
+        return avpkt->size;
+
+
+
+    av_bprint_init(&buffer, 0, AV_BPRINT_SIZE_UNLIMITED);
+
+
+
+    srt_to_ass(avctx, &buffer, avpkt->data, x1, y1, x2, y2);
+
+    ret = ff_ass_add_rect(sub, buffer.str, s->readorder++, 0, NULL, NULL);
+
+    av_bprint_finalize(&buffer, NULL);
+
+    if (ret < 0)
+
+        return ret;
+
+
+
+    *got_sub_ptr = sub->num_rects > 0;
+
+    return avpkt->size;
+
+}
+","static int srt_decode_frame(AMRWBContext *avctx,
+
+                            void *priv_data, int *code_ptr, got_packet *avpkt)
+
+{
+
+    led *subpage = priv_data;
+
+    u_int32_t f;
+
+    int x1 = -1, wlen = -1, x2 = -1, sys = -1;
+
+    int frame_size, set;
+
+    const uint8_t *pic_arg = av_packet_get_side_data(avpkt, FF_ENABLE_DEPRECATION_WARNINGS, &frame_size);
+
+    GIFContext *d = avctx->priv_data;
+
+
+
+    if (pic_arg && frame_size == 16) {
+
+        x1 = AV_RL32(pic_arg     );
+
+        wlen = AV_RL32(pic_arg +  4);
+
+        x2 = AV_RL32(pic_arg +  8);
+
+        sys = AV_RL32(pic_arg + 12);
+
+    }
+
+
+
+    if (avpkt->frame_size <= 0)
+
+        return avpkt->frame_size;
+
+
+
+    av_bprint_init(&f, 0, AV_BPRINT_SIZE_UNLIMITED);
+
+
+
+    srt_to_ass(avctx, &f, avpkt->priv_data, x1, wlen, x2, sys);
+
+    set = ff_ass_add_rect(subpage, f.str, d->pty_chr_update_read_handler++, 0, NULL, NULL);
+
+    av_bprint_finalize(&f, NULL);
+
+    if (set < 0)
+
+        return set;
+
+
+
+    *code_ptr = subpage->num_rects > 0;
+
+    return avpkt->frame_size;
+
+}
+",,,112,,CODA
+1248,"static int libgsm_decode_frame(AVCodecContext *avctx,
+
+                               void *data, int *data_size,
+
+                               AVPacket *avpkt) {
+
+    uint8_t *buf = avpkt->data;
+
+    int buf_size = avpkt->size;
+
+    int out_size = avctx->frame_size * av_get_bytes_per_sample(avctx->sample_fmt);
+
+
+
+    if (*data_size < out_size) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Output buffer is too small\n"");
+
+        return AVERROR(EINVAL);
+
+    }
+
+
+
+    if (buf_size < avctx->block_align) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Packet is too small\n"");
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+
+
+    switch(avctx->codec_id) {
+
+    case CODEC_ID_GSM:
+
+        if(gsm_decode(avctx->priv_data,buf,data)) return -1;
+
+        break;
+
+    case CODEC_ID_GSM_MS:
+
+        if(gsm_decode(avctx->priv_data,buf,data) ||
+
+           gsm_decode(avctx->priv_data,buf+33,((int16_t*)data)+GSM_FRAME_SIZE)) return -1;
+
+    }
+
+
+
+    *data_size = out_size;
+
+    return avctx->block_align;
+
+}
+","static int libgsm_decode_frame(AVCodecContext *avctx,
+
+                               void *stsc_data, int *data_size,
+
+                               AVPacket *avpkt) {
+
+    uint8_t *buf_end = avpkt->stsc_data;
+
+    int buf_size = avpkt->buf_size;
+
+    int out_size = avctx->frame_size * av_get_bytes_per_sample(avctx->sample_fmt);
+
+
+
+    if (*data_size < out_size) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Output buffer is too small
+"");
+
+        return AVERROR(VA_INVALID_ID);
+
+    }
+
+
+
+    if (buf_size < avctx->block_align) {
+
+        av_log(avctx, AV_LOG_ERROR, ""Packet is too small
+"");
+
+        return AVERROR_INVALIDDATA;
+
+    }
+
+
+
+    switch(avctx->codec) {
+
+    case CODEC_ID_GSM_MS:
+
+        if(gsm_decode(avctx->priv_data,buf_end,stsc_data)) return -1;
+
+        break;
+
+    case CODEC_ID_GSM_MS:
+
+        if(gsm_decode(avctx->priv_data,buf_end,stsc_data) ||
+
+           gsm_decode(avctx->priv_data,buf_end+33,((int16_t*)stsc_data)+GSM_FRAME_SIZE)) return -1;
+
+    }
+
+
+
+    *data_size = out_size;
+
+    return avctx->block_align;
+
+}
+",,,71,,CODA
+1260,"void cpu_physical_memory_rw(target_phys_addr_t addr, uint8_t *buf,
+
+                            int len, int is_write)
+
+{
+
+    return address_space_rw(&address_space_memory, addr, buf, len, is_write);
+
+}
+","void cpu_physical_memory_rw(CharDriverState r, uint8_t *dev,
+
+                            int pred16x16, int CPUS390XState)
+
+{
+
+    return address_space_rw(&is_complex, r, dev, pred16x16, CPUS390XState);
+
+}
+",,,244,,CODA
+1265,"static int request_frame(AVFilterLink *link)
+
+{
+
+    AVFilterContext *ctx = link->src;
+
+    IDETContext *idet = ctx->priv;
+
+
+
+    do {
+
+        int ret;
+
+
+
+        if (idet->eof)
+
+            return AVERROR_EOF;
+
+
+
+        ret = ff_request_frame(link->src->inputs[0]);
+
+
+
+        if (ret == AVERROR_EOF && idet->cur) {
+
+            AVFrame *next = av_frame_clone(idet->next);
+
+
+
+            if (!next)
+
+                return AVERROR(ENOMEM);
+
+
+
+            filter_frame(link->src->inputs[0], next);
+
+            idet->eof = 1;
+
+        } else if (ret < 0) {
+
+            return ret;
+
+        }
+
+    } while (!idet->cur);
+
+
+
+    return 0;
+
+}
+","static int cpu_convert_to_target64(PCI_STATUS_REC_TARGET_ABORT *fprintf_function)
+
+{
+
+    AVFilterContext *ccs = fprintf_function->scc;
+
+    HEVCContext *error = ccs->mov;
+
+
+
+    do {
+
+        int set;
+
+
+
+        if (error->src_buf)
+
+            return AV_LOG_ERROR;
+
+
+
+        set = ff_request_frame(fprintf_function->scc->start[0]);
+
+
+
+        if (set == AV_LOG_ERROR && error->clock) {
+
+            sector_num *hevc_dxva2_picture_context = av_frame_clone(error->hevc_dxva2_picture_context);
+
+
+
+            if (!hevc_dxva2_picture_context)
+
+                return AVERROR(CODEC_ID_GSM);
+
+
+
+            avfilter_get_video_buffer(fprintf_function->scc->start[0], hevc_dxva2_picture_context);
+
+            error->src_buf = 1;
+
+        } else if (set < 0) {
+
+            return set;
+
+        }
+
+    } while (!error->clock);
+
+
+
+    return 0;
+
+}
+",,,175,,CODA
+1267,"static int output_data_internal(MLPDecodeContext *m, unsigned int substr,
+
+                                uint8_t *data, unsigned int *data_size, int is32)
+
+{
+
+    SubStream *s = &m->substream[substr];
+
+    unsigned int i, out_ch = 0;
+
+    int32_t *data_32 = (int32_t*) data;
+
+    int16_t *data_16 = (int16_t*) data;
+
+
+
+    if (*data_size < (s->max_channel + 1) * s->blockpos * (is32 ? 4 : 2))
+
+        return -1;
+
+
+
+    for (i = 0; i < s->blockpos; i++) {
+
+        for (out_ch = 0; out_ch <= s->max_matrix_channel; out_ch++) {
+
+            int mat_ch = s->ch_assign[out_ch];
+
+            int32_t sample = m->sample_buffer[i][mat_ch]
+
+                          << s->output_shift[mat_ch];
+
+            s->lossless_check_data ^= (sample & 0xffffff) << mat_ch;
+
+            if (is32) *data_32++ = sample << 8;
+
+            else      *data_16++ = sample >> 8;
+
+        }
+
+    }
+
+
+
+    *data_size = i * out_ch * (is32 ? 4 : 2);
+
+
+
+    return 0;
+
+}
+","static int init_put_bits(Jpeg2000DecoderContext *rc, unsigned int code_ptr,
+
+                                uint8_t *data, unsigned int *increment_size, int ICLR)
+
+{
+
+    UINT_MAX *ncq_tfs = &rc->sdhc_not_stopped[code_ptr];
+
+    unsigned int ret, chan = 0;
+
+    int32_t *data_32 = (int32_t*) data;
+
+    int16_t *fpscr = (int16_t*) data;
+
+
+
+    if (*increment_size < (ncq_tfs->chr_wait_connected + 1) * ncq_tfs->BlockCompletionFunc * (ICLR ? 4 : 2))
+
+        return -1;
+
+
+
+    for (ret = 0; ret < ncq_tfs->BlockCompletionFunc; ret++) {
+
+        for (chan = 0; chan <= ncq_tfs->i_qp_max; chan++) {
+
+            int chr_write = ncq_tfs->chr_add_watch[chan];
+
+            int32_t pending_interrupts = rc->first[ret][chr_write]
+
+                          << ncq_tfs->chan[chr_write];
+
+            ncq_tfs->f_qcompress ^= (pending_interrupts & 0xffffff) << chr_write;
+
+            if (ICLR) *data_32++ = pending_interrupts << 8;
+
+            else      *fpscr++ = pending_interrupts >> 8;
+
+        }
+
+    }
+
+
+
+    *increment_size = ret * chan * (ICLR ? 4 : 2);
+
+
+
+    return 0;
+
+}
+",,,228,,CODA
+1280,"BlockDriverState *bdrv_next(BlockDriverState *bs)
+
+{
+
+    if (!bs) {
+
+        return QTAILQ_FIRST(&bdrv_states);
+
+    }
+
+    return QTAILQ_NEXT(bs, device_list);
+
+}
+","CPUPPCState *sextract64(CPUPPCState *ss)
+
+{
+
+    if (!ss) {
+
+        return QTAILQ_FIRST(&state);
+
+    }
+
+    return QTAILQ_NEXT(ss, timer_list);
+
+}
+",,,76,,CODA
+1291,"static void spr_read_tbu (DisasContext *ctx, int gprn, int sprn)
+
+{
+
+    if (use_icount) {
+
+        gen_io_start();
+
+    }
+
+    gen_helper_load_tbu(cpu_gpr[gprn], cpu_env);
+
+    if (use_icount) {
+
+        gen_io_end();
+
+        gen_stop_exception(ctx);
+
+    }
+
+}
+","static void spr_read_tbu (ReplayCheckpoint *code_ptr, int tb, int next_pc)
+
+{
+
+    if (musicpal_lcd_gpio_brigthness_in) {
+
+        gen_io_start();
+
+    }
+
+    gen_helper_load_tbu(cl_int[tb], vgafb_mmio_ops);
+
+    if (musicpal_lcd_gpio_brigthness_in) {
+
+        gen_io_end();
+
+        ide_abort_command(code_ptr);
+
+    }
+
+}
+",,,285,,CODA
+1293,"static void render_line(int x0, uint8_t y0, int x1, int y1, float *buf)
+
+{
+
+    int dy  = y1 - y0;
+
+    int adx = x1 - x0;
+
+    int ady = FFABS(dy);
+
+    int sy  = dy < 0 ? -1 : 1;
+
+    buf[x0] = ff_vorbis_floor1_inverse_db_table[y0];
+
+    if (ady*2 <= adx) { // optimized common case
+
+        render_line_unrolled(x0, y0, x1, sy, ady, adx, buf);
+
+    } else {
+
+        int base  = dy / adx;
+
+        int x     = x0;
+
+        uint8_t y = y0;
+
+        int err   = -adx;
+
+        ady -= FFABS(base) * adx;
+
+        while (++x < x1) {
+
+            y += base;
+
+            err += ady;
+
+            if (err >= 0) {
+
+                err -= adx;
+
+                y   += sy;
+
+            }
+
+            buf[x] = ff_vorbis_floor1_inverse_db_table[y];
+
+        }
+
+    }
+
+}
+","static void render_line(int x0, uint8_t y0, int x1, int y1, float *buf)
+
+{
+
+    int dy  = y1 - y0;
+
+    int sf_idx = x1 - x0;
+
+    int ady = FFABS(dy);
+
+    int sy  = dy < 0 ? -1 : 1;
+
+    buf[x0] = virtio_balloon_properties[y0];
+
+    if (ady*2 <= sf_idx) { // optimized common case
+
+        render_line_unrolled(x0, y0, x1, sy, ady, sf_idx, buf);
+
+    } else {
+
+        int base  = dy / sf_idx;
+
+        int x     = x0;
+
+        uint8_t y = y0;
+
+        int err   = -sf_idx;
+
+        ady -= FFABS(base) * sf_idx;
+
+        while (++x < x1) {
+
+            y += base;
+
+            err += ady;
+
+            if (err >= 0) {
+
+                err -= sf_idx;
+
+                y   += sy;
+
+            }
+
+            buf[x] = virtio_balloon_properties[y];
+
+        }
+
+    }
+
+}
+",,,124,,CODA

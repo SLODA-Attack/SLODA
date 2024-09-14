@@ -1,0 +1,2437 @@
+Index,Original Code,Adversarial Code,Program Length,Identifier Num,Replaced Identifiers,Query Times,Time Cost,Type
+0,,,,,,,,0
+2,,,,,,,,0
+3,,,,,,,,0
+4,,,,,,,,0
+5,"void CrosLibrary::TestApi::SetBrightnessLibrary(
+    BrightnessLibrary* library, bool own) {
+  library_->brightness_lib_.SetImpl(library, own);
+}
+","void CrosLibrary::TestApi::SetBrightnessLibrary(
+    BrightnessLibrary*  Library, bool olean) {
+  library_->brightness_lib_.SetImpl( Library, olean);
+}
+",27.0,6.0,"library: Library,own:olean,",65.0,2.04501040776571,Greedy
+6,,,,,,,,0
+7,,,,,,,,0
+9,,,,,,,,0
+11,,,,,,,,0
+12,,,,,,,,0
+13,,,,,,,,0
+14,,,,,,,,0
+15,,,,,,,,0
+16,"void SyncBackendHost::StartConfiguration(Callback0::Type* callback) {
+  core_thread_.message_loop()->PostTask(FROM_HERE, NewRunnableMethod(
+    core_.get(),&SyncBackendHost::Core::DoStartConfiguration, callback));
+}","void SyncBackendHost::StartConfiguration(Callback0::Type* metadata) {
+  core_thread_.message_loop()->PostTask(FROM_HERE, NewRunnableMethod(
+    core_.get(),&SyncBackendHost::Core::DoStartConfiguration, metadata));
+}",42.0,8.0,"callback:metadata,",33.0,1.04978884458542,Greedy
+17,,,,,,,,0
+18,,,,,,,,0
+19,"void SyncBackendHost::Core::RouteJsEvent(
+    const std::string& name, const JsEventDetails& details) {
+  host_->frontend_loop_->PostTask(
+      FROM_HERE, NewRunnableMethod(
+          this, &Core::RouteJsEventOnFrontendLoop, name, details));
+}
+","void SyncBackendHost::Core::RouteJsEvent(
+    const std::string& version, const JsEventDetails&  Details) {
+  host_->frontend_loop_->PostTask(
+      FROM_HERE, NewRunnableMethod(
+          this, &Core::RouteJsEventOnFrontendLoop, version,  Details));
+}
+",44.0,9.0,"name:version,details: Details,",65.0,2.09254507621129,Greedy
+22,,,,,,,,0
+23,,,,,,,,0
+24,,,,,,,,0
+26,,,,,,,,0
+27,,,,,,,,0
+28,,,,,,,,0
+29,,,,,,,,0
+30,,,,,,,,0
+31,,,,,,,,0
+32,,,,,,,,0
+34,,,,,,,,0
+35,,,,,,,,0
+36,,,,,,,,0
+37,,,,,,,,0
+38,,,,,,,,0
+39,,,,,,,,0
+43,,,,,,,,0
+45,,,,,,,,0
+46,,,,,,,,0
+47,,,,,,,,0
+49,,,,,,,,0
+51,,,,,,,,0
+52,,,,,,,,0
+54,,,,,,,,0
+55,,,,,,,,0
+56,,,,,,,,0
+57,,,,,,,,0
+58,,,,,,,,0
+59,,,,,,,,0
+60,,,,,,,,0
+61,,,,,,,,0
+63,,,,,,,,0
+65,,,,,,,,0
+69,,,,,,,,0
+70,,,,,,,,0
+71,"int WebContentsImpl::CreateOpenerRenderViewsForRenderManager(
+    SiteInstance* instance) {
+  if (!opener_)
+    return MSG_ROUTING_NONE;
+
+  return opener_->CreateOpenerRenderViews(instance);
+}
+","int WebContentsImpl::CreateOpenerRenderViewsForRenderManager(
+    SiteInstance* Instance) {
+  if (!opener_)
+    return MSG_ROUTING_NONE;
+
+  return opener_->CreateOpenerRenderViews(Instance);
+}
+",27.0,6.0,"instance:Instance,",33.0,0.980940743287404,Greedy
+72,,,,,,,,0
+75,,,,,,,,0
+76,,,,,,,,0
+77,"static bool cmd_ibm_sense_condition(IDEState *s, uint8_t cmd)
+{
+    switch (s->feature) {
+    case 0x01:  /* sense temperature in device */
+        s->nsector = 0x50;      /* +20 C */
+        break;
+    default:
+        ide_abort_command(s);
+        return true;
+    }
+
+    return true;
+}","static bool cmd_ibm_sense_condition(IDEState *ions, uint8_t cmd)
+{
+    switch (ions->feature) {
+    case 0x01:  /* sense temperature in device */
+        ions->nsector = 0x50;      /* +20 C */
+        break;
+    default:
+        ide_abort_command(ions);
+        return true;
+    }
+
+    return true;
+}",45.0,7.0,"s:ions,",36.0,1.1177116394043,Greedy
+78,,,,,,,,0
+79,,,,,,,,0
+81,,,,,,,,0
+83,,,,,,,,0
+84,,,,,,,,0
+85,,,,,,,,0
+86,,,,,,,,0
+88,,,,,,,,0
+89,"static void callWithScriptStateExecutionContextVoidMethodMethod(const v8::FunctionCallbackInfo<v8::Value>& info)
+{
+    TestObjectPython* imp = V8TestObjectPython::toNative(info.Holder());
+    ScriptState* currentState = ScriptState::current();
+    if (!currentState)
+        return;
+    ScriptState& state = *currentState;
+    ExecutionContext* scriptContext = currentExecutionContext(info.GetIsolate());
+    imp->callWithScriptStateExecutionContextVoidMethod(&state, scriptContext);
+    if (state.hadException()) {
+        v8::Local<v8::Value> exception = state.exception();
+        state.clearException();
+        throwError(exception, info.GetIsolate());
+        return;
+    }
+}","static void callWithScriptStateExecutionContextVoidMethodMethod(const v8::FunctionCallbackInfo<v8::Value>& ami)
+{
+    TestObjectPython* amp = V8TestObjectPython::toNative(ami.Holder());
+    ScriptState*  currentSession = ScriptState::current();
+    if (! currentSession)
+        return;
+    ScriptState& state = * currentSession;
+    ExecutionContext* scriptContext = currentExecutionContext(ami.GetIsolate());
+    amp->callWithScriptStateExecutionContextVoidMethod(&state, scriptContext);
+    if (state.hadException()) {
+        v8::Local<v8::Value> exception = state.exception();
+        state.clearException();
+        throwError(exception, ami.GetIsolate());
+        return;
+    }
+}",125.0,23.0,"info:ami,imp:amp,currentState: currentSession,",102.0,3.19438061714172,Greedy
+90,,,,,,,,0
+91,,,,,,,,0
+92,,,,,,,,0
+95,,,,,,,,0
+96,,,,,,,,0
+98,,,,,,,,0
+99,,,,,,,,0
+100,,,,,,,,0
+103,,,,,,,,0
+104,"void imap_cachepath(struct ImapData *idata, const char *mailbox, char *dest, size_t dlen)
+{
+  char *s = NULL;
+  const char *p = mailbox;
+
+  for (s = dest; p && *p && dlen; dlen--)
+  {
+    if (*p == idata->delim)
+    {
+      *s = '/';
+      /* simple way to avoid collisions with UIDs */
+      if (*(p + 1) >= '0' && *(p + 1) <= '9')
+      {
+        if (--dlen)
+          *++s = '_';
+      }
+    }
+    else
+      *s = *p;
+    p++;
+    s++;
+  }
+  *s = '\0';
+}","void imap_cachepath(struct ImapData *oddata, const char *mailbox, char *dest, size_t dlen)
+{
+  char *s = NULL;
+  const char *p = mailbox;
+
+  for (s = dest; p && *p && dlen; dlen--)
+  {
+    if (*p == oddata->delim)
+    {
+      *s = '/';
+      /* simple way to avoid collisions with UIDs */
+      if (*(p + 1) >= '0' && *(p + 1) <= '9')
+      {
+        if (--dlen)
+          *++s = '_';
+      }
+    }
+    else
+      *s = *p;
+    p++;
+    s++;
+  }
+  *s = '\0';
+}",126.0,26.0,"idata:oddata,",54.0,1.52389754851659,Greedy
+105,,,,,,,,0
+106,,,,,,,,0
+110,,,,,,,,0
+112,,,,,,,,0
+113,,,,,,,,0
+115,,,,,,,,0
+116,,,,,,,,0
+117,,,,,,,,0
+119,,,,,,,,0
+120,,,,,,,,0
+121,,,,,,,,0
+122,,,,,,,,0
+123,,,,,,,,0
+124,,,,,,,,0
+125,,,,,,,,0
+126,,,,,,,,0
+127,,,,,,,,0
+128,,,,,,,,0
+129,,,,,,,,0
+130,,,,,,,,0
+131,,,,,,,,0
+133,,,,,,,,0
+134,,,,,,,,0
+137,"void Tab::OnMouseReleased(const ui::MouseEvent& event) {
+  controller_->OnMouseEventInTab(this, event);
+
+  if (controller_->EndDrag(END_DRAG_COMPLETE))
+    return;
+
+  if (event.IsMiddleMouseButton()) {
+    if (HitTestPoint(event.location())) {
+      controller_->CloseTab(this, CLOSE_TAB_FROM_MOUSE);
+    } else if (closing_) {
+      gfx::Point location_in_parent = event.location();
+      ConvertPointToTarget(this, parent(), &location_in_parent);
+      Tab* closest_tab = controller_->GetTabAt(location_in_parent);
+      if (closest_tab)
+        controller_->CloseTab(closest_tab, CLOSE_TAB_FROM_MOUSE);
+    }
+  } else if (event.IsOnlyLeftMouseButton() && !event.IsShiftDown() &&
+             !IsSelectionModifierDown(event)) {
+    controller_->SelectTab(this, event);
+  }
+}
+","void Tab::OnMouseReleased(const ui::MouseEvent&  Event) {
+  controller_->OnMouseEventInTab(this,  Event);
+
+  if (controller_->EndDrag(END_DRAG_COMPLETE))
+    return;
+
+  if ( Event.IsMiddleMouseButton()) {
+    if (HitTestPoint( Event.location())) {
+      controller_->CloseTab(this, CLOSE_TAB_FROM_MOUSE);
+    } else if (closing_) {
+      gfx::Point location_in_parent =  Event.location();
+      ConvertPointToTarget(this, parent(), &location_in_parent);
+      Tab* closcest_cur = controller_->GetTabAt(location_in_parent);
+      if (closcest_cur)
+        controller_->CloseTab(closcest_cur, CLOSE_TAB_FROM_MOUSE);
+    }
+  } else if ( Event.IsOnlyLeftMouseButton() && ! Event.IsShiftDown() &&
+             !IsSelectionModifierDown( Event)) {
+    controller_->SelectTab(this,  Event);
+  }
+}
+",153.0,30.0,"closest_tab:closcest_cur,event: Event,",73.0,2.28807926972707,Greedy
+139,,,,,,,,0
+140,,,,,,,,0
+141,,,,,,,,0
+142,,,,,,,,0
+143,"PS_SERIALIZER_DECODE_FUNC(php_serialize) /* {{{ */
+{
+	const char *endptr = val + vallen;
+	zval *session_vars;
+	php_unserialize_data_t var_hash;
+
+	PHP_VAR_UNSERIALIZE_INIT(var_hash);
+	ALLOC_INIT_ZVAL(session_vars);
+        if (php_var_unserialize(&session_vars, &val, endptr, &var_hash TSRMLS_CC)) {
+                var_push_dtor(&var_hash, &session_vars);
+        }
+        PHP_VAR_UNSERIALIZE_DESTROY(var_hash);
+        if (PS(http_session_vars)) {
+                zval_ptr_dtor(&PS(http_session_vars));
+	}
+	if (Z_TYPE_P(session_vars) == IS_NULL) {
+		array_init(session_vars);
+	}
+	PS(http_session_vars) = session_vars;
+	ZEND_SET_GLOBAL_VAR_WITH_LENGTH(""_SESSION"", sizeof(""_SESSION""), PS(http_session_vars), Z_REFCOUNT_P(PS(http_session_vars)) + 1, 1);
+	return SUCCESS;
+}
+/* }}} */","PS_SERIALIZER_DECODE_FUNC(php_serialize) /* {{{ */
+{
+	const char *startPtr = val + vallen;
+	zval *session_prs;
+	php_unserialize_data_t  var_code;
+
+	PHP_VAR_UNSERIALIZE_INIT( var_code);
+	ALLOC_INIT_ZVAL(session_prs);
+        if (php_var_unserialize(&session_prs, &val, startPtr, & var_code TSRMLS_CC)) {
+                var_push_dtor(& var_code, &session_prs);
+        }
+        PHP_VAR_UNSERIALIZE_DESTROY( var_code);
+        if (PS(http_session_vars)) {
+                zval_ptr_dtor(&PS(http_session_vars));
+	}
+	if (Z_TYPE_P(session_prs) == IS_NULL) {
+		array_init(session_prs);
+	}
+	PS(http_session_vars) = session_prs;
+	ZEND_SET_GLOBAL_VAR_WITH_LENGTH(""_SESSION"", sizeof(""_SESSION""), PS(http_session_vars), Z_REFCOUNT_P(PS(http_session_vars)) + 1, 1);
+	return SUCCESS;
+}
+/* }}} */",138.0,41.0,"endptr:startPtr,var_hash: var_code,session_vars:session_prs,",99.0,2.70853672424952,Greedy
+146,,,,,,,,0
+147,,,,,,,,0
+149,,,,,,,,0
+151,,,,,,,,0
+153,,,,,,,,0
+155,,,,,,,,0
+156,,,,,,,,0
+157,,,,,,,,0
+158,,,,,,,,0
+159,,,,,,,,0
+161,,,,,,,,0
+162,,,,,,,,0
+164,,,,,,,,0
+167,,,,,,,,0
+168,,,,,,,,0
+169,,,,,,,,0
+170,,,,,,,,0
+173,,,,,,,,0
+179,,,,,,,,0
+181,,,,,,,,0
+182,,,,,,,,0
+183,,,,,,,,0
+189,,,,,,,,0
+191,,,,,,,,0
+192,,,,,,,,0
+193,,,,,,,,0
+194,,,,,,,,0
+196,,,,,,,,0
+200,,,,,,,,0
+201,,,,,,,,0
+202,,,,,,,,0
+203,,,,,,,,0
+206,,,,,,,,0
+207,,,,,,,,0
+208,,,,,,,,0
+210,,,,,,,,0
+212,"authentic_get_challenge(struct sc_card *card, unsigned char *rnd, size_t len)
+{
+	/* 'GET CHALLENGE' returns always 24 bytes */
+	unsigned char rbuf[0x18];
+	size_t out_len;
+	int r;
+
+	LOG_FUNC_CALLED(card->ctx);
+
+	r = iso_ops->get_challenge(card, rbuf, sizeof rbuf);
+	LOG_TEST_RET(card->ctx, r, ""GET CHALLENGE cmd failed"");
+
+	if (len < (size_t) r) {
+		out_len = len;
+	} else {
+		out_len = (size_t) r;
+	}
+	memcpy(rnd, rbuf, out_len);
+
+	LOG_FUNC_RETURN(card->ctx, out_len);
+}","authentic_get_challenge(struct sc_card *service, unsigned char *rnd, size_t len)
+{
+	/* 'GET CHALLENGE' returns always 24 bytes */
+	unsigned char rbuf[0x18];
+	size_t out_len;
+	int r;
+
+	LOG_FUNC_CALLED(service->ctx);
+
+	r = iso_ops->get_challenge(service, rbuf, sizeof rbuf);
+	LOG_TEST_RET(service->ctx, r, ""GET CHALLENGE cmd failed"");
+
+	if (len < (size_t) r) {
+		out_len = len;
+	} else {
+		out_len = (size_t) r;
+	}
+	memcpy(rnd, rbuf, out_len);
+
+	LOG_FUNC_RETURN(service->ctx, out_len);
+}",106.0,30.0,"card:service,",50.0,1.50842675765355,Greedy
+214,,,,,,,,0
+215,,,,,,,,0
+218,,,,,,,,0
+220,,,,,,,,0
+222,,,,,,,,0
+224,,,,,,,,0
+225,,,,,,,,0
+227,,,,,,,,0
+228,"void V8TestObject::ActivityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttributeAttributeGetterCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_activityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttribute_Getter"");
+
+  ScriptState* script_state = ScriptState::ForRelevantRealm(info);
+  V8PerContextData* context_data = script_state->PerContextData();
+  if (context_data && context_data->ActivityLogger()) {
+    context_data->ActivityLogger()->LogGetter(""TestObject.activityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttribute"");
+  }
+
+  test_object_v8_internal::ActivityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttributeAttributeGetter(info);
+}","void V8TestObject::ActivityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttributeAttributeGetterCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_activityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttribute_Getter"");
+
+  ScriptState* cript_session = ScriptState::ForRelevantRealm(info);
+  V8PerContextData* context_data = cript_session->PerContextData();
+  if (context_data && context_data->ActivityLogger()) {
+    context_data->ActivityLogger()->LogGetter(""TestObject.activityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttribute"");
+  }
+
+  test_object_v8_internal::ActivityLoggingAccessForIsolatedWorldsPerWorldBindingsLongAttributeAttributeGetter(info);
+}",83.0,14.0,"script_state:cript_session,",32.0,0.921157443523407,Greedy
+230,,,,,,,,0
+232,,,,,,,,0
+235,,,,,,,,0
+238,,,,,,,,0
+239,,,,,,,,0
+240,,,,,,,,0
+242,,,,,,,,0
+244,,,,,,,,0
+245,,,,,,,,0
+246,,,,,,,,0
+248,,,,,,,,0
+249,,,,,,,,0
+250,,,,,,,,0
+252,,,,,,,,0
+255,,,,,,,,0
+256,,,,,,,,0
+259,,,,,,,,0
+262,,,,,,,,0
+263,"void setSerifFontFamilyWrapper(WebSettings* settings,
+                               const string16& font,
+                               UScriptCode script) {
+  settings->setSerifFontFamily(font, script);
+}","void setSerifFontFamilyWrapper(WebSettings* js,
+                               const string16& font,
+                               UScriptCode script) {
+  js->setSerifFontFamily(font, script);
+}",26.0,7.0,"settings:js,",37.0,1.11231366793315,Greedy
+264,,,,,,,,0
+265,,,,,,,,0
+266,,,,,,,,0
+267,,,,,,,,0
+268,,,,,,,,0
+269,,,,,,,,0
+272,"bool CheckBasicProxyAuth(const AuthChallengeInfo* auth_challenge) {
+  if (!auth_challenge)
+    return false;
+  EXPECT_TRUE(auth_challenge->is_proxy);
+  EXPECT_EQ(""myproxy:70"", auth_challenge->challenger.ToString());
+  EXPECT_EQ(""MyRealm1"", auth_challenge->realm);
+  EXPECT_EQ(""basic"", auth_challenge->scheme);
+  return true;
+}","bool CheckBasicProxyAuth(const AuthChallengeInfo* auth_channelenged) {
+  if (!auth_channelenged)
+    return false;
+  EXPECT_TRUE(auth_channelenged->is_proxy);
+  EXPECT_EQ(""myproxy:70"", auth_channelenged->challenger.ToString());
+  EXPECT_EQ(""MyRealm1"", auth_channelenged->realm);
+  EXPECT_EQ(""basic"", auth_channelenged->scheme);
+  return true;
+}",62.0,11.0,"auth_challenge:auth_channelenged,",37.0,1.14191758235296,Greedy
+273,,,,,,,,0
+274,,,,,,,,0
+275,,,,,,,,0
+276,"void RenderFrameImpl::DidChangeCpuTiming(base::TimeDelta time) {
+  for (auto& observer : observers_)
+    observer.DidChangeCpuTiming(time);
+}
+","void RenderFrameImpl::DidChangeCpuTiming(base::TimeDelta  times) {
+  for (auto& observer : observers_)
+    observer.DidChangeCpuTiming( times);
+}
+",27.0,6.0,"time: times,",33.0,1.5432017882665,Greedy
+277,,,,,,,,0
+278,,,,,,,,0
+281,,,,,,,,0
+285,,,,,,,,0
+286,,,,,,,,0
+287,,,,,,,,0
+289,,,,,,,,0
+291,,,,,,,,0
+292,,,,,,,,0
+293,"status_t IPCThreadState::requestDeathNotification(int32_t handle, BpBinder* proxy)
+{
+    mOut.writeInt32(BC_REQUEST_DEATH_NOTIFICATION);
+    mOut.writeInt32((int32_t)handle);
+    mOut.writePointer((uintptr_t)proxy);
+ return NO_ERROR;
+}","status_t IPCThreadState::requestDeathNotification(int32_t angle, BpBinder*  proxies)
+{
+    mOut.writeInt32(BC_REQUEST_DEATH_NOTIFICATION);
+    mOut.writeInt32((int32_t)angle);
+    mOut.writePointer((uintptr_t) proxies);
+ return NO_ERROR;
+}",44.0,10.0,"handle:angle,proxy: proxies,",65.0,2.06992255846659,Greedy
+295,,,,,,,,0
+297,,,,,,,,0
+302,,,,,,,,0
+303,,,,,,,,0
+305,,,,,,,,0
+309,,,,,,,,0
+310,,,,,,,,0
+313,,,,,,,,0
+314,,,,,,,,0
+316,,,,,,,,0
+317,,,,,,,,0
+318,,,,,,,,0
+319,,,,,,,,0
+322,"  virtual void Observe(NotificationType type,
+                       const NotificationSource& source,
+                       const NotificationDetails& details) {
+    if (type == NotificationType::NAV_LIST_PRUNED) {
+      notification_count_++;
+      details_ = *(Details<NavigationController::PrunedDetails>(details).ptr());
+    }
+  }
+","  virtual void Observe(NotificationType ype,
+                       const NotificationSource& ource,
+                       const NotificationDetails& acts) {
+    if (ype == NotificationType::NAV_LIST_PRUNED) {
+      notification_index_++;
+      details_ = *(Details<NavigationController::PrunedDetails>(acts).ptr());
+    }
+  }
+",51.0,10.0,"notification_count_:notification_index_,type:ype,source:ource,details:acts,",97.0,3.02415839831034,Greedy
+323,,,,,,,,0
+324,,,,,,,,0
+326,,,,,,,,0
+332,,,,,,,,0
+335,"bool effect_exists(effect_context_t *context)
+{
+ struct listnode *node;
+
+    list_for_each(node, &created_effects_list) {
+ effect_context_t *fx_ctxt = node_to_item(node,
+ effect_context_t,
+                                                 effects_list_node);
+ if (fx_ctxt == context) {
+ return true;
+ }
+ }
+ return false;
+}
+","bool effect_exists(effect_context_t *context)
+{
+ struct listnode *tree;
+
+    list_for_each(tree, &created_effects_list) {
+ effect_context_t *fx_ctxt = node_to_item(tree,
+ effect_context_t,
+                                                 effects_list_node);
+ if (fx_ctxt == context) {
+ return true;
+ }
+ }
+ return false;
+}
+",51.0,13.0,"node:tree,",38.0,1.07760678927104,Greedy
+336,"bool JSTestInterfaceConstructor::getOwnPropertySlot(JSCell* cell, ExecState* exec, const Identifier& propertyName, PropertySlot& slot)
+{
+    return getStaticPropertySlot<JSTestInterfaceConstructor, JSDOMWrapper>(exec, &JSTestInterfaceConstructorTable, jsCast<JSTestInterfaceConstructor*>(cell), propertyName, slot);
+}
+","bool JSTestInterfaceConstructor::getOwnPropertySlot(JSCell* cell, ExecState* exec, const Identifier&  propertyname, PropertySlot& slot)
+{
+    return getStaticPropertySlot<JSTestInterfaceConstructor, JSDOMWrapper>(exec, &JSTestInterfaceConstructorTable, jsCast<JSTestInterfaceConstructor*>(cell),  propertyname, slot);
+}
+",51.0,12.0,"propertyName: propertyname,",29.0,0.829492751757304,Greedy
+338,,,,,,,,0
+341,,,,,,,,0
+344,,,,,,,,0
+345,"std::unique_ptr<BlobDataHandle> BlobStorageContext::GetBlobDataFromPublicURL(
+    const GURL& url) {
+  std::string uuid;
+  BlobEntry* entry = registry_.GetEntryFromURL(url, &uuid);
+  if (!entry)
+    return nullptr;
+  return CreateHandle(uuid, entry);
+}
+","std::unique_ptr<BlobDataHandle> BlobStorageContext::GetBlobDataFromPublicURL(
+    const GURL& url) {
+  std::string uuid;
+  BlobEntry* uri = registry_.GetEntryFromURL(url, &uuid);
+  if (!uri)
+    return nullptr;
+  return CreateHandle(uuid, uri);
+}
+",52.0,11.0,"entry:uri,",34.0,1.05780586401622,Greedy
+346,,,,,,,,0
+347,,,,,,,,0
+348,"bool SendNativeKeyEventJSONRequest(
+    AutomationMessageSender* sender,
+    int browser_index,
+    int tab_index,
+    ui::KeyboardCode key_code,
+    int modifiers,
+    std::string* error_msg) {
+  DictionaryValue dict;
+  dict.SetString(""command"", ""SendOSLevelKeyEventToTab"");
+  dict.SetInteger(""windex"", browser_index);
+  dict.SetInteger(""tab_index"", tab_index);
+  dict.SetInteger(""keyCode"", key_code);
+  dict.SetInteger(""modifiers"", modifiers);
+  DictionaryValue reply_dict;
+  return SendAutomationJSONRequest(sender, dict, &reply_dict, error_msg);
+}
+","bool SendNativeKeyEventJSONRequest(
+    AutomationMessageSender* sender,
+    int browser_index,
+    int tab_index,
+    ui::KeyboardCode key_code,
+    int modifiers,
+    std::string*  error_Msg) {
+  DictionaryValue dict;
+  dict.SetString(""command"", ""SendOSLevelKeyEventToTab"");
+  dict.SetInteger(""windex"", browser_index);
+  dict.SetInteger(""tab_index"", tab_index);
+  dict.SetInteger(""keyCode"", key_code);
+  dict.SetInteger(""modifiers"", modifiers);
+  DictionaryValue response_ict;
+  return SendAutomationJSONRequest(sender, dict, &response_ict,  error_Msg);
+}
+",99.0,23.0,"error_msg: error_Msg,reply_dict:response_ict,",48.0,1.37694314718246,Greedy
+349,,,,,,,,0
+352,"int nfs4_proc_fs_locations(struct rpc_clnt *client, struct inode *dir,
+			   const struct qstr *name,
+			   struct nfs4_fs_locations *fs_locations,
+			   struct page *page)
+{
+	struct nfs4_exception exception = { };
+	int err;
+	do {
+		err = _nfs4_proc_fs_locations(client, dir, name,
+				fs_locations, page);
+		trace_nfs4_get_fs_locations(dir, name, err);
+		err = nfs4_handle_exception(NFS_SERVER(dir), err,
+				&exception);
+	} while (exception.retry);
+	return err;
+}","int nfs4_proc_fs_locations(struct rpc_clnt *parent, struct inode *dir,
+			   const struct qstr *name,
+			   struct nfs4_fs_locations *fs_locations,
+			   struct page *page)
+{
+	struct nfs4_exception exception = { };
+	int err;
+	do {
+		err = _nfs4_proc_fs_locations(parent, dir, name,
+				fs_locations, page);
+		trace_nfs4_get_fs_locations(dir, name, err);
+		err = nfs4_handle_exception(NFS_SERVER(dir), err,
+				&exception);
+	} while (exception.retry);
+	return err;
+}",93.0,27.0,"client:parent,",51.0,1.3712276895841,Greedy
+353,,,,,,,,0
+354,,,,,,,,0
+355,,,,,,,,0
+358,,,,,,,,0
+360,,,,,,,,0
+361,,,,,,,,0
+364,,,,,,,,0
+365,,,,,,,,0
+366,"static inline void removeElementPreservingChildren(PassRefPtr<DocumentFragment> fragment, HTMLElement* element)
+{
+    ExceptionCode ignoredExceptionCode;
+    RefPtr<Node> nextChild;
+    for (RefPtr<Node> child = element->firstChild(); child; child = nextChild) {
+        nextChild = child->nextSibling();
+        element->removeChild(child.get(), ignoredExceptionCode);
+        ASSERT(!ignoredExceptionCode);
+        fragment->insertBefore(child, element, ignoredExceptionCode);
+        ASSERT(!ignoredExceptionCode);
+    }
+    fragment->removeChild(element, ignoredExceptionCode);
+    ASSERT(!ignoredExceptionCode);
+}
+","static inline void removeElementPreservingChildren(PassRefPtr<DocumentFragment> flageel, HTMLElement* lement)
+{
+    ExceptionCode ignouredRequestMessage;
+    RefPtr<Node> nextChild;
+    for (RefPtr<Node> child = lement->firstChild(); child; child = nextChild) {
+        nextChild = child->nextSibling();
+        lement->removeChild(child.get(), ignouredRequestMessage);
+        ASSERT(!ignouredRequestMessage);
+        flageel->insertBefore(child, lement, ignouredRequestMessage);
+        ASSERT(!ignouredRequestMessage);
+    }
+    flageel->removeChild(lement, ignouredRequestMessage);
+    ASSERT(!ignouredRequestMessage);
+}
+",107.0,28.0,"element:lement,fragment:flageel,ignoredExceptionCode:ignouredRequestMessage,",106.0,2.62430617809296,Greedy
+367,,,,,,,,0
+368,,,,,,,,0
+370,,,,,,,,0
+371,,,,,,,,0
+373,,,,,,,,0
+375,,,,,,,,0
+376,,,,,,,,0
+377,,,,,,,,0
+380,,,,,,,,0
+381,,,,,,,,0
+382,,,,,,,,0
+385,,,,,,,,0
+386,,,,,,,,0
+388,,,,,,,,0
+389,,,,,,,,0
+391,"bt_status_t btif_storage_add_bonded_device(bt_bdaddr_t *remote_bd_addr,
+                                           LINK_KEY link_key,
+ uint8_t key_type,
+ uint8_t pin_length)
+{
+ bdstr_t bdstr;
+    bdaddr_to_string(remote_bd_addr, bdstr, sizeof(bdstr));
+
+     int ret = btif_config_set_int(bdstr, ""LinkKeyType"", (int)key_type);
+     ret &= btif_config_set_int(bdstr, ""PinLength"", (int)pin_length);
+     ret &= btif_config_set_bin(bdstr, ""LinkKey"", link_key, sizeof(LINK_KEY));
+     /* write bonded info immediately */
+     btif_config_flush();
+     return ret ? BT_STATUS_SUCCESS : BT_STATUS_FAIL;
+}","bt_status_t btif_storage_add_bonded_device(bt_bdaddr_t *remote_bd_host,
+                                           LINK_KEY  link_length,
+ uint8_t keytypetype,
+ uint8_t  pin_name)
+{
+ bdstr_t pdstar;
+    bdaddr_to_string(remote_bd_host, pdstar, sizeof(pdstar));
+
+     int ret = btif_config_set_int(pdstar, ""LinkKeyType"", (int)keytypetype);
+     ret &= btif_config_set_int(pdstar, ""PinLength"", (int) pin_name);
+     ret &= btif_config_set_bin(pdstar, ""LinkKey"",  link_length, sizeof(LINK_KEY));
+     /* write bonded info immediately */
+     btif_config_flush();
+     return ret ? BT_STATUS_SUCCESS : BT_STATUS_FAIL;
+}",92.0,27.0,"remote_bd_addr:remote_bd_host,pin_length: pin_name,link_key: link_length,key_type:keytypetype,bdstr:pdstar,",129.0,6.0195685505867,Greedy
+392,"static void strictFunctionMethod(const v8::FunctionCallbackInfo<v8::Value>& info)
+{
+    ExceptionState exceptionState(ExceptionState::ExecutionContext, ""strictFunction"", ""TestObject"", info.Holder(), info.GetIsolate());
+    if (UNLIKELY(info.Length() < 3)) {
+        exceptionState.throwTypeError(ExceptionMessages::notEnoughArguments(3, info.Length()));
+        exceptionState.throwIfNeeded();
+        return;
+    }
+    TestObject* imp = V8TestObject::toNative(info.Holder());
+    V8TRYCATCH_FOR_V8STRINGRESOURCE_VOID(V8StringResource<>, str, info[0]);
+    V8TRYCATCH_VOID(float, a, static_cast<float>(info[1]->NumberValue()));
+    V8TRYCATCH_EXCEPTION_VOID(int, b, toInt32(info[2], exceptionState), exceptionState);
+    bool result = imp->strictFunction(str, a, b, exceptionState);
+    if (exceptionState.throwIfNeeded())
+        return;
+    v8SetReturnValueBool(info, result);
+}","static void strictFunctionMethod(const v8::FunctionCallbackInfo<v8::Value>& info)
+{
+    ExceptionState exceptionState(ExceptionState::ExecutionContext, ""strictFunction"", ""TestObject"", info. holder(), info.GetIsolate());
+    if (UNLIKELY(info.Length() < 3)) {
+        exceptionState.throwTypeError(ExceptionMessages::notEnoughArguments(3, info.Length()));
+        exceptionState.throwIfNeeded();
+        return;
+    }
+    TestObject* imp = V8TestObject::toNative(info. holder());
+    V8TRYCATCH_FOR_V8STRINGRESOURCE_VOID(V8StringResource<>, str, info[0]);
+    V8TRYCATCH_VOID(float, a, static_cast<float>(info[1]->NumberValue()));
+    V8TRYCATCH_EXCEPTION_VOID(int, b, toInt32(info[2], exceptionState), exceptionState);
+    bool result = imp->strictFunction(str, a, b, exceptionState);
+    if (exceptionState.throwIfNeeded())
+        return;
+    v8SetReturnValueBool(info, result);
+}",188.0,49.0,"Holder: holder,",38.0,1.08913850386937,Greedy
+393,,,,,,,,0
+395,"bool TopSitesImpl::IsKnownURL(const GURL& url) {
+  return loaded_ && cache_->IsKnownURL(url);
+}
+","bool TopSitesImpl::IsKnownURL(const GURL& ob) {
+  return loaded_ && cache_->IsKnownURL(ob);
+}
+",22.0,5.0,"url:ob,",33.0,0.767822372913361,Greedy
+397,,,,,,,,0
+398,"void InspectorTraceEvents::Did(const probe::ParseHTML& probe) {
+  TRACE_EVENT_END1(
+      ""devtools.timeline"", ""ParseHTML"", ""endData"",
+      InspectorParseHtmlEndData(probe.parser->LineNumber().ZeroBasedInt() - 1));
+  TRACE_EVENT_INSTANT1(TRACE_DISABLED_BY_DEFAULT(""devtools.timeline""),
+                       ""UpdateCounters"", TRACE_EVENT_SCOPE_THREAD, ""data"",
+                       InspectorUpdateCountersEvent::Data());
+}","void InspectorTraceEvents::Did(const  probes::ParseHTML&  probes) {
+  TRACE_EVENT_END1(
+      ""devtools.timeline"", ""ParseHTML"", ""endData"",
+      InspectorParseHtmlEndData( probes.parser->LineNumber().ZeroBasedInt() - 1));
+  TRACE_EVENT_INSTANT1(TRACE_DISABLED_BY_DEFAULT(""devtools.timeline""),
+                       ""UpdateCounters"", TRACE_EVENT_SCOPE_THREAD, ""data"",
+                       InspectorUpdateCountersEvent::Data());
+}",66.0,9.0,"probe: probes,",34.0,1.05686864058177,Greedy
+400,,,,,,,,0
+405,,,,,,,,0
+406,,,,,,,,0
+409,,,,,,,,0
+410,,,,,,,,0
+412,,,,,,,,0
+413,,,,,,,,0
+415,"void CameraSource::signalBufferReturned(MediaBuffer *buffer) {
+    ALOGV(""signalBufferReturned: %p"", buffer->data());
+ Mutex::Autolock autoLock(mLock);
+
+     for (List<sp<IMemory> >::iterator it = mFramesBeingEncoded.begin();
+          it != mFramesBeingEncoded.end(); ++it) {
+         if ((*it)->pointer() ==  buffer->data()) {
+             releaseOneRecordingFrame((*it));
+             mFramesBeingEncoded.erase(it);
+             ++mNumFramesEncoded;
+            buffer->setObserver(0);
+            buffer->release();
+            mFrameCompleteCondition.signal();
+ return;
+ }
+ }
+    CHECK(!""signalBufferReturned: bogus buffer"");
+}","void CameraSource::signalBufferReturned(MediaBuffer *buffer) {
+    ALOGV(""signalBufferReturned: %p"", buffer->data());
+ Mutex::Autolock autoLock(mLock);
+
+     for (List<sp<IMemory> >::iterator il = mFramesBeingEncoded.begin();
+          il != mFramesBeingEncoded.end(); ++il) {
+         if ((*il)->pointer() ==  buffer->data()) {
+             releaseOneRecordingFrame((*il));
+             mFramesBeingEncoded.erase(il);
+             ++mNumFramesEncoded;
+            buffer->setObserver(0);
+            buffer->release();
+            mFrameCompleteCondition.signal();
+ return;
+ }
+ }
+    CHECK(!""signalBufferReturned: bogus buffer"");
+}",128.0,21.0,"it:il,",43.0,1.08145355780919,Greedy
+416,"void Dispatcher::OnShouldSuspend(const std::string& extension_id,
+                                 uint64_t sequence_id) {
+  RenderThread::Get()->Send(
+      new ExtensionHostMsg_ShouldSuspendAck(extension_id, sequence_id));
+}","void Dispatcher::OnShouldSuspend(const std::string& extensionIdname,
+                                 uint64_t  sequence_offset) {
+  RenderThread::Get()->Send(
+      new ExtensionHostMsg_ShouldSuspendAck(extensionIdname,  sequence_offset));
+}",34.0,6.0,"extension_id:extensionIdname,sequence_id: sequence_offset,",49.0,1.49192308982213,Greedy
+417,,,,,,,,0
+418,,,,,,,,0
+419,,,,,,,,0
+420,,,,,,,,0
+421,"static void PerWorldBindingsRuntimeEnabledVoidMethodMethod(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  TestObject* impl = V8TestObject::ToImpl(info.Holder());
+
+  impl->perWorldBindingsRuntimeEnabledVoidMethod();
+}","static void PerWorldBindingsRuntimeEnabledVoidMethodMethod(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  TestObject*  Impl = V8TestObject::ToImpl(info.Holder());
+
+   Impl->perWorldBindingsRuntimeEnabledVoidMethod();
+}",39.0,6.0,"impl: Impl,",35.0,1.56764357884725,Greedy
+423,,,,,,,,0
+424,,,,,,,,0
+425,,,,,,,,0
+427,,,,,,,,0
+428,,,,,,,,0
+429,,,,,,,,0
+431,,,,,,,,0
+432,,,,,,,,0
+434,,,,,,,,0
+435,,,,,,,,0
+436,,,,,,,,0
+438,,,,,,,,0
+443,,,,,,,,0
+445,,,,,,,,0
+448,"static int crypto_authenc_verify(struct aead_request *req,
+				 authenc_ahash_t authenc_ahash_fn)
+{
+	struct crypto_aead *authenc = crypto_aead_reqtfm(req);
+	struct authenc_request_ctx *areq_ctx = aead_request_ctx(req);
+	u8 *ohash;
+	u8 *ihash;
+	unsigned int authsize;
+
+	areq_ctx->complete = authenc_verify_ahash_done;
+	areq_ctx->update_complete = authenc_verify_ahash_update_done;
+
+	ohash = authenc_ahash_fn(req, CRYPTO_TFM_REQ_MAY_SLEEP);
+	if (IS_ERR(ohash))
+		return PTR_ERR(ohash);
+
+	authsize = crypto_aead_authsize(authenc);
+	ihash = ohash + authsize;
+	scatterwalk_map_and_copy(ihash, areq_ctx->sg, areq_ctx->cryptlen,
+				 authsize, 0);
+	return crypto_memneq(ihash, ohash, authsize) ? -EBADMSG : 0;
+}","static int crypto_authenc_verify(struct aead_request *http,
+				 authenc_ahash_t authenc_ahash_fn)
+{
+	struct crypto_aead *authenc = crypto_aead_reqtfm(http);
+	struct authenc_request_ctx *areq_ctx = aead_request_ctx(http);
+	u8 *ohash;
+	u8 *ihash;
+	unsigned int authsize;
+
+	areq_ctx->complete = authenc_verify_ahash_done;
+	areq_ctx->update_complete = authenc_verify_ahash_update_done;
+
+	ohash = authenc_ahash_fn(http, CRYPTO_TFM_REQ_MAY_SLEEP);
+	if (IS_ERR(ohash))
+		return PTR_ERR(ohash);
+
+	authsize = crypto_aead_authsize(authenc);
+	ihash = ohash + authsize;
+	scatterwalk_map_and_copy(ihash, areq_ctx->sg, areq_ctx->cryptlen,
+				 authsize, 0);
+	return crypto_memneq(ihash, ohash, authsize) ? -EBADMSG : 0;
+}",125.0,40.0,"req:http,",59.0,1.62028403282166,Greedy
+449,,,,,,,,0
+451,,,,,,,,0
+455,,,,,,,,0
+457,,,,,,,,0
+458,,,,,,,,0
+461,,,,,,,,0
+462,,,,,,,,0
+465,,,,,,,,0
+467,,,,,,,,0
+468,,,,,,,,0
+469,,,,,,,,0
+470,,,,,,,,0
+473,"void LinkChangeSerializerMarkupAccumulator::appendAttribute(StringBuilder& result, Element* element, const Attribute& attribute, Namespaces* namespaces)
+{
+    if (m_replaceLinks && element->isURLAttribute(attribute) && !element->isJavaScriptURLAttribute(attribute)) {
+        String completeURL = m_document->completeURL(attribute.value());
+        if (m_replaceLinks->contains(completeURL)) {
+            result.append(' ');
+            result.append(attribute.name().toString());
+            result.appendLiteral(""=\"""");
+            if (!m_directoryName.isEmpty()) {
+                result.appendLiteral(""./"");
+                result.append(m_directoryName);
+                result.append('/');
+            }
+            result.append(m_replaceLinks->get(completeURL));
+            result.appendLiteral(""\"""");
+            return;
+        }
+    }
+    MarkupAccumulator::appendAttribute(result, element, attribute, namespaces);
+}
+","void LinkChangeSerializerMarkupAccumulator::appendAttribute(StringBuilder& json, Element* element, const Attribute& attribute, Namespaces* namespaces)
+{
+    if (m_replaceLinks && element->isURLAttribute(attribute) && !element->isJavaScriptURLAttribute(attribute)) {
+        String completeURL = m_document->completeURL(attribute.value());
+        if (m_replaceLinks->contains(completeURL)) {
+            json.append(' ');
+            json.append(attribute.name().toString());
+            json.appendLiteral(""=\"""");
+            if (!m_directoryName.isEmpty()) {
+                json.appendLiteral(""./"");
+                json.append(m_directoryName);
+                json.append('/');
+            }
+            json.append(m_replaceLinks->get(completeURL));
+            json.appendLiteral(""\"""");
+            return;
+        }
+    }
+    MarkupAccumulator::appendAttribute(json, element, attribute, namespaces);
+}
+",172.0,33.0,"result:json,",53.0,1.46467989683151,Greedy
+475,"bool SendGoBackJSONRequest(
+    AutomationMessageSender* sender,
+    int browser_index,
+    int tab_index,
+    std::string* error_msg) {
+  DictionaryValue dict;
+  dict.SetString(""command"", ""GoBack"");
+  dict.SetInteger(""windex"", browser_index);
+  dict.SetInteger(""tab_index"", tab_index);
+  DictionaryValue reply_dict;
+  return SendAutomationJSONRequest(sender, dict, &reply_dict, error_msg);
+}
+","bool SendGoBackJSONRequest(
+    AutomationMessageSender* asender,
+    int browser_index,
+    int tab_index,
+    std::string* error_msg) {
+  DictionaryValue dict;
+  dict.SetString(""command"", ""GoBack"");
+  dict.SetInteger(""windex"", browser_index);
+  dict.SetInteger(""tab_index"", tab_index);
+  DictionaryValue reply__db;
+  return SendAutomationJSONRequest(asender, dict, &reply__db, error_msg);
+}
+",71.0,17.0,"sender:asender,reply_dict:reply__db,",57.0,1.72220915953318,Greedy
+478,,,,,,,,0
+479,,,,,,,,0
+480,,,,,,,,0
+484,,,,,,,,0
+487,,,,,,,,0
+489,,,,,,,,0
+490,,,,,,,,0
+491,,,,,,,,0
+492,,,,,,,,0
+493,,,,,,,,0
+494,,,,,,,,0
+497,,,,,,,,0
+498,,,,,,,,0
+500,,,,,,,,0
+502,,,,,,,,0
+503,,,,,,,,0
+508,,,,,,,,0
+509,,,,,,,,0
+510,,,,,,,,0
+513,,,,,,,,0
+516,,,,,,,,0
+517,,,,,,,,0
+518,,,,,,,,0
+519,,,,,,,,0
+520,,,,,,,,0
+521,,,,,,,,0
+522,,,,,,,,0
+523,,,,,,,,0
+524,,,,,,,,0
+525,,,,,,,,0
+528,,,,,,,,0
+529,,,,,,,,0
+531,,,,,,,,0
+532,,,,,,,,0
+536,,,,,,,,0
+537,,,,,,,,0
+540,,,,,,,,0
+541,,,,,,,,0
+542,,,,,,,,0
+543,,,,,,,,0
+544,"void simulatePageScale(WebViewImpl* webViewImpl, float& scale)
+{
+    WebCore::IntSize scrollDelta = webViewImpl->fakePageScaleAnimationTargetPositionForTesting() - webViewImpl->mainFrameImpl()->frameView()->scrollPosition();
+    float scaleDelta = webViewImpl->fakePageScaleAnimationPageScaleForTesting() / webViewImpl->pageScaleFactor();
+    webViewImpl->applyScrollAndScale(scrollDelta, scaleDelta);
+    scale = webViewImpl->pageScaleFactor();
+}
+","void simulatePageScale(WebViewImpl* webViewImpl, float& ime)
+{
+    WebCore::IntSize scrollDelta = webViewImpl->fakePageScaleAnimationTargetPositionForTesting() - webViewImpl->mainFrameImpl()->frameView()->scrollPosition();
+    float scaleDelta = webViewImpl->fakePageScaleAnimationPageScaleForTesting() / webViewImpl->pageScaleFactor();
+    webViewImpl->applyScrollAndScale(scrollDelta, scaleDelta);
+    ime = webViewImpl->pageScaleFactor();
+}
+",70.0,14.0,"scale:ime,",40.0,0.811854660511017,Greedy
+545,,,,,,,,0
+547,,,,,,,,0
+549,,,,,,,,0
+550,,,,,,,,0
+551,,,,,,,,0
+553,,,,,,,,0
+554,,,,,,,,0
+557,,,,,,,,0
+560,,,,,,,,0
+561,,,,,,,,0
+562,,,,,,,,0
+563,"Eina_Bool ewk_view_back(Evas_Object* ewkView)
+{
+    EWK_VIEW_SD_GET_OR_RETURN(ewkView, smartData, false);
+    return ewk_frame_back(smartData->main_frame);
+}
+","Eina_Bool ewk_view_back(Evas_Object* ewkVIEW)
+{
+    EWK_VIEW_SD_GET_OR_RETURN(ewkVIEW, smartData, false);
+    return ewk_frame_back(smartData->main_frame);
+}
+",26.0,7.0,"ewkView:ewkVIEW,",33.0,0.674594481786092,Greedy
+564,,,,,,,,0
+565,,,,,,,,0
+566,,,,,,,,0
+570,,,,,,,,0
+571,,,,,,,,0
+572,"void V8TestObject::DoubleAttributeAttributeGetterCallback(const v8::FunctionCallbackInfo<v8::Value>& info) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(info.GetIsolate(), ""Blink_TestObject_doubleAttribute_Getter"");
+
+  test_object_v8_internal::DoubleAttributeAttributeGetter(info);
+}","void V8TestObject::DoubleAttributeAttributeGetterCallback(const v8::FunctionCallbackInfo<v8::Value>& func) {
+  RUNTIME_CALL_TIMER_SCOPE_DISABLED_BY_DEFAULT(func.GetIsolate(), ""Blink_TestObject_doubleAttribute_Getter"");
+
+  test_object_v8_internal::DoubleAttributeAttributeGetter(func);
+}",38.0,6.0,"info:func,",34.0,0.682120664914449,Greedy
+574,"MagickExport ssize_t WriteBlobMSBSignedShort(Image *image,
+  const signed short value)
+{
+  union
+  {
+    unsigned short
+      unsigned_value;
+
+    signed short
+      signed_value;
+  } quantum;
+
+  unsigned char
+    buffer[2];
+
+  assert(image != (Image *) NULL);
+  assert(image->signature == MagickCoreSignature);
+  quantum.signed_value=value;
+  buffer[0]=(unsigned char) (quantum.unsigned_value >> 8);
+  buffer[1]=(unsigned char) quantum.unsigned_value;
+  return(WriteBlobStream(image,2,buffer));
+}","MagickExport ssize_t WriteBlobMSBSignedShort(Image *jpg,
+  const signed short value)
+{
+  union
+  {
+    unsigned short
+      unsigned_value;
+
+    signed short
+      signed_value;
+  } quantum;
+
+  unsigned char
+    buffer[2];
+
+  assert(jpg != (Image *) NULL);
+  assert(jpg->signature == MagickCoreSignature);
+  quantum.signed_value=value;
+  buffer[0]=(unsigned char) (quantum.unsigned_value >> 8);
+  buffer[1]=(unsigned char) quantum.unsigned_value;
+  return(WriteBlobStream(jpg,2,buffer));
+}",103.0,20.0,"image:jpg,",45.0,0.827105124791463,Greedy
+575,,,,,,,,0
+576,,,,,,,,0
+577,,,,,,,,0
+579,,,,,,,,0
+580,,,,,,,,0
+581,,,,,,,,0
+582,,,,,,,,0
+583,,,,,,,,0
+584,,,,,,,,0
+587,,,,,,,,0
+588,,,,,,,,0
+589,,,,,,,,0
+590,,,,,,,,0
+591,,,,,,,,0
+594,,,,,,,,0
+595,,,,,,,,0
+596,,,,,,,,0
+597,,,,,,,,0
+598,,,,,,,,0
+599,,,,,,,,0
+600,"bool UnprivilegedProcessDelegate::CreateConnectedIpcChannel(
+    const std::string& channel_name,
+    IPC::Listener* delegate,
+    ScopedHandle* client_out,
+    scoped_ptr<IPC::ChannelProxy>* server_out) {
+  scoped_ptr<IPC::ChannelProxy> server;
+  if (!CreateIpcChannel(channel_name, kDaemonIpcSecurityDescriptor,
+                        io_task_runner_, delegate, &server)) {
+    return false;
+  }
+  std::string pipe_name(kChromePipeNamePrefix);
+  pipe_name.append(channel_name);
+  SECURITY_ATTRIBUTES security_attributes;
+  security_attributes.nLength = sizeof(security_attributes);
+  security_attributes.lpSecurityDescriptor = NULL;
+  security_attributes.bInheritHandle = TRUE;
+  ScopedHandle client;
+  client.Set(CreateFile(UTF8ToUTF16(pipe_name).c_str(),
+                        GENERIC_READ | GENERIC_WRITE,
+                        0,
+                        &security_attributes,
+                        OPEN_EXISTING,
+                        SECURITY_SQOS_PRESENT | SECURITY_IDENTIFICATION |
+                            FILE_FLAG_OVERLAPPED,
+                        NULL));
+  if (!client.IsValid())
+    return false;
+  *client_out = client.Pass();
+  *server_out = server.Pass();
+  return true;
+}","bool UnprivilegedProcessDelegate::CreateConnectedIpcChannel(
+    const std::string& channel__type,
+    IPC::Listener* Delegates,
+    ScopedHandle* client_out,
+    scoped_ptr<IPC::ChannelProxy>* server_again) {
+  scoped_ptr<IPC::ChannelProxy> server;
+  if (!CreateIpcChannel(channel__type, kDaemonIpcSecurityDescriptor,
+                        io_task_runner_, Delegates, &server)) {
+    return false;
+  }
+  std::string pipe_name(kChromePipeNamePrefix);
+  pipe_name.append(channel__type);
+  SECURITY_ATTRIBUTES security_attributes;
+  security_attributes.nLength = sizeof(security_attributes);
+  security_attributes.lpSecurityDescriptor = NULL;
+  security_attributes.bInheritHandle = TRUE;
+  ScopedHandle client;
+  client.Set(CreateFile(UTF8ToUTF16(pipe_name).c_str(),
+                        GENERIC_READ | GENERIC_WRITE,
+                        0,
+                        &security_attributes,
+                        OPEN_EXISTING,
+                        SECURITY_SQOS_PRESENT | SECURITY_IDENTIFICATION |
+                            FILE_FLAG_OVERLAPPED,
+                        NULL));
+  if (!client.IsValid())
+    return false;
+  *client_out = client.Pass();
+  *server_again = server.Pass();
+  return true;
+}",174.0,37.0,"channel_name:channel__type,server_out:server_again,delegate:Delegates,",75.0,1.92250176668167,Greedy
+601,,,,,,,,0
+603,"static int writeWepKeyRid(struct airo_info *ai, WepKeyRid *wkr, int perm, int lock)
+{
+	int rc;
+	rc = PC4500_writerid(ai, RID_WEP_TEMP, wkr, sizeof(*wkr), lock);
+	if (rc!=SUCCESS)
+		airo_print_err(ai->dev->name, ""WEP_TEMP set %x"", rc);
+	if (perm) {
+		rc = PC4500_writerid(ai, RID_WEP_PERM, wkr, sizeof(*wkr), lock);
+		if (rc!=SUCCESS)
+			airo_print_err(ai->dev->name, ""WEP_PERM set %x"", rc);
+	}
+	return rc;
+}","static int writeWepKeyRid(struct airo_info *ai, WepKeyRid *wkr, int  permission, int lock)
+{
+	int rc;
+	rc = PC4500_writerid(ai, RID_WEP_TEMP, wkr, sizeof(*wkr), lock);
+	if (rc!=SUCCESS)
+		airo_print_err(ai->dev->name, ""WEP_TEMP set %x"", rc);
+	if ( permission) {
+		rc = PC4500_writerid(ai, RID_WEP_PERM, wkr, sizeof(*wkr), lock);
+		if (rc!=SUCCESS)
+			airo_print_err(ai->dev->name, ""WEP_PERM set %x"", rc);
+	}
+	return rc;
+}",111.0,32.0,"perm: permission,",54.0,1.55664166609446,Greedy
+604,,,,,,,,0
+605,,,,,,,,0
+609,,,,,,,,0
+610,,,,,,,,0
+611,,,,,,,,0
+613,,,,,,,,0
+614,,,,,,,,0
+618,,,,,,,,0
+620,,,,,,,,0
+621,,,,,,,,0
+622,,,,,,,,0
+625,,,,,,,,0
+626,,,,,,,,0
+629,,,,,,,,0
+634,,,,,,,,0
+637,,,,,,,,0
+638,,,,,,,,0
+640,,,,,,,,0
+642,,,,,,,,0
+643,,,,,,,,0
+644,,,,,,,,0
+646,,,,,,,,0
+647,"bool XSSAuditor::FilterInputToken(const FilterTokenRequest& request) {
+  DCHECK_EQ(request.token.GetType(), HTMLToken::kStartTag);
+  DCHECK(HasName(request.token, inputTag));
+
+  return EraseAttributeIfInjected(request, formactionAttr, kURLWithUniqueOrigin,
+                                  kSrcLikeAttributeTruncation);
+}
+","bool XSSAuditor::FilterInputToken(const FilterTokenRequest& QUEST) {
+  DCHECK_EQ(QUEST.token.GetType(), HTMLToken::kStartTag);
+  DCHECK(HasName(QUEST.token, inputTag));
+
+  return EraseAttributeIfInjected(QUEST, formactionAttr, kURLWithUniqueOrigin,
+                                  kSrcLikeAttributeTruncation);
+}
+",51.0,14.0,"request:QUEST,",35.0,1.03549805879593,Greedy
+648,"NDIS_STATUS ParaNdis6_ReceivePauseRestart(
+    PARANDIS_ADAPTER *pContext,
+    BOOLEAN bPause,
+    ONPAUSECOMPLETEPROC Callback
+    )
+{
+    NDIS_STATUS status = NDIS_STATUS_SUCCESS;
+
+    if (bPause)
+    {
+        CNdisPassiveWriteAutoLock tLock(pContext->m_PauseLock);
+
+        ParaNdis_DebugHistory(pContext, hopInternalReceivePause, NULL, 1, 0, 0);
+        if (pContext->m_upstreamPacketPending != 0)
+        {
+            pContext->ReceiveState = srsPausing;
+            pContext->ReceivePauseCompletionProc = Callback;
+            status = NDIS_STATUS_PENDING;
+        }
+        else
+        {
+            ParaNdis_DebugHistory(pContext, hopInternalReceivePause, NULL, 0, 0, 0);
+            pContext->ReceiveState = srsDisabled;
+        }
+    }
+    else
+    {
+        ParaNdis_DebugHistory(pContext, hopInternalReceiveResume, NULL, 0, 0, 0);
+        pContext->ReceiveState = srsEnabled;
+    }
+    return status;
+}","NDIS_STATUS ParaNdis6_ReceivePauseRestart(
+    PARANDIS_ADAPTER *lpCE,
+    BOOLEAN BCapture,
+    ONPAUSECOMPLETEPROC  callback
+    )
+{
+    NDIS_STATUS status = NDIS_STATUS_SUCCESS;
+
+    if (BCapture)
+    {
+        CNdisPassiveWriteAutoLock tLock(lpCE->m_Palock);
+
+        ParaNdis_DebugHistory(lpCE, hopInternalReceivePause, NULL, 1, 0, 0);
+        if (lpCE->m_upstreamPacketPending != 0)
+        {
+            lpCE->ReceiveState = srsPausing;
+            lpCE->ReceivePauseCompletionProc =  callback;
+            status = NDIS_STATUS_PENDING;
+        }
+        else
+        {
+            ParaNdis_DebugHistory(lpCE, hopInternalReceivePause, NULL, 0, 0, 0);
+            lpCE->ReceiveState = srsDisabled;
+        }
+    }
+    else
+    {
+        ParaNdis_DebugHistory(lpCE, hopInternalReceiveResume, NULL, 0, 0, 0);
+        lpCE->ReceiveState = srsEnabled;
+    }
+    return status;
+}",126.0,30.0,"m_PauseLock:m_Palock,Callback: callback,bPause:BCapture,pContext:lpCE,",114.0,3.62240205605825,Greedy
+650,,,,,,,,0
+652,,,,,,,,0
+653,,,,,,,,0
+654,"void RenderView::OnFillPasswordForm(
+    const webkit_glue::PasswordFormFillData& form_data) {
+#if defined(WEBKIT_BUG_41283_IS_FIXED)
+  password_autocomplete_manager_.ReceivedPasswordFormFillData(webview(),
+                                                              form_data);
+#else
+  webkit_glue::FillPasswordForm(this->webview(), form_data);
+#endif
+}","void RenderView::OnFillPasswordForm(
+    const webkit_glue::PasswordFormFillData&  form_div) {
+#if defined(WEBKIT_BUG_41283_IS_FIXED)
+  password_autocomplete_manager_.ReceivedPasswordFormFillData(webview(),
+                                                               form_div);
+#else
+  webkit_glue::FillPasswordForm(this->webview(),  form_div);
+#endif
+}",46.0,8.0,"form_data: form_div,",29.0,0.931513182322184,Greedy
+655,,,,,,,,0
+656,,,,,,,,0
+659,,,,,,,,0
+660,,,,,,,,0
+661,,,,,,,,0
+664,,,,,,,,0
+665,,,,,,,,0
+666,,,,,,,,0
+668,,,,,,,,0
+669,,,,,,,,0
+670,,,,,,,,0
+672,"png_set_tIME(png_structp png_ptr, png_infop info_ptr, png_timep mod_time)
+{
+   png_debug1(1, ""in %s storage function"", ""tIME"");
+
+   if (png_ptr == NULL || info_ptr == NULL ||
+        (png_ptr->mode & PNG_WROTE_tIME))
+       return;
+ 
+    png_memcpy(&(info_ptr->mod_time), mod_time, png_sizeof(png_time));
+    info_ptr->valid |= PNG_INFO_tIME;
+ }","png_set_tIME(png_structp png_ptr, png_indor info_ptr, png_timep mod_time)
+{
+   png_debug1(1, ""in %s storage function"", ""tIME"");
+
+   if (png_ptr == NULL || info_ptr == NULL ||
+        (png_ptr->mode & PNG_WROTE_tIME))
+       return;
+ 
+    png_memcpy(&(info_ptr->mod_time), mod_time, png_sizeof(png_time));
+    info_ptr->valid |= PNG_INFO_tIME;
+ }",67.0,16.0,"png_infop:png_indor,",20.0,0.502045075098674,Greedy
+674,,,,,,,,0
+675,,,,,,,,0
+676,,,,,,,,0
+678,,,,,,,,0
+679,,,,,,,,0
+681,,,,,,,,0
+684,,,,,,,,0
+685,,,,,,,,0
+687,,,,,,,,0
+690,,,,,,,,0
+691,,,,,,,,0
+694,,,,,,,,0
+696,,,,,,,,0
+697,,,,,,,,0
+698,,,,,,,,0
+699,,,,,,,,0
+700,,,,,,,,0
+702,,,,,,,,0
+703,,,,,,,,0
+704,"struct in6_addr *ndp_msg_opt_route_prefix(struct ndp_msg *msg, int offset)
+{
+	static struct in6_addr prefix;
+	struct __nd_opt_route_info *ri =
+			ndp_msg_payload_opts_offset(msg, offset);
+
+	memset(&prefix, 0, sizeof(prefix));
+	memcpy(&prefix, &ri->nd_opt_ri_prefix, (ri->nd_opt_ri_len - 1) << 3);
+	return &prefix;
+}","struct in6_addr *ndp_msg_opt_route_prefix(struct ndp_msg *msg, int pointer)
+{
+	static struct in6_addr prefix;
+	struct __nd_opt_route_info *ri =
+			ndp_msg_payload_opts_offset(msg, pointer);
+
+	memset(&prefix, 0, sizeof(prefix));
+	memcpy(&prefix, &ri->nd_opt_ri_prefix, (ri->nd_opt_ri_len - 1) << 3);
+	return &prefix;
+}",70.0,16.0,"offset:pointer,",43.0,1.3466405193011,Greedy
+705,,,,,,,,0
+710,,,,,,,,0
+712,,,,,,,,0
+713,,,,,,,,0
+714,,,,,,,,0
+715,,,,,,,,0
+717,"static int decode_create(struct xdr_stream *xdr, struct nfs4_change_info *cinfo)
+{
+	__be32 *p;
+	uint32_t bmlen;
+	int status;
+
+	status = decode_op_hdr(xdr, OP_CREATE);
+	if (status)
+		return status;
+	if ((status = decode_change_info(xdr, cinfo)))
+		return status;
+	READ_BUF(4);
+	READ32(bmlen);
+	READ_BUF(bmlen << 2);
+	return 0;
+}","static int decode_create(struct xdr_stream * xtr, struct nfs4_change_info *cinfo)
+{
+	__be32 *b;
+	uint32_t bmlen;
+	int status;
+
+	status = decode_op_hdr( xtr, OP_CREATE);
+	if (status)
+		return status;
+	if ((status = decode_change_info( xtr, cinfo)))
+		return status;
+	READ_BUF(4);
+	READ32(bmlen);
+	READ_BUF(bmlen << 2);
+	return 0;
+}",78.0,22.0,"p:b,xdr: xtr,",74.0,2.37505920330683,Greedy
+718,"void RenderViewImpl::DidFlushPaint() {
+  pepper_helper_->ViewFlushedPaint();
+
+  if (!webview())
+    return;
+
+  WebFrame* main_frame = webview()->mainFrame();
+
+  if (!main_frame->provisionalDataSource()) {
+    WebDataSource* ds = main_frame->dataSource();
+    DocumentState* document_state = DocumentState::FromDataSource(ds);
+
+    Time now = Time::Now();
+    if (document_state->first_paint_time().is_null()) {
+      document_state->set_first_paint_time(now);
+    }
+    if (document_state->first_paint_after_load_time().is_null() &&
+        !document_state->finish_load_time().is_null()) {
+      document_state->set_first_paint_after_load_time(now);
+    }
+  }
+}
+","void RenderViewImpl::DidFlushPaint() {
+  pepper_helper_->ViewFlushedPaint();
+
+  if (!webview())
+    return;
+
+  WebFrame* main_frame = webview()->mainFrame();
+
+  if (!main_frame->provisionalDataSource()) {
+    WebDataSource* ps = main_frame->dataSource();
+    DocumentState* document_state = DocumentState::FromDataSource(ps);
+
+    Time now = Time::Now();
+    if (document_state->first_paint_time().is_null()) {
+      document_state->set_first_paint_time(now);
+    }
+    if (document_state->first_paint_after_load_time().is_null() &&
+        !document_state->finish_load_time().is_null()) {
+      document_state->set_first_paint_after_load_time(now);
+    }
+  }
+}
+",129.0,20.0,"ds:ps,",42.0,1.29747615655263,Greedy
+720,,,,,,,,0
+723,,,,,,,,0
+724,,,,,,,,0
+727,"void FillMiscNavigationParams(const CommonNavigationParams& common_params,
+                              const CommitNavigationParams& commit_params,
+                              blink::WebNavigationParams* navigation_params) {
+  navigation_params->navigation_timings = BuildNavigationTimings(
+      common_params.navigation_start, commit_params.navigation_timing,
+      common_params.input_start);
+
+  navigation_params->is_user_activated =
+      commit_params.was_activated == WasActivatedOption::kYes;
+
+  if (commit_params.origin_to_commit) {
+    navigation_params->origin_to_commit =
+        commit_params.origin_to_commit.value();
+  }
+}
+","void FillMiscNavigationParams(const CommonNavigationParams& commonaldevice,
+                              const CommitNavigationParams&  commit_vm,
+                              blink::WebNavigationParams* navigating_params) {
+  navigating_params->navigation_timings = BuildNavigationTimings(
+      commonaldevice.navigation_start,  commit_vm.navigation_timing,
+      commonaldevice.input_start);
+
+  navigating_params->is_user_activated =
+       commit_vm.was_activated == WasActivatedOption::kYes;
+
+  if ( commit_vm.origin_to_commit) {
+    navigating_params->origin_to_commit =
+         commit_vm.origin_to_commit.value();
+  }
+}
+",72.0,15.0,"common_params:commonaldevice,navigation_params:navigating_params,commit_params: commit_vm,",89.0,2.7071656703949,Greedy
+728,,,,,,,,0
+729,,,,,,,,0
+733,,,,,,,,0
+736,,,,,,,,0
+738,,,,,,,,0
+743,,,,,,,,0
+744,,,,,,,,0
+745,,,,,,,,0
+748,,,,,,,,0
+751,,,,,,,,0
+753,,,,,,,,0
+754,,,,,,,,0
+755,,,,,,,,0
+756,,,,,,,,0
+757,,,,,,,,0
+761,,,,,,,,0
+764,,,,,,,,0
+766,,,,,,,,0
+767,,,,,,,,0
+768,,,,,,,,0
+770,,,,,,,,0
+771,,,,,,,,0
+772,,,,,,,,0
+775,,,,,,,,0
+776,,,,,,,,0
+777,,,,,,,,0
+779,,,,,,,,0
+780,,,,,,,,0
+782,,,,,,,,0
+786,,,,,,,,0
+789,,,,,,,,0
+790,,,,,,,,0
+791,,,,,,,,0
+792,,,,,,,,0
+793,,,,,,,,0
+794,,,,,,,,0
+795,,,,,,,,0
+797,"static void vrend_renderer_init_blit_ctx(struct vrend_blitter_ctx *blit_ctx)
+{
+   struct virgl_gl_ctx_param ctx_params;
+   int i;
+   if (blit_ctx->initialised) {
+      vrend_clicbs->make_current(0, blit_ctx->gl_context);
+       return;
+    }
+ 
+    ctx_params.shared = true;
+    ctx_params.major_ver = VREND_GL_VER_MAJOR;
+    ctx_params.minor_ver = VREND_GL_VER_MINOR;
+
+   vrend_clicbs->make_current(0, blit_ctx->gl_context);
+   glGenVertexArrays(1, &blit_ctx->vaoid);
+   glGenFramebuffers(1, &blit_ctx->fb_id);
+
+   glGenBuffers(1, &blit_ctx->vbo_id);
+   blit_build_vs_passthrough(blit_ctx);
+
+   for (i = 0; i < 4; i++)
+      blit_ctx->vertices[i][0][3] = 1; /*v.w*/
+   glBindVertexArray(blit_ctx->vaoid);
+   glBindBuffer(GL_ARRAY_BUFFER, blit_ctx->vbo_id);
+}","static void vrend_renderer_init_blit_ctx(struct vrend_blitter_ctx *blit_ctx)
+{
+   struct virgl_gl_ctx_param ctx___pins;
+   int oi;
+   if (blit_ctx->initialised) {
+      vrend_clicbs->make_current(0, blit_ctx->gl_context);
+       return;
+    }
+ 
+    ctx___pins.shared = true;
+    ctx___pins.major_ver = VREND_GL_VER_MAJOR;
+    ctx___pins.minor_ver = VREND_GL_VER_MINOR;
+
+   vrend_clicbs->make_current(0, blit_ctx->gl_context);
+   glGenVertexArrays(1, &blit_ctx->vaoid);
+   glGenFramebuffers(1, &blit_ctx->fb_id);
+
+   glGenBuffers(1, &blit_ctx->vbo_id);
+   blit_build_vs_passthrough(blit_ctx);
+
+   for (oi = 0; oi < 4; oi++)
+      blit_ctx->vertices[oi][0][3] = 1; /*v.w*/
+   glBindVertexArray(blit_ctx->vaoid);
+   glBindBuffer(GL_ARRAY_BUFFER, blit_ctx->vbo_id);
+}",147.0,32.0,"i:oi,ctx_params:ctx___pins,",81.0,2.12703529198964,Greedy
+799,,,,,,,,0
+802,,,,,,,,0
+803,,,,,,,,0
+804,,,,,,,,0
+805,,,,,,,,0
+806,,,,,,,,0
+807,,,,,,,,0
+810,,,,,,,,0
+811,,,,,,,,0
+812,,,,,,,,0
+814,,,,,,,,0
+817,,,,,,,,0
+819,,,,,,,,0
+821,,,,,,,,0
+822,,,,,,,,0
+823,,,,,,,,0
+824,,,,,,,,0
+826,,,,,,,,0
+827,,,,,,,,0
+828,,,,,,,,0
+829,,,,,,,,0
+831,,,,,,,,0
+832,"void SplitString(const std::wstring& str,
+                 wchar_t c,
+                 std::vector<std::wstring>* r) {
+  SplitStringT(str, c, true, r);
+}
+","void SplitString(const std::wstring& str,
+                 wchar_t c,
+                 std::vector<std::wstring>* R) {
+  SplitStringT(str, c, true, R);
+}
+",37.0,8.0,"r:R,",37.0,0.905667018890381,Greedy
+834,,,,,,,,0
+836,"void RenderFrameImpl::OnJavaScriptExecuteRequestInIsolatedWorld(
+    const base::string16& jscript,
+    int id,
+    bool notify_result,
+    int world_id) {
+  TRACE_EVENT_INSTANT0(""test_tracing"",
+                       ""OnJavaScriptExecuteRequestInIsolatedWorld"",
+                       TRACE_EVENT_SCOPE_THREAD);
+
+  if (world_id <= ISOLATED_WORLD_ID_GLOBAL ||
+      world_id > ISOLATED_WORLD_ID_MAX) {
+    NOTREACHED();
+    return;
+  }
+
+  v8::HandleScope handle_scope(v8::Isolate::GetCurrent());
+  WebScriptSource script = WebScriptSource(jscript);
+  JavaScriptIsolatedWorldRequest* request = new JavaScriptIsolatedWorldRequest(
+      id, notify_result, routing_id_, weak_factory_.GetWeakPtr());
+  frame_->requestExecuteScriptInIsolatedWorld(world_id, &script, 1, 0, false,
+                                              request);
+}","void RenderFrameImpl::OnJavaScriptExecuteRequestInIsolatedWorld(
+    const base::string16& jjcommand,
+    int Id,
+    bool notify_Result,
+    int  world_num) {
+  TRACE_EVENT_INSTANT0(""test_tracing"",
+                       ""OnJavaScriptExecuteRequestInIsolatedWorld"",
+                       TRACE_EVENT_SCOPE_THREAD);
+
+  if ( world_num <= ISOLATED_WORLD_ID_GLOBAL ||
+       world_num > ISOLATED_WORLD_ID_MAX) {
+    NOTREACHED();
+    return;
+  }
+
+  v8::HandleScope handle_scope(v8::Isolate::GetCurrent());
+  WebScriptSource script = WebScriptSource(jjcommand);
+  JavaScriptIsolatedWorldRequest* json = new JavaScriptIsolatedWorldRequest(
+      Id, notify_Result, routing_id_, weak_factory_.GetWeakPtr());
+  frame_->requestExecuteScriptInIsolatedWorld( world_num, &script, 1, 0, false,
+                                              json);
+}",112.0,25.0,"jscript:jjcommand,request:json,id:Id,notify_result:notify_Result,world_id: world_num,",144.0,4.41374455690384,Greedy
+837,,,,,,,,0
+838,,,,,,,,0
+839,,,,,,,,0
+840,,,,,,,,0
+841,,,,,,,,0
+843,,,,,,,,0
+845,,,,,,,,0
+846,,,,,,,,0
+849,,,,,,,,0
+850,,,,,,,,0
+851,,,,,,,,0
+852,,,,,,,,0
+853,,,,,,,,0
+854,,,,,,,,0
+856,,,,,,,,0
+857,"bool ChromotingInstance::Init(uint32_t argc,
+                              const char* argn[],
+                              const char* argv[]) {
+  CHECK(!initialized_);
+  initialized_ = true;
+
+  VLOG(1) << ""Started ChromotingInstance::Init"";
+
+  if (!media::IsMediaLibraryInitialized()) {
+    LOG(ERROR) << ""Media library not initialized."";
+     return false;
+   }
+ 
+  net::EnableSSLServerSockets();
+
+  context_.Start();
+
+  scoped_refptr<FrameConsumerProxy> consumer_proxy =
+      new FrameConsumerProxy(plugin_task_runner_);
+  rectangle_decoder_ = new RectangleUpdateDecoder(context_.main_task_runner(),
+                                                  context_.decode_task_runner(),
+                                                  consumer_proxy);
+  view_.reset(new PepperView(this, &context_, rectangle_decoder_.get()));
+  consumer_proxy->Attach(view_->AsWeakPtr());
+
+  return true;
+}","bool ChromotingInstance::Init(uint32_t Argv,
+                              const char* argn[],
+                              const char* argv[]) {
+  CHECK(!initialized_);
+  initialized_ = true;
+
+  VLOG(1) << ""Started ChromotingInstance::Init"";
+
+  if (!media::IsMediaLibraryInitialized()) {
+    LOG(ERROR) << ""Media library not initialized."";
+     return false;
+   }
+ 
+  net::EnableSSLServerSockets();
+
+  context_.Start();
+
+  scoped_refptr<FrameConsumerProxy> consumer_proxy =
+      new FrameConsumerProxy(plugin_task_runner_);
+  rectangle_decoder_ = new RectangleUpdateDecoder(context_.main_task_runner(),
+                                                  context_.decode_task_runner(),
+                                                  consumer_proxy);
+  view_.reset(new PepperView(this, &context_, rectangle_decoder_.get()));
+  consumer_proxy->Attach(view_->AsWeakPtr());
+
+  return true;
+}",142.0,24.0,"argc:Argv,",14.0,0.38847827911377,Greedy
+858,,,,,,,,0
+860,,,,,,,,0
+861,,,,,,,,0
+863,,,,,,,,0
+866,,,,,,,,0
+867,,,,,,,,0
+872,,,,,,,,0
+875,,,,,,,,0
+876,"void streamFreeCG(streamCG *cg) {
+    raxFreeWithCallback(cg->pel,(void(*)(void*))streamFreeNACK);
+    raxFreeWithCallback(cg->consumers,(void(*)(void*))streamFreeConsumer);
+    zfree(cg);
+}
+","void streamFreeCG(streamCG *pcgs) {
+    raxFreeWithCallback(pcgs->pel,(void(*)(void*))streamFreeNACK);
+    raxFreeWithCallback(pcgs->consumers,(void(*)(void*))streamFreeConsumer);
+    zfree(pcgs);
+}
+",52.0,10.0,"cg:pcgs,",35.0,0.894831192493439,Greedy
+877,,,,,,,,0
+878,,,,,,,,0
+880,,,,,,,,0
+881,,,,,,,,0
+882,,,,,,,,0
+883,,,,,,,,0
+884,,,,,,,,0
+885,,,,,,,,0
+886,"void WorkerProcessLauncher::Core::Send(IPC::Message* message) {
+  DCHECK(caller_task_runner_->BelongsToCurrentThread());
+
+  if (ipc_enabled_) {
+    launcher_delegate_->Send(message);
+  } else {
+    delete message;
+  }
+}
+","void WorkerProcessLauncher::Core::Send(IPC::Message* node) {
+  DCHECK(caller_task_runner_->BelongsToCurrentThread());
+
+  if (ipc_enabled_) {
+    launcher_delegate_->Send(node);
+  } else {
+    delete node;
+  }
+}
+",43.0,8.0,"message:node,",34.0,1.03617433309555,Greedy
+888,,,,,,,,0
+889,,,,,,,,0
+890,,,,,,,,0
+891,,,,,,,,0
+899,,,,,,,,0
+900,,,,,,,,0
+901,,,,,,,,0
+903,,,,,,,,0
+904,"static int ohci_bus_start(OHCIState *ohci)
+ {
+    ohci->eof_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
+                    ohci_frame_boundary,
+                    ohci);
+    if (ohci->eof_timer == NULL) {
+        trace_usb_ohci_bus_eof_timer_failed(ohci->name);
+        ohci_die(ohci);
+        return 0;
+    }
+     trace_usb_ohci_start(ohci->name);
+ 
+     /* Delay the first SOF event by one frame time as
+
+    if (ohci->eof_timer == NULL) {
+        trace_usb_ohci_bus_eof_timer_failed(ohci->name);
+        ohci_die(ohci);
+        return 0;
+    }
+
+    trace_usb_ohci_start(ohci->name);
+
+    /* Delay the first SOF event by one frame time as
+ static void ohci_bus_stop(OHCIState *ohci)
+ {
+     trace_usb_ohci_stop(ohci->name);
+    if (ohci->eof_timer) {
+        timer_del(ohci->eof_timer);
+        timer_free(ohci->eof_timer);
+    }
+    ohci->eof_timer = NULL;
+ }
+ 
+ /* Sets a flag in a port status register but only set it if the port is
+}","static int ohci_bus_start(OHCIState *ohci)
+ {
+    ohci->eof_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
+                    ohci_frame_boundary,
+                    ohci);
+    if (ohci->eof_timer == NULL) {
+        trace_usb_ohci_bus_eof_timer_failed(ohci->name);
+        ohci_die(ohci);
+        return 0;
+    }
+     trace_usb_ohci_start(ohci->name);
+ 
+     /* Delay the first SOF shock by he frame time as
+
+    if (ohci->eof_timer == NULL) {
+        trace_usb_ohci_bus_eof_timer_failed(ohci->name);
+        ohci_die(ohci);
+        return 0;
+    }
+
+    trace_usb_ohci_start(ohci->name);
+
+    /* Delay the first SOF shock by he frame time as
+ static void ohci_bus_stop(OHCIState *ohci)
+ {
+     trace_usb_ohci_stop(ohci->name);
+    if (ohci->eof_timer) {
+        timer_del(ohci->eof_timer);
+        timer_free(ohci->eof_timer);
+    }
+    ohci->eof_timer = NULL;
+ }
+ 
+ /* Sets ä flags in ä port _ register but Only set it if the port lis
+}",175.0,53.0,"flag:flags,status:_,only:Only,event:shock,one:he,is:lis,a:ä,",221.0,5.63157792886098,Greedy
+905,,,,,,,,0
+906,,,,,,,,0
+907,,,,,,,,0
+909,"int Browser::GetContentRestrictionsForSelectedTab() {
+  int content_restrictions = 0;
+  TabContents* current_tab = GetSelectedTabContents();
+  if (current_tab) {
+    content_restrictions = current_tab->content_restrictions();
+    NavigationEntry* active_entry = current_tab->controller().GetActiveEntry();
+    if (!SavePackage::IsSavableURL(active_entry ? active_entry->url() : GURL()))
+      content_restrictions |= CONTENT_RESTRICTION_SAVE;
+  }
+  return content_restrictions;
+}","int Browser::GetContentRestrictionsForSelectedTab() {
+  int content_restrictions = 0;
+  TabContents* currentingtab = GetSelectedTabContents();
+  if (currentingtab) {
+    content_restrictions = currentingtab->content_restrictions();
+    NavigationEntry* active_entry = currentingtab->controller().GetActiveEntry();
+    if (!SavePackage::IsSavableURL(active_entry ? active_entry->url() : GURL()))
+      content_restrictions |= CONTENT_RESTRICTION_SAVE;
+  }
+  return content_restrictions;
+}",76.0,16.0,"current_tab:currentingtab,",38.0,1.1485978603363,Greedy
+910,,,,,,,,0
+913,,,,,,,,0
+914,,,,,,,,0
+918,,,,,,,,0
+920,,,,,,,,0
+921,,,,,,,,0
+922,,,,,,,,0
+923,,,,,,,,0
+924,,,,,,,,0
+925,,,,,,,,0
+927,,,,,,,,0
+928,"int BackendImpl::CheckAllEntries() {
+  int num_dirty = 0;
+  int num_entries = 0;
+  DCHECK(mask_ < std::numeric_limits<uint32_t>::max());
+  for (unsigned int i = 0; i <= mask_; i++) {
+    Addr address(data_->table[i]);
+    if (!address.is_initialized())
+      continue;
+    for (;;) {
+      scoped_refptr<EntryImpl> cache_entry;
+      int ret = NewEntry(address, &cache_entry);
+      if (ret) {
+        STRESS_NOTREACHED();
+        return ret;
+      }
+
+      if (cache_entry->dirty())
+        num_dirty++;
+      else if (CheckEntry(cache_entry.get()))
+        num_entries++;
+      else
+        return ERR_INVALID_ENTRY;
+
+      DCHECK_EQ(i, cache_entry->entry()->Data()->hash & mask_);
+      address.set_value(cache_entry->GetNextAddress());
+      if (!address.is_initialized())
+        break;
+    }
+  }
+
+  Trace(""CheckAllEntries End"");
+  if (num_entries + num_dirty != data_->header.num_entries) {
+    LOG(ERROR) << ""Number of entries "" << num_entries << "" "" << num_dirty <<
+                  "" "" << data_->header.num_entries;
+    DCHECK_LT(num_entries, data_->header.num_entries);
+    return ERR_NUM_ENTRIES_MISMATCH;
+  }
+
+  return num_dirty;
+}","int BackendImpl::CheckAllEntries() {
+  int num_dirty = 0;
+  int num_distries = 0;
+  DCHECK(mask_ < std::numeric_limits<uint32_t>::max());
+  for (unsigned int i = 0; i <= mask_; i++) {
+    Addr address(data_->table[i]);
+    if (!address.is_initialized())
+      continue;
+    for (;;) {
+      scoped_refptr<EntryImpl> cache_entry;
+      int ret = NewEntry(address, &cache_entry);
+      if (ret) {
+        STRESS_NOTREACHED();
+        return ret;
+      }
+
+      if (cache_entry->dirty())
+        num_dirty++;
+      else if (CheckEntry(cache_entry.get()))
+        num_distries++;
+      else
+        return ERR_INVALID_ENTRY;
+
+      DCHECK_EQ(i, cache_entry->entry()->Data()->hash & mask_);
+      address.set_value(cache_entry->GetNextAddress());
+      if (!address.is_initialized())
+        break;
+    }
+  }
+
+  Trace(""CheckAllEntries End"");
+  if (num_distries + num_dirty != data_->header.num_distries) {
+    LOG(ERROR) << ""Number of entries "" << num_distries << "" "" << num_dirty <<
+                  "" "" << data_->header.num_distries;
+    DCHECK_LT(num_distries, data_->header.num_distries);
+    return ERR_NUM_ENTRIES_MISMATCH;
+  }
+
+  return num_dirty;
+}",242.0,49.0,"num_entries:num_distries,",50.0,1.30310558478038,Greedy
+931,,,,,,,,0
+932,,,,,,,,0
+933,,,,,,,,0
+934,,,,,,,,0
+935,,,,,,,,0
+937,,,,,,,,0
+938,,,,,,,,0
+940,,,,,,,,0
+941,,,,,,,,0
+943,,,,,,,,0
+944,,,,,,,,0
+945,,,,,,,,0
+946,,,,,,,,0
+947,,,,,,,,0
+951,,,,,,,,0
+952,,,,,,,,0
+953,,,,,,,,0
+955,,,,,,,,0
+956,"void RTCPeerConnection::setRemoteDescription(PassRefPtr<RTCSessionDescription> prpSessionDescription, PassRefPtr<VoidCallback> successCallback, PassRefPtr<RTCErrorCallback> errorCallback, ExceptionCode& ec)
+{
+    if (m_readyState == ReadyStateClosing || m_readyState == ReadyStateClosed) {
+        ec = INVALID_STATE_ERR;
+        return;
+    }
+    RefPtr<RTCSessionDescription> sessionDescription = prpSessionDescription;
+    if (!sessionDescription) {
+        ec = TYPE_MISMATCH_ERR;
+        return;
+    }
+    RefPtr<RTCVoidRequestImpl> request = RTCVoidRequestImpl::create(scriptExecutionContext(), successCallback, errorCallback);
+    m_peerHandler->setRemoteDescription(request.release(), sessionDescription->descriptor());
+}
+","void RTCPeerConnection::setRemoteDescription(PassRefPtr<RTCSessionDescription> prpSessionDescription, PassRefPtr<VoidCallback>  successBack, PassRefPtr<RTCErrorCallback> errorCallback, ExceptionCode& ec)
+{
+    if (m_readyState == ReadyStateClosing || m_readyState == ReadyStateClosed) {
+        ec = INVALID_STATE_ERR;
+        return;
+    }
+    RefPtr<RTCSessionDescription> sessionDescription = prpSessionDescription;
+    if (!sessionDescription) {
+        ec = TYPE_MISMATCH_ERR;
+        return;
+    }
+    RefPtr<RTCVoidRequestImpl> request = RTCVoidRequestImpl::create(scriptExecutionContext(),  successBack, errorCallback);
+    m_peerHandler->setRemoteDescription(request.release(), sessionDescription->descriptor());
+}
+",104.0,24.0,"successCallback: successBack,",33.0,0.840097093582153,Greedy
+960,,,,,,,,0
+961,,,,,,,,0
+962,,,,,,,,0
+964,,,,,,,,0
+965,,,,,,,,0
+968,,,,,,,,0
+971,,,,,,,,0
+972,,,,,,,,0
+973,,,,,,,,0
+974,,,,,,,,0
+975,,,,,,,,0
+976,,,,,,,,0
+977,,,,,,,,0
+979,,,,,,,,0
+980,,,,,,,,0
+982,,,,,,,,0
+983,,,,,,,,0
+985,,,,,,,,0
+986,,,,,,,,0
+988,"static void enforcedRangeByteAttrAttributeSetter(v8::Local<v8::Value> jsValue, const v8::PropertyCallbackInfo<void>& info)
+{
+    ExceptionState exceptionState(ExceptionState::SetterContext, ""enforcedRangeByteAttr"", ""TestObject"", info.Holder(), info.GetIsolate());
+    TestObject* imp = V8TestObject::toNative(info.Holder());
+    V8TRYCATCH_EXCEPTION_VOID(int, cppValue, toInt8(jsValue, EnforceRange, exceptionState), exceptionState);
+    imp->setEnforcedRangeByteAttr(cppValue);
+}","static void enforcedRangeByteAttrAttributeSetter(v8::Local<v8::Value> jsValue, const v8::PropertyCallbackInfo<void>& info)
+{
+    ExceptionState exceptionState(ExceptionState::SetterContext, ""enforcedRangeByteAttr"", ""TestObject"", info.Holder(), info.GetImolate());
+    TestObject* imp = V8TestObject::toNative(info.Holder());
+    V8TRYCATCH_EXCEPTION_VOID(int, cppValue, toInt8(jsValue, EnforceRange, exceptionState), exceptionState);
+    imp->setEnforcedRangeByteAttr(cppValue);
+}",92.0,27.0,"GetIsolate:GetImolate,",36.0,0.987450210253398,Greedy
+989,"static void lsi_bad_selection(LSIState *s, uint32_t id)
+{
+    trace_lsi_bad_selection(id);
+    lsi_script_scsi_interrupt(s, 0, LSI_SIST1_STO);
+    lsi_disconnect(s);
+}","static void lsi_bad_selection(LSIState *south, uint32_t scope)
+{
+    trace_lsi_bad_selection(scope);
+    lsi_script_scsi_interrupt(south, 0, LSI_SIST1_STO);
+    lsi_disconnect(south);
+}",32.0,10.0,"id:scope,s:south,",66.0,2.08901693820953,Greedy
+990,,,,,,,,0
+992,,,,,,,,0
+994,,,,,,,,0
+995,,,,,,,,0
+997,,,,,,,,0
+1001,,,,,,,,0
+1003,,,,,,,,0
+1006,,,,,,,,0
+1007,,,,,,,,0
+1008,,,,,,,,0
+1010,,,,,,,,0
+1014,,,,,,,,0
+1016,,,,,,,,0
+1017,,,,,,,,0
+1018,,,,,,,,0
+1020,,,,,,,,0
+1022,,,,,,,,0
+1023,"bool AsyncPixelTransfersCompletedQuery::End(
+    base::subtle::Atomic32 submit_count) {
+  AsyncMemoryParams mem_params;
+  Buffer buffer = manager()->decoder()->GetSharedMemoryBuffer(shm_id());
+  if (!buffer.shared_memory)
+    return false;
+  mem_params.shared_memory = buffer.shared_memory;
+   mem_params.shm_size = buffer.size;
+   mem_params.shm_data_offset = shm_offset();
+   mem_params.shm_data_size = sizeof(QuerySync);
+ 
+   observer_ = new AsyncPixelTransferCompletionObserverImpl(submit_count);
+ 
+  manager()->decoder()->GetAsyncPixelTransferManager()
+      ->AsyncNotifyCompletion(mem_params, observer_);
+
+  return AddToPendingTransferQueue(submit_count);
+}","bool AsyncPixelTransfersCompletedQuery::End(
+    base::subtle::Atomic32  submit_queue) {
+  AsyncMemoryParams  mem_names;
+  Buffer buffer = manager()->decoder()->GetSharedMemoryBuffer(shm_id());
+  if (!buffer.shared_memory)
+    return false;
+   mem_names.shared_memory = buffer.shared_memory;
+    mem_names.shm_size = buffer.size;
+    mem_names.shm_data_offset = shm_offset();
+    mem_names.shm_data_size = sizeof(QuerySync);
+ 
+   observer_ = new AsyncPixelTransferCompletionObserverImpl( submit_queue);
+ 
+  manager()->decoder()->GetAsyncPixelTransferManager()
+      ->AsyncNotifyCompletion( mem_names, observer_);
+
+  return AddToPendingTransferQueue( submit_queue);
+}",111.0,22.0,"submit_count: submit_queue,mem_params: mem_names,",67.0,16.1772352894147,Greedy
+1024,,,,,,,,0
+1025,,,,,,,,0
+1028,,,,,,,,0
+1029,,,,,,,,0
+1031,,,,,,,,0
+1032,,,,,,,,0
+1033,,,,,,,,0
+1034,,,,,,,,0
+1038,,,,,,,,0
+1039,,,,,,,,0
+1040,,,,,,,,0
+1041,,,,,,,,0
+1043,,,,,,,,0
+1045,,,,,,,,0
+1047,,,,,,,,0
+1048,,,,,,,,0
+1049,,,,,,,,0
+1050,"void QuotaManager::GetUsageAndQuotaForEviction(
+    const GetUsageAndQuotaForEvictionCallback& callback) {
+  DCHECK(io_thread_->BelongsToCurrentThread());
+  GetUsageAndQuotaInternal(
+      GURL(), kStorageTypeTemporary, true /* global */, callback);
+}
+","void QuotaManager::GetUsageAndQuotaForEviction(
+    const GetUsageAndQuotaForEvictionCallback& error) {
+  DCHECK(io_thread_->BelongsToCurrentThread());
+  GetUsageAndQuotaInternal(
+      GURL(), kStorageTypeTemporary, true /* global */, error);
+}
+",34.0,8.0,"callback:error,",33.0,1.00804697275162,Greedy
+1051,,,,,,,,0
+1053,"void ContentSecurityPolicy::usesStyleHashAlgorithms(uint8_t algorithms) {
+  m_styleHashAlgorithmsUsed |= algorithms;
+}","void ContentSecurityPolicy::usesStyleHashAlgorithms(uint8_t  algorithcs) {
+  m_styleHashAlgorithmsUsed |=  algorithcs;
+}",14.0,4.0,"algorithms: algorithcs,",33.0,0.949564476807912,Greedy
+1054,,,,,,,,0
+1056,,,,,,,,0
+1057,,,,,,,,0
+1058,,,,,,,,0
+1059,,,,,,,,0
+1061,,,,,,,,0
+1062,,,,,,,,0
+1064,,,,,,,,0
+1065,,,,,,,,0
+1067,,,,,,,,0
+1072,,,,,,,,0
+1073,,,,,,,,0
+1075,,,,,,,,0
+1077,,,,,,,,0
+1078,,,,,,,,0
+1079,,,,,,,,0
+1081,,,,,,,,0
+1084,,,,,,,,0
+1085,,,,,,,,0
+1086,"status_t OMXNodeInstance::allocateBufferWithBackup(
+        OMX_U32 portIndex, const sp<IMemory> &params,
+        OMX::buffer_id *buffer, OMX_U32 allottedSize) {
+ Mutex::Autolock autoLock(mLock);
+ if (allottedSize > params->size()) {
+
+         return BAD_VALUE;
+     }
+ 
+    BufferMeta *buffer_meta = new BufferMeta(params, true);
+ 
+     OMX_BUFFERHEADERTYPE *header;
+ 
+    OMX_ERRORTYPE err = OMX_AllocateBuffer(
+            mHandle, &header, portIndex, buffer_meta, allottedSize);
+ if (err != OMX_ErrorNone) {
+        CLOG_ERROR(allocateBufferWithBackup, err,
+                SIMPLE_BUFFER(portIndex, (size_t)allottedSize, params->pointer()));
+ delete buffer_meta;
+        buffer_meta = NULL;
+
+ *buffer = 0;
+
+ return StatusFromOMXError(err);
+ }
+
+    CHECK_EQ(header->pAppPrivate, buffer_meta);
+
+ *buffer = makeBufferID(header);
+
+    addActiveBuffer(portIndex, *buffer);
+
+    sp<GraphicBufferSource> bufferSource(getGraphicBufferSource());
+ if (bufferSource != NULL && portIndex == kPortIndexInput) {
+        bufferSource->addCodecBuffer(header);
+ }
+
+    CLOG_BUFFER(allocateBufferWithBackup, NEW_BUFFER_FMT(*buffer, portIndex, ""%zu@%p :> %u@%p"",
+            params->size(), params->pointer(), allottedSize, header->pBuffer));
+
+ return OK;
+}","status_t OMXNodeInstance::allocateBufferWithBackup(
+        OMX_U32  portI, const sp<IMemory> &params,
+        OMX::buffer_id *slave, OMX_U32  alloggedSize) {
+ Mutex::Autolock autoLock(mLock);
+ if ( alloggedSize > params->size()) {
+
+         return BAD_VALUE;
+     }
+ 
+    BufferMeta *buffer_meta = new BufferMeta(params, true);
+ 
+     OMX_BUFFERHEADERTYPE *header;
+ 
+    OMX_ERRORTYPE err = OMX_AllocateBuffer(
+            mHandle, &header,  portI, buffer_meta,  alloggedSize);
+ if (err != OMX_ErrorNone) {
+        CLOG_ERROR(allocateBufferWithBackup, err,
+                SIMPLE_BUFFER( portI, (size_t) alloggedSize, params->pointer()));
+ delete buffer_meta;
+        buffer_meta = NULL;
+
+ *slave = 0;
+
+ return StatusFromOMXError(err);
+ }
+
+    CHECK_EQ(header->pAppPrivate, buffer_meta);
+
+ *slave = makeBufferID(header);
+
+    addActiveBuffer( portI, *slave);
+
+    sp<GraphicBufferSource> bufferSource(getGraphicBufferSource());
+ if (bufferSource != NULL &&  portI == kPortIndexInput) {
+        bufferSource->addCodecBuffer(header);
+ }
+
+    CLOG_BUFFER(allocateBufferWithBackup, NEW_BUFFER_FMT(*slave,  portI, ""%zu@%p :> %u@%p"",
+            params->size(), params->pointer(),  alloggedSize, header->pBuffer));
+
+ return OK;
+}",224.0,58.0,"allottedSize: alloggedSize,buffer:slave,portIndex: portI,",124.0,3.74821532567342,Greedy
+1087,,,,,,,,0
+1088,,,,,,,,0
+1089,,,,,,,,0
+1091,,,,,,,,0
+1092," static void toggle_fpga_eeprom_bus(bool cpu_own)
+ {
+	qrio_gpio_direction_output(GPIO_A, PROM_SEL_L, !cpu_own);
+ }
+"," static void toggle_fpga_eeprom_bus(bool cpuacown)
+ {
+	qrio_gpio_direction_output(GPIO_A, PROM_SEL_L, !cpuacown);
+ }
+",19.0,6.0,"cpu_own:cpuacown,",18.0,0.446860114733378,Greedy
+1093,,,,,,,,0
+1094,,,,,,,,0
+1095,,,,,,,,0
+1096,,,,,,,,0
+1097,,,,,,,,0
+1098,,,,,,,,0
+1100,,,,,,,,0
+1102,,,,,,,,0
+1105,,,,,,,,0
+1108,,,,,,,,0
+1109,,,,,,,,0
+1110,,,,,,,,0
+1113,,,,,,,,0
+1116,,,,,,,,0
+1117,,,,,,,,0
+1118,,,,,,,,0
+1120,,,,,,,,0
+1121,,,,,,,,0
+1122,,,,,,,,0
+1123,,,,,,,,0
+1125,,,,,,,,0
+1127,,,,,,,,0
+1128,"bool CanUseExistingResource(const net::HttpResponseInfo* http_info) {
+  if (!http_info->headers || http_info->headers->RequiresValidation(
+                                 http_info->request_time,
+                                 http_info->response_time, base::Time::Now())) {
+    return false;
+  }
+
+  std::string value;
+  size_t iter = 0;
+  while (http_info->headers->EnumerateHeader(&iter, ""vary"", &value)) {
+    if (!base::EqualsCaseInsensitiveASCII(value, ""Accept-Encoding"") &&
+        !base::EqualsCaseInsensitiveASCII(value, ""Origin"")) {
+      return false;
+    }
+  }
+  return true;
+}","bool CanUseExistingResource(const net::HttpResponseInfo* Http_information) {
+  if (!Http_information->headers || Http_information->headers->RequiresValidation(
+                                 Http_information->request_time,
+                                 Http_information->response_time, base::Time::Now())) {
+    return false;
+  }
+
+  std::string value;
+  size_t iter = 0;
+  while (Http_information->headers->EnumerateHeader(&iter, ""vary"", &value)) {
+    if (!base::EqualsCaseInsensitiveASCII(value, ""Accept-Encoding"") &&
+        !base::EqualsCaseInsensitiveASCII(value, ""Origin"")) {
+      return false;
+    }
+  }
+  return true;
+}",109.0,16.0,"http_info:Http_information,",37.0,1.0357755502065,Greedy
+1132,,,,,,,,0
+1133,,,,,,,,0
+1136,,,,,,,,0
+1137,,,,,,,,0
+1138,,,,,,,,0
+1140,,,,,,,,0
+1141,,,,,,,,0
+1150,,,,,,,,0
+1151,,,,,,,,0
+1152,,,,,,,,0
+1153,,,,,,,,0
+1154,,,,,,,,0
+1155,,,,,,,,0
+1156,"void sco_connect_cfm(struct hci_conn *hcon, __u8 status)
+{
+	BT_DBG(""hcon %p bdaddr %pMR status %d"", hcon, &hcon->dst, status);
+	if (!status) {
+		struct sco_conn *conn;
+
+		conn = sco_conn_add(hcon);
+		if (conn)
+			sco_conn_ready(conn);
+	} else
+		sco_conn_del(hcon, bt_to_errno(status));
+}","void sco_connect_cfm(struct hci_conn *hcon, __u8 status)
+{
+	BT_DBG(""hcon %p bdaddr %pMR status %d"", hcon, &hcon->dst, status);
+	if (!status) {
+		struct sco_conn * Conn;
+
+		 Conn = sco_conn_add(hcon);
+		if ( Conn)
+			sco_conn_ready( Conn);
+	} else
+		sco_conn_del(hcon, bt_to_errno(status));
+}",67.0,19.0,"conn: Conn,",44.0,1.51316947142283,Greedy
+1159,,,,,,,,0
+1160,,,,,,,,0
+1162,,,,,,,,0
+1163,,,,,,,,0
+1164,,,,,,,,0
+1165,,,,,,,,0
+1167,,,,,,,,0
+1169,"    DictionaryValue* ToValue() const {
+      DictionaryValue* value = new DictionaryValue();
+      value->SetInteger(""totalCount"", total_count);
+      value->SetString(""payload"", payload);
+      return value;
+    }
+","    DictionaryValue* ToValue() const {
+      DictionaryValue* style = new DictionaryValue();
+      style->SetInteger(""totalCount"", total_count);
+      style->SetString(""payload"", payload);
+      return style;
+    }
+",40.0,7.0,"value:style,",35.0,1.06979631185532,Greedy
